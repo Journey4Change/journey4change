@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Health & GBV Challenges in South Africa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Mental Health & Social Challenges in South Africa</h2>
+    <p class="text-gray-600 mb-6">
+      This graph illustrates some of the most urgent mental health and gender-based violence issues affecting South Africans:
+    </p>
+
+    <!-- Chart Canvas -->
+    <canvas id="healthChallengesChart" class="w-full rounded-lg"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('healthChallengesChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Depression',
+          'Anxiety',
+          'Substance Abuse',
+          'PTSD',
+          'Suicidal Thoughts',
+          'GBV (Gender-Based Violence)',
+          'Homelessness',
+          'Bipolar Disorder',
+          'Schizophrenia'
+        ],
+        datasets: [{
+          label: 'Estimated Prevalence in South Africa (%)',
+          data: [30, 25, 18, 12, 15, 28, 6, 6, 4],
+          backgroundColor: [
+            'rgba(99, 102, 241, 0.7)',   // Depression
+            'rgba(79, 70, 229, 0.7)',    // Anxiety
+            'rgba(139, 92, 246, 0.7)',   // Substance Abuse
+            'rgba(16, 185, 129, 0.7)',   // PTSD
+            'rgba(239, 68, 68, 0.7)',    // Suicidal Thoughts
+            'rgba(245, 158, 11, 0.7)',   // GBV
+            'rgba(252, 211, 77, 0.7)',   // Homelessness
+            'rgba(96, 165, 250, 0.7)',   // Bipolar
+            'rgba(107, 114, 128, 0.7)'   // Schizophrenia
+          ],
+          borderColor: [
+            'rgba(99, 102, 241, 1)',
+            'rgba(79, 70, 229, 1)',
+            'rgba(139, 92, 246, 1)',
+            'rgba(16, 185, 129, 1)',
+            'rgba(239, 68, 68, 1)',
+            'rgba(245, 158, 11, 1)',
+            'rgba(252, 211, 77, 1)',
+            'rgba(96, 165, 250, 1)',
+            'rgba(107, 114, 128, 1)'
+          ],
+          borderWidth: 1,
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 35,
+            ticks: {
+              callback: value => value + '%'
+            },
+            title: {
+              display: true,
+              text: 'Estimated % of Population'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Challenge'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true
+          },
+          title: {
+            display: true,
+            text: 'Mental Health & GBV Challenges in South Africa',
+            font: {
+              size: 18
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: (context) => `${context.raw}% affected`
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
