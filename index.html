@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Raising awareness for mental health across South Africa.">
+  <meta name="keywords" content="Mental Health, Awareness, South Africa, Journey4Change">
+  <title>Journey4Change - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #04ff10;
+      --primary-light: #7cff80;
+      --secondary: #2E7D32;
+      --dark: #1a2a3a;
+      --light: #f8fafc;
+      --accent: #FF6B6B;
+      --text: #333;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .utility-bar {
+      background-color: var(--dark);
+      color: white;
+      padding: 8px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .utility-right a {
+      color: white;
+      margin-left: 15px;
+      font-size: 18px;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .utility-right a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+header {
+  background: linear-gradient(135deg, #04ff10, #2E7D32);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+header img:hover {
+  transform: rotate(10deg);
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.logo-text h1 {
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.logo-text span {
+  margin-top: 0;
+  line-height: 1.1;
+  display: block;
+}
+
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .header-text span {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger div {
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: rgba(255,255,255,0.9);
+}
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      max-width: 800px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .overlay-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(4, 255, 16, 0.85);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.overlay-button:hover {
+  background-color: #2E7D32;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+    /* Content Sections */
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    /* About Section */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(4,255,16,0.2), rgba(46,125,50,0.2));
+      z-index: 1;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      padding: 30px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .stat-text {
+      font-size: 1.2rem;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      height: 200px;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 50%;
+    }
+
+    .footer-logo-text h3 {
+      font-size: 1.5rem;
+    }
+
+    .footer-logo-text p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .footer-links h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Side Navigation */
+    .side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      overflow-y: auto;
+      transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      padding-top: 80px;
+    }
+
+    .side-nav a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .side-nav a::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s;
+    }
+
+    .side-nav a:hover::before {
+      left: 0;
+    }
+
+    .side-nav a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    .fadeIn {
+      animation-name: fadeIn;
+    }
+
+    .fadeInUp {
+      animation-name: fadeInUp;
+    }
+
+    .pulse {
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: 70vh;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      +27 82 813 4960
+    </div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+
+<!-- Header with Navigation -->
+<header class="header">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <img src="Journey4Change.png" alt="Journey4Change Logo">
+    <div class="logo-text">
+      <h1>Journey4Change</h1>
+      <span>Healing Together</span>
+    </div>
+  </div>
+
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="backround.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content animated fadeInUp">
+      <h2>WELCOME TO JOURNEY4CHANGE</h2>
+      <p>Raising awareness for mental health across South Africa</p>
+      <div class="btn-group">
+        <a href="journey4change.html" class="btn btn-primary pulse">
+          <i class="fas fa-road"></i> Join Our Journey
+        </a>
+        <a href="contact.html" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section">
+    <div class="section-title animated fadeIn">
+      <h2>Our Mission</h2>
+    </div>
+    <div class="about-container">
+      <div class="about-text animated fadeIn delay-1">
+        <p>Journey4Change exists to break the stigma around mental health in South Africa by travelling across all 9 provinces sharing stories, offering hope, and creating safe spaces for healing and conversation.</p>
+        <p>Through this journey, we aim to connect with individuals, communities, and organizations, bringing light to the struggles many face in silence and reminding them that they are not alone.</p>
+        <div style="margin-top: 30px;">
+          <img src="SA.png" alt="Map of South Africa" style="max-width: 200px; height: auto;">
+        </div>
+      </div>
+<div class="about-image animated fadeIn delay-2" style="position: relative;">
+  <img src="therapy.jpg" alt="Mental Health Awareness">
+  <a href="https://www.sadag.org/" target="_blank" class="overlay-button">Visit SADAG</a>
+</div>
+  </section>
+
+  <!-- Goals Section -->
+  <section class="section" style="background-color: #f0f8f0;">
+    <div class="section-title animated fadeIn">
+      <h2>Our Vision</h2>
+    </div>
+    <div class="card-container">
+      <div class="card animated fadeInUp delay-1">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Break the Stigma</h3>
+          <p>Create open conversations about mental health challenges and remove the shame associated with seeking help.</p>
+        </div>
+      </div>
+      <div class="card animated fadeInUp delay-2">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Share Stories</h3>
+          <p>Highlight real stories of survival and healing to inspire others on their mental health journey.</p>
+        </div>
+      </div>
+      <div class="card animated fadeInUp delay-3">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Build Support</h3>
+          <p>Establish partnerships with schools, organizations and communities to create a network of care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="section-title">
+      <h2 style="color: white;">By The Numbers</h2>
+    </div>
+    <div class="stats-container">
+      <div class="stat-item animated fadeIn delay-1">
+        <div class="stat-number">3000+</div>
+        <div class="stat-text">Kilometers to Complete</div>
+      </div>
+      <div class="stat-item animated fadeIn delay-2">
+        <div class="stat-number">9</div>
+        <div class="stat-text">Provinces</div>
+      </div>
+      <div class="stat-item animated fadeIn delay-3">
+        <div class="stat-number">1</div>
+        <div class="stat-text">Powerful Mission</div>
+      </div>
+      <div class="stat-item animated fadeIn delay-4">
+        <div class="stat-number">∞</div>
+        <div class="stat-text">Lives to Impact</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section">
+    <div class="section-title animated fadeIn">
+      <h2>Our Journey</h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item animated fadeIn delay-1">
+        <img src="therapy5.jpg" alt="Mental Health Awareness">
+        <div class="gallery-caption">Sharing Stories</div>
+        <a href="https://themighty.com/" target="_blank" class="overlay-button">Visit The Almighty</a>
+      </div>
+      <div class="gallery-item animated fadeIn delay-2">
+        <img src="therapy.jpg" alt="Mental Health Awareness">
+        <div class="gallery-caption">Walking for Change</div>
+      </div>
+      <div class="gallery-item animated fadeIn delay-1">
+        <img src="SA.png" alt="South Africa">
+        <div class="gallery-caption">Across South Africa</div>
+      </div>
+      <div class="gallery-item animated fadeIn delay-2">
+        <img src="therapy5.jpg" alt="Mental Health Awareness">
+        <div class="gallery-caption">Community Outreach</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section" style="background-color: var(--dark); color: white; text-align: center;">
+    <div class="section-title">
+      <h2 style="color: white;">Join Our Movement</h2>
+    </div>
+    <p style="max-width: 800px; margin: 0 auto 30px;">Together, we can create a mentally healthy South Africa where every person feels seen, supported, and empowered to seek help without shame.</p>
+    <a href="journey4change.html" class="btn btn-primary" style="margin-right: 15px;">
+      <i class="fas fa-road"></i> Follow Our Journey
+    </a>
+    <a href="contact.html" class="btn btn-secondary">
+      <i class="fas fa-envelope"></i> Get Involved
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
+          <li><i class="fas fa-envelope"></i> journey4change.info@gmail.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Journey4Change. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Side Navigation -->
+  <div id="sideNav" class="side-nav">
+    <span class="close-btn" onclick="closeNav()">×</span>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake text-white-500 mr-2"></i> Our Partners</a>
+  </div>
+
+  <script>
+    // Navigation functions
+    function openNav() {
+      document.getElementById("sideNav").style.width = "280px";
+    }
+
+    function closeNav() {
+      document.getElementById("sideNav").style.width = "0";
+    }
+
+
+
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animated');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fadeIn');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

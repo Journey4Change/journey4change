@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Join the Journey4Change for mental health awareness across South Africa.">
+  <meta name="keywords" content="mental health, awareness, journey, South Africa">
+  <title>Journey4Change - Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #04ff10;
+      --primary-light: #80ff86;
+      --secondary: #2E7D32;
+      --dark: #1a2a3a;
+      --light: #f5f5f5;
+      --accent: #ff6b6b;
+      --text: #333333;
+      --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(to right, #5a3b7a, #2575fc);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 70px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-text span {
+      font-size: 20px;
+    }
+
+header {
+  background: linear-gradient(135deg, #04ff10, #2E7D32);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+header img:hover {
+  transform: rotate(10deg);
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.logo-text h1 {
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.logo-text span {
+  margin-top: 0;
+  line-height: 1.1;
+  display: block;
+}
+
+.login-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.login-btn:hover {
+  background: white;
+  color: #04ff10;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger div {
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: rgba(255,255,255,0.9);
+}
+
+    .side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      overflow-y: auto;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      padding-top: 80px;
+      backdrop-filter: blur(10px);
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+    }
+
+    .side-nav.show {
+      width: 250px;
+      opacity: 1;
+    }
+
+    .side-nav a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .side-nav a::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s;
+    }
+
+    .side-nav a:hover::before {
+      left: 0;
+    }
+
+    .side-nav a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .side-nav .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .side-nav .close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 130px 20px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      transition: transform 0.3s;
+      margin-bottom: 0;
+    }
+
+    .main-content.shifted {
+      transform: translateX(250px);
+      transition: trasnform 0.3;
+    }
+
+    @media (max-width: 768px) {
+      .header-text span {
+        font-size: 16px;
+      }
+      .main-content {
+        padding: 100px 15px 30px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.2em;
+      }
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      margin: 20px 0;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-size: 2em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    h3 {
+      font-size: 1.5em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    p, ul {
+      margin: 20px auto;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      animation: slideIn 1s ease-in;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.2);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    a {
+      color: #ffdd57;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .footer-section a {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-links a {
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header with Navigation -->
+<header class="header">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="logo-text">
+      <h1>Journey4Change</h1>
+      <span>Healing Together</span>
+    </div>
+  </div>
+
+</header>
+
+  <div id="sideNav" class="side-nav">
+    <span class="close-btn" onclick="closeNav()">×</span>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> <span>Social Media</span>
+    <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Global Mental Health Crisis:</h1>
+    <p>Depression and Anxiety Are Claiming Lives Daily - Urgent Action Needed. Journey4Change, under the leadership of founder Euclid Tumelo Ramaila, issues this urgent call to address the growing mental health pandemic affecting every nation. With suicide rates skyrocketing and mental health services overwhelmed, we demand immediate global action.</p>
+    <h2>The Alarming Reality of Mental Health Today​</h2>
+    <p>Shocking Global Suicide Statistics (WHO 2024): <a href="https://www.who.int/news-room/fact-sheets/detail/suicide/">WHO Suicide Facts</a></p>
+    <ul>
+      <li>Every 40 seconds, someone dies by suicide worldwide.</li>
+      <li>South Africa: 13.8 suicides per 100,000 people (8,000+ deaths annually).</li>
+      <li>USA: 14.5 suicides per 100,000 (48,000+ deaths in 2023).</li>
+      <li>Asia: Accounts for 60% of world's suicides (Japan: 16.8/100,000).</li>
+      <li>Europe: Lithuania has highest EU rate at 21.6/100,000.</li>
+      <li>Global: Suicide is the 4th leading cause of death among 15-29 year olds.</li>
+    </ul>
+
+    <h2>Breakdown of the primary factors driving high suicide rates in each country/region, based on socioeconomic, cultural, and mental health data:</h2>
+    <h3>1. South Africa (23.5 per 100,000)</h3>
+    <ul>
+      <li>Gender-Based Violence: High rates of trauma among women (1 in 3 experience violence).</li>
+      <li>Unemployment: Youth unemployment exceeds 60%, fueling hopelessness.</li>
+      <li>HIV/AIDS Impact: Grief from losing family members (7.8 million people living with HIV).</li>
+      <li>Alcohol Abuse: Binge drinking culture exacerbates impulsive acts.</li>
+    </ul>
+    <h3>2. United States (14.5 per 100,000)</h3>
+    <ul>
+      <li>Gun Accessibility: 55% of suicides involve firearms (easy access = higher lethality).</li>
+      <li>Opioid Crisis: "Deaths of despair" (drugs/alcohol) in rural, economically depressed areas.</li>
+      <li>Healthcare Gaps: 60% with depression receive no treatment due to cost/stigma.</li>
+      <li>Veteran Suicide: Military veterans die by suicide 1.5x more than civilians.</li>
+    </ul>
+
+    <h3>3. Europe (Varies by Country)</h3>
+    <ul>
+      <li>Lithuania (26.1): Post-Soviet trauma, alcoholism, and harsh winters (seasonal depression).</li>
+      <li>Belgium (20.5): High euthanasia rates (including for mental illness).</li>
+      <li>UK (10.1): Austerity cuts to mental health services since 2010.</li>
+    </ul>
+
+    <h3>4. Asia</h3>
+    <ul>
+      <li><strong>South Korea (28.6):</strong>
+        <ul>
+          <li>Academic Pressure: Youth suicide #1 cause of death for ages 15–24.</li>
+          <li>Elderly Poverty: 40% of seniors live in poverty (highest OECD rate).</li>
+        </ul>
+      </li>
+      <li><strong>India (12.7):</strong>
+        <ul>
+          <li>Farmers Suicides: Debt from crop failures (30,000+ since 2018).</li>
+          <li>Dowry Pressures: 20 women die by suicide daily due to harassment.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>5. Lesotho (87.5 per 100,000)</h3>
+    <ul>
+      <li>Poverty: 49% live below the poverty line.</li>
+      <li>HIV/AIDS: 25% prevalence (highest globally) → caregiver burnout.</li>
+      <li>Male Crisis: Men die 4x more (cultural expectation to be breadwinners).</li>
+    </ul>
+    <h3>6. Eswatini/Swaziland (40.5 per 100,000)</h3>
+    <ul>
+      <li>Economic Collapse: 40% unemployment; 60% youth jobless.</li>
+      <li>HIV/AIDS: 27% adult prevalence → chronic grief.</li>
+      <li>Alcohol: Heavy drinking in men (linked to 1 in 3 suicides).</li>
+    </ul>
+    <h3>7. Guyana (40.9 per 100,000)</h3>
+    <ul>
+      <li>Pesticide Poisoning: 60% of suicides use agrochemicals (easy access).</li>
+      <li>Rural Poverty: Rice farmers face debt cycles from flooding/crop failure.</li>
+      <li>Domestic Violence: 1 in 2 women experience abuse → suicidal ideation.</li>
+    </ul>
+
+    <h3>8. Kiribati (30.6 per 100,000)</h3>
+    <ul>
+      <li>Climate Despair: Rising sea levels displace communities (existential hopelessness).</li>
+      <li>Youth Unemployment: 50% of under-25s jobless.</li>
+      <li>Cultural Stigma: Mental health = "weakness"; &lt;5% seek help.</li>
+    </ul>
+    <h3>9. Micronesia (29.0 per 100,000)</h3>
+    <ul>
+      <li>Cultural Erosion: Globalization undermines traditional support systems.</li>
+    <li>Poverty: 49% live below the poverty line.</li>
+    <li>HIV/AIDS: 25% prevalence (highest globally) → caregiver burnout.</li>
+    <li>Male Crisis: Men die 4x more (cultural expectation to be breadwinners).</li>
+</ul>
+<h3>6. Eswatini/Swaziland (40.5 per 100,000)</h3>
+<ul>
+    <li>Economic Collapse: 40% unemployment; 60% youth jobless.</li>
+    <li>HIV/AIDS: 27% adult prevalence → chronic grief.</li>
+    <li>Alcohol: Heavy drinking in men (linked to 1 in 3 suicides).</li>
+</ul>
+<h3>7. Guyana (40.9 per 100,000)</h3>
+<ul>
+    <li>Pesticide Poisoning: 60% of suicides use agrochemicals (easy access).</li>
+    <li>Rural Poverty: Rice farmers face debt cycles from flooding/crop failure.</li>
+    <li>Domestic Violence: 1 in 2 women experience abuse → suicidal ideation.</li>
+</ul>
+
+<h3>8. Kiribati (30.6 per 100,000)</h3>
+<ul>
+    <li>Climate Despair: Rising sea levels displace communities (existential hopelessness).</li>
+    <li>Youth Unemployment: 50% of under-25s jobless.</li>
+    <li>Cultural Stigma: Mental health = "weakness"; &lt;5% seek help.</li>
+</ul>
+<h3>9. Micronesia (29.0 per 100,000)</h3>
+<ul>
+    <li>Cultural Erosion: Globalization undermines traditional support systems.</li>
+    <li>Alcohol Abuse: 70% of suicides involve heavy drinking.</li>
+    <li>Isolation: Remote islands lack mental health services.</li>
+</ul>
+<h3>10. Suriname (25.9 per 100,000)</h3>
+<ul>
+    <li>Economic Crisis: Hyperinflation (2023: 54%) → poverty.</li>
+    <li>LGBTQ+ Stigma: High suicide risk among queer youth.</li>
+    <li>Healthcare Gaps: 1 psychiatrist per 100,000 people.</li>
+</ul>
+
+<h3>11. Zimbabwe (23.6 per 100,000)</h3>
+<ul>
+    <li>Hyperinflation: Currency collapse → economic despair.</li>
+    <li>Political Violence: Trauma from decades of repression.</li>
+    <li>Droughts: Farmers’ suicides spike during crop failures.</li>
+</ul>
+<h3>12. Mozambique (23.2 per 100,000)</h3>
+<ul>
+    <li>Post-War PTSD: Civil war (1977–1992) left generational trauma.</li>
+    <li>Cyclone Trauma: Repeated climate disasters (e.g., Cyclone Idai 2019).</li>
+    <li>Poverty: 60% live on &lt;$1.90/day.</li>
+</ul>
+<h3>13. Central African Republic (23.0 per 100,000)</h3>
+<ul>
+    <li>Ongoing Conflict: Rebel violence → mass displacement.</li>
+    <li>Healthcare Collapse: 70% of facilities damaged by war.</li>
+    <li>Child Soldiers: Former combatants at high risk.</li>
+</ul>
+
+<h2>Common Themes</h2>
+<ul>
+    <li>Economic Shocks: Unemployment/poverty → hopelessness.</li>
+    <li>Trauma: War, violence, or climate disasters.</li>
+    <li>Access to Lethal Means: Guns (USA), pesticides (Guyana), hanging (Asia).</li>
+    <li>Stigma: Mental health = taboo in 80% of these countries.</li>
+</ul>
+<h2>Prevention Works:</h2>
+<ul>
+    <li>Guyana: Pesticide bans reduced suicides by 30%.</li>
+    <li>South Korea: AI chatbots now screen for depression in schools.</li>
+</ul>
+<h2>Crisis Resources:</h2>
+<ul>
+    <li>Global Hotlines: <a href="https://findahelpline.com">findahelpline.com</a></li>
+    <li>WHO Guide: <a href="https://www.who.int/initiatives/live-life-initiative-for-suicide-prevention/limit-access-to-means-of-suicide">Limit Access to Means of Suicide</a></li>
+</ul>
+
+<h2>The Crippling Impact of Mental Health Disorders</h2>
+<h3>Human Cost:</h3>
+<ul>
+    <li>Depression affects 1 in 4 South Africans.</li>
+    <li>50% of mental health conditions begin by age 14.</li>
+</ul>
+<h3>Economic Burden:</h3>
+<ul>
+    <li>Costs global economy $2.5 trillion annually.</li>
+    <li>South Africa loses R161 billion yearly to mental health issues.</li>
+</ul>
+<h3>Treatment Gap:</h3>
+<ul>
+    <li>75% of sufferers in low-income countries receive no treatment.</li>
+    <li>90% of suicide victims had a diagnosable mental disorder.</li>
+</ul>
+
+<h2>Global Mental Health Support Contacts</h2>
+<h3>South Africa:</h3>
+<ul>
+    <li>📞 SADAG (South African Depression and Anxiety Group):</li>
+    <li>📞 24hr Helpline: 0800 567 567</li>
+    <li>SMS 31393 (callback service)</li>
+    <li>Website: <a href="https://www.sadag.org">www.sadag.org</a></li>
+</ul>
+<h3>United States:</h3>
+<ul>
+    <li>📞 National Suicide Prevention Lifeline: 988</li>
+    <li>📞 Crisis Text Line: Text HOME to 741741</li>
+    <li>🌐 <a href="https://mhanational.org/resources/suicide-prevention/">Mental Health America</a></li>
+</ul>
+
+<h3>Europe:</h3>
+<ul>
+    <li>📞 UK Samaritans: 116 123</li>
+    <li>🌐 <a href="https://www.nhs.uk/mental-health/">https://www.nhs.uk/mental-health/</a></li>
+    <li>📞 Germany Telefonseelsorge: 0800 111 0 111</li>
+    <li>🌐 <a href="https://www.rcpsych.ac.uk/mental-health">https://www.rcpsych.ac.uk/mental-health</a></li>
+</ul>
+<h3>Asia:</h3>
+<ul>
+    <li>📞 India (Vandrevala Foundation): +91 9999 666 555</li>
+    <li>🌐 <a href="https://www.vandrevalafoundation.com">https://www.vandrevalafoundation.com</a></li>
+    <li>📞 Japan (BestFrienders): +81-3-5286-9090</li>
+    <li>🌐 <a href="https://www.befrienders-jpn.org">https://www.befrienders-jpn.org</a></li>
+</ul>
+
+<h3>Lesotho:</h3>
+<ul>
+    <li>📞 SADAG (South African partner): Call 0800 567 567 (toll-free from Lesotho)</li>
+    <li>Lesotho Mental Health Association:</li>
+    <li>Phone: +266 2231 2476</li>
+    <li>Email: info@lmha.org.ls (Note: Verify active status)</li>
+    <li>WHO Lesotho Office: +266 2231 1178 (for policy-level referrals)</li>
+</ul>
+<h3>Guyana:</h3>
+<ul>
+    <li>📞 Guyana Suicide Prevention Helpline: +592 223 0001 (24/7)</li>
+    <li>Mental Health Unit, Ministry of Health:</li>
+    <li>Phone: +592 226 1560</li>
+    <li>Website: <a href="https://health.gov.gy">health.gov.gy</a></li>
+    <li>Samaritans Guyana: Text HELP to 592-600-7890</li>
+</ul>
+
+<h3>Eswatini (Swaziland):</h3>
+<ul>
+    <li>Eswatini Mental Health Foundation:</li>
+    <li>Phone: +268 2404 6777</li>
+    <li>WhatsApp: +268 7612 3456</li>
+    <li>WHO Eswatini: +268 2404 2300 (for emergency referrals)</li>
+    <li>SADAG: 0800 567 567 (accessible from Eswatini)</li>
+</ul>
+<h3>Kiribati:</h3>
+<ul>
+    <li>Kiribati National Counselling Service:</li>
+    <li>Phone: +686 28100</li>
+    <li>Email: mentalhealth@health.gov.ki</li>
+    <li>Pacific Islands Mental Health Network:</li>
+    <li>Website: <a href="https://www.kfha.org.ki/">https://www.kfha.org.ki/</a> (regional support)</li>
+</ul>
+
+<h3>Micronesia:</h3>
+<ul>
+    <li>Micronesia Behavioral Health:</li>
+    <li>Phone: 998</li>
+    <li>Crisis Text Line: Text HELP to 741741 (international service)</li>
+    <li>WHO Pacific Office: +679 323 4100 (for resources)</li>
+</ul>
+<h3>Suriname:</h3>
+<ul>
+    <li>Suriname Mental Health Foundation:</li>
+    <li>Phone: +597 498 900 (24/7)</li>
+    <li>Email: smhf@sr.net</li>
+    <li>Lifeline Suriname: +597 123 (toll-free)</li>
+</ul>
+
+<h3>Zimbabwe:</h3>
+<ul>
+    <li>Zimbabwe National Suicide Prevention: +263 8644 010 010 (hotline)</li>
+    <li>Friendship Bench Initiative:</li>
+    <li>WhatsApp: +263 8644 010 010</li>
+    <li>Website: <a href="https://friendshipbenchzimbabwe.org">friendshipbenchzimbabwe.org</a></li>
+</ul>
+<h3>Mozambique:</h3>
+<ul>
+    <li>Ministry of Health Mental Health Unit:</li>
+    <li>Phone: +258 21 32 12 74</li>
+    <li>Email: mentalhealth@misaude.gov.mz</li>
+    <li>WHO Mozambique: +258 21 48 48 00 (for referrals)</li>
+</ul>
+
+<h3>Central African Republic:</h3>
+<ul>
+    <li>CAR Red Cross Psychological Support:</li>
+    <li>Phone: +236 72 02 58 47</li>
+    <li>WHO CAR Office: +236 21 61 17 00</li>
+</ul>
+
+<ul>
+<section class="fade-in delay-2 emergency-section">
+  <h2>You're Not Alone: Emergency Support</h2>
+  <p>If you're struggling, know that help is available immediately:</p>
+  <ul> 
+    <li><strong>SADAG (South Africa):</strong> Call 0800 567 567</li>
+    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+    <li><strong>International Suicide Hotlines:</strong>
+      <a href="https://www.opencounseling.com/suicide-hotlines" style="color:white; text-decoration:underline;">
+        Find your country's hotline
+      </a>
+    </li>
+  </ul>
+  <div class="button-container">
+    <a class="sadag-button" href="https://www.sadag.org/" target="_blank">
+      <i class="fas fa-phone"></i> SADAG Website
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <img src="Journey4Change.png" alt="Journey4Change Logo">
+        <div class="footer-logo-text">
+          <h3>Journey4Change</h3>
+          <p>Healing Together</p>
+        </div>
+      </div>
+      <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="social-media.html">Social Media</a></li>
+        <li><a href="partnership.html">Our Partners</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
+        <li><i class="fas fa-envelope"></i> journey4change.info<br>@gmail.com</li>
+        <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Journey4Change. All rights reserved.
+  </div>
+</footer>
+
+  <script>
+function openNav() {
+  const sideNav = document.getElementById("sideNav");
+  sideNav.classList.add('show');
+  document.querySelector('.main-content').classList.add('shifted');
+  document.body.style.overflow = 'hidden';
+  
+  // Add overlay click handler
+  const overlay = document.createElement('div');
+  overlay.id = 'navOverlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '250px';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.background = 'rgba(0,0,0,0.5)';
+  overlay.style.zIndex = '999';
+  overlay.addEventListener('click', closeNav);
+  document.body.appendChild(overlay);
+}
+
+function closeNav() {
+  const sideNav = document.getElementById("sideNav");
+  sideNav.classList.remove('show');
+  document.querySelector('.main-content').classList.remove('shifted');
+  document.body.style.overflow = 'auto';
+  
+  // Remove overlay
+  const overlay = document.getElementById('navOverlay');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+    // Animate section when it comes into view
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>

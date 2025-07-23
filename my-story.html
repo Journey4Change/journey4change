@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Story - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #04ff10;
+      --primary-light: #80ff86;
+      --secondary: #2E7D32;
+      --dark: #1a2a3a;
+      --light: #f8fafc;
+      --accent: #ff6b6b;
+      --text: #333333;
+      --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, var(--light), #e8f5e9);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    /* Header with Navigation */
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+      height: 80px;
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .logo-text h1 {
+      font-size: 28px;
+      margin: 0;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+    
+    .logo-text span {
+      font-size: 12px;
+      opacity: 0.9;
+      letter-spacing: 2px;
+    }
+    
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .hamburger:hover {
+      transform: scale(1.1);
+    }
+    
+    .hamburger div {
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    
+    .hamburger:hover div {
+      background: rgba(255,255,255,0.9);
+    }
+    
+    .login-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .login-btn:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .hero-video {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+
+    /* Side Navigation */
+    .side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      overflow-y: auto;
+      transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      padding-top: 80px;
+    }
+    
+    .side-nav a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .side-nav a::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s;
+    }
+    
+    .side-nav a:hover::before {
+      left: 0;
+    }
+    
+    .side-nav a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+    
+    /* Hero Section */
+    .story-hero {
+      height: 300px;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+      url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 40px;
+    }
+    
+    .story-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: radial-gradient(circle at 50% 0%, rgba(0,0,0,0.1), transparent 70%);
+    }
+    
+    .hero-title {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      animation: fadeInUp 0.8s ease-out;
+      padding: 0 20px;
+    }
+    
+    /* Content Sections */
+    .intro-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      padding: 40px;
+      margin: 0 auto 50px;
+      max-width: 1100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .intro-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+    
+    .profile-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .intro-text {
+      flex: 2;
+      min-width: 300px;
+      padding: 20px 0;
+    }
+    
+    .intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .intro-text h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    /* Story Timeline Design */
+    .story-timeline {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      position: relative;
+      padding: 40px 0;
+    }
+    
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50px;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+    }
+    
+.timeline-item {
+  background: white;
+  padding: 30px;
+  margin: 0 20px 30px 80px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s;
+  overflow-wrap: break-word;
+}
+    
+    .timeline-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: -20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--secondary);
+      border: 5px solid var(--primary-light);
+    }
+    
+    .timeline-year {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+    
+    /* Full Story Section */
+    .full-story {
+      max-width: 800px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+    }
+    
+    .story-container {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    
+    .story-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary);
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .story-title span {
+      background: white;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .story-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 0;
+    }
+    
+    .story-content {
+      margin-bottom: 15px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(4,255,16,0.3);
+      transition: all 0.3s;
+      margin-top: 40px;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(4,255,16,0.4);
+    }
+    
+/* Footer */
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.footer-logo-text h3 {
+  font-size: 1.5rem;
+}
+
+.footer-logo-text p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-links h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+.copyright {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Adjust styles for the highlighted crisis item */
+.highlight-crisis {
+  background-color: #fff5f5;
+  border-radius: 15px;
+  border-left: 6px solid var(--accent);
+  padding: 15px; /* Reduced padding */
+}
+
+/* Adjust styles for the timeline items */
+.timeline-item {
+  background: white;
+  padding: 20px; /* Reduced padding */
+  margin: 0 20px 30px 80px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s;
+  overflow-wrap: break-word;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 100px) {
+  .timeline-item {
+    margin: 0 10px 20px 10px; /* Adjust margins for mobile */
+    padding: 15px; /* Further reduce padding for mobile */
+  }
+
+  .highlight-crisis {
+    padding: 10px; /* Further reduce padding for mobile */
+  }
+
+  .timeline-year {
+    font-size: 1.2rem; /* Adjust font size for mobile */
+  }
+}
+
+/* Fix margin for all timeline items on small screens */
+@media (max-width: 100px) {
+  .timeline-item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .story-timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item::before {
+    left: -10px;
+  }
+}
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .intro-section {
+        flex-direction: column;
+        padding: 30px;
+      }
+      
+      .profile-image {
+        min-width: 100%;
+      }
+      
+      .story-timeline::before {
+        left: 20px;
+      }
+      
+      .timeline-item {
+        margin-left: 60px;
+      }
+      
+      .timeline-item::before {
+        left: -15px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .header {
+        padding: 15px 20px;
+      }
+      
+      .logo-text h1 {
+        font-size: 24px;
+      }
+      
+      .login-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header class="header">
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Side Navigation Menu -->
+  <div id="sideNav" class="side-nav">
+    <span class="close-btn" onclick="closeNav()">×</span>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
+  </div>
+
+<!-- Hero Section -->
+<section class="hero" style="position: relative; height: 300px; overflow: hidden;">
+  <video class="hero-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="sunrise.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 600px;
+  ">
+    My Journey Through Darkness to Light
+  </div>
+</section>
+
+
+  <!-- Intro Section -->
+  <section class="intro-section">
+    <div class="profile-image">
+      <img src="euclid.jpg" alt="Euclid Tumelo Ramaila">
+    </div>
+    <div class="intro-text">
+      <h2>About Me</h2>
+      <p>Hello, my name is Euclid Tumelo Ramaila. I was born on the 28th of December, 2004, a brother of 3 from South Africa, Limpopo Province, Dan Village outside Tzaneen. I was primarily raised by my grandmother alongside my cousins, which instilled in me strong values of family and perseverance. I currently reside in Mokgoloboto studying Financial Management in a college. I am committed to building a successful career in the finance sector and making a meaningful contribution to both my community and the broader society.</p>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="story-timeline">
+    <article class="timeline-item">
+      <h3 class="timeline-year">2021 - Loss</h3>
+      <p>Everything changed on November 14, 2021, when I lost my grandmother, the woman who raised us all. Her passing shattered me. Everyone I grew up with left the house to live with their parents, and I was left alone.</p>
+    </article>
+    
+    <article class="timeline-item">
+      <h3 class="timeline-year">2022 - Depression</h3>
+      <p>I began to spiral into depression and later developed anxiety. I reconnected with an old primary school friend and made new friends to escape the isolation, but deep down I was still carrying pain.</p>
+    </article>
+    
+    <article class="timeline-item crisis-highlight">
+      <h3 class="timeline-year">2023 - Crisis</h3>
+      <p>I had suicidal thoughts on December 25 and attempted suicide. Thankfully, I was found in time and began rebuilding my life.</p>
+    </article>
+
+    <article class="timeline-item">
+      <h3 class="timeline-year">2024 - Transformation</h3>
+      <p>After my second suicide attempt in March, I gave my life to Christ, got baptized, got accepted to college, and found purpose through teaching. My journey of healing truly began.</p>
+    </article>
+    
+    <article class="timeline-item" style="background-color: #f0f8f0;">
+      <h3 class="timeline-year">2025 - Renewal</h3>
+      <p>Now focused on healing, I'm training for an 1800km walk across South Africa to raise mental health awareness, turning my pain into purpose and hope for others.</p>
+    </article>
+  </section>
+
+  <!-- Full Story Section -->
+  <section class="full-story">
+    <div class="story-container">
+      <h2 class="story-title">
+        <span>My Complete Story</span>
+      </h2>
+      
+      <div class="story-content">
+        <p>My name is Euclid Tumelo Ramaila. I was born on December 28, 2004, in Dan Village, Tzaneen, in the Limpopo Province of South Africa. I was raised by my grandmother in a loving household filled with my cousins, who were also my best friends. I had a good childhood, even though I never really had friends outside of my family; it was just us, and that was enough.</p>
+        <br>
+        <p>Everything changed on November 14, 2021, when I lost my grandmother, the woman who raised us all. Her passing shattered me. Everyone I grew up with left the house to live with their parents, and I was left alone. I moved to Mokgoloboto full-time, and the loneliness hit me hard. I began to spiral into depression and later developed anxiety, especially around school. It became difficult to accept her passing, and the pain didn't go away.</p>
+        <br>
+        <p>In 2022, I reconnected with an old primary school friend. Around the same time, I started making new friends to escape the isolation, even though I wasn't used to trusting people I didn't grow up with. We were just teenagers trying to have fun and forget our struggles, but deep down, I was still carrying pain.</p>
+        <br>
+        <p>2023, my final year of high school, was one of the hardest years of my life. The workload, pressure, and mental exhaustion wore me down. I kept pretending I was okay, but I wasn't. On December 25, I woke up feeling like I couldn't go on. I had suicidal thoughts and texted the friend I reunited with, who understood because he had also battled depression. I tried to take my own life, but he reached out to a family member who found me in time and got me admitted to the hospital. I was discharged on December 28, my birthday.</p>
+        <br>
+        <p>After that, I started to slowly rebuild. I spent New Year's Eve with friends, and on January 1, 2024, my dad's little brother took me on a nature trip to Mpumalanga. That experience gave me peace and clarity. Later in the month, I received my matric results and realized I couldn't study what I initially wanted to. I was accepted at Tshwane University of Technology but turned it down; it just wasn't the right fit.</p>
+        <br>
+        <p>In February, I tried to turn my life around with forex trading. I was influenced by a friend who introduced me to unethical practices like scamming. Unfortunately, I got involved and hurt people, even my own family. That was my wake-up call. I cut everyone off and decided to change. But with the disappointment of failing my plans and feeling lost again, I fell into depression once more. On March 23, 2024, I attempted suicide a second time. I was admitted to the hospital again.</p>
+        <br>
+        <p>After that, I gave my life to Christ and got baptized. Everything started to shift. I applied for college in the second semester and got accepted; that's when I felt my life truly began again. I even got a small gig at my old high school, helping teachers and teaching students. It gave me purpose and helped me heal.</p>
+        <br>
+        <p>However, I had a falling out with an old friend who had scammed someone I had known since Grade 8. Because my name was dragged into it, I lost people's trust. It hurt, and I reacted in a way I'm not proud of; I got into a fight, even though I'm not a violent person.</p>
+        <br>
+        <p>Now in 2025, I'm focused on healing. I started seeing a psychologist after having recurring dreams about my grandmother. I made a choice to work on my mental health through jogging. That led to a vision: I first planned to jog 100km to raise awareness and funds for mental health, but by March, I felt called to do something even bigger. I decided to walk over 1800km from Limpopo to the Western Cape, not just for myself but for everyone who's struggling silently like I once did. My journey will be livestreamed from the beginning till the end.</p>
+        <br>
+        <p>This is my story. And now, I want to use it to bring hope.</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="journey4change.html" class="cta-button">Join My Journey</a>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <img src="Journey4Change.png" alt="Journey4Change Logo">
+        <div class="footer-logo-text">
+          <h3>Journey4Change</h3>
+          <p>Healing Together</p>
+        </div>
+      </div>
+      <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="social-media.html">Social Media</a></li>
+        <li><a href="partnership.html">Our Partners</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
+        <li><i class="fas fa-envelope"></i> journey4change.info@gmail.com</li>
+        <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Journey4Change. All rights reserved.
+  </div>
+</footer>
+
+  <script>
+    // Navigation functions
+function openNav() {
+  document.getElementById("sideNav").style.width = "280px";
+  document.body.style.overflow = "hidden"; // prevent scroll
+}
+
+function closeNav() {
+  document.getElementById("sideNav").style.width = "0";
+  document.body.style.overflow = ""; // restore scroll
+}
+
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.timeline-item, .intro-section');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animatedElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'all 0.6s ease-out';
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>

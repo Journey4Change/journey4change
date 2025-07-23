@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MindfulMatters SA Launching Soon | Support Mental Health in South Africa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+ 
+    <style>
+  :root {
+    --primary: #4f46e5;
+    --dark: #1a202c;
+    --light-text: #f7fafc;
+  }
+    .donation-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .custom-radio:checked + label {
+      background-color: #4f46e5;
+      color: rgb(255, 255, 255);
+    }
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .coming-soon-badge {
+      background-color: #f59e0b;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    /* Side nav styles */
+    #sideNav {
+      transition: transform 0.3s ease-in-out;
+      width: 16rem; /* 64 */
+      z-index: 40;
+    }
+    #sideNav.closed {
+      transform: translateX(-100%);
+    }
+    #overlay {
+      background: rgba(0, 0, 0, 0.4);
+      transition: opacity 0.3s ease-in-out;
+      z-index: 30;
+    }
+    #overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #hamburgerBtn {
+      position: fixed !important;
+      top: 1rem !important;   /* ~16px */
+      left: 1rem !important;  /* ~16px */
+      z-index: 1000 !important;
+    }
+
+    /* Nav links */
+    #sideNav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #sideNav li {
+      margin-bottom: 1.5rem;
+    }
+    #sideNav a {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.125rem; /* text-lg */
+      color: white;
+      transition: color 0.2s ease;
+      padding: 0.25rem 0;
+      border-radius: 0.375rem; /* rounded-md */
+    }
+    #sideNav a i {
+      margin-right: 0.75rem;
+      min-width: 1.25rem;
+      text-align: center;
+    }
+    #sideNav a:hover,
+    #sideNav a:focus-visible {
+      color: #a5b4fc; /* indigo-300 */
+      outline: none;
+      background-color: rgba(147, 197, 253, 0.2); /* indigo-200 with transparency */
+    }
+    /* Menu header */
+    #sideNav .menu-header {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #sideNav .menu-header h2 {
+      margin: 0;
+      color: white;
+    }
+    /* Close button */
+    #closeBtn {
+      background: transparent;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s ease;
+    }
+    #closeBtn:hover,
+    #closeBtn:focus-visible {
+      background-color: rgba(147, 197, 253, 0.3);
+      outline: none;
+    }
+
+        /* Footer */
+footer {
+  background-color: #1a202c; /* dark slate color */
+  color: #f7fafc; /* light text */
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 50%;
+    }
+
+    .footer-logo-text h3 {
+      font-size: 1.5rem;
+    }
+
+    .footer-logo-text p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .footer-links h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Hamburger button fixed top-left -->
+<button
+  id="hamburgerBtn"
+  class="fixed top-4 left-4 z-50 p-2 rounded-md bg-indigo-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 md:hidden"
+>
+
+    <i class="fas fa-bars text-xl"></i>
+  </button>
+
+  <!-- Side navigation -->
+  <nav
+    id="sideNav"
+    class="fixed top-0 left-0 h-full bg-indigo-700 text-white shadow-lg p-6 closed md:static md:h-auto md:w-60 md:shadow-none"
+  >
+    <div class="menu-header md:hidden">
+      <h2>Menu</h2>
+      <button
+        id="closeBtn"
+        aria-label="Close navigation menu"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a></li>
+      <li><a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a></li>
+      <li><a href="their-story.html"><i class="fas fa-users"></i> Their Story</a></li>
+      <li><a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a></li>
+      <li><a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a></li>
+      <li><a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a></li>
+      <li><a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay for mobile nav -->
+  <div
+    id="overlay"
+    class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"
+  ></div>
+
+  <div
+    id="contentWrapper"
+    class="min-h-screen flex flex-col md:ml-60 transition-all duration-300"
+  >
+    <!-- Hero Section -->
+    <header
+      class="bg-indigo-700 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
+      <div class="absolute top-4 right-4">
+        <span
+          class="coming-soon-badge text-white text-xs font-bold px-3 py-1 rounded-full"
+          >Save Lives</span
+        >
+
+      </div>
+      <div class="max-w-7xl mx-auto text-center relative">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Support Mental Health in South Africa
+        </h1>
+        <p class="text-xl max-w-3xl mx-auto mb-8">
+          Coming soon - your donation will help provide free counseling and
+          mental health resources across our nation.
+        </p>
+        <div
+          class="bg-white rounded-lg p-6 max-w-4xl mx-auto shadow-lg"
+        >
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3477a724-f543-42d1-a329-162ce5fc3f1b.png"
+            alt="Diverse group of South Africans from different backgrounds smiling and supporting each other in a community setting"
+            class="w-full h-auto rounded-md mb-4"
+          />
+          <p class="text-gray-800 text-sm italic">
+            "We're preparing to launch our mental health support initiative to
+            serve our communities."
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+        <!-- Donation Form -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Support Our Launch</h2>
+          <a
+            href="snapscan.html"
+            class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition-colors shadow-lg"
+            >Donate Now</a>
+
+          <p class="text-gray-500 text-sm mt-4">
+            Your donation will help us launch our mental health initiative. All
+            donations are secure through our trusted payment partners.
+          </p>
+        </div>
+
+        <!-- Impact Section -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Future Impact</h2>
+
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div
+                class="bg-indigo-100 p-3 rounded-full mr-4"
+              >
+                <i class="fas fa-hands-helping text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">R100</h3>
+                <p class="text-gray-600">
+                  Will help provide one counseling session for someone in need
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="bg-indigo-100 p-3 rounded-full mr-4"
+              >
+                <i class="fas fa-users text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">R500</h3>
+                <p class="text-gray-600">
+                  Will support a future community mental health workshop
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="bg-indigo-100 p-3 rounded-full mr-4"
+              >
+                <i class="fas fa-book text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">R1,000</h3>
+                <p class="text-gray-600">Will fund mental health resources for a school</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="bg-indigo-100 p-3 rounded-full mr-4"
+              >
+                <i class="fas fa-globe-africa text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Our Vision</h3>
+                <p class="text-gray-600">
+                  We aim to help thousands of South Africans across all provinces
+                  access mental health support.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Why South Africa Needs This</h3>
+            <p class="text-gray-600 mb-4">
+              Mental health challenges affect 1 in 3 South Africans, yet less than
+              25% have access to proper care. Your support will help bridge this gap.
+            </p>
+          </div>
+          <a
+            href="stats.html"
+            class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition-colors shadow-lg"
+            >SA Stats</a>
+        </div>
+      </div>
+    </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
+          <li><i class="fas fa-envelope"></i> journey4change.info@gmail.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Journey4Change. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const sideNav = document.getElementById('sideNav');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
+    const contentWrapper = document.getElementById('contentWrapper');
+
+function openNav() {
+  sideNav.classList.remove('closed');
+  overlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  console.log('Nav opened, scroll disabled');
+}
+
+function closeNav() {
+  sideNav.classList.add('closed');
+  overlay.classList.add('hidden');
+  document.body.style.overflow = 'auto';  // use 'auto' to re-enable scrolling
+  console.log('Nav closed, scroll enabled');
+}
+
+// On page load
+window.addEventListener('load', () => {
+  if (window.innerWidth >= 768) {
+    sideNav.classList.remove('closed');
+    overlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';  // enable scroll
+  } else {
+    sideNav.classList.add('closed');
+    document.body.style.overflow = 'auto';  // enable scroll
+  }
+});
+
+    hamburgerBtn.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    overlay.addEventListener('click', closeNav);
+
+    // Close nav on resize if desktop to prevent stuck open nav
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        sideNav.classList.remove('closed');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      } else {
+        sideNav.classList.add('closed');
+      }
+    });
+
+    // Initial state on page load
+    if (window.innerWidth >= 768) {
+      sideNav.classList.remove('closed');
+      overlay.classList.add('hidden');
+    } else {
+      sideNav.classList.add('closed');
+    }
+  </script>
+</body>
+</html>

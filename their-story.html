@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Their Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    
+    :root {
+  --primary: #04ff10;
+  --secondary: #2e7d32;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+header {
+  background: linear-gradient(135deg, #04ff10, #2E7D32);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+header img:hover {
+  transform: rotate(10deg);
+}
+
+.logo-text {
+  margin-top: -20px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.logo-text h1 {
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.logo-text span {
+  margin-top: 0;
+  line-height: 1.1;
+  display: block;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger div {
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: rgba(255,255,255,0.9);
+}
+
+.login-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  background: white;
+  color: #04ff10;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+    /* Side Navigation */
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.5s ease;
+  z-index: 1000;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+
+.side-nav a {
+  padding: 15px 30px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.side-nav a::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transition: left 0.3s;
+}
+
+.side-nav a:hover::before {
+  left: 0;
+}
+
+.side-nav a i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 48px;
+      padding: 40px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .story {
+      background-color: #222;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+      max-width: 440px;
+      flex: 1 1 400px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      color: #ddd;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+
+    /* Left story: rounded corners on left side only */
+    .story-left {
+      border-radius: 16px 0 0 16px;
+    }
+
+    /* Right story: rounded corners on right side only */
+    .story-right {
+      border-radius: 0 16px 16px 0;
+    }
+
+    .story:hover,
+    .story:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(76, 175, 80, 0.8);
+      outline: none;
+    }
+
+    .story img {
+      width: 100%; /* Full width of the container */
+      height: 250px; /* Fixed height */
+      border-radius: 12px;
+      object-fit: cover; /* Maintain aspect ratio */
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      user-select: none;
+    }
+
+    .story h2 {
+      font-weight: 700;
+      font-size: 1.375rem;
+      margin: 0 0 12px;
+      color: #a5d6a7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .story p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 12px 0;
+      white-space: pre-line;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 24px 16px;
+      }
+      .story {
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 16px !important; /* override left/right radius on narrow screens */
+      }
+      header {
+        flex-wrap: wrap;
+      }
+      .header-text {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header with Navigation -->
+<header class="header">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="logo-text">
+      <h1>Journey4Change</h1>
+      <span>Healing Together</span>
+    </div>
+  </div>
+
+</header>
+
+<!-- Side Navigation -->
+<div id="sideNav" class="side-nav">
+  <span class="close-btn" onclick="closeNav()">×</span>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
+</div>
+
+  <main class="container" role="main">
+    <article class="story story-left" tabindex="0" aria-labelledby="siyabonga-title">
+      <img src="siyabonga.jpg" alt="Portrait photo of Siyabonga Zubane" />
+      <h2 id="siyabonga-title">Siyabonga Zubane (1998-2022)</h2>
+      <p>
+        "Siyabonga Zubane took his own life on Saturday (7 May 2022). Siyabonga was popular for his role as Sdumo – a crook and carjacker on a TV show in South Africa called Gomora. The Gomora star was only 23 years old."
+      </p>
+      <p>
+        A family member had to say this:
+        "He was nothing close to Sdumo. He was a nice shy guy who loved and respected people.” The Gomora actor’s death added to the growing list of young South African stars lost to suicide, exposing the intense pressures of fame.
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="ebenhaezer-title">
+      <img src="Ebenhaezer.webp" alt="Portrait photo of Ebenhaezer Dibakwane" />
+      <h2 id="ebenhaezer-title">Ebenhaezer Dibakwane (1994–2025)</h2>
+      <p>
+        "The family of award-winning comedian, actor, and writer Ebenhaezer ‘Ebby’ Dibakwane has confirmed that he died by suicide on 7 March 2025 at the age of 31. His family hopes his passing serves as a reminder of the importance of mental health: “While this loss is devastating, we pray that it encourages people to check in on each other and prioritise their emotional well-being. Seeking professional help when needed is essential.”"
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="ceagan-title">
+      <img src="ceagan.jpg" alt="Portrait photo of Ceagan Arendse" />
+      <h2 id="ceagan-title">Ceagan Arendse (1989–2021)</h2>
+      <p>
+        "Actor Ceagan Arendse known for his portrayal of Woelag in the Afrikaans soap Arendsvlei, died on 14 February 2021. He was 34. The family in a statement confirmed to Channel24 that Ceagan died by suicide. 'It is with sad and heavy hearts we inform friends and fans that our beloved Ceagan Arendse passed away early hours of Sunday morning 14 February 2021. Ceagan unfortunately lost his battle with depression and succumbed to the disease through suicide,' said the statement."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="avicii-title">
+      <img src="Aviciii.jpg" alt="Portrait photo of Avicii" />
+      <h2 id="avicii-title">Avicii (1989-2018)</h2>
+      <p>
+        "Bergling died on 20 April 2018 in Muscat, Oman, where he was on holiday, at the age of 28. No cause of death was immediately given. On 21 April, the Omani authorities stated that there was 'no criminal suspicion' or evidence of foul play in Bergling's death. A day before Bergling's death, a friend expressed concern about his mental state to his father Klas. TMZ later reported that he died by suicide, using a glass shard to cut himself. On 26 April, his family released an open letter stating."
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="shoki-title">
+      <img src="shoki.jpg" alt="Portrait photo of Shoki Mokgapa" />
+      <h2 id="shoki-title">Shoki Mokgapa (1984-2014)</h2>
+      <p>
+        "Award-winning actress Shoki Mokgapa's management have on Thursday afternoon confirmed that she took her own life after a lengthy battle with clinical depression. 'After a long struggle with clinical depression she took her life on Tuesday 25th of September at the age of 34. She was a brave woman who had been seeking help but the disease proved to be stronger than she was.'"
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="chester-title">
+      <img src="chester.jpg" alt="Portrait photo of Chester Bennington" />
+      <h2 id="chester-title">Chester Bennington (1976–2017)</h2>
+      <p>
+        "Linkin Park lead singer Chester Bennington has died aged 41, LA County Coroner says. The coroner said Bennington apparently hanged himself. His body was found at a private home in the county at 09:00 local time (17:00 GMT) on Thursday. Bennington was said to be close to Soundgarden vocalist Chris Cornell, who took his own life in May."
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="vincent-title">
+      <img src="vincent.avif" alt="Portrait photo of Vincent van der Merwe" />
+      <h2 id="vincent-title">Vincent van der Merwe (1983-2025)</h2>
+      <p>
+        "Globally renowned South African conservationist and National Geographic Explorer, Vincent van der Merwe, who organised the transfer of cheetahs to India, was found dead in his apartment in Riyadh. No foul play is suspected. A Facebook post from Van der Merwe's family read: 'It is with deep sorrow that we announce the passing of Vincent van der Merwe, a beloved brother, dedicated conservationist and tireless advocate for cheetah conservation. Vincent sadly took his own life on Sunday, 16 March.'"
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="riky-title">
+      <img src="riky.jpg" alt="Portrait photo of Riky Rick" />
+      <h2 id="riky-title">Riky Rick (1987–2022)</h2>
+      <p>
+        "Bianca Naidoo, the wife of former South African rapper Riky Rick, has revealed details about her husband’s battle with mental health and the reasons behind his tragic decision to end his own life. Bianca shared that they had often relied on each other for support in preserving their own lives. 'He often said that I was saving his life without realizing that he too was saving mine. My king, my heart, my forever love. Thank you for giving us all that you had in this lifetime,' she said."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="hhp-title">
+      <img src="hhp.jpg" alt="Portrait photo of HHP" />
+      <h2 id="hhp-title">HHP (1980-2018)</h2>
+      <p>
+        "'I'm depressed. I'm going out of control. I'm losing it.' Those were the heart-wrenching last words hip-hop legend HHP left before he took his last bow. The Mahikeng-born, North West, rapper whose real name is Jabulani Tsambo, allegedly committed suicide yesterday at his house in Randpark Ridge, western Johannesburg."
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="anthony-title">
+      <img src="anthony.jpg" alt="Portrait photo of Anthony Bourdain" />
+      <h2 id="anthony-title">Anthony Bourdain (1956-2018)</h2>
+      <p>
+        "On June 8, 2018, Anthony Bourdain was found dead of an apparent suicide at Le Chambard Hotel in Kaysersberg-Vignoble, France. His body was discovered by fellow chef Éric Ripert, who had been filming an episode of Bourdain’s travel show Parts Unknown with him. Ripert became concerned when Bourdain missed dinner the night before and breakfast that morning. Sadly, by the time Ripert found Bourdain in his hotel room, it was too late — America’s most beloved travel guide was already gone. Anthony Bourdain’s cause of death was later revealed to be suicide by hanging, using a belt from his hotel bathrobe to end his life. He was 61 years old."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="alexander-title">
+      <img src="alexander.avif" alt="Portrait photo of Lee Alexander McQueen" />
+      <h2 id="alexander-title">Lee Alexander McQueen (1969-2010)</h2>
+      <p>
+        "Fashion designer Alexander McQueen hanged himself in his wardrobe and left a suicide note, a coroner told a London inquest Wednesday. McQueen, 40, was found dead at his London apartment Thursday. The cause of death was asphyxia and hanging, said coroner's officer Lynda Martindill. A police officer told the inquest that McQueen's death was 'nonsuspicious,' according to Martindill. The coroner said a note had been found and is being looked at by the police, Martindill said, without offering details about the note."
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="naomi-title">
+      <img src="judd.webp" alt="Portrait photo of Naomi Judd" />
+      <h2 id="naomi-title">Naomi Judd (1946-2022)</h2>
+      <p>
+        "An autopsy report in the death of country singer Naomi Judd that was obtained Friday by The Associated Press confirmed what family members have already said about how she died. Judd, 76, killed herself with a gun on April 30 at her home in Tennessee. We have always shared openly both the joys of being family as well its sorrows, too. One part of our story is that our matriarch was dogged by an unfair foe," a statement from the family released on Friday read. "She was treated for PTSD and bipolar disorder, to which millions of Americans can relate."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="bongani-title">
+      <img src="bongani.jpg" alt="Portrait photo of Bongani Mayosi" />
+      <h2 id="bongani-title">Bongani Mayosi (1967-2018)</h2>
+      <p>
+        "Mayosi died by suicide on 27 July 2018; he had been experiencing depression for two years. Eight months before his death he had tendered his resignation to the University of Cape Town, however, it was apparently declined. According to his family, the FeesMustFall protests contributed to Mayosi's declining mental health."
+      </p>
+    </article>
+
+    <article class="story story-left" tabindex="0" aria-labelledby="jabu-title">
+      <img src="jabukubheka.webp" alt="Portrait photo of Jabu Christopher Kubheka" />
+      <h2 id="jabu-title">Jabu Christopher Kubheka (1969-2017)</h2>
+      <p>
+        "I decided to do a wrong turn because I can't take it any more, as you said I am broke and useless in bed,' reads the apparent suicide note. Bold. Cheeky. A fighter of justice. That was the Gunman South Africans came to celebrate on hit TV show Yizo Yizo. Fast forward to 2017 and Jabu Christopher Kubheka's life was so tainted, he ransacked the Soshanguve house he shared with his wife, looking for any tablets. He crushed and consumed them, and then took a tie from his cupboard and hanged himself. His neighbours saw him enter his house on Monday June 12 at 3pm. His wife arrived home about an hour later and discovered his limp body hanging from the burglar bars."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="kate-title">
+      <img src="kate.jpg" alt="Portrait photo of Kate Spade" />
+      <h2 id="kate-title">Kate Spade (1962-2018)</h2>
+      <p>
+        "Kate Spade's cause of death was suicide by hanging, the New York City Medical Examiner's Office confirmed on Thursday. Spade's body was found by a cleaner in the bedroom of her Park Avenue home on Tuesday. The police have said Spade left a note behind that pointed to suicide."
+      </p>
+    </article>
+
+    <article class="story story-right" tabindex="0" aria-labelledby="kate-title">
+      <img src="chris.jpg" alt="Portrait photo of Kate Spade" />
+      <h2 id="chris-title">Chris Cornell (1964-2017)</h2>
+      <p>
+        "After hanging himself in his Detroit hotel room on May 18, 2017, Soundgarden frontman Chris Cornell was found dead at the age of just 52. Chris Cornell’s death was shocking but it wasn’t a complete surprise. After all, the Soundgarden frontman had a long history of drug addiction and depression before his apparent suicide in Detroit on May 18, 2017."
+      </p>
+    </article>
+  </main>
+
+<footer style="background: linear-gradient(135deg, #1a1a1a, #333); color: white; padding: 40px 20px; font-size: 14px; text-align: center; margin-top: 40px;">
+  <div style="max-width: 1200px; margin: auto; padding: 0 20px;">
+    <h3 style="margin: 0; font-size: 24px; color: #04ff10;">The Dark Side Of Fame</h3>
+    <h4 style="margin: 10px 0; font-size: 20px;">The Underlying Crisis</h4>
+    <p style="margin: 10px 0;">Common Factors Behind Celebrity Suicides:</p>
+    <ul style="list-style-type: none; padding: 0; margin: 10px 0;">
+      <li><strong>Mental Health Stigma:</strong> Many celebrities avoid seeking help due to fear of judgment or career repercussions.</li>
+      <li><strong>Pressure to Maintain an Image:</strong> The expectation to appear "perfect" exacerbates feelings of isolation.</li>
+      <li><strong>Substance Abuse:</strong> Self-medication often worsens depression and anxiety.</li>
+      <li><strong>Traumatic Pasts:</strong> Childhood trauma can resurface later in life.</li>
+    </ul>
+    <h4 style="margin: 20px 0; font-size: 20px;">The South African Context</h4>
+    <p style="margin: 10px 0;">South Africa has one of the highest suicide rates globally, with men being five times more likely to die by suicide than women. Factors include:</p>
+    <ul style="list-style-type: none; padding: 0; margin: 10px 0;">
+      <li><strong>Historical Trauma:</strong> The legacy of apartheid and systemic violence has left deep psychological scars.</li>
+    </ul>
+    <p style="margin: 20px 0;">&copy; 2025 Journey4Change. All rights reserved.</p>
+    <p style="margin: 5px 0;">Designed to raise awareness for mental health in South Africa.</p>
+    <div style="margin-top: 20px;">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank" style="color: white; margin: 0 10px;" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.style.width = "280px";
+    document.body.style.overflow = "hidden"; // Disable background scroll
+  }
+
+  function closeNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.style.width = "0";
+    document.body.style.overflow = "auto"; // Enable scroll again
+  }
+</script>
+</body>
+</html>

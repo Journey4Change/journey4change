@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+
+        /* Custom CSS */
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .modal-overlay {
+            background-color: rgba(0,0,0,0.85);
+        }
+
+        footer {
+  background: #1a2a3a; /* dark */
+  color: white;
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.footer-logo-text h3 {
+  font-size: 1.5rem;
+}
+
+.footer-logo-text p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-links h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #04ff10; /* primary */
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #04ff10; /* primary */
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.938);
+  border-radius: 50%;
+  color: #000000;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background: #04ff10; /* primary */
+  transform: translateY(-3px);
+}
+
+copyright {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+
+        @media (max-width: 640px) {
+            .search-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="text-white py-12 px-6 shadow-lg relative overflow-hidden" style="background: linear-gradient(to right, #04ff10, #2e7d32);">
+        <div class="absolute inset-0 opacity-20 z-0">
+            <div class="absolute inset-0 bg-[url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/92668ef7-7e9c-49dd-b97d-630fabbe6600.png')] bg-cover opacity-50 mix-blend-overlay"></div>
+        </div>
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-bold mb-4 tracking-tight">Your Mental Health Journey Starts Here</h1>
+            <p class="text-2x1 mb-8 max-w-3x1">Together we can break the stigma and build a community of support</p>
+                    <div class="flex flex-wrap items-center justify-between gap-10"
+                
+                <!-- Search -->
+                <div class="search-container relative w-64">
+                    <input type="text" placeholder="Search media..." 
+                           class="w-full px-4 py-2 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Filter buttons -->
+                <div class="flex flex-wrap gap-2 z-10">
+                    <a href="index.html" class="filter-btn transition-all px-4 py-2 rounded-full bg-white/90 text-gray-800 font-medium hover:bg-white hover:scale-105 active shadow-md hover:shadow-lg">Home</a>
+                    <a href="my-story.html" class="filter-btn transation-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bt-white hover:scale-105 shadow hover:shadow-lg">My Story</a>
+                    <a href="journey4change.html" class="filter-btn transition-all px-4 py-2 rounded-full bg-white/90 text-gray-800 font-medium hover:bg-white hover:scale-105 shadow hover:shadow-lg">Journey</a>
+                    <a href="mental-health-awareness.html" class="filter-btn transition-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bg-white hover:scale-105 shadow hover:shadow-lg">Article</a>
+                    <a href="their-story.html" class="filter-btn transition-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bg-white hover:scale-105 shadow hover:shadow-lg">Stories</a>
+                    <a href="global-mental-health-watch.html" class="filter-btn transition-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bt-white hover:scale-105 shadow hover:shadow-lg">Stats</a>
+                    <a href="donations.html" class="filter-btn transation-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bt-white hover:scale-105 shadow hover:shadow-lg">Donations</a>
+                    <a href="social-media.html" class="filter-btn transation-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bt-white hover:scale-105 shadow hover:shadow-lg">Social Media</a>
+                    <a href="partnership.html" class="filter-btn transation-all px-4 py-2 rounded-full bg-white/80 text-gray-800 font-medium hover:bt-white hover:scale-105 shadow hover:shadow-lg">Partnership</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4">
+        <!-- Featured Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Featured Media</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Featured Video -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg">
+                    <div class="relative pt-[56.25%] bg-gray-200">
+                        <iframe class="absolute top-0 left-0 w-full h-full" 
+                                src="https://youtu.be/Rt5Ylv4KS9E?si=5NC4E8uwqEWzmPAW" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Featured Documentary</h3>
+                        <p class="text-gray-600">Turning Pain Into Purpose: The Birth of Journey4Change.</p>
+                    </div>
+                </div>
+                
+                <!-- Featured Image -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2c168bc5-227f-4a5c-bc64-90eb6a901c8f.png" 
+                         alt="Professional photographer taking pictures in a modern outdoor studio with natural lighting" 
+                         class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Featured Photography</h3>
+                        <p class="text-gray-600">Exploring the art of digital photography in the 21st century.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Media Section -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">All Media</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Photo 1 -->
+                <div class="gallery-item relative rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer hover:shadow-xl group">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 z-10"></div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a7efbbd-4e32-4eab-b437-adc4b7994695.png" 
+                         alt="Sunset over mountain peaks with vibrant orange and purple hues in the sky" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Mountain Sunset</h3>
+                        <p class="text-sm text-gray-600">Jan 15, 2023</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/380699e0-be0d-473d-ba9d-773d2dd56f98.png" 
+                         alt="Urban cityscape at night with illuminated skyscrapers and bustling streets" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">City Lights</h3>
+                        <p class="text-sm text-gray-600">Feb 3, 2023</p>
+                    </div>
+                </div>
+
+                <!-- Video 1 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <div class="relative pt-[56.25%] bg-gray-200">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa884f65-cc90-492a-b489-e22e63969a15.png" 
+                             alt="Video thumbnail showing ocean waves crashing against rocks at sunset" 
+                             class="absolute top-0 left-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-white/80 p-3 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Ocean Waves</h3>
+                        <p class="text-sm text-gray-600">Mar 22, 2023 • 5:42</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/24ae94c2-acf4-4333-add1-be5141ba6a33.png" 
+                         alt="Close-up of a vibrant green fern with delicate fronds covered in morning dew" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Morning Dew</h3>
+                        <p class="text-sm text-gray-600">Apr 7, 2023</p>
+                    </div>
+                </div>
+
+                <!-- Audio 1 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <div class="h-48 flex items-center justify-center bg-gradient-to-br from-purple-500 to-pink-500">
+                        <div class="text-center text-white p-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                            <h3 class="font-semibold mb-1">Podcast Episode</h3>
+                            <p class="text-sm">Audio</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Tech Talk</h3>
+                        <p class="text-sm text-gray-600">May 15, 2023 • 24:17</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <div class="relative pt-[56.25%] bg-gray-200">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cf3cc868-671b-420d-9c17-be9e625dbe15.png" 
+                             alt="Video thumbnail of a drone shot flying over golden wheat fields at sunset" 
+                             class="absolute top-0 left-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-white/80 p-3 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Countryside</h3>
+                        <p class="text-sm text-gray-600">Jun 8, 2023 • 3:21</p>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/280fcfbc-1d17-4fa8-b2cc-1ec73da9551b.png" 
+                         alt="Abstract macro photography of soap bubbles with rainbow reflections" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Colorful Bubbles</h3>
+                        <p class="text-sm text-gray-600">Jul 1, 2023</p>
+                    </div>
+                </div>
+
+                <!-- Audio 2 -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-lg cursor-pointer">
+                    <div class="h-48 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-blue-600">
+                        <div class="text-center text-white p-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                            <h3 class="font-semibold mb-1">Music Track</h3>
+                            <p class="text-sm">Audio</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1 text-gray-800">Summer Vibes</h3>
+                        <p class="text-sm text-gray-600">Aug 12, 2023 • 4:03</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Load More Button -->
+        <div class="flex justify-center mt-10">
+            <button class="px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl font-semibold">
+                Load More Media
+            </button>
+        </div>
+    </main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <img src="Journey4Change.png" alt="Journey4Change Logo">
+        <div class="footer-logo-text">
+          <h3>Journey4Change</h3>
+          <p>Healing Together</p>
+        </div>
+      </div>
+      <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="social-media.html">Social Media</a></li>
+        <li><a href="partnership.html">Our Partners</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
+        <li><i class="fas fa-envelope"></i> journey4change.info@gmail.com</li>
+        <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Journey4Change. All rights reserved.
+  </div>
+</footer>
+
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay hidden backdrop-blur-sm">
+        <div class="relative bg-white/95 rounded-2xl max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button id="close-modal" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="p-4 md:p-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-2/3">
+                        <div class="relative pt-[56.25%] bg-gray-200 mb-4">
+                            <img id="modal-image" src="" alt="" class="absolute top-0 left-0 w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-1/3">
+                        <h2 id="modal-title" class="text-2xl font-bold mb-4 text-gray-800"></h2>
+                        <p id="modal-date" class="text-gray-600 mb-4"></p>
+                        <p id="modal-description" class="text-gray-700"></p>
+                        <div class="mt-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-gray-700">Photography</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Nature</span>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Landscape</span>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Sunset</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // Filter click handler
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Get filter type
+                    const filterValue = this.textContent.trim().toLowerCase();
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const mediaType = item.querySelector('iframe, [alt*="Video thumbnail"], svg') ? 
+                                (item.querySelector('iframe') ? 'videos' : 
+                                (item.querySelector('[alt*="Video thumbnail"]') ? 'videos' : 'audio')) : 'photos';
+                            item.style.display = mediaType.includes(filterValue) ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Modal functionality
+            const modal = document.getElementById('modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalDescription = document.getElementById('modal-description');
+            
+            // Close modal when clicking X or outside
+            closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.add('hidden');
+            });
+            
+            // Setup gallery item click handlers
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const title = this.querySelector('h3').textContent;
+                    const date = this.querySelector('p').textContent;
+                    
+                    if (img) {
+                        modalImage.src = img.src;
+                        modalImage.alt = img.alt;
+                        modalTitle.textContent = title;
+                        modalDate.textContent = date;
+                        modalDescription.textContent = img.alt;
+                        
+                        modal.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                galleryItems.forEach(item => {
+                    const textContent = item.textContent.toLowerCase();
+                    if (textContent.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

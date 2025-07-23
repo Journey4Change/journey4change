@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Mental Health Awareness: Understanding the link between mental health and suicide, breaking the stigma, and finding support.">
+  <title>Mental Health Awareness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    :root {
+      --primary: #04ff10;
+      --secondary: #2E7D32;
+      --dark: #d6cccc;
+      --dark: #eeeee
+      --light: #f9f9f9;
+      --accent: #FF6B6B;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+
+.header {
+  background: linear-gradient(135deg, #04ff10, #2E7D32);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+header img {
+  height: 45px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+header img:hover {
+  transform: rotate(10deg);
+}
+
+.logo-text {
+  margin-top: -20px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.logo-text h1 {
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+.logo-text span {
+  font-size: 14px;
+  margin-top: 0;
+  display: block;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger div {
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: rgba(255,255,255,0.9);
+}
+
+.login-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 30px;
+  transition: all 0.3s;
+  border: none;
+  backdrop-filter: blur(5px);
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  background: white;
+  color: #04ff10;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+    
+    .side-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: width 0.5s ease;
+      z-index: 1000;
+      padding-top: 80px;
+      box-sizing: border-box;
+}
+    
+.side-nav a {
+  padding: 15px 30px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  display: flex;
+  transition: all 0.3s;
+}
+
+.side-nav a::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transition: left 0.3s;
+  z-index: 0;
+}
+
+.side-nav a:hover::before {
+  left: 0;
+}
+
+.side-nav a i {
+  margin-right: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.side-nav a span {
+  z-index: 1;
+}
+    
+    .side-nav a::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s;
+    }
+    
+    .side-nav a:hover::before {
+      left: 0;
+    }
+    
+    .side-nav a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    section {
+      margin-bottom: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      background: white;
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    h2 {
+      font-size: 28px;
+      color: var(--secondary);
+      margin: 20px 25px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 25px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    p, li {
+      margin: 15px 25px;
+      font-size: 16px;
+      color: #555;
+    }
+    
+    ul {
+      padding-left: 25px;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+    
+    li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 25px;
+    }
+    
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(4, 255, 16, 0.3);
+    }
+    
+    a.button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(4, 255, 16, 0.4);
+    }
+    
+    a.button i {
+      margin-right: 8px;
+    }
+    
+    form {
+      padding: 25px;
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(4, 255, 16, 0.2);
+    }
+    
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(4, 255, 16, 0.3);
+    }
+    
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(4, 255, 16, 0.4);
+    }
+    
+    .emergency-section {
+      background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+    
+    .emergency-section h2 {
+      color: white;
+    }
+    
+    .emergency-section p, .emergency-section li {
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .emergency-section li::before {
+      color: white;
+    }
+
+    /* Fix form responsiveness on mobile */
+form {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  section form {
+    padding: 15px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 107, 107, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+    }
+    
+    @media (max-width: 150px) {
+      h1 {
+        font-size: 16px;
+      }
+      
+      h2 {
+        font-size: 14px;
+      }
+      
+      .button-container {
+        flex-direction: column;
+      }
+      
+      a.button {
+        width: 50%;
+        justify-content: center;
+      }
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- Header with Navigation -->
+<header class="header">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="logo-text">
+      <h1>Journey4Change</h1>
+      <span>Healing Together</span>
+    </div>
+  </div>
+
+</header>
+
+
+<div id="sideNav" class="side-nav">
+  <span class="close-btn" onclick="closeNav()">×</span>
+  <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+  <a href="my-story.html"><i class="fas fa-user"></i> <span>My Story</span></a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> <span>Journey for Change</span></a>
+  <a href="mental-health-awareness.html"><i class="fas fa-heartbeat"></i> <span>Mental Health Awareness</span></a>
+  <a href="their-story.html"><i class="fas fa-users"></i> <span>Their Story</span></a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+  <a href="donations.html"><i class="fas fa-donate"></i> <span>Donations</span></a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> <span>Media</span></a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> <span>Social Media</span>
+  <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
+</div>
+
+  <main>
+    <h1 class="fade-in">Mental Health Awareness</h1>
+
+    <section class="fade-in delay-1">
+      <h2>Understanding the Link Between Mental Health and Suicide</h2>
+      <p>
+        Depression and anxiety are closely linked to an increased risk of suicide. While not everyone with these conditions will experience suicidal thoughts, they are significant risk factors.
+        Studies estimate that about 60% of people who die by suicide have had a mood disorder such as depression or bipolar disorder. Anxiety disorders can also contribute to suicidal ideation,
+        especially when combined with other stressors.
+      </p>
+      <div class="button-container">
+        <a class="button" href="https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/suicide-and-mental-illness" target="_blank">
+          <i class="fas fa-book"></i> Better Health Channel
+        </a>
+        <a class="button" href="https://jedfoundation.org/resource/what-is-the-connection-between-depression-and-suicide/" target="_blank">
+          <i class="fas fa-heart"></i> The Jed Foundation
+        </a>
+        <a class="button" href="https://www.charliehealth.com/post/can-anxiety-disorders-lead-to-suicide" target="_blank">
+          <i class="fas fa-brain"></i> Charlie Health
+        </a>
+      </div>
+    </section>
+
+    <section class="fade-in delay-2">
+      <h2>Breaking the Silence: The Importance of Open Conversations</h2>
+      <p>
+        Stigma often prevents individuals from seeking help for mental health issues. Initiatives like "No Shame Day," launched by The Siwe Project, encourage people to share their mental health
+        experiences openly, aiming to reduce stigma and promote healing. Similarly, public figures like Colton Underwood have shared their personal struggles with depression and anxiety to highlight
+        the importance of seeking help and eliminating shame.
+      </p>
+      <div class="button-container">
+        <a class="button" href="https://www.breakthestigma.org/clarity" target="_blank">
+          <i class="fas fa-comments"></i> BreakTheStigma
+        </a>
+        <a class="button" href="https://people.com/colton-underwood-talks-overcoming-past-suicide-attempt-exclusive-8726429" target="_blank">
+          <i class="fas fa-user"></i> Colton's Story
+        </a>
+      </div>
+    </section>
+
+    <section class="fade-in delay-3">
+      <h2>Strategies for Coping and Seeking Support</h2>
+      <ul>
+        <li><strong>Talk About It:</strong> Sharing your feelings with trusted friends, family, or mental health professionals can provide relief and perspective.</li>
+        <li><strong>Professional Help:</strong> Therapists and counsellors are trained to help you navigate mental health challenges. Finding someone you trust is crucial for effective therapy.</li>
+        <li><strong>Community and Routine:</strong> Engaging in community activities and establishing daily routines can provide structure and support.</li>
+      </ul>
+      <div class="button-container">
+        <a class="button" href="https://www.healthline.com/health/depression/suicidal-thoughts" target="_blank">
+          <i class="fas fa-stethoscope"></i> Healthline
+        </a>
+        <a class="button" href="https://www.heraldsun.com.au/health/mental-health/can-we-talk-campaign-four-aussies-share-their-mental-health-tips/news-story/bb16947c6b9cd2128e5368ae61f3d572?utm_source=chatgpt.com">
+          <i class="fas fa-lightbulb"></i> Mental Health Tips
+        </a>
+      </div>
+    </section>
+
+    <section class="fade-in delay-1">
+      <h2>Psychological Strategies</h2>
+      <ul>
+        <li><strong>Cognitive Behavioural Therapy (CBT):</strong> Helps you recognize and reframe negative thought patterns.</li>
+        <li><strong>Mindfulness & Meditation:</strong> Practicing being present can reduce anxiety and bring emotional balance.</li>
+        <li><strong>Journaling:</strong> Writing your thoughts and feelings can help process emotions and identify patterns.</li>
+        <li><strong>Breathing Exercises:</strong> Deep, intentional breathing can calm your nervous system.</li>
+      </ul>
+    </section>
+
+    <section class="fade-in delay-2">
+      <h2>Physical & Lifestyle Strategies</h2>
+      <ul>
+        <li><strong>Exercise:</strong> Regular physical activity releases endorphins and reduces stress hormones.</li>
+        <li><strong>Sleep Hygiene:</strong> Creating a sleep routine improves mood and brain function.</li>
+        <li><strong>Nutrition:</strong> Balanced meals support brain health — omega-3s, B vitamins, and magnesium are especially helpful.</li>
+        <li><strong>Limiting Substance Use:</strong> Alcohol and drugs can worsen symptoms of depression and anxiety.</li>
+      </ul>
+    </section>
+
+    <section class="fade-in delay-3">
+      <h2>Social Support & Connection</h2>
+      <ul>
+        <li><strong>Support Groups:</strong> Talking to others who understand what you're going through can be incredibly healing.</li>
+        <li><strong>Trusted Friends or Mentors:</strong> Reaching out to someone you trust can reduce isolation.</li>
+        <li><strong>Online Communities:</strong> Forums or social media groups focused on mental health offer anonymous peer support.</li>
+        <li><strong>Volunteering:</strong> Helping others can build purpose and shift focus away from your own pain.</li>
+      </ul>
+    </section>
+
+    <section class="fade-in delay-1">
+      <h2>Spiritual & Emotional Practices</h2>
+      <ul>
+        <li><strong>Prayer or Spiritual Reflection:</strong> For many, connecting to a higher power brings comfort and hope.</li>
+        <li><strong>Gratitude Practice:</strong> Listing things you're grateful for each day can slowly shift your perspective.</li>
+        <li><strong>Affirmations:</strong> Repeating positive, self-loving phrases can rewire negative thought cycles.</li>
+      </ul>
+    </section>
+
+    <section class="fade-in delay-2 emergency-section">
+      <h2>You're Not Alone: Emergency Support</h2>
+      <p>If you're struggling, know that help is available immediately:</p>
+      <ul>
+        <li><strong>SADAG (South Africa):</strong> Call 0800 567 567</li>
+        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+        <li><strong>International Suicide Hotlines:</strong> <a href="https://blog.opencounseling.com/suicide-hotlines/" style="color:white;text-decoration:underline;">Find your country's hotline</a></li>
+      </ul>
+      <div class="button-container">
+        <a class="button" href="https://www.sadag.org/" target="_blank" style="background:white;color:#FF6B6B;">
+          <i class="fas fa-phone"></i> SADAG Website
+        </a>
+      </div>
+    </section>
+
+    <section class="fade-in delay-3">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </section>
+  </main>
+
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields.");
+        return false;
+      }
+      
+      // Show success message
+      alert("Thank you for your message! We'll get back to you soon.");
+      document.getElementById('contactForm').reset();
+      return false; // Prevent actual form submission for demo
+    }
+
+  function openNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.style.width = "280px";
+    document.body.style.overflow = "hidden"; // Disable background scroll
+  }
+
+  function closeNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.style.width = "0";
+    document.body.style.overflow = "auto"; // Enable scroll again
+  }
+
+    
+    // Add animation to sections as they come into view
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+</html>

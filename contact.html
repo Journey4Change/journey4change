@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #04ff10;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      resize: vertical;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    button {
+      background-color: #04ff10;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #028a06;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .contact-info a {
+      color: #04ff10;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 20px;
+    }
+
+    .contact-info a:hover {
+      color: #028a06;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 20px;
+      background-color: #04ff10;
+      color: white;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contact Form Container -->
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+      <form action="https://formsubmit.co/tumeloeuclid.info@gmail.com" method="POST" onsubmit="return validateForm()">
+      <!-- Hidden settings for FormSubmit -->
+      <input type="hidden" name="_subject" value="New Message from Journey4Change Contact Form" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+
+      <label for="subject">Subject *</label>
+      <input type="text" id="subject" name="subject" required placeholder="Subject of your message" />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info" style="margin-top: 40px;">
+      <p><strong>Phone:</strong> +27 82 813 4960</p>
+      <p><strong>Email:</strong> <a href="mailto:journey4change.info@gmail.com">journey4change.info@gmail.com</a></p>
+      <p>
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Journey4Change. All rights reserved.
+  </footer>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields.');
+        return false;
+      }
+
+      // Simple email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
