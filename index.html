@@ -641,6 +641,11 @@ header img:hover {
       transform: rotate(90deg);
     }
 
+    body.nonscroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -981,10 +986,12 @@ header img:hover {
     // Navigation functions
     function openNav() {
       document.getElementById("sideNav").style.width = "280px";
+      document.body.classList.add("nonscroll");
     }
 
     function closeNav() {
       document.getElementById("sideNav").style.width = "0";
+      document.body.classList.remove("nonscroll");
     }
 
 
