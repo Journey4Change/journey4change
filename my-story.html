@@ -655,7 +655,8 @@ footer {
 
 <div id="comingSoonMessage">
   <h1 class="text-4xl font-bold">Coming Soon</h1>
-  <p class="text-lg mt-2">This page is under construction.</p>
+  <p class="text-lg mt-2 mb-4">This page will be ready in:</p>
+  <div id="countdown" class="text-2xl font-mono"></div>
 </div>
 
 <body class="bg-green-900 text-white locked">
@@ -859,6 +860,33 @@ function closeNav() {
   document.getElementById("sideNav").style.width = "0";
   document.body.style.overflow = ""; // restore scroll
 }
+
+  // Set the countdown deadline: 30 days from now
+  const countdownDate = new Date();
+  countdownDate.setDate(countdownDate.getDate() + 30);
+
+  const countdown = document.getElementById("countdown");
+
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const distance = countdownDate.getTime() - now;
+
+    if (distance <= 0) {
+      countdown.innerHTML = "The wait is over!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  };
+
+  updateCountdown(); // Initial call
+  setInterval(updateCountdown, 1000); // Update every second
+
 
     // Scroll animations
     document.addEventListener('DOMContentLoaded', function() {
