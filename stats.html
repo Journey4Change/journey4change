@@ -6,6 +6,17 @@
   <title>Mental Health & GBV Challenges in South Africa</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Chart container fixed height for mobile */
+    #chart-container {
+      height: 500px;
+    }
+    @media (max-width: 640px) {
+      #chart-container {
+        height: 700px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
@@ -15,8 +26,10 @@
       This graph illustrates some of the most urgent mental health and gender-based violence issues affecting South Africans:
     </p>
 
-    <!-- Chart Canvas -->
-    <canvas id="healthChallengesChart" class="w-full rounded-lg"></canvas>
+    <!-- Responsive Chart Canvas Wrapper -->
+    <div class="overflow-x-auto" id="chart-container">
+      <canvas id="healthChallengesChart" class="w-full rounded-lg"></canvas>
+    </div>
   </div>
 
   <script>
@@ -39,15 +52,15 @@
           label: 'Estimated Prevalence in South Africa (%)',
           data: [30, 25, 18, 12, 15, 28, 6, 6, 4],
           backgroundColor: [
-            'rgba(99, 102, 241, 0.7)',   // Depression
-            'rgba(79, 70, 229, 0.7)',    // Anxiety
-            'rgba(139, 92, 246, 0.7)',   // Substance Abuse
-            'rgba(16, 185, 129, 0.7)',   // PTSD
-            'rgba(239, 68, 68, 0.7)',    // Suicidal Thoughts
-            'rgba(245, 158, 11, 0.7)',   // GBV
-            'rgba(252, 211, 77, 0.7)',   // Homelessness
-            'rgba(96, 165, 250, 0.7)',   // Bipolar
-            'rgba(107, 114, 128, 0.7)'   // Schizophrenia
+            'rgba(99, 102, 241, 0.7)',
+            'rgba(79, 70, 229, 0.7)',
+            'rgba(139, 92, 246, 0.7)',
+            'rgba(16, 185, 129, 0.7)',
+            'rgba(239, 68, 68, 0.7)',
+            'rgba(245, 158, 11, 0.7)',
+            'rgba(252, 211, 77, 0.7)',
+            'rgba(96, 165, 250, 0.7)',
+            'rgba(107, 114, 128, 0.7)'
           ],
           borderColor: [
             'rgba(99, 102, 241, 1)',
@@ -66,8 +79,10 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y', // Horizontal bars for better mobile viewing
         scales: {
-          y: {
+          x: {
             beginAtZero: true,
             max: 35,
             ticks: {
@@ -78,7 +93,7 @@
               text: 'Estimated % of Population'
             }
           },
-          x: {
+          y: {
             title: {
               display: true,
               text: 'Challenge'
@@ -87,7 +102,7 @@
         },
         plugins: {
           legend: {
-            display: true
+            display: false
           },
           title: {
             display: true,
