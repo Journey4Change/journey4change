@@ -23,6 +23,31 @@
       padding: 0;
       box-sizing: border-box;
     }
+
+  .locked {
+    overflow: hidden;
+    height: 100vh;
+  }
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    display: block;
+  }
+  #comingSoonMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 998;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+  }
     
     body {
       font-family: 'Poppins', sans-serif;
@@ -626,6 +651,16 @@ footer {
 </head>
 <body>
 
+  <div id="overlay" onclick="closeNav()"></div>
+
+<div id="comingSoonMessage">
+  <h1 class="text-4xl font-bold">Coming Soon</h1>
+  <p class="text-lg mt-2">This page is under construction.</p>
+</div>
+
+<body class="bg-green-900 text-white locked">
+
+
   <!-- Header with Navigation -->
   <header class="header">
     <div class="header-left">
@@ -694,6 +729,7 @@ footer {
       <p>Hello, my name is Euclid Tumelo Ramaila. I was born on the 28th of December, 2004, a brother of 3 from South Africa, Limpopo Province, Dan Village outside Tzaneen. I was primarily raised by my grandmother alongside my cousins, which instilled in me strong values of family and perseverance. I currently reside in Mokgoloboto studying Financial Management in a college. I am committed to building a successful career in the finance sector and making a meaningful contribution to both my community and the broader society.</p>
     </div>
   </section>
+
 
   <!-- Timeline Section -->
   <section class="story-timeline">
@@ -774,7 +810,7 @@ footer {
         <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/share/1JfpsNEA42/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
