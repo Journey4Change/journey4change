@@ -413,6 +413,11 @@ footer {
       color: #2E7D32;
     }
 
+    body.nonscroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
     @media (max-width: 768px) {
       .province-section {
         flex-direction: column;
@@ -654,7 +659,7 @@ footer {
         <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/share/1JfpsNEA42/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
@@ -695,12 +700,14 @@ footer {
   <script>
     function openNav() {
       document.getElementById("sideNav").style.width = "280px";
-      document.querySelector('.main-content').style.marginLeft = "250px"; 
+      document.querySelector('.main-content').style.marginLeft = "250px";
+      document.body.classList.add("nonscroll");
     }
     
     function closeNav() {
       document.getElementById("sideNav").style.width = "0";
       document.querySelector('.main-content').style.marginLeft = "0"; 
+      docoment.body.classList.remove("nonscroll");
     }
 
     window.onload = function() {
