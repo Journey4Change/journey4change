@@ -7,37 +7,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
-            color: #1e293b;
+            color: #333;
         }
-        
+
         .resource-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
         }
-        
+
         .emergency-banner {
             background: linear-gradient(135deg, #fde68a, #f59e0b);
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.95; }
             100% { opacity: 1; }
         }
-        
+
         .category-chip {
             transition: all 0.2s;
         }
-        
+
         .category-chip:hover {
             background-color: #e2e8f0;
+            transform: scale(1.05);
         }
-        
+
         .category-chip.active {
             background-color: #3b82f6;
             color: white;
@@ -65,6 +66,7 @@
             padding: 15px;
             color: #1e293b;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
 
         .sidebar a:hover {
@@ -85,80 +87,72 @@
             background-color: #1e293b;
             transition: all 0.3s ease;
         }
+
+        body.lock-scroll {
+            overflow: hidden;
+        }
     </style>
 </head>
-<body>
-    <div class="min-h-screen flex flex-col">
-        <!-- Emergency Banner -->
-        <div class="emergency-banner py-3 px-4 text-center font-semibold text-slate-800">
-            <p>In immediate crisis? Call <span class="font-bold text-amber-900">08000 567 567 (RSA)</span> or <span class="font-bold text-amber-900">988 (U.S)</span> for 24/7 support.</p>
+<body class="bg-gray-100 text-gray-800 m-0 p-0">
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4">
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-semibold text-blue-600">Mental Health Resources</h1>
+            <span class="text-3xl cursor-pointer md:hidden" onclick="openNav()">☰</span>
         </div>
-        
-        <!-- Header -->
-        <header class="bg-white shadow-sm py-6 relative">
-            <div class="container mx-auto px-4 flex justify-between items-center">
-                <div>
-                    <h1 class="text-3xl font-bold text-slate-800">Mental Health Resources</h1>
-                    <p class="text-slate-600 mt-1">Trusted partners supporting mental wellness</p>
-                </div>
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/be540245-b13b-45ae-8442-f790578cae93.png" alt="Logo" class="h-16 w-16 rounded-full" />
-                <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </header>
+    </header>
 
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <a href="index.html">Home</a>
-            <a href="my-story.html">My Story</a>
-            <a href="journey4change.html">Journey for Change</a>
-            <a href="mental-health-awareness.html">Mental Health Awareness</a>
-            <a href="their-story.html">Their Story</a>
-            <a href="global-mental-health-watch.html">Global Mental Health Watch</a>
-            <a href="donations.html">Donations</a>
-            <a href="media.html">Media</a>
-            <a href="social-media.html">Social Media</a>
-            <a href="partnership.html">Our Partners</a>
+    <!-- Side Navigation -->
+    <div id="mySidenav" class="fixed left-0 top-0 h-full w-0 bg-gray-800 overflow-x-hidden transition-all duration-300 z-50">
+        <a href="javascript:void(0)" class="absolute top-4 right-6 text-white text-3xl" onclick="closeNav()">&times;</a>
+        <ul class="mt-20 ml-8 space-y-6 text-white text-lg">
+    <li><a href="index.html"><i class="fas fa-home">Home</a></li>
+    <li><a href="my-story.html"><i class="fas fa-user">My Story</a></li>
+    <li><a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a></li>
+    <li><a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a></li>
+    <li><a href="their-story.html"><i class="fas fa-users"></i> Their Story</a></li>
+    <li><a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a></li>
+    <li><a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a></li>
+    <li><a href="media.html"><i class="fas fa-photo-video"></i> Media</a></li>
+    <li><a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a></li>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Categories -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Resource Categories</h2>
+            <div class="flex flex-wrap gap-3">
+                <a href="#" class="category-chip active px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-medium">All Resources</a>
+                <a href="depression.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Depression</a>
+                <a href="gbv-support.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">GBV Support</a>
+                <a href="ptsd.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">PTSD</a>
+                <a href="lgbtq.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">LGBTQ+</a>
+                <a href="substance-abuse.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Substance Abuse</a>
+            </div>
         </div>
 
-        <!-- Main Content -->
-        <main class="flex-grow container mx-auto px-4 py-8">
-            <!-- Categories -->
-            <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-800 mb-4">Resource Categories</h2>
-                <div class="flex flex-wrap gap-3">
-                    <a href="#" class="category-chip active px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-medium">All Resources</a>
-                    <a href="depression.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Depression</a>
-                    <a href="gbv-support.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">GBV Support</a>
-                    <a href="ptsd.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">PTSD</a>
-                    <a href="lgbtq.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">LGBTQ+</a>
-                    <a href="substance-abuse.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Substance Abuse</a>
+        <!-- Resource Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Resource Card Template -->
+            <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                <div class="h-48 bg-blue-50 flex items-center justify-center">
+                    <img src="sadag.jpg" alt="Updated image for South African Depression and Anxiety Group" class="object-cover w-full h-full" />
                 </div>
-            </div>
-            
-            <!-- Resource Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Resource Card SA -->                
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-blue-50 flex items-center justify-center">
-                        <img src="sadag.jpg" alt="Updated image for South African Depression and Anxiety Group" class="object-cover w-full h-full" />
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
+                        <span class="text-slate-500 text-sm">South Africa</span>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
-                            <span class="text-slate-500 text-sm">South Africa</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">South African Depression and Anxiety Group</h3>
-                        <p class="text-slate-600 mb-4">Provides counselling, education, resources, and advocacy across the nation and remains Africa’s largest mental health support network.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.sadag.org/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-purple-500 hover:text-purple-700">Hotline: 0800 567 567</button>
-                        </div>
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">South African Depression and Anxiety Group</h3>
+                    <p class="text-slate-600 mb-4">Provides counselling, education, resources, and advocacy across the nation and remains Africa’s largest mental health support network.</p>
+                    <div class="flex items-center">
+                        <a href="https://www.sadag.org/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
+                        <button class="text-xs text-purple-500 hover:text-purple-700">Hotline: 0800 567 567</button>
                     </div>
                 </div>
+            </div>
+
 
                 <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
                     <div class="h-48 bg-blue-50 flex items-center justify-center">
@@ -310,34 +304,38 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Additional Help Section -->
-            <div class="mt-16 bg-white rounded-lg shadow-sm p-6 md:p-8">
-                <h2 class="text-2xl font-semibold text-slate-800 mb-4">Need More Help?</h2>
-                <p class="text-slate-600 mb-6">If you're having trouble finding what you need or need immediate assistance, these additional resources may help:</p>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="border-l-4 border-blue-500 pl-4 py-1">
-                        <h3 class="font-medium text-slate-800 mb-1">International Help Lines</h3>
-                        <p class="text-sm text-slate-600">
-                            <span class="font-medium">UK:</span> 116 123 (Samaritans)<br>
-                            <span class="font-medium">Australia:</span> 13 11 14 (Lifeline)<br>
-                            <span class="font-medium">Canada:</span> 1-833-456-4566
-                        </p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4 py-1">
-                        <h3 class="font-medium text-slate-800 mb-1">Global Directory</h3>
-                        <p class="text-sm text-slate-600">Additional resources and support can be found through various global directories.</p>
-                    </div>
+
+        <!-- Additional Help Section -->
+        <div class="mt-16 bg-white rounded-lg shadow-sm p-6 md:p-8">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Need More Help?</h2>
+            <p class="text-slate-600 mb-6">If you're having trouble finding what you need or need immediate assistance, these additional resources may help:</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border-l-4 border-blue-500 pl-4 py-1">
+                    <h3 class="font-medium text-slate-800 mb-1">International Help Lines</h3>
+                    <p class="text-sm text-slate-600">
+                        <span class="font-medium">UK:</span> 116 123 (Samaritans)<br>
+                        <span class="font-medium">Australia:</span> 13 11 14 (Lifeline)<br>
+                        <span class="font-medium">Canada:</span> 1-833-456-4566
+                    </p>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4 py-1">
+                    <h3 class="font-medium text-slate-800 mb-1">Global Directory</h3>
+                    <p class="text-sm text-slate-600">Additional resources and support can be found through various global directories.</p>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
+    <!-- JavaScript to handle nav open/close and lock body scroll -->
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.body.classList.add("lock-scroll");
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.body.classList.remove("lock-scroll");
         }
     </script>
 </body>
