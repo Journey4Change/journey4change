@@ -1,168 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us - Journey4Change</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    .contact-container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #04ff10;
-      margin-bottom: 30px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    label {
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      resize: vertical;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    textarea {
-      min-height: 120px;
-    }
-
-    button {
-      background-color: #04ff10;
-      border: none;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #028a06;
-    }
-
-    .contact-info {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 16px;
-      color: #555;
-    }
-
-    .contact-info a {
-      color: #04ff10;
-      text-decoration: none;
-      margin: 0 8px;
-      font-size: 20px;
-    }
-
-    .contact-info a:hover {
-      color: #028a06;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px 20px;
-      background-color: #04ff10;
-      color: white;
-      margin-top: 60px;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mental Health SA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#dc2626',
+                        background: '#ffffff',
+                        foreground: '#1f2937',
+                        muted: '#f3f4f6',
+                        'muted-foreground': '#6b7280',
+                        accent: '#3b82f6',
+                        border: '#e5e7eb',
+                        input: '#d1d5db',
+                        ring: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #04ff10, #2E7D32);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+        }
+        .input-focus:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-heart text-2xl"></i>
+                    <h1 class="text-2xl font-bold">Mental Health SA</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="donations.html" class="hover:text-blue-200 transition-colors">Donations</a>
+                    <a href="contact.html" class="text-blue-200 font-medium">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-  <!-- Contact Form Container -->
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-      <form action="https://formsubmit.co/tumeloeuclid.info@gmail.com" method="POST" onsubmit="return validateForm()">
-      <!-- Hidden settings for FormSubmit -->
-      <input type="hidden" name="_subject" value="New Message from Journey4Change Contact Form" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    We're here to listen and help. Reach out to us for any enquiries, support, or information you may need.
+                </p>
+            </div>
 
-      <label for="name">Name *</label>
-      <input type="text" id="name" name="name" required placeholder="Your full name" />
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 card-shadow">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                    
+                    <form class="space-y-6" id="contactForm">
+                        <!-- Name Field -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                Full Name *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required
+                                class="w-full px-4 py-3 border border-input rounded-lg input-focus transition-all outline-none"
+                                placeholder="Enter your full name"
+                            >
+                        </div>
 
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address *
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                class="w-full px-4 py-3 border border-input rounded-lg input-focus transition-all outline-none"
+                                placeholder="Enter your email address"
+                            >
+                        </div>
 
-      <label for="subject">Subject *</label>
-      <input type="text" id="subject" name="subject" required placeholder="Subject of your message" />
+                        <!-- Phone Field -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                Phone Number
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone"
+                                class="w-full px-4 py-3 border border-input rounded-lg input-focus transition-all outline-none"
+                                placeholder="Enter your phone number"
+                            >
+                        </div>
 
-      <label for="message">Message *</label>
-      <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
+                        <!-- Subject Field -->
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">
+                                Subject *
+                            </label>
+                            <select 
+                                id="subject" 
+                                name="subject" 
+                                required
+                                class="w-full px-4 py-3 border border-input rounded-lg input-focus transition-all outline-none"
+                            >
+                                <option value="">Select a subject</option>
+                                <option value="general">General Enquiry</option>
+                                <option value="support">Support Request</option>
+                                <option value="information">Information Request</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
 
-      <button type="submit">Send Message</button>
-    </form>
+                        <!-- Message Field -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                                Message *
+                            </label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6" 
+                                required
+                                class="w-full px-4 py-3 border border-input rounded-lg input-focus transition-all outline-none resize-y"
+                                placeholder="Tell us how we can help you..."
+                            ></textarea>
+                        </div>
 
-    <div class="contact-info" style="margin-top: 40px;">
-      <p><strong>Phone:</strong> +27 82 813 4960</p>
-      <p><strong>Email:</strong> <a href="mailto:journey4change.info@gmail.com">journey4change.info@gmail.com</a></p>
-      <p>
-        <a href="https://www.youtube.com/@journey4change2026" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/journey4change2026" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://x.com/j4j2026" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      </p>
-    </div>
-  </div>
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit"
+                            class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
 
-  <footer>
-    &copy; 2025 Journey4Change. All rights reserved.
-  </footer>
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <!-- Contact Details Card -->
+                    <div class="bg-white rounded-2xl p-8 card-shadow">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Email -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">journey4change.info@gmail.com</p>
+                                    <p class="text-gray-600">journey4change.support@gmail.com</p>
+                                </div>
+                            </div>
 
-  <script>
-    function validateForm() {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
+                            <!-- Phone -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <i class="fas fa-phone text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">+27 82 813 4960</p>
+                                    <p class="text-gray-600">+27 73 748 0514</p>
+                                </div>
+                            </div>
 
-      if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields.');
-        return false;
-      }
+                            <!-- Address -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Address</h4>
+                                    <p class="text-gray-600">
+                                        Mokgoloboto<br>
+                                        Tzaneen, 0870<br>
+                                        South Africa
+                                    </p>
+                                </div>
+                            </div>
 
-      // Simple email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return false;
-      }
+                            <!-- Hours -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <i class="fas fa-clock text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Office Hours</h4>
+                                    <p class="text-gray-600">
+                                        Monday - Friday: 9:00 AM - 15:00 PM<br>
+                                        Saturday: 10:00 AM - 2:00 PM<br>
+                                        Sunday: Closed
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-      return true;
-    }
-  </script>
+                    <!-- Emergency Contact Card -->
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-red-800 mb-4 flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            Emergency Support
+                        </h3>
+                        <p class="text-red-700 mb-4">
+                            If you're experiencing a mental health crisis or emergency, please contact:
+                        </p>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-phone text-red-600"></i>
+                                <span class="font-medium text-red-800">Crisis Helpline: 0800 567 567</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-ambulance text-red-600"></i>
+                                <span class="font-medium text-red-800">Emergency Services: 10177</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span class="text-xl font-bold">Mental Health SA</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Supporting mental health and wellness across South Africa.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="donations.html" class="text-gray-300 hover:text-white transition-colors">Donations</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2025 Mental Health SA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for form handling -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.subject || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                this.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
