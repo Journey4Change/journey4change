@@ -1,526 +1,943 @@
 <!DOCTYPE html>
-<html lang="en-ZA">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Support mental health in South Africa. Help us launch our initiative providing counseling and mental health support across all provinces.">
-  <title>MindfulMatters SA Launching Soon | Support Mental Health in South Africa</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>
-    :root {
-      --primary: #2bff24;
-      --dark: #1a202c;
-      --light-text: #f7fafc;
-    }
-
-    .donation-option:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .custom-radio:checked + label {
-      background-color: var(--primary);
-      color: #fff;
-    }
-
-    input[type='number']::-webkit-inner-spin-button,
-    input[type='number']::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    .coming-soon-badge {
-      background-color: #f59e0b;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-    #sideNav {
-      transition: transform 0.3s ease-in-out;
-      width: 16rem;
-      z-index: 40;
-    }
-
-    #sideNav.closed {
-      transform: translateX(-100%);
-    }
-
-    #overlay {
-      background: rgba(0, 0, 0, 0.4);
-      transition: opacity 0.3s ease-in-out;
-      z-index: 30;
-    }
-
-    #overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #hamburgerBtn {
-      position: fixed !important;
-      top: 1rem !important;
-      left: 1rem !important;
-      z-index: 1000 !important;
-      background-color: var(--primary);
-      border: none;
-      border-radius: 0.375rem;
-      padding: 0.5rem;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    #hamburgerBtn:hover, #hamburgerBtn:focus {
-      background-color: #3b82f6;
-      transform: scale(1.05);
-      outline: none;
-    }
-
-    #sideNav ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    #sideNav li {
-      margin-bottom: 1.5rem;
-    }
-
-    #sideNav a {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.125rem;
-      color: white;
-      transition: all 0.2s ease;
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.375rem;
-    }
-
-    #sideNav a i {
-      margin-right: 0.75rem;
-      min-width: 1.25rem;
-      text-align: center;
-    }
-
-    #sideNav a:hover,
-    #sideNav a:focus-visible {
-      color: #a5b4fc;
-      outline: none;
-      background-color: rgba(147, 197, 253, 0.2);
-      transform: translateX(3px);
-    }
-
-    #sideNav .menu-header {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    #sideNav .menu-header h2 {
-      margin: 0;
-      color: white;
-    }
-
-    #closeBtn {
-      background: transparent;
-      color: white;
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.375rem;
-      transition: background-color 0.2s ease;
-    }
-
-    #closeBtn:hover,
-    #closeBtn:focus-visible {
-      background-color: rgba(147, 197, 253, 0.3);
-      outline: none;
-    }
-
-    footer {
-      background-color: var(--dark);
-      color: var(--light-text);
-      padding: 60px 20px 30px;
-      text-align: center;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      text-align: left;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .footer-logo img {
-      height: 50px;
-      width: auto;
-      border-radius: 50%;
-    }
-
-    .footer-logo-text h3 {
-      font-size: 1.5rem;
-    }
-
-    .footer-logo-text p {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .footer-links h4 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-links h4::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: var(--primary);
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-      display: inline-block;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-      transform: translateX(5px);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s;
-    }
-
-    .social-links a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    .copyright {
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    @media (min-width: 768px) {
-      #hamburgerBtn {
-        display: none;
-      }
-      
-      #sideNav {
-        position: fixed !important;
-        transform: none !important;
-      }
-
-      #contentWrapper {
-        margin-left: 16rem !important;
-        width: calc(100% - 16rem);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Donations - Support Mental Health Awareness in South Africa</title>
+    <meta name="description" content="Support mental health awareness in South Africa. Your donation provides crucial counseling services, resources, and 24/7 helpline support to those in need.">
+    <meta name="keywords" content="mental health, south africa, donations, counseling, support, mental health awareness">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a365d;
+            background: #ffffff;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+        
+        body.sidebar-open {
+            margin-left: 250px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a365d, #2563eb);
+            color: white;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar.open {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .sidebar-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #0ea5e9;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        .sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            border: none;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Main content adjustment */
+        .main-content {
+            transition: margin-left 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ffffff" opacity="0.1" width="1200" height="600"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0ea5e9;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        /* Donation Section */
+        .donations {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .donation-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .donation-card.popular {
+            border: 2px solid #0ea5e9;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(6, 182, 212, 0.05));
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .donation-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .donation-description {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        
+        .donation-impact {
+            color: #475569;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Custom Amount */
+        .custom-donation {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .input-group span {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a365d;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        /* Trust Section */
+        .trust {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .trust-item {
+            padding: 1.5rem;
+        }
+        
+        .trust-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #0ea5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            color: white;
+        }
+        
+        .trust-item h3 {
+            color: #1a365d;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .trust-item p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            space-y: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #0ea5e9;
+            margin-top: 0.25rem;
+        }
+        
+        .contact-form {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a365d;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .donation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            body.sidebar-open {
+                margin-left: 0;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .sidebar-overlay {
+                display: none;
+            }
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+    </style>
 </head>
-<body class="font-sans bg-gray-50">
-  <!-- Hamburger button -->
-  <button id="hamburgerBtn" aria-expanded="false" aria-label="Open navigation menu" class="md:hidden">
-    <i class="fas fa-bars text-xl"></i>
-  </button>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </button>
 
-  <!-- Side navigation -->
-  <nav id="sideNav" class="fixed top-0 left-0 h-full bg-indigo-700 text-white shadow-lg p-6 closed md:translate-x-0 md:block">
-    <div class="menu-header md:hidden">
-      <h2>Menu</h2>
-      <button id="closeBtn" aria-label="Close navigation menu">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <ul>
-      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a></li>
-      <li><a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a></li>
-      <li><a href="their-story.html"><i class="fas fa-users"></i> Their Story</a></li>
-      <li><a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a></li>
-      <li><a href="media.html"><i class="fas fas-photo-video"></i> Media</a></li>
-      <li><a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a></li>
-      <li><a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a></li>
-    </ul>
-  </nav>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
 
-  <!-- Overlay -->
-  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span class="sidebar-brand">Mental Health SA</span>
+        </div>
+        
+        <div class="sidebar-nav">
+            <a href="index.html" class="nav-item active" onclick="navigateToSection('hero')">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                Home
+            </a>
+            <a href="#donations" class="nav-item" onclick="navigateToSection('donations')">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Donations
+            </a>
+            <a href="#trust" class="nav-item" onclick="navigateToSection('trust')">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                </svg>
+                Trust & Security
+            </a>
+            <a href="#contact" class="nav-item" onclick="navigateToSection('contact')">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                </svg>
+                Contact
+            </a>
+            <a href="#stats" class="nav-item" onclick="navigateToSection('stats')">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M16,11V3H8V7H16V11M16,19H8V15H16V19Z"/>
+                </svg>
+                Impact Stats
+            </a>
+        </div>
+    </nav>
 
-  <div id="contentWrapper" class="min-h-screen flex flex-col transition-all duration-300">
+    <div class="main-content">
     <!-- Hero Section -->
-    <header class="bg-indigo-700 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div class="absolute top-4 right-4">
-        <span class="coming-soon-badge text-white text-xs font-bold px-3 py-1 rounded-full">Coming Soon</span>
-      </div>
-      <div class="max-w-7xl mx-auto text-center relative">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Support Mental Health in South Africa
-        </h1>
-        <p class="text-xl max-w-3xl mx-auto mb-8">
-          Coming soon - your donation will help provide free counseling and
-          mental health resources across our nation.
-        </p>
-        <div class="bg-white rounded-lg p-6 max-w-4xl mx-auto shadow-lg">
-          <img
-            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3477a724-f543-42d1-a329-162ce5fc3f1b.png"
-            alt="Diverse group of South Africans from different backgrounds smiling and supporting each other in a community setting"
-            class="w-full h-auto rounded-md mb-4"
-          />
-          <p class="text-gray-800 text-sm italic">
-            "We're preparing to launch our mental health support initiative to
-            serve our communities."
-          </p>
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span style="font-size: 1.125rem; font-weight: 600;">Mental Health Matters</span>
+                </div>
+                <h1>Supporting Mental Health<br><span style="color: #a7f3d0;">in South Africa</span></h1>
+                <p>Your donation provides crucial mental health support, counseling services, and resources to South Africans who need it most.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <a href="snapscan.html" class="btn btn-primary">Donate Now</a>
+                    <a href="contact.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-        <!-- Donation Form -->
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Support Our Launch</h2>
-          <a
-            href="snapscan.html"
-            class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition-colors shadow-lg"
-            >Donate</a>
-
-          <p class="text-gray-500 text-sm mt-4">
-            Your donation will help us launch our mental health initiative. All
-            donations are secure through our trusted payment partners.
-          </p>
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>0</h3>
+                    <p>People Helped</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Helpline Support</p>
+                </div>
+                <div class="stat-item">
+                    <h3>0%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>R0</h3>
+                    <p>Funds Raised</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Impact Section -->
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Future Impact</h2>
+    <!-- Donation Options -->
+    <section id="donations" class="donations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Impact</h2>
+                <p>Every rand makes a difference. Select an amount that feels right for you.</p>
+            </div>
 
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="bg-indigo-100 p-3 rounded-full mr-4">
-                <i class="fas fa-hands-helping text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-800">R100</h3>
-                <p class="text-gray-600">
-                  Will help provide one counseling session for someone in need
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="bg-indigo-100 p-3 rounded-full mr-4">
-                <i class="fas fa-users text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-800">R500</h3>
-                <p class="text-gray-600">
-                  Will support a future community mental health workshop
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="bg-indigo-100 p-3 rounded-full mr-4">
-                <i class="fas fa-book text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-800">R1,000</h3>
-                <p class="text-gray-600">Will fund mental health resources for a school</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="bg-indigo-100 p-3 rounded-full mr-4">
-                <i class="fas fa-globe-africa text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-800">Our Vision</h3>
-                <p class="text-gray-600">
-                  We aim to help thousands of South Africans across all provinces
-                  access mental health support.
-                </p>
-              </div>
-            </div>
-          </div>
+            <div class="donation-grid">
+                <div class="donation-card" data-amount="150">
+                    <div class="donation-amount">R150</div>
+                    <div class="donation-description">Support One</div>
+                    <div class="donation-impact">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="display: inline; margin-right: 0.5rem; color: #0ea5e9;">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        Provides one counseling session
+                    </div>
+                    <a href="snapscan.html" class="btn btn-primary">Donate R150</a>
+                </div>
 
-          <div class="mt-8 pt-6 border-t border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Why South Africa Needs This</h3>
-            <p class="text-gray-600 mb-4">
-              Mental health challenges affect 1 in 3 South Australians, yet less than
-              25% have access to proper care. Your support will help bridge this gap.
-            </p>
-          </div>
-          <a
-            href="stats.html"
-            class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition-colors shadow-lg"
-            >SA Stats</a>
+            <div class="donation-card popular" data-amount="350">
+                <div class="popular-badge">Most Popular</div>
+                    <div class="donation-amount">R350</div>
+                    <div class="donation-description">Community Care</div>
+                    <div class="donation-impact">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="display: inline; margin-right: 0.5rem; color: #0ea5e9;">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        Supports 3 people with resources
+                    </div>
+                    <a href="snapscan.html" class="btn btn-primary">Donate R350</a>
+                </div>
+
+                </div>
+
+                <div class="donation-card" data-amount="750">
+                    <div class="donation-amount">R750</div>
+                    <div class="donation-description">Extended Support</div>
+                    <div class="donation-impact">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="display: inline; margin-right: 0.5rem; color: #0ea5e9;">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        Funds a week of helpline operations
+                    </div>
+                    <a href="snapscan.html" class="btn btn-primary">Donate R750</a>
+                </div>
+
+                <div class="donation-card" data-amount="1500">
+                    <div class="donation-amount">R1500</div>
+                    <div class="donation-description">Champion</div>
+                    <div class="donation-impact">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="display: inline; margin-right: 0.5rem; color: #0ea5e9;">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        Sponsors mental health workshops
+                    </div>
+                    <a href="snapscan.html" class="btn btn-primary">Donate R1500</a>
+                </div>
+            </div>
+    </section>
+
+    <!-- Trust & Security -->
+    <section id="trust" class="trust">
+        <div class="container">
+            <div class="section-title">
+                <h2>Safe & Secure Donations</h2>
+                <p>Your donation is processed securely and goes directly to mental health programs.</p>
+            </div>
+
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V15H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z" />
+                        </svg>
+                    </div>
+                    <h3>Secure Processing</h3>
+                    <p>Bank-level encryption protects your payment information</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
+                        </svg>
+                    </div>
+                    <h3>100% Transparent</h3>
+                    <p>See exactly how your donation is being used</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <h3>Direct Impact</h3>
+                    <p>Funds go directly to mental health support services</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </main>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+                <p>Have questions about donations or need mental health support?</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="color: #1a365d; margin-bottom: 1.5rem;">Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        <div>
+                            <div style="font-weight: 600; color: #1a365d;">Contact</div>
+                            <div style="color: #64748b;">082 813 4960</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                        </svg>
+                        <div>
+                            <div style="font-weight: 600; color: #1a365d;">Donations</div>
+                            <div style="color: #64748b;">journey4change.info@gmail.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                        </svg>
+                        <div>
+                            <div style="font-weight: 600; color: #1a365d;">Address</div>
+                            <div style="color: #64748b;">123 Hope Street, Cape Town, 8001</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="color: #1a365d; margin-bottom: 1rem;">Send us a Message</h3>
+                    <p style="color: #64748b; margin-bottom: 1.5rem;">We'd love to hear from you</p>
+                    
+                    <form onsubmit="sendMessage(event)">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-about">
-          <div class="footer-logo">
-            <img src="Journey4Change.png" alt="Journey4Change Logo">
-            <div class="footer-logo-text">
-              <h3>Journey4Change</h3>
-              <p>Healing Together</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span style="font-size: 1.125rem; font-weight: 600;">Mental Health Matters SA</span>
             </div>
-          </div>
-          <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
-          <div class="social-links">
-            <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.facebook.com/share/1JfpsNEA42/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
-          </div>
+            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1.5rem;">
+                Supporting mental health awareness and providing resources across South Africa.
+            </p>
+            <div class="footer-links">
+                <span>© 2024 Mental Health Matters SA</span>
+                <span>•</span>
+                <span>Privacy Policy</span>
+                <span>•</span>
+                <span>Terms of Service</span>
+            </div>
         </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="my-story.html">My Story</a></li>
-            <li><a href="journey4change.html">Journey for Change</a></li>
-            <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
-            <li><a href="their-story.html">Their Story</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
-            <li><a href="donations.html">Donations</a></li>
-            <li><a href="media.html">Media</a></li>
-            <li><a href="social-media.html">Social Media</a></li>
-            <li><a href="partnership.html">Our Partners</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <ul>
-            <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
-            <li><i class="fas fa-envelope"></i> journey4change.info@gmail.com</li>
-            <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        &copy; 2025 Journey4Change. All rights reserved.
-      </div>
     </footer>
-  </div>
 
-  <script>
-    const sideNav = document.getElementById('sideNav');
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const overlay = document.getElementById('overlay');
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
 
-    function updateLayoutForScreenSize() {
-      if (window.innerWidth >= 768) {
-        // Desktop layout - always show side nav, hide hamburger
-        sideNav.classList.remove('closed');
-        overlay.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-        hamburgerBtn.setAttribute('aria-expanded', 'true');
-      } else {
-        // Mobile layout - default to closed nav
-        sideNav.classList.add('closed');
-        overlay.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-      }
-    }
+    </div>
 
-    function openNav() {
-      sideNav.classList.remove('closed');
-      overlay.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      hamburgerBtn.setAttribute('aria-expanded', 'true');
-    }
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('show');
+            body.classList.toggle('sidebar-open');
+        }
 
-    function closeNav() {
-      sideNav.classList.add('closed');
-      overlay.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
-    }
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+            
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            body.classList.remove('sidebar-open');
+        }
 
-    // Initialize
-    updateLayoutForScreenSize();
+        function navigateToSection(sectionId) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Scroll to section
+            const target = document.getElementById(sectionId) || document.querySelector(`.${sectionId}`);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                closeSidebar();
+            }
+        }
 
-    // Event Listeners
-    hamburgerBtn.addEventListener('click', () => {
-      const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) {
-        closeNav();
-      } else {
-        openNav();
-      }
-    });
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
 
-    closeBtn.addEventListener('click', closeNav);
-    overlay.addEventListener('click', closeNav);
+        function donate(amount) {
+            // For now, show a success message - Stripe integration would go here
+            showToast(`Thank you for your R${amount} donation! Your support will make a real difference.`);
+        }
 
-    // Responsive updates
-    window.addEventListener('resize', updateLayoutForScreenSize);
-  </script>
+        function donateCustom() {
+            const customAmount = document.getElementById('customAmount').value;
+            const amount = parseInt(customAmount);
+            
+            if (amount > 0) {
+                donate(amount);
+                document.getElementById('customAmount').value = '';
+            } else {
+                showToast('Please enter a valid donation amount.');
+            }
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // For now, show a success message - backend integration would go here
+            showToast(`Thank you ${name}! Your message has been sent. We'll get back to you soon.`);
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside on desktop
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.sidebar-toggle');
+            
+            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
-
