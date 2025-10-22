@@ -646,10 +646,49 @@ footer {
         padding: 8px 15px;
         font-size: 12px;
       }
+
+      /* Lock container inside the page */
+.lock-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* takes full viewport height but inside the layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-radius: 12px;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+}
+
+/* Lock message styling */
+.lock-container .lock-message {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+body.locked {
+  overflow: hidden; /* disable scroll */
+}
+
     }
   </style>
 </head>
 <body>
+
+  <section id="pageLock" class="lock-container">
+  <div class="lock-message">
+    🔒 <br>
+    <strong>Page is locked</strong><br>
+    You can still open the menu.
+  </div>
+</section>
 
 
   <!-- Header with Navigation -->
@@ -678,6 +717,7 @@ footer {
     <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
     <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
     <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
     <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
     <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
   </div>
@@ -716,7 +756,7 @@ footer {
     </div>
     <div class="intro-text">
       <h2>About Me</h2>
-      <p>Hello, my name is Euclid Tumelo Ramaila. I was born on the 28th of December, 2004, a brother of 3 from South Africa, Limpopo Province, Dan Village outside Tzaneen. I was primarily raised by my grandmother alongside my cousins, which instilled in me strong values of family and perseverance. I currently reside in Mokgoloboto studying Financial Management in a college. I am committed to building a successful career in the finance sector and making a meaningful contribution to both my community and the broader society.</p>
+      <p>Hello, my name is Euclid Tumelo Ramaila. I was born on the **th of December, ****, a brother of 3 from South Africa, Limpopo Province, Dan Village outside Tzaneen. I was primarily raised by my grandmother alongside my cousins, which instilled in me strong values of family and perseverance. I currently reside in Mokgoloboto studying Financial Management in a college. I am committed to building a successful career in the finance sector and making a meaningful contribution to both my community and the broader society.</p>
     </div>
   </section>
 
@@ -779,7 +819,7 @@ footer {
         <br>
         <p>This is my story. And now, I want to use it to bring hope.</p>
         <br>
-        <p>"Suicide is permanent solution to temporary problems"</p>
+        <p>"Suicice is permanent solution to temporary problems"</p>
       </div>
       
       <div style="text-align: center;">
@@ -822,6 +862,7 @@ footer {
       <ul>
         <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
         <li><a href="donations.html">Donations</a></li>
+        <li><a href="media.html">Media</a></li>
         <li><a href="social-media.html">Social Media</a></li>
         <li><a href="partnership.html">Our Partners</a></li>
       </ul>
@@ -840,7 +881,23 @@ footer {
   </div>
 </footer>
 
-  <script>
+<script>
+  // Disable scroll
+  document.body.classList.add("locked");
+
+  // Ensure the hamburger stays clickable
+  const hamburger = document.querySelector(".hamburger-menu");
+  if (hamburger) {
+    hamburger.style.zIndex = "9999";
+  }
+
+  // Optional unlock function if you ever need it
+  function unlockPage() {
+    document.body.classList.remove("locked");
+    const lock = document.getElementById("pageLock");
+    if (lock) lock.style.display = "none";
+  }
+
     // Navigation functions
 function openNav() {
   document.getElementById("sideNav").style.width = "280px";
@@ -880,5 +937,3 @@ function closeNav() {
   </script>
 </body>
 </html>
-
-
