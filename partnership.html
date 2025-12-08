@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Health Resources & Partnerships</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 
         body {
             font-family: 'Inter', sans-serif;
@@ -44,78 +46,165 @@
             color: white;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease;
-            z-index: 50;
-        }
+ .header {
+    background: linear-gradient(135deg, #04ff10, #2E7D32);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    height: 80px;
+  }
 
-        .sidebar.open {
-            left: 0;
-        }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
-        .sidebar a {
-            display: block;
-            padding: 15px;
-            color: #1e293b;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
+  .logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
 
-        .sidebar a:hover {
-            background-color: #f0f0f0;
-        }
+  .logo-text span {
+    font-size: 12px;
+    opacity: 0.9;
+    letter-spacing: 2px;
+  }
 
-        .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-        }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+  }
 
-        .hamburger div {
-            height: 3px;
-            background-color: #1e293b;
-            transition: all 0.3s ease;
-        }
+  .hamburger div {
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s;
+  }
 
-        body.lock-scroll {
-            overflow: hidden;
-        }
+  .login-btn {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .login-btn:hover {
+    background: white;
+    color: #04ff10;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #04ff10, #2E7D32);
+    overflow-y: auto;
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    padding-top: 80px;
+  }
+
+  .side-nav a {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .side-nav a::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transition: left 0.3s;
+  }
+
+  .side-nav a:hover::before {
+    left: 0;
+  }
+
+  .side-nav a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .close-btn:hover {
+    transform: rotate(90deg);
+  }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 m-0 p-0">
-    <!-- Header -->
-    <header class="bg-white shadow-md p-4">
-        <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold text-blue-600">Mental Health Resources</h1>
-            <span class="text-3xl cursor-pointer md:hidden" onclick="openNav()">☰</span>
-        </div>
-    </header>
-
-    <!-- Side Navigation -->
-    <div id="mySidenav" class="fixed left-0 top-0 h-full w-0 bg-gray-800 overflow-x-hidden transition-all duration-300 z-50">
-        <a href="javascript:void(0)" class="absolute top-4 right-6 text-white text-3xl" onclick="closeNav()">&times;</a>
-        <ul class="mt-20 ml-8 space-y-6 text-white text-lg">
-    <li><a href="index.html"><i class="fas fa-home">Home</a></li>
-    <li><a href="my-story.html"><i class="fas fa-user">My Story</a></li>
-    <li><a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a></li>
-    <li><a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a></li>
-    <li><a href="their-story.html"><i class="fas fa-users"></i> Their Story</a></li>
-    <li><a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a></li>
-    <li><a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a></li>
-    <li><a href="media.html"><i class="fas fa-photo-video"></i> Media</a></li>
-    <li><a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a></li>
+<!-- Header with Navigation -->
+<header class="header">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <div class="logo-text">
+      <h1>Journey4Change</h1>
+      <span>Healing Together</span>
+    </div>
+  </div>
+  <a href="#" class="login-btn">Login</a>
+</header>
+
+<!-- Side Navigation Menu -->
+<div id="sideNav" class="side-nav">
+  <span class="close-btn" onclick="closeNav()">×</span>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
+</div>
 
     <!-- Main Content -->
     <main class="flex-grow container mx-auto px-4 py-8">
@@ -328,15 +417,16 @@
 
     <!-- JavaScript to handle nav open/close and lock body scroll -->
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.body.classList.add("lock-scroll");
-        }
+  // Navigation functions
+  function openNav() {
+    document.getElementById("sideNav").style.width = "280px";
+    document.body.style.overflow = "hidden"; // prevent scroll
+  }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.body.classList.remove("lock-scroll");
-        }
+  function closeNav() {
+    document.getElementById("sideNav").style.width = "0";
+    document.body.style.overflow = ""; // restore scroll
+  }
     </script>
 </body>
 </html>
