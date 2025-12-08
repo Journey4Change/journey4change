@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey4Change - Share Your Story of Hope & Survival</title>
+  <meta name="description" content="Share your story of survival and hope. Your journey could be the beacon of light that guides someone through their darkest hour.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --background: #0d0d0d;
+      --foreground: #f2f2f2;
+      --card: #141414;
+      --primary: #f0b429;
+      --primary-dark: #0d0d0d;
+      --secondary: #1f1f1f;
+      --muted: #262626;
+      --muted-foreground: #a6a6a6;
+      --border: #2e2e2e;
+      --radius: 0.75rem;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .orb-1 { width: 24rem; height: 24rem; background: rgba(240, 180, 41, 0.05); top: 25%; left: 25%; }
+    .orb-2 { width: 20rem; height: 20rem; background: rgba(240, 180, 41, 0.03); bottom: 25%; right: 25%; animation-delay: 2s; }
+    .orb-3 { width: 16rem; height: 16rem; background: rgba(240, 180, 41, 0.04); top: 50%; right: 33%; animation-delay: 4s; }
+    .orb-4 { width: 18rem; height: 18rem; background: rgba(240, 180, 41, 0.035); top: 10%; right: 10%; animation-delay: 1s; }
+    .orb-5 { width: 22rem; height: 22rem; background: rgba(240, 180, 41, 0.025); bottom: 10%; left: 10%; animation-delay: 3s; }
+    .orb-6 { width: 14rem; height: 14rem; background: rgba(240, 180, 41, 0.045); top: 70%; left: 50%; animation-delay: 5s; }
+
+    /* Floating Dots */
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(240, 180, 41, 0.6);
+      animation: floatDot 8s ease-in-out infinite;
+    }
+
+    .dot-1 { width: 4px; height: 4px; top: 15%; left: 10%; animation-delay: 0s; }
+    .dot-2 { width: 3px; height: 3px; top: 25%; right: 15%; animation-delay: 1s; }
+    .dot-3 { width: 5px; height: 5px; top: 45%; left: 5%; animation-delay: 2s; }
+    .dot-4 { width: 3px; height: 3px; top: 60%; right: 8%; animation-delay: 3s; }
+    .dot-5 { width: 4px; height: 4px; top: 80%; left: 15%; animation-delay: 4s; }
+    .dot-6 { width: 6px; height: 6px; top: 35%; right: 5%; animation-delay: 0.5s; }
+    .dot-7 { width: 3px; height: 3px; top: 55%; left: 85%; animation-delay: 1.5s; }
+    .dot-8 { width: 5px; height: 5px; top: 75%; right: 20%; animation-delay: 2.5s; }
+    .dot-9 { width: 4px; height: 4px; top: 20%; left: 70%; animation-delay: 3.5s; }
+    .dot-10 { width: 3px; height: 3px; top: 90%; left: 40%; animation-delay: 4.5s; }
+    .dot-11 { width: 5px; height: 5px; top: 5%; left: 50%; animation-delay: 5.5s; }
+    .dot-12 { width: 4px; height: 4px; top: 65%; left: 30%; animation-delay: 6s; }
+
+    /* Rising Particles */
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(240, 180, 41, 0.5);
+      border-radius: 50%;
+      animation: rise 12s linear infinite;
+    }
+
+    .particle-1 { left: 10%; animation-delay: 0s; }
+    .particle-2 { left: 20%; animation-delay: 2s; }
+    .particle-3 { left: 30%; animation-delay: 4s; }
+    .particle-4 { left: 40%; animation-delay: 1s; }
+    .particle-5 { left: 50%; animation-delay: 3s; }
+    .particle-6 { left: 60%; animation-delay: 5s; }
+    .particle-7 { left: 70%; animation-delay: 1.5s; }
+    .particle-8 { left: 80%; animation-delay: 3.5s; }
+    .particle-9 { left: 90%; animation-delay: 5.5s; }
+    .particle-10 { left: 15%; animation-delay: 6s; }
+    .particle-11 { left: 35%; animation-delay: 7s; }
+    .particle-12 { left: 55%; animation-delay: 8s; }
+    .particle-13 { left: 75%; animation-delay: 9s; }
+    .particle-14 { left: 95%; animation-delay: 10s; }
+    .particle-15 { left: 5%; animation-delay: 11s; }
+
+    /* Sparkle Effect */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, rgba(240, 180, 41, 0.8) 0%, transparent 70%);
+      animation: sparkle 4s ease-in-out infinite;
+    }
+
+    .sparkle-1 { top: 12%; left: 20%; animation-delay: 0s; }
+    .sparkle-2 { top: 28%; right: 25%; animation-delay: 0.8s; }
+    .sparkle-3 { top: 42%; left: 8%; animation-delay: 1.6s; }
+    .sparkle-4 { top: 68%; right: 12%; animation-delay: 2.4s; }
+    .sparkle-5 { top: 85%; left: 35%; animation-delay: 3.2s; }
+    .sparkle-6 { top: 18%; right: 40%; animation-delay: 0.4s; }
+    .sparkle-7 { top: 52%; left: 75%; animation-delay: 1.2s; }
+    .sparkle-8 { top: 78%; right: 55%; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    @keyframes floatDot {
+      0%, 100% { 
+        transform: translateY(0) translateX(0); 
+        opacity: 0.6;
+      }
+      25% { 
+        transform: translateY(-15px) translateX(10px); 
+        opacity: 1;
+      }
+      50% { 
+        transform: translateY(-5px) translateX(-5px); 
+        opacity: 0.8;
+      }
+      75% { 
+        transform: translateY(-20px) translateX(5px); 
+        opacity: 1;
+      }
+    }
+
+    @keyframes rise {
+      0% { 
+        bottom: -10px; 
+        opacity: 0;
+        transform: translateX(0);
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        bottom: 100vh; 
+        opacity: 0;
+        transform: translateX(20px);
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { 
+        transform: scale(0); 
+        opacity: 0;
+      }
+      50% { 
+        transform: scale(1); 
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(240, 180, 41, 0.2); }
+      50% { box-shadow: 0 0 40px rgba(240, 180, 41, 0.4); }
+    }
+
+    .animate-fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* Layout */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding: 5rem 1rem; }
+    }
+
+    /* Header */
+    header { text-align: center; margin-bottom: 3rem; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: rgba(240, 180, 41, 0.1);
+      border: 1px solid rgba(240, 180, 41, 0.2);
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #f0b429 0%, #d99a1e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(20, 20, 20, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(46, 46, 46, 0.5);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 768px) {
+      .card { padding: 2rem; }
+      .form-card { padding: 2.5rem; }
+    }
+
+    .encouragement {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .icon-box {
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      background: rgba(240, 180, 41, 0.1);
+      flex-shrink: 0;
+    }
+
+    .icon-box svg { width: 1.5rem; height: 1.5rem; color: var(--primary); }
+
+    .encouragement h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .encouragement p { color: var(--muted-foreground); }
+
+    /* Form */
+    .form-group { margin-bottom: 1.5rem; }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(242, 242, 242, 0.8);
+      margin-bottom: 0.75rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: rgba(31, 31, 31, 0.5);
+      border: 1px solid rgba(46, 46, 46, 0.5);
+      border-radius: var(--radius);
+      color: var(--foreground);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input {
+      height: 3.5rem;
+      padding: 0 1rem;
+    }
+
+    textarea {
+      min-height: 12rem;
+      padding: 1rem;
+      resize: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(166, 166, 166, 0.5);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(240, 180, 41, 0.1);
+    }
+
+    /* Radio Options */
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .radio-group { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      border: 2px solid rgba(46, 46, 46, 0.5);
+      background: rgba(31, 31, 31, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .radio-option:hover {
+      border-color: rgba(240, 180, 41, 0.5);
+    }
+
+    .radio-option.selected {
+      border-color: var(--primary);
+      background: rgba(240, 180, 41, 0.1);
+      box-shadow: 0 0 20px rgba(240, 180, 41, 0.2);
+    }
+
+    .radio-option svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--muted-foreground);
+      transition: color 0.3s ease;
+    }
+
+    .radio-option.selected svg { color: var(--primary); }
+
+    .radio-option span {
+      color: rgba(242, 242, 242, 0.7);
+      transition: color 0.3s ease;
+    }
+
+    .radio-option.selected span {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .radio-option input { display: none; }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      height: 3.5rem;
+      background: linear-gradient(135deg, #f0b429 0%, #d99a1e 100%);
+      color: var(--primary-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      animation: pulseGlow 3s ease-in-out infinite;
+      margin-top: 1.5rem;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .submit-btn svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+
+    .submit-btn:hover svg { transform: translateX(4px); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    footer .hope {
+      color: rgba(240, 180, 41, 0.8);
+      font-weight: 500;
+      margin-top: 0.75rem;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .toast-desc {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Cursor Trail */
+    .cursor-trail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 180, 41, 0.8) 0%, rgba(240, 180, 41, 0.4) 40%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: cursorFade 0.8s ease-out forwards;
+    }
+
+    .cursor-trail.large {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, rgba(240, 180, 41, 0.6) 0%, rgba(240, 180, 41, 0.2) 40%, transparent 70%);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 180, 41, 0.15) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: all 0.15s ease-out;
+    }
+
+    @keyframes cursorFade {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+      }
+    }
+
+    @media (hover: none) {
+      .cursor-trail, .cursor-glow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particles">
+    <!-- Glowing Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+    <div class="orb orb-6"></div>
+    
+    <!-- Floating Dots -->
+    <div class="dot dot-1"></div>
+    <div class="dot dot-2"></div>
+    <div class="dot dot-3"></div>
+    <div class="dot dot-4"></div>
+    <div class="dot dot-5"></div>
+    <div class="dot dot-6"></div>
+    <div class="dot dot-7"></div>
+    <div class="dot dot-8"></div>
+    <div class="dot dot-9"></div>
+    <div class="dot dot-10"></div>
+    <div class="dot dot-11"></div>
+    <div class="dot dot-12"></div>
+    
+    <!-- Rising Particles -->
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+    <div class="particle particle-7"></div>
+    <div class="particle particle-8"></div>
+    <div class="particle particle-9"></div>
+    <div class="particle particle-10"></div>
+    <div class="particle particle-11"></div>
+    <div class="particle particle-12"></div>
+    <div class="particle particle-13"></div>
+    <div class="particle particle-14"></div>
+    <div class="particle particle-15"></div>
+    
+    <!-- Sparkles -->
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+    <div class="sparkle sparkle-4"></div>
+    <div class="sparkle sparkle-5"></div>
+    <div class="sparkle sparkle-6"></div>
+    <div class="sparkle sparkle-7"></div>
+    <div class="sparkle sparkle-8"></div>
+  </div>
+
+  <main class="container">
+    <!-- Header -->
+    <header>
+      <div class="badge animate-fade-up">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+        <span>Your Voice Matters</span>
+      </div>
+      <h1 class="animate-fade-up delay-1">
+        <span>Journey</span><span class="text-gradient">4</span><span>Change</span>
+      </h1>
+      <p class="subtitle animate-fade-up delay-2">
+        Share your story of survival and hope. Your journey could be the beacon of light that guides someone through their darkest hour.
+      </p>
+    </header>
+
+    <!-- Encouragement Card -->
+    <div class="card encouragement animate-fade-up delay-3">
+      <div class="icon-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </div>
+      <div>
+        <h2>You Are Not Alone</h2>
+        <p>Every story shared here is a testament to the incredible strength of the human spirit. Whether you choose to share anonymously or with your name, your words have the power to heal—both yourself and others.</p>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card form-card animate-fade-up delay-4">
+      <form id="storyForm">
+        <div class="form-group">
+          <label for="name">Your Name (Optional)</label>
+          <input type="text" id="name" placeholder="Share anonymously or leave your name">
+        </div>
+
+        <div class="form-group">
+          <label for="story">Your Story</label>
+          <textarea id="story" placeholder="Share your journey... Your words could be the light someone needs today."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>How would you like to share?</label>
+          <div class="radio-group">
+            <label class="radio-option selected" data-value="email">
+              <input type="radio" name="contact" value="email" checked>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>Email</span>
+            </label>
+            <label class="radio-option" data-value="whatsapp">
+              <input type="radio" name="contact" value="whatsapp">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              <span>WhatsApp</span>
+            </label>
+            <label class="radio-option" data-value="instagram">
+              <input type="radio" name="contact" value="instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <span>Instagram</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+          <span>Share Your Story</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="animate-fade-up delay-5">
+      <p>If you're in crisis, please reach out to your local emergency services or crisis helpline.</p>
+      <p class="hope">Every step forward is progress. 💛</p>
+    </footer>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <div class="toast-title" id="toastTitle"></div>
+    <div class="toast-desc" id="toastDesc"></div>
+  </div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <script>
+    // Cursor Trail Effect
+    const cursorGlow = document.getElementById('cursorGlow');
+    let lastTrailTime = 0;
+    const trailThrottle = 30; // ms between trail particles
+
+    document.addEventListener('mousemove', (e) => {
+      // Move the main glow
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+
+      // Create trail particles with throttling
+      const now = Date.now();
+      if (now - lastTrailTime > trailThrottle) {
+        createTrail(e.clientX, e.clientY);
+        lastTrailTime = now;
+      }
+    });
+
+    function createTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      
+      // Random size variation
+      if (Math.random() > 0.7) {
+        trail.classList.add('large');
+      }
+      
+      // Slight random offset for organic feel
+      const offsetX = (Math.random() - 0.5) * 10;
+      const offsetY = (Math.random() - 0.5) * 10;
+      
+      trail.style.left = (x + offsetX) + 'px';
+      trail.style.top = (y + offsetY) + 'px';
+      
+      document.body.appendChild(trail);
+      
+      // Remove after animation
+      setTimeout(() => {
+        trail.remove();
+      }, 800);
+    }
+
+    // Radio selection
+    document.querySelectorAll('.radio-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+      });
+    });
+
+    // Toast function
+    function showToast(title, desc) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastDesc').textContent = desc;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // Form submission
+    document.getElementById('storyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim() || 'Anonymous';
+      const story = document.getElementById('story').value.trim();
+      const contactMethod = document.querySelector('input[name="contact"]:checked').value;
+
+      if (!story) {
+        showToast('Please share your story', 'Your story field cannot be empty.');
+        return;
+      }
+
+      const message = `Journey4Change Story Submission\n\nFrom: ${name}\n\nStory:\n${story}`;
+      const encodedMessage = encodeURIComponent(message);
+
+      if (contactMethod === 'email') {
+        window.open(`mailto:journey4change.info@gmail.com?subject=Story Submission from ${encodeURIComponent(name)}&body=${encodedMessage}`, '_blank');
+      } else if (contactMethod === 'whatsapp') {
+        window.open(`https://wa.me/27828134960?text=${encodedMessage}`, '_blank');
+      } else if (contactMethod === 'instagram') {
+        window.open('https://www.instagram.com/journey4change2026', '_blank');
+        showToast('Instagram opened', 'Please send your story as a direct message on Instagram.');
+      }
+
+      showToast('Thank you for sharing 💛', 'Your courage inspires others. We\'ll be in touch soon.');
+      
+      // Reset form
+      document.getElementById('name').value = '';
+      document.getElementById('story').value = '';
+    });
+  </script>
+</body>
+</html>
