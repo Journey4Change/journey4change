@@ -1,433 +1,892 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Resources & Partnerships</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change Partners & Resources — mental health organisations, crisis lines, and support networks across South Africa and globally.">
+  <title>Our Partners & Resources - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 18px;
 
+      /* Category colours */
+      --cat-general:  #22c55e; --cat-general-bg:  rgba(34,197,94,0.08);
+      --cat-gbv:      #ec4899; --cat-gbv-bg:      rgba(236,72,153,0.08);
+      --cat-ptsd:     #f97316; --cat-ptsd-bg:     rgba(249,115,22,0.08);
+      --cat-lgbtq:    #8b5cf6; --cat-lgbtq-bg:    rgba(139,92,246,0.08);
+      --cat-crisis:   #dc2626; --cat-crisis-bg:   rgba(220,38,38,0.08);
+      --cat-substance:#0ea5e9; --cat-substance-bg:rgba(14,165,233,0.08);
+      --cat-veterans: #d97706; --cat-veterans-bg: rgba(217,119,6,0.08);
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #333;
-        }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-        .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
 
-        .emergency-banner {
-            background: linear-gradient(135deg, #fde68a, #f59e0b);
-            animation: pulse 2s infinite;
-        }
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.65);
+      padding: 9px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px;
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.65); margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s; display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
+    /* ── HEADER ── */
+    header {
+      background: rgba(15,31,21,0.96); backdrop-filter: blur(12px);
+      color: white; padding: 14px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+    .login-btn {
+      background: var(--primary); color: var(--dark);
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 14px;
+      text-decoration: none; display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.35); }
 
-        .category-chip {
-            transition: all 0.2s;
-        }
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark); position: relative; overflow: hidden;
+      padding: 110px 60px 100px;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 90% 50%, rgba(34,197,94,0.09) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-bg-text {
+      position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(80px, 16vw, 220px); font-weight: 900;
+      color: rgba(255,255,255,0.025); line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.35);
+      padding: 7px 18px; border-radius: 50px; margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 900; color: white; line-height: 1.05; margin-bottom: 22px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.65); font-size: 1.1rem;
+      max-width: 580px; line-height: 1.8;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
+    }
 
-        .category-chip:hover {
-            background-color: #e2e8f0;
-            transform: scale(1.05);
-        }
+    /* ── CONTROLS ── */
+    .controls-bar {
+      background: white; border-bottom: 1px solid #e8f0e8;
+      padding: 20px 60px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .controls-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); flex-shrink: 0;
+    }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      padding: 7px 18px; border-radius: 50px;
+      font-size: 13px; font-weight: 600;
+      border: 1.5px solid rgba(34,197,94,0.15);
+      background: transparent; color: var(--text-muted);
+      cursor: pointer; transition: all 0.22s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .chip.active { background: var(--primary); color: var(--dark); border-color: var(--primary); }
+    .chip[data-cat="gbv"].active          { background: var(--cat-gbv); border-color: var(--cat-gbv); color: white; }
+    .chip[data-cat="ptsd"].active         { background: var(--cat-ptsd); border-color: var(--cat-ptsd); color: white; }
+    .chip[data-cat="lgbtq"].active        { background: var(--cat-lgbtq); border-color: var(--cat-lgbtq); color: white; }
+    .chip[data-cat="crisis"].active       { background: var(--cat-crisis); border-color: var(--cat-crisis); color: white; }
+    .chip[data-cat="substance"].active    { background: var(--cat-substance); border-color: var(--cat-substance); color: white; }
+    .chip[data-cat="veterans"].active     { background: var(--cat-veterans); border-color: var(--cat-veterans); color: white; }
 
-        .category-chip.active {
-            background-color: #3b82f6;
-            color: white;
-        }
+    /* ── MAIN ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 70px 40px 100px; }
 
- .header {
-    background: linear-gradient(135deg, #04ff10, #2E7D32);
-    color: white;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
-    height: 80px;
-  }
+    /* Count bar */
+    .count-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 36px; flex-wrap: wrap; gap: 10px;
+    }
+    .count-text { font-size: 13px; color: var(--text-muted); }
+    .count-text strong { color: var(--text); }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+    /* Search */
+    .search-wrap {
+      display: flex; align-items: center; gap: 10px;
+      background: white; border: 1.5px solid #d1e7d1;
+      border-radius: 50px; padding: 8px 18px;
+      transition: all 0.25s;
+    }
+    .search-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(34,197,94,0.1); }
+    .search-wrap i { color: var(--text-muted); font-size: 13px; }
+    .search-wrap input {
+      border: none; outline: none; background: transparent;
+      font-family: 'DM Sans', sans-serif; font-size: 14px;
+      color: var(--text); width: 180px;
+    }
+    .search-wrap input::placeholder { color: rgba(0,0,0,0.3); }
 
-  .logo-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    margin: 0;
-    line-height: 1;
-    letter-spacing: 1px;
-  }
+    /* ── RESOURCE CARDS ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .resource-card {
+      background: white; border-radius: var(--radius);
+      overflow: hidden; border: 1px solid rgba(34,197,94,0.08);
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column;
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+      opacity: 0; transform: translateY(18px);
+    }
+    .resource-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.35s, border-color 0.35s;
+    }
+    .resource-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(34,197,94,0.2); }
 
-  .logo-text span {
-    font-size: 12px;
-    opacity: 0.9;
-    letter-spacing: 2px;
-  }
+    /* Card image */
+    .card-img {
+      position: relative; height: 200px; overflow: hidden;
+    }
+    .card-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+      filter: grayscale(10%);
+    }
+    .resource-card:hover .card-img img { transform: scale(1.05); filter: grayscale(0%); }
+    .card-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: rgba(255,255,255,0.4);
+    }
 
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-  }
+    /* Category bar on card */
+    .card-cat-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 4px;
+    }
 
-  .hamburger div {
-    height: 3px;
-    background: white;
-    border-radius: 3px;
-    transition: all 0.3s;
-  }
+    /* Card body */
+    .card-body { padding: 24px 24px 20px; flex: 1; display: flex; flex-direction: column; }
+    .card-tags { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .cat-badge {
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .region-badge {
+      font-size: 11px; color: var(--text-muted); font-weight: 500;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: var(--secondary);
+      font-weight: 700; margin-bottom: 10px; line-height: 1.25;
+    }
+    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; flex: 1; }
+    .card-footer {
+      padding-top: 16px; border-top: 1px solid #f0f4f0;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 10px; }
+    .card-contact {
+      font-size: 12px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .card-contact i { color: var(--primary); font-size: 11px; }
 
-  .login-btn {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    padding: 10px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    border: none;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-decoration: none;
-    font-size: 14px;
-  }
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center; padding: 70px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state i { font-size: 3rem; margin-bottom: 18px; display: block; color: #d1e7d1; }
+    .empty-state p { font-size: 15px; }
 
-  .login-btn:hover {
-    background: white;
-    color: #04ff10;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
+    /* ── HELPLINES QUICK STRIP ── */
+    .helpline-strip {
+      background: var(--dark);
+      padding: 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .helpline-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .helpline-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      background: rgba(34,197,94,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1rem; flex-shrink: 0;
+    }
+    .helpline-region { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
+    .helpline-name { font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; }
+    .helpline-number { font-size: 13px; color: var(--primary-light); }
 
-  .side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, #04ff10, #2E7D32);
-    overflow-y: auto;
-    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    padding-top: 80px;
-  }
+    /* ── BECOME A PARTNER CTA ── */
+    .partner-cta {
+      background: var(--secondary);
+      padding: 80px 60px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .partner-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(34,197,94,0.12) 0%, transparent 70%);
+    }
+    .partner-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .partner-cta .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      display: block; margin-bottom: 14px;
+    }
+    .partner-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: white; font-weight: 900; margin-bottom: 16px;
+    }
+    .partner-cta p { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 32px; line-height: 1.8; }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      border-radius: 50px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 6px 24px rgba(34,197,94,0.25); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(255,255,255,0.2); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.14); transform: translateY(-3px); }
 
-  .side-nav a {
-    padding: 15px 30px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-    position: relative;
-    overflow: hidden;
-  }
+    /* ── FOOTER ── */
+    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 50px;
+      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.65); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 8px;
+    }
 
-  .side-nav a::before {
-    content: '';
-    position: absolute;
-    left: -100%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.1);
-    transition: left 0.3s;
-  }
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.1); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
 
-  .side-nav a:hover::before {
-    left: 0;
-  }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-  .side-nav a i {
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  .close-btn:hover {
-    transform: rotate(90deg);
-  }
-    </style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .helpline-strip { padding: 36px 28px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .hero { padding: 80px 24px 70px; }
+      .controls-bar { padding: 16px 20px; }
+      main { padding: 50px 20px 80px; }
+      .partner-cta { padding: 60px 24px; }
+      .helpline-strip { padding: 30px 20px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 m-0 p-0">
-<!-- Header with Navigation -->
-<header class="header">
-  <div class="header-left">
-    <div class="hamburger" onclick="openNav()">
-      <div></div>
-      <div></div>
-      <div></div>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
     </div>
-    <div class="logo-text">
-      <h1>Journey4Change</h1>
-      <span>Healing Together</span>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
-</header>
 
-<!-- Side Navigation Menu -->
-<div id="sideNav" class="side-nav">
-  <span class="close-btn" onclick="closeNav()">×</span>
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
-  <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
-  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
-  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
-  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
-  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
-  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
-  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
-</div>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+  </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <!-- Categories -->
-        <div class="mb-10">
-            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Resource Categories</h2>
-            <div class="flex flex-wrap gap-3">
-                <a href="#" class="category-chip active px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-medium">All Resources</a>
-                <a href="depression.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Depression</a>
-                <a href="gbv-support.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">GBV Support</a>
-                <a href="ptsd.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">PTSD</a>
-                <a href="lgbtq.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">LGBTQ+</a>
-                <a href="substance-abuse.html" class="category-chip px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200">Substance Abuse</a>
-            </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-text">PARTNERS</div>
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-handshake"></i> Partners & Resources</span>
+      <h1>The Network Behind<br><em>the Mission</em></h1>
+      <p>Journey4Change works alongside trusted organisations across South Africa and the world — connecting people to the support, resources, and crisis lines they need.</p>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <div class="controls-bar">
+    <span class="controls-label">Filter by:</span>
+    <div class="chips" role="group" aria-label="Resource categories">
+      <button class="chip active" data-cat="all" onclick="filterCards('all', this)">All</button>
+      <button class="chip" data-cat="general" onclick="filterCards('general', this)">General</button>
+      <button class="chip" data-cat="gbv" onclick="filterCards('gbv', this)">GBV Support</button>
+      <button class="chip" data-cat="ptsd" onclick="filterCards('ptsd', this)">PTSD</button>
+      <button class="chip" data-cat="lgbtq" onclick="filterCards('lgbtq', this)">LGBTQ+</button>
+      <button class="chip" data-cat="crisis" onclick="filterCards('crisis', this)">Crisis</button>
+      <button class="chip" data-cat="substance" onclick="filterCards('substance', this)">Substance</button>
+      <button class="chip" data-cat="veterans" onclick="filterCards('veterans', this)">Veterans</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="count-bar">
+      <div class="count-text">Showing <strong id="cardCount">9</strong> resources</div>
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search resources…" oninput="searchCards(this.value)">
+      </div>
+    </div>
+
+    <div class="resource-grid" id="resourceGrid">
+
+      <!-- SADAG -->
+      <div class="resource-card" data-cat="general" data-region="South Africa"
+           data-title="South African Depression and Anxiety Group"
+           data-desc="Africa's largest mental health support network">
+        <div class="card-img">
+          <img src="sadag.jpg" alt="SADAG — South African Depression and Anxiety Group">
+          <div class="card-cat-bar" style="background:var(--cat-general)"></div>
         </div>
-
-        <!-- Resource Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Resource Card Template -->
-            <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                <div class="h-48 bg-blue-50 flex items-center justify-center">
-                    <img src="sadag.jpg" alt="Updated image for South African Depression and Anxiety Group" class="object-cover w-full h-full" />
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center mb-3">
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
-                        <span class="text-slate-500 text-sm">South Africa</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800 mb-2">South African Depression and Anxiety Group</h3>
-                    <p class="text-slate-600 mb-4">Provides counselling, education, resources, and advocacy across the nation and remains Africa’s largest mental health support network.</p>
-                    <div class="flex items-center">
-                        <a href="https://www.sadag.org/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
-                        <button class="text-xs text-purple-500 hover:text-purple-700">Hotline: 0800 567 567</button>
-                    </div>
-                </div>
-            </div>
-
-
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-blue-50 flex items-center justify-center">
-                        <img src="wfc.webp" alt="Updated image for Women for Change" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
-                            <span class="text-slate-500 text-sm">South Africa</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Women For Change</h3>
-                        <p class="text-slate-600 mb-4">Women for Change (WFC) is one of South Africa’s leading voices in the fight against Gender-Based Violence and Femicide. Founded in 2016, we use the power of social media to raise awareness, support survivors, and drive real change.</p>
-                        <div class="flex items-center">
-                            <a href="https://womenforchange.co.za/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-purple-500 hover:text-purple-700">Contact: info@womenforchange.co.za</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-blue-50 flex items-center justify-center">
-                        <img src="ladgac.webp" alt="Updated image for ladgac" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
-                            <span class="text-slate-500 text-sm">South Africa</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Limpop Anti-Drug Gangsterism and Crime</h3>
-                        <p class="text-slate-600 mb-4">Fighting against Drugs, gangsterism and crime.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.ladgacrehab.org.za/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-purple-500 hover:text-purple-700">Contact: info@ladgacrehab <br> or +27 72 291 4227</button>
-                        </div>
-                    </div>
-                </div>                
-
-                <!-- Resource Card 1 -->                
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-blue-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4e336854-89c9-48d9-a5b5-a7813c396c04.png" alt="Calming blue background with a stylized brain and hands coming together in support" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-3">General</span>
-                            <span class="text-slate-500 text-sm">Global</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Mental Health First Aid</h3>
-                        <p class="text-slate-600 mb-4">Courses to help individuals identify, understand and respond to signs of mental health concerns.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.mentalhealthfirstaid.org" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <span class="text-xs text-slate-500">Available in 25+ countries</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resource Card 2 - GBV -->
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-purple-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/83209bc7-1d38-4f1a-8706-4b6ab2984995.png" alt="Purple background with abstract figures embracing in support theme against silhouettes showing solidarity" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mr-3">GBV</span>
-                            <span class="text-slate-500 text-sm">Global</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">RAINN (Rape Abuse Incest National Network)</h3>
-                        <p class="text-slate-600 mb-4">National sexual assault hotline providing confidential 24/7 support for survivors.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.rainn.org" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-purple-500 hover:text-purple-700">Hotline: 800-656-HOPE</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resource Card 3 - PTSD -->
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-green-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/257951f3-297e-48b0-adc0-5f29b30c2f2d.png" alt="Green gradient background with a silhouette of a person meditating under a tree" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-3">PTSD</span>
-                            <span class="text-slate-500 text-sm">USA, Canada</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">CPTSD Foundation</h3>
-                        <p class="text-slate-600 mb-4">Resources and support for those dealing with complex post-traumatic stress disorder.</p>
-                        <div class="flex items-center">
-                            <a href="https://cptsdfoundation.org" target="_blank" class="text-green-600 hover:text-green-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <span class="text-xs text-slate-500">Weekly support groups</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resource Card 4 - Crisis -->
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-red-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1587813f-243e-40c0-8465-df3b88873479.png" alt="Red to orange gradient background with simple phone icon and hands reaching illustration" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-3">Crisis</span>
-                            <span class="text-slate-500 text-sm">Global</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Crisis Text Line</h3>
-                        <p class="text-slate-600 mb-4">Free, 24/7 text-based mental health support in English and Spanish.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.crisistextline.org" target="_blank" class="text-red-600 hover:text-red-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-red-500 hover:text-red-700">Text HOME to 741741</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resource Card 5 - LGBTQ+ -->
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-indigo-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd88380a-2a90-461a-8893-57cea4855422.png" alt="Raincolored background with diverse faces forming a heart shape" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mr-3">LGBTQ+</span>
-                            <span class="text-slate-500 text-sm">Global</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">The Trevor Project</h3>
-                        <p class="text-slate-600 mb-4">Crisis intervention and suicide prevention for LGBTQ youth under 25.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.thetrevorproject.org" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-indigo-500 hover:text-indigo-700">Text START to 678-678</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resource Card 6 - Veterans -->
-                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
-                    <div class="h-48 bg-amber-50 flex items-center justify-center">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1ce7b28a-c909-4483-97fc-a17605c12c31.png" alt="Patriotic color scheme with faint flag pattern in background and silhouette of soldier with service dog" class="object-cover w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 mr-3">Veterans</span>
-                            <span class="text-slate-500 text-sm">USA</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">VA Mental Health Services</h3>
-                        <p class="text-slate-600 mb-4">Comprehensive mental health services for veterans, including PTSD treatment programs.</p>
-                        <div class="flex items-center">
-                            <a href="https://www.mentalhealth.va.gov" target="_blank" class="text-amber-600 hover:text-amber-800 font-medium text-sm mr-4">Visit Site →</a>
-                            <button class="text-xs text-amber-500 hover:text-amber-700">Veterans Crisis Line: 988</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <!-- Additional Help Section -->
-        <div class="mt-16 bg-white rounded-lg shadow-sm p-6 md:p-8">
-            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Need More Help?</h2>
-            <p class="text-slate-600 mb-6">If you're having trouble finding what you need or need immediate assistance, these additional resources may help:</p>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="border-l-4 border-blue-500 pl-4 py-1">
-                    <h3 class="font-medium text-slate-800 mb-1">International Help Lines</h3>
-                    <p class="text-sm text-slate-600">
-                        <span class="font-medium">UK:</span> 116 123 (Samaritans)<br>
-                        <span class="font-medium">Australia:</span> 13 11 14 (Lifeline)<br>
-                        <span class="font-medium">Canada:</span> 1-833-456-4566
-                    </p>
-                </div>
-                <div class="border-l-4 border-green-500 pl-4 py-1">
-                    <h3 class="font-medium text-slate-800 mb-1">Global Directory</h3>
-                    <p class="text-sm text-slate-600">Additional resources and support can be found through various global directories.</p>
-                </div>
-            </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-general-bg);color:var(--cat-general)">General</span>
+            <span class="region-badge"><i class="fas fa-map-marker-alt" style="color:var(--primary);font-size:10px;margin-right:3px"></i>South Africa</span>
+          </div>
+          <div class="card-title">South African Depression and Anxiety Group</div>
+          <div class="card-desc">Africa's largest mental health support network — providing counselling, education, resources, and advocacy across all 9 provinces.</div>
+          <div class="card-footer">
+            <a href="https://www.sadag.org/" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-general)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-phone"></i> 0800 567 567</span>
+          </div>
         </div>
-    </main>
+      </div>
 
-    <!-- JavaScript to handle nav open/close and lock body scroll -->
-    <script>
-  // Navigation functions
-  function openNav() {
-    document.getElementById("sideNav").style.width = "280px";
-    document.body.style.overflow = "hidden"; // prevent scroll
-  }
+      <!-- Women for Change -->
+      <div class="resource-card" data-cat="gbv" data-region="South Africa"
+           data-title="Women For Change"
+           data-desc="GBV and femicide awareness in South Africa">
+        <div class="card-img">
+          <img src="wfc.webp" alt="Women For Change">
+          <div class="card-cat-bar" style="background:var(--cat-gbv)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-gbv-bg);color:var(--cat-gbv)">GBV Support</span>
+            <span class="region-badge"><i class="fas fa-map-marker-alt" style="color:var(--primary);font-size:10px;margin-right:3px"></i>South Africa</span>
+          </div>
+          <div class="card-title">Women For Change</div>
+          <div class="card-desc">One of South Africa's leading voices in the fight against Gender-Based Violence and Femicide — using social media to raise awareness, support survivors, and drive real change since 2016.</div>
+          <div class="card-footer">
+            <a href="https://womenforchange.co.za/" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-gbv)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-envelope"></i> info@womenforchange.co.za</span>
+          </div>
+        </div>
+      </div>
 
-  function closeNav() {
-    document.getElementById("sideNav").style.width = "0";
-    document.body.style.overflow = ""; // restore scroll
-  }
-    </script>
+      <!-- LADGAC -->
+      <div class="resource-card" data-cat="substance" data-region="South Africa"
+           data-title="Limpopo Anti-Drug Gangsterism and Crime"
+           data-desc="Fighting drugs, gangsterism and crime in Limpopo">
+        <div class="card-img">
+          <img src="ladgac.webp" alt="LADGAC">
+          <div class="card-cat-bar" style="background:var(--cat-substance)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-substance-bg);color:var(--cat-substance)">Substance</span>
+            <span class="region-badge"><i class="fas fa-map-marker-alt" style="color:var(--primary);font-size:10px;margin-right:3px"></i>Limpopo, SA</span>
+          </div>
+          <div class="card-title">LADGAC Rehab</div>
+          <div class="card-desc">Fighting drugs, gangsterism and crime in Limpopo Province through rehabilitation, community education, and youth intervention programmes.</div>
+          <div class="card-footer">
+            <a href="https://www.ladgacrehab.org.za/" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-substance)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-phone"></i> +27 72 291 4227</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mental Health First Aid -->
+      <div class="resource-card" data-cat="general" data-region="Global"
+           data-title="Mental Health First Aid"
+           data-desc="Courses to identify and respond to mental health concerns">
+        <div class="card-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">
+          <div class="card-img-placeholder"><i class="fas fa-first-aid" style="color:var(--primary-dark)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-general)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-general-bg);color:var(--cat-general)">General</span>
+            <span class="region-badge"><i class="fas fa-globe" style="color:var(--primary);font-size:10px;margin-right:3px"></i>Global (25+ countries)</span>
+          </div>
+          <div class="card-title">Mental Health First Aid</div>
+          <div class="card-desc">Training courses that help individuals identify, understand, and respond to signs of mental health and substance use concerns in their community.</div>
+          <div class="card-footer">
+            <a href="https://www.mentalhealthfirstaid.org" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-general)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAINN -->
+      <div class="resource-card" data-cat="gbv" data-region="Global"
+           data-title="RAINN"
+           data-desc="Sexual assault hotline and crisis support">
+        <div class="card-img" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
+          <div class="card-img-placeholder"><i class="fas fa-hands-helping" style="color:var(--cat-gbv)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-gbv)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-gbv-bg);color:var(--cat-gbv)">GBV Support</span>
+            <span class="region-badge"><i class="fas fa-globe" style="color:var(--primary);font-size:10px;margin-right:3px"></i>Global</span>
+          </div>
+          <div class="card-title">RAINN</div>
+          <div class="card-desc">The Rape, Abuse & Incest National Network — operating the national sexual assault hotline with confidential 24/7 support for survivors and their loved ones.</div>
+          <div class="card-footer">
+            <a href="https://www.rainn.org" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-gbv)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-phone"></i> 800-656-HOPE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CPTSD Foundation -->
+      <div class="resource-card" data-cat="ptsd" data-region="USA, Canada"
+           data-title="CPTSD Foundation"
+           data-desc="Resources and support for complex PTSD">
+        <div class="card-img" style="background:linear-gradient(135deg,#fff7ed,#fed7aa)">
+          <div class="card-img-placeholder"><i class="fas fa-brain" style="color:var(--cat-ptsd)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-ptsd)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-ptsd-bg);color:var(--cat-ptsd)">PTSD</span>
+            <span class="region-badge"><i class="fas fa-globe" style="color:var(--primary);font-size:10px;margin-right:3px"></i>USA & Canada</span>
+          </div>
+          <div class="card-title">CPTSD Foundation</div>
+          <div class="card-desc">Dedicated resources, weekly support groups, and education for those dealing with Complex Post-Traumatic Stress Disorder and childhood trauma.</div>
+          <div class="card-footer">
+            <a href="https://cptsdfoundation.org" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-ptsd)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-users"></i> Weekly support groups</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Crisis Text Line -->
+      <div class="resource-card" data-cat="crisis" data-region="Global"
+           data-title="Crisis Text Line"
+           data-desc="Free 24/7 text-based mental health support">
+        <div class="card-img" style="background:linear-gradient(135deg,#fef2f2,#fecaca)">
+          <div class="card-img-placeholder"><i class="fas fa-comment-alt" style="color:var(--cat-crisis)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-crisis)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-crisis-bg);color:var(--cat-crisis)">Crisis</span>
+            <span class="region-badge"><i class="fas fa-globe" style="color:var(--primary);font-size:10px;margin-right:3px"></i>Global</span>
+          </div>
+          <div class="card-title">Crisis Text Line</div>
+          <div class="card-desc">Free, 24/7 text-based mental health support in English and Spanish. Trained crisis counsellors respond to any kind of emotional crisis within minutes.</div>
+          <div class="card-footer">
+            <a href="https://www.crisistextline.org" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-crisis)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-sms"></i> Text HOME to 741741</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Trevor Project -->
+      <div class="resource-card" data-cat="lgbtq" data-region="Global"
+           data-title="The Trevor Project"
+           data-desc="Crisis intervention for LGBTQ youth">
+        <div class="card-img" style="background:linear-gradient(135deg,#f5f3ff,#ddd6fe)">
+          <div class="card-img-placeholder"><i class="fas fa-rainbow" style="color:var(--cat-lgbtq)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-lgbtq)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-lgbtq-bg);color:var(--cat-lgbtq)">LGBTQ+</span>
+            <span class="region-badge"><i class="fas fa-globe" style="color:var(--primary);font-size:10px;margin-right:3px"></i>Global</span>
+          </div>
+          <div class="card-title">The Trevor Project</div>
+          <div class="card-desc">Crisis intervention and suicide prevention services for LGBTQ young people under 25 — providing a safe, affirming space to get help around the clock.</div>
+          <div class="card-footer">
+            <a href="https://www.thetrevorproject.org" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-lgbtq)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-sms"></i> Text START to 678-678</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VA Mental Health -->
+      <div class="resource-card" data-cat="veterans" data-region="USA"
+           data-title="VA Mental Health Services"
+           data-desc="Mental health support for veterans including PTSD treatment">
+        <div class="card-img" style="background:linear-gradient(135deg,#fffbeb,#fef3c7)">
+          <div class="card-img-placeholder"><i class="fas fa-shield-alt" style="color:var(--cat-veterans)"></i></div>
+          <div class="card-cat-bar" style="background:var(--cat-veterans)"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="cat-badge" style="background:var(--cat-veterans-bg);color:var(--cat-veterans)">Veterans</span>
+            <span class="region-badge"><i class="fas fa-map-marker-alt" style="color:var(--primary);font-size:10px;margin-right:3px"></i>USA</span>
+          </div>
+          <div class="card-title">VA Mental Health Services</div>
+          <div class="card-desc">Comprehensive mental health services for US veterans, including specialised PTSD treatment programmes, therapy, and the Veterans Crisis Line available 24/7.</div>
+          <div class="card-footer">
+            <a href="https://www.mentalhealth.va.gov" target="_blank" rel="noopener" class="card-link" style="color:var(--cat-veterans)">
+              Visit Site <i class="fas fa-arrow-right"></i>
+            </a>
+            <span class="card-contact"><i class="fas fa-phone"></i> Veterans Crisis: 988</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Helplines Strip -->
+  <div class="helpline-strip">
+    <div class="helpline-item">
+      <div class="helpline-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <div class="helpline-region">South Africa</div>
+        <div class="helpline-name">SADAG 24hr</div>
+        <div class="helpline-number">0800 567 567</div>
+      </div>
+    </div>
+    <div class="helpline-item">
+      <div class="helpline-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <div class="helpline-region">United Kingdom</div>
+        <div class="helpline-name">Samaritans</div>
+        <div class="helpline-number">116 123</div>
+      </div>
+    </div>
+    <div class="helpline-item">
+      <div class="helpline-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <div class="helpline-region">Australia</div>
+        <div class="helpline-name">Lifeline</div>
+        <div class="helpline-number">13 11 14</div>
+      </div>
+    </div>
+    <div class="helpline-item">
+      <div class="helpline-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <div class="helpline-region">Canada</div>
+        <div class="helpline-name">Crisis Line</div>
+        <div class="helpline-number">1-833-456-4566</div>
+      </div>
+    </div>
+    <div class="helpline-item">
+      <div class="helpline-icon"><i class="fas fa-sms"></i></div>
+      <div>
+        <div class="helpline-region">Global</div>
+        <div class="helpline-name">Crisis Text Line</div>
+        <div class="helpline-number">Text HOME to 741741</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partner CTA -->
+  <section class="partner-cta">
+    <div class="partner-cta-inner">
+      <span class="section-label">Join the Network</span>
+      <h2>Become a Partner</h2>
+      <p>Is your organisation working in mental health, GBV, substance abuse, or youth support? Partner with Journey4Change and reach communities across all 9 provinces of South Africa.</p>
+      <div class="btn-group">
+        <a href="mailto:journey4change.info@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Partner With Us</a>
+        <a href="mental-health-awareness.html" class="btn btn-ghost"><i class="fas fa-brain"></i> Mental Health Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2025 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html" class="active"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+
+    function updateCount() {
+      const visible = [...document.querySelectorAll('.resource-card')].filter(c => c.style.display !== 'none').length;
+      document.getElementById('cardCount').textContent = visible;
+    }
+
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('searchInput').value = '';
+
+      document.querySelectorAll('.resource-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+      updateCount();
+    }
+
+    function searchCards(term) {
+      const q = term.toLowerCase();
+      document.querySelectorAll('.resource-card').forEach(card => {
+        const text = (card.dataset.title + ' ' + card.dataset.desc + ' ' + card.dataset.cat + ' ' + card.dataset.region).toLowerCase();
+        card.style.display = text.includes(q) ? '' : 'none';
+      });
+      updateCount();
+    }
+
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.resource-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 65}ms`;
+      obs.observe(el);
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+    });
+  </script>
 </body>
 </html>
-
-
-
