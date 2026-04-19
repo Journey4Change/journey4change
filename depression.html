@@ -1,288 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Depression Support Resources</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-        }
-        
-        .emergency-banner {
-            background: linear-gradient(135deg, #fde68a, #f59e0b);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
-        
-        .country-flag {
-            height: 20px;
-            width: 30px;
-            object-fit: cover;
-            border: 1px solid #e2e8f0;
-            margin-right: 8px;
-        }
-        
-        .resource-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid #3b82f6;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .south-africa-card {
-            border-left: 4px solid #008751;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Global Depression Support Resources">
+  <title>Global Depression Support - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --dark-mid: #1a2f1f;
+      --light: #f8faf8;
+      --accent: #f97316;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── EMERGENCY BANNER ─── */
+    .emergency-banner {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: white;
+      padding: 11px 40px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .emergency-banner i { font-size: 14px; }
+    .emergency-banner strong { font-weight: 700; }
+
+    /* ─── UTILITY BAR ─── */
+    .utility-bar {
+      background-color: var(--dark);
+      color: rgba(255,255,255,0.75);
+      padding: 9px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.7);
+      margin-left: 18px;
+      font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ─── HEADER ─── */
+    header {
+      background: rgba(15, 31, 21, 0.96);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: background 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+      transform-origin: left;
+    }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+      color: white;
+      padding: 90px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.4);
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .page-hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .page-hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 100px 24px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 64px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--secondary);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+    }
+
+    /* ─── SA RESOURCES ─── */
+    .cards-bg { background-color: #f0f7f1; }
+
+    .sa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(34,197,94,0.08);
+    }
+    .resource-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-top-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    }
+    .card-content { padding: 32px 28px; }
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(34,197,94,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .resource-card:hover .card-icon { background: rgba(34,197,94,0.2); }
+    .card-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+    .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 18px; }
+
+    .contact-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+    .badge-green { background: rgba(34,197,94,0.12); color: var(--primary-dark); }
+    .badge-dark { background: rgba(15,31,21,0.08); color: var(--secondary); }
+    .badge-link {
+      background: var(--primary);
+      color: var(--dark);
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .badge-link:hover { background: var(--primary-light); }
+
+    /* ─── STATS ─── */
+    .stats {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-item {
+      padding: 36px 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: white;
+      transition: transform 0.3s, background 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .stat-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.09); }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--primary-light);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
+
+    /* ─── GLOBAL RESOURCES ─── */
+    .global-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .global-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(34,197,94,0.08);
+    }
+    .global-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .global-card-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    }
+    .global-card-content { padding: 28px 24px; }
+    .country-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      background: rgba(34,197,94,0.1);
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+    .global-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .global-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+
+    /* ─── SELF HELP ─── */
+    .self-help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .self-help-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .self-help-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .self-help-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .self-help-card h3 i { color: var(--primary); font-size: 1.1rem; }
+    .self-help-card ul { list-style: none; }
+    .self-help-card li { margin-bottom: 10px; }
+    .self-help-card a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.25s, padding-left 0.25s;
+    }
+    .self-help-card a::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+    .self-help-card a:hover { color: var(--primary-dark); padding-left: 4px; }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: white;
+      margin-bottom: 18px;
+    }
+    .cta-section p {
+      max-width: 680px;
+      margin: 0 auto 36px;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+    }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--dark);
+      box-shadow: 0 6px 24px rgba(34,197,94,0.35);
+    }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(34,197,94,0.45); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      backdrop-filter: blur(6px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.22); transform: translateY(-3px); border-color: white; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080f0a;
+      color: white;
+      padding: 80px 24px 36px;
+    }
+    .footer-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.1; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); border-color: var(--primary); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.55); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px;
+      margin: 30px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ─── SIDE NAV ─── */
+    .side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background: var(--dark);
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.25s, transform 0.25s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px;
+      text-decoration: none;
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.25s;
+      white-space: nowrap;
+      border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .emergency-banner { padding: 10px 16px; font-size: 13px; }
+      .section { padding: 70px 20px; }
+      .btn { padding: 12px 24px; font-size: 14px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .stats-container { grid-template-columns: 1fr 1fr; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <div class="min-h-screen flex flex-col">
-        <!-- Emergency Banner -->
-        <div class="emergency-banner py-3 px-4 text-center font-semibold text-slate-800">
-            <p>In crisis? <span class="font-bold">South Africa</span>: Call 0800 456 789 or SMS 31393</p>
-        </div>
-        
-        <!-- Header -->
-        <header class="bg-white shadow-sm py-6">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                    <div>
-                        <h1 class="text-3xl font-bold text-slate-800">Global Depression Support</h1>
-                        <p class="text-slate-600 mt-1">Verified resources for depression help worldwide</p>
-                    </div>
-                    <div class="mt-4 md:mt-0">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fd9e45cb-e931-4c92-ae01-cd4d06b9c65a.png" alt="Purple ribbon symbol for violence prevention with globe illustration showing international support network" class="h-16 w-auto" />
-                    </div>
-                </div>
-            </div>
-        </header>
-        
-        <!-- Main Content -->
-        <main class="flex-grow container mx-auto px-4 py-8">
-            <!-- SA Focus Section -->
-            <div class="mb-12 bg-blue-50 rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <h2 class="text-2xl font-semibold text-slate-800">South African Resources</h2>
-                </div>
-                <p class="text-slate-700 mb-6">South Africa has several dedicated organizations providing depression support in all 11 official languages.</p>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- SA Resource 1 -->
-                    <div class="south-africa-card bg-white rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">SADAG (SA Depression & Anxiety Group)</h3>
-                        <p class="text-slate-600 mb-4">Africa's largest mental health support and advocacy group with 24/7 helplines.</p>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="https://www.sadag.org" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Website →</a>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Helpline: 0800 456 789 or 0800 567 567</span>
-                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">WhatsApp: 087 163 2025</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">SMS: 31393</span>
-                        </div>
-                    </div>
-                    
-                    <!-- SA Resource 2 -->
-                    <div class="south-africa-card bg-white rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Lifeline South Africa</h3>
-                        <p class="text-slate-600 mb-4">National counselling service with crisis support and face-to-face counselling centers.</p>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="https://lifelinesa.co.za" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Website →</a>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Helpline: 0861 322 322</span>
-                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">WhatsApp: 065 989 9238</span>
-                        </div>
-                    </div>
-                    
-                    <!-- SA Resource 3 -->
-                    <div class="south-africa-card bg-white rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">The South African Federation for Mental Health</h3>
-                        <p class="text-slate-600 mb-4">Advocacy group promoting mental healthcare access across all provinces.</p>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="https://www.safmh.org.za" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Website →</a>
-                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">011 781 1852</span>
-                        </div>
-                    </div>
-                    
-                    <!-- SA Resource 4 -->
-                    <div class="south-africa-card bg-white rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Akeso Clinics</h3>
-                        <p class="text-slate-600 mb-4">Network of private mental health clinics offering specialized depression treatment.</p>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="https://www.akeso.co.za" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Website →</a>
-                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">24hr: 0861 435 787</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Global Resources -->
-            <div>
-                <h2 class="text-2xl font-semibold text-slate-800 mb-6">International Depression Support</h2>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- USA -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3">
-                            <span class="font-medium text-slate-700">United States</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">988 Suicide & Crisis Lifeline</h3>
-                        <p class="text-slate-600 text-sm mb-3">Free, 24/7 support for anyone in suicidal crisis or emotional distress.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Call or Text: 988</span>
-                            <a href="https://988lifeline.org" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                        </div>
-                    </div>
-                    
-                    <!-- UK -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3">
-                            <span class="font-medium text-slate-700">United Kingdom</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Mind Infoline</h3>
-                        <p class="text-slate-600 text-sm mb-3">Confidential mental health information and signposting service.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">0300 123 3393</span>
-                            <a href="https://www.mind.org.uk" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Text: 86463</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Australia -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3">
-                            <span class="font-medium text-slate-700">Australia</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Beyond Blue</h3>
-                        <p class="text-slate-600 text-sm mb-3">National depression initiative with chat, email and phone support.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">1300 22 4636</span>
-                            <a href="https://www.beyondblue.org.au" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Web chat</span>
-                        </div>
-                    </div>
-                    
-                    <!-- India -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3">
-                            <span class="font-medium text-slate-700">India</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Vandrevala Foundation</h3>
-                        <p class="text-slate-600 text-sm mb-3">Mental health helpline offering counselling in multiple Indian languages.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">1860 2662 345</span>
-                            <a href="https://www.vandrevalafoundation.com" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Canada -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3">
-                            <span class="font-medium text-slate-700">Canada</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Canada Suicide Prevention Service</h3>
-                        <p class="text-slate-600 text-sm mb-3">Bilingual support and crisis intervention across all provinces.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">1-833-456-4566</span>
-                            <a href="https://talk-suicide.ca" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Text: 45645</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Nigeria -->
-                    <div class="resource-card bg-white rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center mb-3"> 
-                            <span class="font-medium text-slate-700">Nigeria</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-slate-800 mb-2">Mentally Aware Nigeria Initiative</h3>
-                        <p class="text-slate-600 text-sm mb-3">Mental health advocacy and suicide prevention organization.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">0800 111 222 0019</span>
-                            <a href="https://mentallyaware.org" target="_blank" class="text-xs text-blue-600 hover:underline">Website</a>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">WhatsApp</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Self-Help Section -->
-            <div class="mt-16 bg-white rounded-lg shadow-sm p-6">
-                <h2 class="text-2xl font-semibold text-slate-800 mb-6">Global Self-Help Resources</h2>
-                
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="border rounded-lg p-5">
-                        <h3 class="font-semibold text-slate-800 mb-3">Digital Tools</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li>• <a href="https://play.google.com/store/apps/details?id=com.getsomeheadspace.android" target="_blank" class="text-blue-600 hover:underline">Headspace</a> - Meditation app</li>
-                            <li>• <a href="https://www.sanvello.com" target="_blank" class="text-blue-600 hover:underline">Sanvello</a> - CBT-based therapy</li>
-                            <li>• <a href="https://moodgym.com.au" target="_blank" class="text-blue-600 hover:underline">MoodGYM</a> - Online therapy program</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="border rounded-lg p-5">
-                        <h3 class="font-semibold text-slate-800 mb-3">Online Support Communities</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li>• <a href="https://www.7cups.com" target="_blank" class="text-blue-600 hover:underline">7 Cups</a> - Anonymous peer support</li>
-                            <li>• <a href="https://www.supportgroupscentral.com" target="_blank" class="text-blue-600 hover:underline">SupportGroups Central</a></li>
-                            <li>• <a href="https://www.reddit.com/r/depression" target="_blank" class="text-blue-600 hover:underline">Reddit Depression Community</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="border rounded-lg p-5">
-                        <h3 class="font-semibold text-slate-800 mb-3">Educational Resources</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li>• <a href="https://www.blackdoginstitute.org.au" target="_blank" class="text-blue-600 hover:underline">Black Dog Institute</a></li>
-                            <li>• <a href="https://www.nimh.nih.gov" target="_blank" class="text-blue-600 hover:underline">NIMH (USA)</a></li>
-                            <li>• <a href="https://www.depressionalliance.org" target="_blank" class="text-blue-600 hover:underline">Depression Alliance</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="bg-slate-800 text-white py-8">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between">
-                    <div class="mb-6 md:mb-0">
-                        <h3 class="text-xl font-semibold mb-3">Mental Health Resources</h3>
-                        <p class="text-slate-300 text-sm">Connecting people with verified depression support services worldwide.</p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-medium text-slate-200 mb-3">Quick Links</h4>
-                            <ul class="space-y-2 text-sm text-slate-400">
-                                <li><a href="partnership.html" class="hover:text-white">Home</a></li>
-                                <li><a href="mental-health-awareness.html" class="hover:text-white">Mental Health Awareness</a></li>
-                                <li><a href="global-mental-health-watch.html" class="hover:text-white">Global Mental Health Watch</a></li>
-                                <li><a href="donations.html" class="hover:text-white">Donations</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-medium text-slate-200 mb-3">Contact</h4>
-                            <ul class="space-y-2 text-sm text-slate-400">
-                                <li>journey4change.info@gmail.com</li>
-                                <li>+27 82 813 4960</li>
-                                <li>South Africa</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-t border-slate-700 mt-8 pt-6 text-center text-sm text-slate-400">
-                    <p>© 2023 Global Mental Health Resources. All information verified as of September 2023.</p>
-                    <p class="mt-2">This is not a substitute for professional medical help. If in crisis, please contact your local emergency services.</p>
-                </div>
-            </div>
-        </footer>
+
+  <!-- Emergency Banner -->
+  <div class="emergency-banner">
+    <i class="fas fa-phone-alt"></i>
+    <span>In crisis? <strong>South Africa:</strong> Call 0800 456 789 &nbsp;|&nbsp; SMS 31393 &nbsp;|&nbsp; WhatsApp 087 163 2025</span>
+  </div>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i>
+      +27 82 813 4960
     </div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" aria-label="Open menu" role="button" tabindex="0">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-globe"></i> &nbsp; Worldwide Resources</span>
+      <h2>Global Depression<br>Support Directory</h2>
+      <p>Verified mental health resources for South Africa and around the world — because no one should face this alone.</p>
+    </div>
+  </section>
+
+  <!-- South Africa Resources Section -->
+  <section class="section cards-bg">
+    <div class="section-inner">
+      <div class="section-title reveal">
+        <div class="section-label">Closest to Home</div>
+        <h2>South African Resources</h2>
+      </div>
+      <div class="sa-grid">
+
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="card-top-bar"></div>
+          <div class="card-content">
+            <div class="card-icon"><i class="fas fa-headset"></i></div>
+            <h3>SADAG</h3>
+            <p>Africa's largest mental health support and advocacy group with 24/7 helplines in multiple languages.</p>
+            <div class="contact-badges">
+              <a href="https://www.sadag.org" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> sadag.org</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 0800 456 789</span>
+              <span class="badge badge-green"><i class="fab fa-whatsapp"></i> 087 163 2025</span>
+              <span class="badge badge-dark"><i class="fas fa-comment"></i> SMS 31393</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="card-top-bar"></div>
+          <div class="card-content">
+            <div class="card-icon"><i class="fas fa-life-ring"></i></div>
+            <h3>Lifeline South Africa</h3>
+            <p>National counselling service with crisis support and face-to-face counselling centres across the country.</p>
+            <div class="contact-badges">
+              <a href="https://lifelinesa.co.za" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> lifelinesa.co.za</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 0861 322 322</span>
+              <span class="badge badge-green"><i class="fab fa-whatsapp"></i> 065 989 9238</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-3">
+          <div class="card-top-bar"></div>
+          <div class="card-content">
+            <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+            <h3>SA Federation for Mental Health</h3>
+            <p>Advocacy group promoting mental healthcare access and support across all nine provinces of South Africa.</p>
+            <div class="contact-badges">
+              <a href="https://www.safmh.org.za" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> safmh.org.za</a>
+              <span class="badge badge-dark"><i class="fas fa-phone"></i> 011 781 1852</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-4">
+          <div class="card-top-bar"></div>
+          <div class="card-content">
+            <div class="card-icon"><i class="fas fa-hospital"></i></div>
+            <h3>Akeso Clinics</h3>
+            <p>Network of private mental health clinics offering specialised depression treatment and in-patient care.</p>
+            <div class="contact-badges">
+              <a href="https://www.akeso.co.za" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> akeso.co.za</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 0861 435 787</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats">
+    <div class="section-inner">
+      <div class="section-title reveal" style="margin-bottom: 48px;">
+        <div class="section-label" style="color: rgba(255,255,255,0.5);">The Reality</div>
+        <h2 style="color: white;">Mental Health By The Numbers</h2>
+      </div>
+      <div class="stats-container">
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number">1 in 6</div>
+          <div class="stat-text">South Africans live with depression</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number">280M</div>
+          <div class="stat-text">People affected globally</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-number">75%</div>
+          <div class="stat-text">Receive no treatment in SA</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-4">
+          <div class="stat-number">24/7</div>
+          <div class="stat-text">Support always available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Resources Section -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-title reveal">
+        <div class="section-label">Around the World</div>
+        <h2>International Support</h2>
+      </div>
+      <div class="global-grid">
+
+        <div class="global-card reveal reveal-delay-1">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> United States</div>
+            <h3>988 Suicide & Crisis Lifeline</h3>
+            <p>Free, 24/7 support for anyone in suicidal crisis or emotional distress.</p>
+            <div class="contact-badges">
+              <a href="https://988lifeline.org" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> 988lifeline.org</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> Call or Text 988</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-card reveal reveal-delay-2">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> United Kingdom</div>
+            <h3>Mind Infoline</h3>
+            <p>Confidential mental health information and signposting service across England and Wales.</p>
+            <div class="contact-badges">
+              <a href="https://www.mind.org.uk" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> mind.org.uk</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 0300 123 3393</span>
+              <span class="badge badge-dark"><i class="fas fa-comment"></i> Text 86463</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-card reveal reveal-delay-3">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> Australia</div>
+            <h3>Beyond Blue</h3>
+            <p>National depression initiative with chat, email, and phone support for Australians.</p>
+            <div class="contact-badges">
+              <a href="https://www.beyondblue.org.au" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> beyondblue.org.au</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 1300 22 4636</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-card reveal reveal-delay-1">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> India</div>
+            <h3>Vandrevala Foundation</h3>
+            <p>Mental health helpline offering counselling in multiple Indian languages, 24 hours a day.</p>
+            <div class="contact-badges">
+              <a href="https://www.vandrevalafoundation.com" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> Website</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 1860 2662 345</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-card reveal reveal-delay-2">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> Canada</div>
+            <h3>Canada Suicide Prevention Service</h3>
+            <p>Bilingual support and crisis intervention available across all Canadian provinces.</p>
+            <div class="contact-badges">
+              <a href="https://talk-suicide.ca" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> talk-suicide.ca</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 1-833-456-4566</span>
+              <span class="badge badge-dark"><i class="fas fa-comment"></i> Text 45645</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-card reveal reveal-delay-3">
+          <div class="global-card-bar"></div>
+          <div class="global-card-content">
+            <div class="country-tag"><i class="fas fa-map-marker-alt"></i> Nigeria</div>
+            <h3>Mentally Aware Nigeria Initiative</h3>
+            <p>Mental health advocacy and suicide prevention organisation serving communities across Nigeria.</p>
+            <div class="contact-badges">
+              <a href="https://mentallyaware.org" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> mentallyaware.org</a>
+              <span class="badge badge-green"><i class="fas fa-phone"></i> 0800 111 222 0019</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Self-Help Section -->
+  <section class="section cards-bg">
+    <div class="section-inner">
+      <div class="section-title reveal">
+        <div class="section-label">Tools & Communities</div>
+        <h2>Self-Help Resources</h2>
+      </div>
+      <div class="self-help-grid">
+
+        <div class="self-help-card reveal reveal-delay-1">
+          <h3><i class="fas fa-mobile-alt"></i> Digital Tools</h3>
+          <ul>
+            <li><a href="https://www.headspace.com" target="_blank" rel="noopener">Headspace — Guided meditation app</a></li>
+            <li><a href="https://www.sanvello.com" target="_blank" rel="noopener">Sanvello — CBT-based therapy</a></li>
+            <li><a href="https://moodgym.com.au" target="_blank" rel="noopener">MoodGYM — Online therapy program</a></li>
+          </ul>
+        </div>
+
+        <div class="self-help-card reveal reveal-delay-2">
+          <h3><i class="fas fa-users"></i> Online Communities</h3>
+          <ul>
+            <li><a href="https://www.7cups.com" target="_blank" rel="noopener">7 Cups — Anonymous peer support</a></li>
+            <li><a href="https://www.supportgroupscentral.com" target="_blank" rel="noopener">SupportGroups Central</a></li>
+            <li><a href="https://www.reddit.com/r/depression" target="_blank" rel="noopener">Reddit Depression Community</a></li>
+          </ul>
+        </div>
+
+        <div class="self-help-card reveal reveal-delay-3">
+          <h3><i class="fas fa-book-open"></i> Educational Resources</h3>
+          <ul>
+            <li><a href="https://www.blackdoginstitute.org.au" target="_blank" rel="noopener">Black Dog Institute</a></li>
+            <li><a href="https://www.nimh.nih.gov" target="_blank" rel="noopener">NIMH — US National Institute</a></li>
+            <li><a href="https://www.depressionalliance.org" target="_blank" rel="noopener">Depression Alliance</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section cta-section">
+    <div class="section-inner">
+      <div class="section-title reveal">
+        <div class="section-label" style="color: rgba(255,255,255,0.4);">You Are Not Alone</div>
+        <h2>Be Part of the Change</h2>
+      </div>
+      <p class="reveal reveal-delay-1">Together, we can create a mentally healthy South Africa where every person feels seen, supported, and empowered to seek help without shame.</p>
+      <div class="cta-btns reveal reveal-delay-2">
+        <a href="journey4change.html" class="btn btn-primary">
+          <i class="fas fa-road"></i> Follow Our Journey
+        </a>
+        <a href="contact.html" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Get Involved
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3,000 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+27 82 813 4960</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>journey4change.info@gmail.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>PO Box 177, Letaba, 0870</span>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Side Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Navigation -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+    document.querySelector('.hamburger').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') openNav();
+    });
+    document.querySelector('.close-btn').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') closeNav();
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.25)' : 'none';
+    });
+  </script>
 </body>
 </html>
