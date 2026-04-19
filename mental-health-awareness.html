@@ -3,671 +3,1133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Mental Health Awareness: Understanding the link between mental health and suicide, breaking the stigma, and finding support.">
-  <title>Mental Health Awareness</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Mental Health Awareness - Understanding depression, anxiety, suicide prevention, and finding support in South Africa.">
+  <title>Mental Health Awareness - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-
     :root {
-      --primary: #04ff10;
-      --secondary: #2E7D32;
-      --dark: #d6cccc;
-      --dark: #eeeee
-      --light: #f9f9f9;
-      --accent: #FF6B6B;
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --crisis: #dc2626;
+      --crisis-light: #fef2f2;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 20px;
     }
-    
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-
-.header {
-  background: linear-gradient(135deg, #04ff10, #2E7D32);
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-header img {
-  height: 45px;
-  width: auto;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s;
-}
-
-header img:hover {
-  transform: rotate(10deg);
-}
-
-.logo-text {
-  margin-top: -20px;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.logo-text h1 {
-  font-size: 28px;
-  margin-bottom: 0;
-}
-
-.logo-text span {
-  font-size: 14px;
-  margin-top: 0;
-  display: block;
-}
-
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.hamburger:hover {
-  transform: scale(1.1);
-}
-
-.hamburger div {
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s;
-}
-
-.hamburger:hover div {
-  background: rgba(255,255,255,0.9);
-}
-
-.login-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  padding: 10px 25px;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 30px;
-  transition: all 0.3s;
-  border: none;
-  backdrop-filter: blur(5px);
-  text-decoration: none;
-}
-
-.login-btn:hover {
-  background: white;
-  color: #04ff10;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-    
-    .side-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      overflow-y: auto;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
       overflow-x: hidden;
-      transition: width 0.5s ease;
-      z-index: 1000;
-      padding-top: 80px;
-      box-sizing: border-box;
-}
-    
-.side-nav a {
-  padding: 15px 30px;
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  position: relative;
-  display: flex;
-  transition: all 0.3s;
-}
+    }
 
-.side-nav a::before {
-  content: '';
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.1);
-  transition: left 0.3s;
-  z-index: 0;
-}
-
-.side-nav a:hover::before {
-  left: 0;
-}
-
-.side-nav a i {
-  margin-right: 10px;
-  min-width: 20px;
-  text-align: center;
-}
-
-.side-nav a span {
-  z-index: 1;
-}
-    
-    .side-nav a::before {
-      content: '';
-      position: absolute;
-      left: -100%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.1);
-      transition: left 0.3s;
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.65);
+      padding: 9px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
     }
-    
-    .side-nav a:hover::before {
-      left: 0;
-    }
-    
-    .side-nav a i {
-      margin-right: 10px;
-      width: 20px;
-      text-align: center;
-    }
-    
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    
-    .close-btn:hover {
-      transform: rotate(90deg);
-    }
-    
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    
-    h1 {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 30px;
-      position: relative;
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.65);
+      margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
       display: inline-block;
     }
-    
-    section {
-      margin-bottom: 40px;
-      border-radius: 12px;
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ── HEADER ── */
+    header {
+      background: rgba(15,31,21,0.96);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+    .login-btn {
+      background: var(--primary); color: var(--dark);
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 14px;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
+    }
+
+    /* ── EMERGENCY ALERT BAND ── */
+    .alert-band {
+      background: var(--crisis);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .alert-band i { font-size: 16px; animation: alertPulse 2s ease-in-out infinite; }
+    .alert-band a {
+      color: white;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s;
+    }
+    .alert-band a:hover { opacity: 0.8; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 110px 60px 100px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 90% 50%, rgba(34,197,94,0.1) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-bg-text {
+      position: absolute; right: -10px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(100px, 18vw, 240px);
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.35);
+      padding: 7px 18px; border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 900; color: white;
+      line-height: 1.05; margin-bottom: 24px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem; max-width: 600px;
+      line-height: 1.8; margin-bottom: 40px;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      animation: fadeInUp 0.7s 0.45s ease-out both;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      padding: 8px 18px; border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+    }
+    .hero-tag i { color: var(--primary); font-size: 12px; }
+
+    /* ── QUICK NAV ── */
+    .quick-nav {
+      background: white;
+      border-bottom: 1px solid #e8f0e8;
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 18px 24px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.25s;
+    }
+    .quick-nav a i { font-size: 13px; }
+    .quick-nav a:hover {
+      color: var(--primary-dark);
+      border-bottom-color: var(--primary);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-head {
+      margin-bottom: 48px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: var(--secondary); font-weight: 900;
+      line-height: 1.15;
+    }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin-top: 16px;
+    }
+
+    /* ── INTRO BLOCK ── */
+    .intro-block {
+      background: white;
+      border-radius: var(--radius);
+      padding: 48px 52px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .intro-block p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .intro-block p:last-child { margin-bottom: 0; }
+    .intro-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .intro-stat {
+      background: var(--light);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid rgba(34,197,94,0.1);
+      transition: transform 0.3s;
+    }
+    .intro-stat:hover { transform: translateY(-3px); }
+    .intro-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--primary-dark); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .intro-stat-text { font-size: 12px; color: var(--text-muted); font-weight: 500; line-height: 1.4; }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .resource-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 20px;
+      background: rgba(34,197,94,0.08);
+      color: var(--primary-dark);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 50px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .resource-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+      border-color: var(--primary);
+    }
+
+    /* ── STRATEGY GRID ── */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .strategy-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
-      background: white;
+      overflow: hidden;
     }
-    
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    }
-    
-    section::before {
+    .strategy-card::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
     }
-    
-    h2 {
-      font-size: 28px;
-      color: var(--secondary);
-      margin: 20px 25px;
-      position: relative;
-      padding-left: 15px;
+    .strategy-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
     }
-    
-    h2::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 5px;
-      height: 25px;
-      background: var(--primary);
-      border-radius: 3px;
+    .strategy-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--primary-dark);
+      margin-bottom: 20px;
+      transition: background 0.3s;
     }
-    
-    p, li {
-      margin: 15px 25px;
-      font-size: 16px;
-      color: #555;
+    .strategy-card:hover .strategy-icon { background: rgba(34,197,94,0.2); }
+    .strategy-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--secondary);
+      margin-bottom: 18px;
     }
-    
-    ul {
-      padding-left: 25px;
+    .strategy-list { list-style: none; }
+    .strategy-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f4f0;
+      font-size: 14px; color: var(--text-muted);
     }
-    
-    li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
-    }
-    
-    li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
+    .strategy-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .strategy-list li i {
       color: var(--primary);
-      font-weight: bold;
+      font-size: 12px; margin-top: 4px;
+      flex-shrink: 0;
     }
-    
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 25px;
-    }
-    
-    a.button {
-      display: inline-flex;
+    .strategy-list strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 2px; }
+
+    /* ── STIGMA SECTION ── */
+    .stigma-section {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 56px 52px;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
-      padding: 12px 25px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      position: relative;
+      overflow: hidden;
+    }
+    .stigma-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 100% 50%, rgba(34,197,94,0.15) 0%, transparent 70%);
+    }
+    .stigma-content { position: relative; z-index: 1; }
+    .stigma-content .section-label { color: rgba(255,255,255,0.5); }
+    .stigma-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: white; font-weight: 900; margin-bottom: 18px;
+    }
+    .stigma-content p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 16px; }
+    .stigma-content p:last-of-type { margin-bottom: 24px; }
+    .stigma-links { display: flex; flex-wrap: wrap; gap: 10px; position: relative; z-index: 1; }
+    .stigma-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      background: rgba(255,255,255,0.1);
       color: white;
-      border-radius: 30px;
-      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      font-size: 13px; font-weight: 600;
       text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(4, 255, 16, 0.3);
+      transition: all 0.25s;
     }
-    
-    a.button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(4, 255, 16, 0.4);
+    .stigma-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+      border-color: var(--primary);
     }
-    
-    a.button i {
-      margin-right: 8px;
+    .stigma-quote {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 36px;
     }
-    
-    form {
-      padding: 25px;
+    .quote-icon { font-size: 3rem; color: var(--primary); line-height: 1; margin-bottom: 16px; }
+    .stigma-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: white;
+      line-height: 1.5;
     }
-    
+    .quote-source {
+      margin-top: 18px;
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── EMERGENCY ── */
+    .emergency-section {
+      background: linear-gradient(135deg, #7f1d1d, #991b1b);
+      border-radius: var(--radius);
+      padding: 56px 52px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .emergency-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 40% 60% at 100% 0%, rgba(255,100,100,0.15) 0%, transparent 60%);
+    }
+    .emergency-inner {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    .emergency-header { }
+    .emergency-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fca5a5;
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .emergency-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: white; font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .emergency-header p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; }
+    .crisis-cards { display: flex; flex-direction: column; gap: 14px; }
+    .crisis-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.25s;
+    }
+    .crisis-card:hover { background: rgba(255,255,255,0.13); }
+    .crisis-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: #fca5a5;
+      flex-shrink: 0;
+    }
+    .crisis-card-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 4px;
+    }
+    .crisis-card-value {
+      font-size: 1.05rem; font-weight: 700;
+      color: white;
+    }
+    .crisis-card-value a {
+      color: white; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .crisis-card-value a:hover { color: #fca5a5; }
+    .sadag-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: white;
+      color: var(--crisis);
+      border-radius: 50px;
+      font-weight: 700; font-size: 14px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .sadag-btn:hover {
+      background: #fef2f2;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 52px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--secondary);
+      margin-bottom: 14px;
+    }
+    .contact-info p { color: var(--text-muted); font-size: 0.97rem; margin-bottom: 28px; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f4f0;
+      font-size: 14px; color: var(--text-muted);
+    }
+    .contact-detail:last-child { border-bottom: none; }
+    .contact-detail i {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark); font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .form-group { margin-bottom: 20px; }
     label {
       display: block;
-      margin: 15px 0 5px;
-      font-weight: 600;
-      color: var(--dark);
+      font-size: 13px; font-weight: 600;
+      color: var(--text);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
     }
-    
-    input, textarea {
+    input, textarea, select {
       width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-family: 'Poppins', sans-serif;
-      transition: all 0.3s;
+      padding: 13px 16px;
+      border: 1.5px solid #d1e7d1;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--light);
+      transition: all 0.25s;
     }
-    
     input:focus, textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(4, 255, 16, 0.2);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
     }
-    
-    button[type="submit"] {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 12px 30px;
+    textarea { resize: vertical; min-height: 120px; }
+    .submit-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      width: 100%;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: var(--dark);
       border: none;
-      border-radius: 30px;
-      font-weight: 600;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 15px;
-      box-shadow: 0 4px 15px rgba(4, 255, 16, 0.3);
+      transition: all 0.25s;
+      justify-content: center;
+      margin-top: 4px;
     }
-    
-    button[type="submit"]:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(4, 255, 16, 0.4);
+    .submit-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(34,197,94,0.35);
     }
-    
-    .emergency-section {
-      background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    .form-success {
+      display: none;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080f0a;
       color: white;
-      animation: pulse 2s infinite;
+      padding: 80px 24px 36px;
     }
-    
-    .emergency-section h2 {
-      color: white;
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    
-    .emergency-section p, .emergency-section li {
-      color: rgba(255,255,255,0.9);
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.65); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
     }
-    
-    .emergency-section li::before {
-      color: white;
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 8px;
     }
 
-    /* Fix form responsiveness on mobile */
-form {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-input,
-textarea {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-@media (max-width: 600px) {
-  section form {
-    padding: 15px;
-  }
-
-  label {
-    font-size: 14px;
-  }
-
-  input,
-  textarea {
-    font-size: 15px;
-    padding: 10px 14px;
-  }
-
-  button[type="submit"] {
-    width: 100%;
-    padding: 12px 14px;
-    font-size: 16px;
-  }
-}
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(255, 107, 107, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
     }
-    
-    @media (max-width: 150px) {
-      h1 {
-        font-size: 16px;
-      }
-      
-      h2 {
-        font-size: 14px;
-      }
-      
-      .button-container {
-        flex-direction: column;
-      }
-      
-      a.button {
-        width: 50%;
-        justify-content: center;
-      }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    
-    /* Animation classes */
-    .fade-in {
-      animation: fadeIn 1s ease-in;
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
     }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
     }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.1); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .intro-block { grid-template-columns: 1fr; gap: 40px; }
+      .stigma-section { grid-template-columns: 1fr; gap: 40px; }
+      .emergency-inner { grid-template-columns: 1fr; gap: 36px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .hero { padding: 80px 30px 70px; }
+      main { padding: 60px 24px 80px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .alert-band { padding: 12px 20px; font-size: 13px; }
+      .hero h1 { font-size: 2.2rem; }
+      .quick-nav { padding: 0 20px; }
+      .strategy-grid { grid-template-columns: 1fr; }
+      .intro-stat-grid { grid-template-columns: 1fr 1fr; }
+      .stigma-section { padding: 36px 28px; }
+      .emergency-section { padding: 36px 28px; }
+      .contact-section { padding: 32px 24px; }
+      .footer-container { grid-template-columns: 1fr; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Header with Navigation -->
-<header class="header">
-  <div class="header-left">
-    <div class="hamburger" onclick="openNav()">
-      <div></div>
-      <div></div>
-      <div></div>
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
     </div>
-    <div class="logo-text">
-      <h1>Journey4Change</h1>
-      <span>Healing Together</span>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
 
-</header>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+  </header>
 
+  <!-- Emergency Alert Band -->
+  <div class="alert-band" role="alert">
+    <i class="fas fa-phone-alt"></i>
+    <span>If you or someone you know is in crisis, call SADAG now:</span>
+    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
+    <span>·</span>
+    <span>Available 24/7 — You are not alone</span>
+  </div>
 
-<div id="sideNav" class="side-nav">
-  <span class="close-btn" onclick="closeNav()">×</span>
-  <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
-  <a href="my-story.html"><i class="fas fa-user"></i> <span>My Story</span></a>
-  <a href="journey4change.html"><i class="fas fa-road"></i> <span>Journey for Change</span></a>
-  <a href="mental-health-awareness.html"><i class="fas fa-heartbeat"></i> <span>Mental Health Awareness</span></a>
-  <a href="their-story.html"><i class="fas fa-users"></i> <span>Their Story</span></a>
-  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
-  <a href="donations.html"><i class="fas fa-donate"></i> <span>Donations</span></a>
-  <a href="social-media.html"><i class="fas fa-hashtag"></i> <span>Social Media</span>
-  <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
-</div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-text">HEAL</div>
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-brain"></i> Mental Health Awareness</span>
+      <h1>You Are Not <em>Alone</em></h1>
+      <p>Understanding mental health, breaking the stigma, and finding the support you deserve — because every life has immeasurable worth.</p>
+      <div class="hero-tags">
+        <span class="hero-tag"><i class="fas fa-heart"></i> Depression Awareness</span>
+        <span class="hero-tag"><i class="fas fa-shield-alt"></i> Suicide Prevention</span>
+        <span class="hero-tag"><i class="fas fa-hands-helping"></i> Coping Strategies</span>
+        <span class="hero-tag"><i class="fas fa-comments"></i> Breaking the Stigma</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Nav -->
+  <nav class="quick-nav" aria-label="Page sections">
+    <a href="#understanding"><i class="fas fa-book-open"></i> Understanding</a>
+    <a href="#stigma"><i class="fas fa-comments"></i> Break the Stigma</a>
+    <a href="#strategies"><i class="fas fa-lightbulb"></i> Coping Strategies</a>
+    <a href="#emergency"><i class="fas fa-phone-alt"></i> Emergency Help</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+  </nav>
 
   <main>
-    <h1 class="fade-in">Mental Health Awareness</h1>
 
-    <section class="fade-in delay-1">
-      <h2>Understanding the Link Between Mental Health and Suicide</h2>
-      <p>
-        Depression and anxiety are closely linked to an increased risk of suicide. While not everyone with these conditions will experience suicidal thoughts, they are significant risk factors.
-        Studies estimate that about 60% of people who die by suicide have had a mood disorder such as depression or bipolar disorder. Anxiety disorders can also contribute to suicidal ideation,
-        especially when combined with other stressors.
-      </p>
-      <div class="button-container">
-        <a class="button" href="https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/suicide-and-mental-illness" target="_blank">
-          <i class="fas fa-book"></i> Better Health Channel
-        </a>
-        <a class="button" href="https://jedfoundation.org/resource/what-is-the-connection-between-depression-and-suicide/" target="_blank">
-          <i class="fas fa-heart"></i> The Jed Foundation
-        </a>
-        <a class="button" href="https://www.charliehealth.com/post/can-anxiety-disorders-lead-to-suicide" target="_blank">
-          <i class="fas fa-brain"></i> Charlie Health
-        </a>
+    <!-- Understanding Section -->
+    <div id="understanding" style="padding-top: 20px;">
+      <div class="section-head reveal">
+        <span class="section-label">The Facts</span>
+        <h2>Understanding Mental Health & Suicide</h2>
+        <div class="section-divider"></div>
       </div>
-    </section>
 
-    <section class="fade-in delay-2">
-      <h2>Breaking the Silence: The Importance of Open Conversations</h2>
-      <p>
-        Stigma often prevents individuals from seeking help for mental health issues. Initiatives like "No Shame Day," launched by The Siwe Project, encourage people to share their mental health
-        experiences openly, aiming to reduce stigma and promote healing. Similarly, public figures like Colton Underwood have shared their personal struggles with depression and anxiety to highlight
-        the importance of seeking help and eliminating shame.
-      </p>
-      <div class="button-container">
-        <a class="button" href="https://www.breakthestigma.org/clarity" target="_blank">
-          <i class="fas fa-comments"></i> BreakTheStigma
-        </a>
-        <a class="button" href="https://people.com/colton-underwood-talks-overcoming-past-suicide-attempt-exclusive-8726429" target="_blank">
-          <i class="fas fa-user"></i> Colton's Story
-        </a>
+      <div class="intro-block reveal reveal-delay-1">
+        <div>
+          <p>Depression and anxiety are closely linked to an increased risk of suicide. While not everyone with these conditions will experience suicidal thoughts, they are significant risk factors. Studies estimate that about 60% of people who die by suicide have had a mood disorder such as depression or bipolar disorder.</p>
+          <p>Anxiety disorders can also contribute to suicidal ideation, especially when combined with other stressors. Recognising the signs early and seeking help is the most powerful step anyone can take.</p>
+          <div class="resource-links">
+            <a class="resource-btn" href="https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/suicide-and-mental-illness" target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Better Health
+            </a>
+            <a class="resource-btn" href="https://jedfoundation.org/resource/what-is-the-connection-between-depression-and-suicide/" target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Jed Foundation
+            </a>
+            <a class="resource-btn" href="https://www.charliehealth.com/post/can-anxiety-disorders-lead-to-suicide" target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Charlie Health
+            </a>
+          </div>
+        </div>
+        <div class="intro-stat-grid">
+          <div class="intro-stat">
+            <div class="intro-stat-num">60%</div>
+            <div class="intro-stat-text">of suicide cases involve a diagnosed mood disorder</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">1in5</div>
+            <div class="intro-stat-text">South Africans experience a mental disorder annually</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">23</div>
+            <div class="intro-stat-text">suicides occur in SA every day on average</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">80%</div>
+            <div class="intro-stat-text">of mental health conditions are treatable with proper help</div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="fade-in delay-3">
-      <h2>Strategies for Coping and Seeking Support</h2>
-      <ul>
-        <li><strong>Talk About It:</strong> Sharing your feelings with trusted friends, family, or mental health professionals can provide relief and perspective.</li>
-        <li><strong>Professional Help:</strong> Therapists and counsellors are trained to help you navigate mental health challenges. Finding someone you trust is crucial for effective therapy.</li>
-        <li><strong>Community and Routine:</strong> Engaging in community activities and establishing daily routines can provide structure and support.</li>
-      </ul>
-      <div class="button-container">
-        <a class="button" href="https://www.healthline.com/health/depression/suicidal-thoughts" target="_blank">
-          <i class="fas fa-stethoscope"></i> Healthline
-        </a>
-        <a class="button" href="https://www.heraldsun.com.au/health/mental-health/can-we-talk-campaign-four-aussies-share-their-mental-health-tips/news-story/bb16947c6b9cd2128e5368ae61f3d572?utm_source=chatgpt.com">
-          <i class="fas fa-lightbulb"></i> Mental Health Tips
-        </a>
+    <!-- Break the Stigma -->
+    <div id="stigma">
+      <div class="stigma-section reveal">
+        <div class="stigma-content">
+          <span class="section-label">Breaking the Silence</span>
+          <h2>The Importance of Open Conversations</h2>
+          <p>Stigma often prevents individuals from seeking help for mental health issues. Initiatives like "No Shame Day" encourage people to share their mental health experiences openly, aiming to reduce stigma and promote healing.</p>
+          <p>Public figures and ordinary people alike are stepping forward to share their stories — reminding us all that mental health struggles do not discriminate, and that asking for help is an act of strength, not weakness.</p>
+          <div class="stigma-links">
+            <a class="stigma-btn" href="https://www.breakthestigma.org/clarity" target="_blank" rel="noopener">
+              <i class="fas fa-comments"></i> BreakTheStigma
+            </a>
+            <a class="stigma-btn" href="their-story.html">
+              <i class="fas fa-pen"></i> Share Your Story
+            </a>
+          </div>
+        </div>
+        <div class="stigma-quote">
+          <div class="quote-icon">"</div>
+          <p>Asking for help is not a sign of weakness — it is the bravest thing you will ever do.</p>
+          <div class="quote-source">— Journey4Change</div>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="fade-in delay-1">
-      <h2>Psychological Strategies</h2>
-      <ul>
-        <li><strong>Cognitive Behavioural Therapy (CBT):</strong> Helps you recognize and reframe negative thought patterns.</li>
-        <li><strong>Mindfulness & Meditation:</strong> Practicing being present can reduce anxiety and bring emotional balance.</li>
-        <li><strong>Journaling:</strong> Writing your thoughts and feelings can help process emotions and identify patterns.</li>
-        <li><strong>Breathing Exercises:</strong> Deep, intentional breathing can calm your nervous system.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in delay-2">
-      <h2>Physical & Lifestyle Strategies</h2>
-      <ul>
-        <li><strong>Exercise:</strong> Regular physical activity releases endorphins and reduces stress hormones.</li>
-        <li><strong>Sleep Hygiene:</strong> Creating a sleep routine improves mood and brain function.</li>
-        <li><strong>Nutrition:</strong> Balanced meals support brain health — omega-3s, B vitamins, and magnesium are especially helpful.</li>
-        <li><strong>Limiting Substance Use:</strong> Alcohol and drugs can worsen symptoms of depression and anxiety.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in delay-3">
-      <h2>Social Support & Connection</h2>
-      <ul>
-        <li><strong>Support Groups:</strong> Talking to others who understand what you're going through can be incredibly healing.</li>
-        <li><strong>Trusted Friends or Mentors:</strong> Reaching out to someone you trust can reduce isolation.</li>
-        <li><strong>Online Communities:</strong> Forums or social media groups focused on mental health offer anonymous peer support.</li>
-        <li><strong>Volunteering:</strong> Helping others can build purpose and shift focus away from your own pain.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in delay-1">
-      <h2>Spiritual & Emotional Practices</h2>
-      <ul>
-        <li><strong>Prayer or Spiritual Reflection:</strong> For many, connecting to a higher power brings comfort and hope.</li>
-        <li><strong>Gratitude Practice:</strong> Listing things you're grateful for each day can slowly shift your perspective.</li>
-        <li><strong>Affirmations:</strong> Repeating positive, self-loving phrases can rewire negative thought cycles.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in delay-2 emergency-section">
-      <h2>You're Not Alone: Emergency Support</h2>
-      <p>If you're struggling, know that help is available immediately:</p>
-      <ul>
-        <li><strong>SADAG (South Africa):</strong> Call 0800 567 567</li>
-        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
-        <li><strong>International Suicide Hotlines:</strong> <a href="https://blog.opencounseling.com/suicide-hotlines/" style="color:white;text-decoration:underline;">Find your country's hotline</a></li>
-      </ul>
-      <div class="button-container">
-        <a class="button" href="https://www.sadag.org/" target="_blank" style="background:white;color:#FF6B6B;">
-          <i class="fas fa-phone"></i> SADAG Website
-        </a>
+    <!-- Strategies -->
+    <div id="strategies">
+      <div class="section-head reveal">
+        <span class="section-label">Tools for Healing</span>
+        <h2>Coping Strategies That Work</h2>
+        <div class="section-divider"></div>
       </div>
-    </section>
 
-    <section class="fade-in delay-3">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        
-        <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
-      </form>
-    </section>
+      <div class="strategy-grid">
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-icon"><i class="fas fa-brain"></i></div>
+          <h3>Psychological Strategies</h3>
+          <ul class="strategy-list">
+            <li><i class="fas fa-check"></i><div><strong>Cognitive Behavioural Therapy (CBT)</strong> Helps you recognise and reframe negative thought patterns.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Mindfulness & Meditation</strong> Practising presence reduces anxiety and brings emotional balance.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Journaling</strong> Writing feelings helps process emotions and identify patterns.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Breathing Exercises</strong> Deep, intentional breathing calms the nervous system immediately.</div></li>
+          </ul>
+        </div>
+
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-icon"><i class="fas fa-running"></i></div>
+          <h3>Physical & Lifestyle</h3>
+          <ul class="strategy-list">
+            <li><i class="fas fa-check"></i><div><strong>Exercise</strong> Regular activity releases endorphins and reduces stress hormones.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Sleep Hygiene</strong> A consistent sleep routine improves mood and brain function.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Nutrition</strong> Balanced meals support brain health — omega-3s, B vitamins, magnesium.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Limit Substance Use</strong> Alcohol and drugs worsen symptoms of depression and anxiety.</div></li>
+          </ul>
+        </div>
+
+        <div class="strategy-card reveal reveal-delay-3">
+          <div class="strategy-icon"><i class="fas fa-users"></i></div>
+          <h3>Social Support & Connection</h3>
+          <ul class="strategy-list">
+            <li><i class="fas fa-check"></i><div><strong>Support Groups</strong> Talking with others who understand brings incredible relief.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Trusted Friends or Mentors</strong> Reaching out reduces isolation — you don't have to carry this alone.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Volunteering</strong> Helping others builds purpose and shifts focus away from pain.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Online Communities</strong> Peer support forums offer anonymous, understanding spaces.</div></li>
+          </ul>
+        </div>
+
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-icon"><i class="fas fa-praying-hands"></i></div>
+          <h3>Spiritual & Emotional</h3>
+          <ul class="strategy-list">
+            <li><i class="fas fa-check"></i><div><strong>Prayer or Spiritual Reflection</strong> Connecting to a higher power brings comfort and hope for many.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Gratitude Practice</strong> Daily gratitude journaling slowly shifts your perspective over time.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Affirmations</strong> Repeating positive phrases can rewire negative thought cycles.</div></li>
+            <li><i class="fas fa-check"></i><div><strong>Professional Help</strong> Therapists and counsellors are trained to walk this journey with you.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergency -->
+    <div id="emergency">
+      <div class="emergency-section reveal">
+        <div class="emergency-inner">
+          <div class="emergency-header">
+            <div class="emergency-badge"><i class="fas fa-exclamation-triangle"></i> If You Need Help Now</div>
+            <h2>You Are Not Alone — Emergency Support</h2>
+            <p>If you are struggling, know that help is available immediately. Reaching out is the bravest step you can take. These services are free, confidential, and available around the clock.</p>
+            <a href="https://www.sadag.org/" target="_blank" rel="noopener" class="sadag-btn">
+              <i class="fas fa-external-link-alt"></i> Visit SADAG Website
+            </a>
+          </div>
+          <div class="crisis-cards">
+            <div class="crisis-card">
+              <div class="crisis-card-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="crisis-card-label">SADAG — South Africa</div>
+                <div class="crisis-card-value"><a href="tel:0800567567">0800 567 567</a></div>
+              </div>
+            </div>
+            <div class="crisis-card">
+              <div class="crisis-card-icon"><i class="fas fa-comment-alt"></i></div>
+              <div>
+                <div class="crisis-card-label">Lifeline South Africa</div>
+                <div class="crisis-card-value"><a href="tel:0861322322">0861 322 322</a></div>
+              </div>
+            </div>
+            <div class="crisis-card">
+              <div class="crisis-card-icon"><i class="fas fa-sms"></i></div>
+              <div>
+                <div class="crisis-card-label">Crisis Text Line</div>
+                <div class="crisis-card-value">Text HOME to 741741</div>
+              </div>
+            </div>
+            <div class="crisis-card">
+              <div class="crisis-card-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="crisis-card-label">International Hotlines</div>
+                <div class="crisis-card-value">
+                  <a href="https://blog.opencounseling.com/suicide-hotlines/" target="_blank" rel="noopener">Find your country's line →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div id="contact">
+      <div class="section-head reveal">
+        <span class="section-label">Reach Out</span>
+        <h2>Contact Us</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="contact-section reveal reveal-delay-1">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>We're Here to Listen</h3>
+            <p>Whether you have a question, want to share your story, or are looking for resources — reach out. Every message is read and responded to with care.</p>
+            <div class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <span>+27 82 813 4960</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <span>journey4change.info@gmail.com</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>PO Box 177, Letaba, 0870</span>
+            </div>
+          </div>
+          <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i> Thank you! We'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2025 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html" class="active"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
 
   <script>
-    function validateForm() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-
-      if (name === "" || email === "" || message === "") {
-        alert("Please fill in all fields.");
-        return false;
-      }
-      
-      // Show success message
-      alert("Thank you for your message! We'll get back to you soon.");
-      document.getElementById('contactForm').reset();
-      return false; // Prevent actual form submission for demo
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
     }
 
-  function openNav() {
-    const sideNav = document.getElementById("sideNav");
-    sideNav.style.width = "280px";
-    document.body.style.overflow = "hidden"; // Disable background scroll
-  }
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) return;
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('formSuccess').style.display = 'none';
+      }, 5000);
+    }
 
-  function closeNav() {
-    const sideNav = document.getElementById("sideNav");
-    sideNav.style.width = "0";
-    document.body.style.overflow = "auto"; // Enable scroll again
-  }
-
-    
-    // Add animation to sections as they come into view
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Header shadow
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
     });
   </script>
-
 </body>
 </html>
-
