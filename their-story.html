@@ -2,513 +2,1084 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Their Story</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Their Story - Remembering those lost to suicide. Journey4Change honours their lives to break the stigma around mental health.">
+  <title>Their Story - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    
     :root {
-  --primary: #04ff10;
-  --secondary: #2e7d32;
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --dark-card: #111a13;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 20px;
     }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #f0f0f0;
+      font-family: 'DM Sans', sans-serif;
+      background: #0a120b;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      overflow-x: hidden;
     }
 
-header {
-  background: linear-gradient(135deg, #04ff10, #2E7D32);
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-header img {
-  height: 60px;
-  width: auto;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-header img:hover {
-  transform: rotate(10deg);
-}
-
-.logo-text {
-  margin-top: -20px;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.logo-text h1 {
-  margin-bottom: 2px;
-  line-height: 1.2;
-}
-
-.logo-text span {
-  margin-top: 0;
-  line-height: 1.1;
-  display: block;
-}
-
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.hamburger:hover {
-  transform: scale(1.1);
-}
-
-.hamburger div {
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s;
-}
-
-.hamburger:hover div {
-  background: rgba(255,255,255,0.9);
-}
-
-.login-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  padding: 10px 25px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s;
-  border: none;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-decoration: none;
-}
-
-.login-btn:hover {
-  background: white;
-  color: #04ff10;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-    /* Side Navigation */
-.side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  overflow-y: auto;
-  overflow-x: hidden;
-  transition: width 0.5s ease;
-  z-index: 1000;
-  padding-top: 80px;
-  box-sizing: border-box;
-}
-
-.side-nav a {
-  padding: 15px 30px;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  display: block;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.side-nav a::before {
-  content: '';
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.1);
-  transition: left 0.3s;
-}
-
-.side-nav a:hover::before {
-  left: 0;
-}
-
-.side-nav a i {
-  margin-right: 10px;
-  width: 20px;
-  text-align: center;
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.close-btn:hover {
-  transform: rotate(90deg);
-}
-
-    .container {
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: rgba(0,0,0,0.5);
+      color: rgba(255,255,255,0.55);
+      padding: 9px 40px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.55);
+      margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ── HEADER ── */
+    header {
+      background: rgba(10,18,11,0.95);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+    .login-btn {
+      background: var(--primary); color: var(--dark);
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 14px;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
+    }
+
+    /* ── CRISIS BAND ── */
+    .crisis-band {
+      background: #7f1d1d;
+      color: white;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,100,100,0.2);
+    }
+    .crisis-band i { animation: alertPulse 2s ease-in-out infinite; }
+    .crisis-band a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 120px 60px 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(34,197,94,0.07) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.3);
+      padding: 7px 18px; border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900; color: white;
+      line-height: 1.05; margin-bottom: 22px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem; max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
+    }
+    .hero-count {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 28px; border-radius: 50px;
+      color: rgba(255,255,255,0.6); font-size: 13px;
+      animation: fadeInUp 0.7s 0.45s ease-out both;
+    }
+    .hero-count strong { color: var(--primary-light); font-size: 1.1rem; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 60px 50px;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 48px;
-      padding: 40px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+    }
+    .filter-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-right: 6px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.6);
+      border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: var(--dark);
+      border-color: var(--primary);
+      font-weight: 700;
     }
 
-    .story {
-      background-color: #222;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
-      max-width: 440px;
-      flex: 1 1 400px;
-      padding: 24px;
+    /* ── TRIBUTE GRID ── */
+    .tribute-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    .tribute-card {
+      background: #111a13;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .tribute-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease;
+    }
+    .tribute-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    /* Photo */
+    .card-photo {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+      filter: grayscale(20%);
+    }
+    .tribute-card:hover .card-photo img {
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+    .card-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(17,26,19,0.95) 0%, rgba(17,26,19,0.3) 55%, transparent 100%);
+    }
+    .card-region {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(17,26,19,0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: var(--primary-light);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .card-year {
+      position: absolute;
+      bottom: 16px; left: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
+
+    /* Body */
+    .card-body { padding: 24px 24px 28px; flex: 1; display: flex; flex-direction: column; }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: white; margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .card-dates {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em; margin-bottom: 16px;
+    }
+    .card-divider {
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin-bottom: 16px;
+    }
+    .card-text {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      line-height: 1.75; flex: 1;
+    }
+    .card-text.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-expand {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px; font-weight: 600;
+      color: var(--primary);
+      background: none; border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .card-expand:hover { color: var(--primary-light); }
+    .card-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
       align-items: center;
-      text-align: left;
-      color: #ddd;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
+      gap: 8px;
+    }
+    .card-footer i { color: var(--primary); font-size: 13px; }
+    .card-footer span {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      font-style: italic;
     }
 
-    /* Left story: rounded corners on left side only */
-    .story-left {
-      border-radius: 16px 0 0 16px;
+    /* ── SA CONTEXT SECTION ── */
+    .context-section {
+      background: #111a13;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 80px 60px;
+    }
+    .context-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: start;
+    }
+    .context-text .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary); display: block; margin-bottom: 12px;
+    }
+    .context-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: white; font-weight: 900; margin-bottom: 20px;
+    }
+    .context-text p { color: rgba(255,255,255,0.55); font-size: 0.97rem; margin-bottom: 16px; line-height: 1.8; }
+    .factor-list { display: flex; flex-direction: column; gap: 14px; }
+    .factor-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: background 0.25s;
+    }
+    .factor-item:hover { background: rgba(34,197,94,0.06); border-color: rgba(34,197,94,0.15); }
+    .factor-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 14px; flex-shrink: 0;
+    }
+    .factor-title {
+      font-weight: 600; color: white; font-size: 14px; margin-bottom: 4px;
+    }
+    .factor-desc { color: rgba(255,255,255,0.45); font-size: 13px; line-height: 1.6; }
+
+    /* ── SHARE STORY CTA ── */
+    .share-cta {
+      padding: 100px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .share-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(34,197,94,0.07) 0%, transparent 70%);
+    }
+    .share-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .share-cta .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary); display: block; margin-bottom: 14px;
+    }
+    .share-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white; font-weight: 900; margin-bottom: 18px;
+    }
+    .share-cta p {
+      color: rgba(255,255,255,0.55); font-size: 1rem;
+      margin-bottom: 36px; line-height: 1.8;
+    }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      border-radius: 50px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary {
+      background: var(--primary); color: var(--dark);
+      box-shadow: 0 6px 24px rgba(34,197,94,0.25);
+    }
+    .btn-primary:hover {
+      background: var(--primary-light); transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.35);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.15);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
     }
 
-    /* Right story: rounded corners on right side only */
-    .story-right {
-      border-radius: 0 16px 16px 0;
+    /* ── FOOTER ── */
+    footer {
+      background: #050d07;
+      color: white;
+      padding: 70px 24px 36px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.06);
+      border-radius: 50%; color: rgba(255,255,255,0.55); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.07);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.4); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.22); flex-wrap: wrap; gap: 8px;
     }
 
-    .story:hover,
-    .story:focus-within {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 32px rgba(76, 175, 80, 0.8);
-      outline: none;
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: #080f0a;
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.15);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.07); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.09); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
-    .story img {
-      width: 100%; /* Full width of the container */
-      height: 250px; /* Fixed height */
-      border-radius: 12px;
-      object-fit: cover; /* Maintain aspect ratio */
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      user-select: none;
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .context-inner { grid-template-columns: 1fr; gap: 50px; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-
-    .story h2 {
-      font-weight: 700;
-      font-size: 1.375rem;
-      margin: 0 0 12px;
-      color: #a5d6a7;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .story p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin: 12px 0;
-      white-space: pre-line;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        padding: 24px 16px;
-      }
-      .story {
-        max-width: 100%;
-        padding: 20px;
-        border-radius: 16px !important; /* override left/right radius on narrow screens */
-      }
-      header {
-        flex-wrap: wrap;
-      }
-      .header-text {
-        margin-top: 10px;
-      }
+    @media (max-width: 700px) {
+      .tribute-grid { grid-template-columns: 1fr; padding: 0 20px 80px; }
+      .hero { padding: 80px 24px 60px; }
+      .filter-bar { padding: 0 24px 40px; }
+      .context-section { padding: 60px 24px; }
+      .share-cta { padding: 70px 24px; }
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .crisis-band { padding: 10px 16px; font-size: 12px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- Header with Navigation -->
-<header class="header">
-  <div class="header-left">
-    <div class="hamburger" onclick="openNav()">
-      <div></div>
-      <div></div>
-      <div></div>
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
     </div>
-    <div class="logo-text">
-      <h1>Journey4Change</h1>
-      <span>Healing Together</span>
-    </div>
-  </div>
-
-</header>
-
-<!-- Side Navigation -->
-<div id="sideNav" class="side-nav">
-  <span class="close-btn" onclick="closeNav()">×</span>
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
-  <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
-  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
-  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
-  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
-  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
-  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
-  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
-</div>
-
-  <main class="container" role="main">
-    <article class="story story-left" tabindex="0" aria-labelledby="siyabonga-title">
-      <img src="siyabonga.jpg" alt="Portrait photo of Siyabonga Zubane" />
-      <h2 id="siyabonga-title">Siyabonga Zubane (1998-2022)</h2>
-      <p>
-        "Siyabonga Zubane took his own life on Saturday (7 May 2022). Siyabonga was popular for his role as Sdumo – a crook and carjacker on a TV show in South Africa called Gomora. The Gomora star was only 23 years old."
-      </p>
-      <p>
-        A family member had to say this:
-        "He was nothing close to Sdumo. He was a nice shy guy who loved and respected people.” The Gomora actor’s death added to the growing list of young South African stars lost to suicide, exposing the intense pressures of fame.
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="ebenhaezer-title">
-      <img src="Ebenhaezer.webp" alt="Portrait photo of Ebenhaezer Dibakwane" />
-      <h2 id="ebenhaezer-title">Ebenhaezer Dibakwane (1994–2025)</h2>
-      <p>
-        "The family of award-winning comedian, actor, and writer Ebenhaezer ‘Ebby’ Dibakwane has confirmed that he died by suicide on 7 March 2025 at the age of 31. His family hopes his passing serves as a reminder of the importance of mental health: “While this loss is devastating, we pray that it encourages people to check in on each other and prioritise their emotional well-being. Seeking professional help when needed is essential.”"
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="ceagan-title">
-      <img src="ceagan.jpg" alt="Portrait photo of Ceagan Arendse" />
-      <h2 id="ceagan-title">Ceagan Arendse (1989–2021)</h2>
-      <p>
-        "Actor Ceagan Arendse known for his portrayal of Woelag in the Afrikaans soap Arendsvlei, died on 14 February 2021. He was 34. The family in a statement confirmed to Channel24 that Ceagan died by suicide. 'It is with sad and heavy hearts we inform friends and fans that our beloved Ceagan Arendse passed away early hours of Sunday morning 14 February 2021. Ceagan unfortunately lost his battle with depression and succumbed to the disease through suicide,' said the statement."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="avicii-title">
-      <img src="Aviciii.jpg" alt="Portrait photo of Avicii" />
-      <h2 id="avicii-title">Avicii (1989-2018)</h2>
-      <p>
-        "Bergling died on 20 April 2018 in Muscat, Oman, where he was on holiday, at the age of 28. No cause of death was immediately given. On 21 April, the Omani authorities stated that there was 'no criminal suspicion' or evidence of foul play in Bergling's death. A day before Bergling's death, a friend expressed concern about his mental state to his father Klas. TMZ later reported that he died by suicide, using a glass shard to cut himself. On 26 April, his family released an open letter stating."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="shoki-title">
-      <img src="shoki.jpg" alt="Portrait photo of Shoki Mokgapa" />
-      <h2 id="shoki-title">Shoki Mokgapa (1984-2014)</h2>
-      <p>
-        "Award-winning actress Shoki Mokgapa's management have on Thursday afternoon confirmed that she took her own life after a lengthy battle with clinical depression. 'After a long struggle with clinical depression she took her life on Tuesday 25th of September at the age of 34. She was a brave woman who had been seeking help but the disease proved to be stronger than she was.'"
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="chester-title">
-      <img src="chester.jpg" alt="Portrait photo of Chester Bennington" />
-      <h2 id="chester-title">Chester Bennington (1976–2017)</h2>
-      <p>
-        "Linkin Park lead singer Chester Bennington has died aged 41, LA County Coroner says. The coroner said Bennington apparently hanged himself. His body was found at a private home in the county at 09:00 local time (17:00 GMT) on Thursday. Bennington was said to be close to Soundgarden vocalist Chris Cornell, who took his own life in May."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="vincent-title">
-      <img src="vincent.avif" alt="Portrait photo of Vincent van der Merwe" />
-      <h2 id="vincent-title">Vincent van der Merwe (1983-2025)</h2>
-      <p>
-        "Globally renowned South African conservationist and National Geographic Explorer, Vincent van der Merwe, who organised the transfer of cheetahs to India, was found dead in his apartment in Riyadh. No foul play is suspected. A Facebook post from Van der Merwe's family read: 'It is with deep sorrow that we announce the passing of Vincent van der Merwe, a beloved brother, dedicated conservationist and tireless advocate for cheetah conservation. Vincent sadly took his own life on Sunday, 16 March.'"
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="riky-title">
-      <img src="riky.jpg" alt="Portrait photo of Riky Rick" />
-      <h2 id="riky-title">Riky Rick (1987–2022)</h2>
-      <p>
-        "Bianca Naidoo, the wife of former South African rapper Riky Rick, has revealed details about her husband’s battle with mental health and the reasons behind his tragic decision to end his own life. Bianca shared that they had often relied on each other for support in preserving their own lives. 'He often said that I was saving his life without realizing that he too was saving mine. My king, my heart, my forever love. Thank you for giving us all that you had in this lifetime,' she said."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="hhp-title">
-      <img src="hhp.jpg" alt="Portrait photo of HHP" />
-      <h2 id="hhp-title">HHP (1980-2018)</h2>
-      <p>
-        "'I'm depressed. I'm going out of control. I'm losing it.' Those were the heart-wrenching last words hip-hop legend HHP left before he took his last bow. The Mahikeng-born, North West, rapper whose real name is Jabulani Tsambo, allegedly committed suicide yesterday at his house in Randpark Ridge, western Johannesburg."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="anthony-title">
-      <img src="anthony.jpg" alt="Portrait photo of Anthony Bourdain" />
-      <h2 id="anthony-title">Anthony Bourdain (1956-2018)</h2>
-      <p>
-        "On June 8, 2018, Anthony Bourdain was found dead of an apparent suicide at Le Chambard Hotel in Kaysersberg-Vignoble, France. His body was discovered by fellow chef Éric Ripert, who had been filming an episode of Bourdain’s travel show Parts Unknown with him. Ripert became concerned when Bourdain missed dinner the night before and breakfast that morning. Sadly, by the time Ripert found Bourdain in his hotel room, it was too late — America’s most beloved travel guide was already gone. Anthony Bourdain’s cause of death was later revealed to be suicide by hanging, using a belt from his hotel bathrobe to end his life. He was 61 years old."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="alexander-title">
-      <img src="alexander.avif" alt="Portrait photo of Lee Alexander McQueen" />
-      <h2 id="alexander-title">Lee Alexander McQueen (1969-2010)</h2>
-      <p>
-        "Fashion designer Alexander McQueen hanged himself in his wardrobe and left a suicide note, a coroner told a London inquest Wednesday. McQueen, 40, was found dead at his London apartment Thursday. The cause of death was asphyxia and hanging, said coroner's officer Lynda Martindill. A police officer told the inquest that McQueen's death was 'nonsuspicious,' according to Martindill. The coroner said a note had been found and is being looked at by the police, Martindill said, without offering details about the note."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="naomi-title">
-      <img src="judd.webp" alt="Portrait photo of Naomi Judd" />
-      <h2 id="naomi-title">Naomi Judd (1946-2022)</h2>
-      <p>
-        "An autopsy report in the death of country singer Naomi Judd that was obtained Friday by The Associated Press confirmed what family members have already said about how she died. Judd, 76, killed herself with a gun on April 30 at her home in Tennessee. We have always shared openly both the joys of being family as well its sorrows, too. One part of our story is that our matriarch was dogged by an unfair foe," a statement from the family released on Friday read. "She was treated for PTSD and bipolar disorder, to which millions of Americans can relate."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="bongani-title">
-      <img src="bongani.jpg" alt="Portrait photo of Bongani Mayosi" />
-      <h2 id="bongani-title">Bongani Mayosi (1967-2018)</h2>
-      <p>
-        "Mayosi died by suicide on 27 July 2018; he had been experiencing depression for two years. Eight months before his death he had tendered his resignation to the University of Cape Town, however, it was apparently declined. According to his family, the FeesMustFall protests contributed to Mayosi's declining mental health."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="jabu-title">
-      <img src="jabukubheka.webp" alt="Portrait photo of Jabu Christopher Kubheka" />
-      <h2 id="jabu-title">Jabu Christopher Kubheka (1969-2017)</h2>
-      <p>
-        "I decided to do a wrong turn because I can't take it any more, as you said I am broke and useless in bed,' reads the apparent suicide note. Bold. Cheeky. A fighter of justice. That was the Gunman South Africans came to celebrate on hit TV show Yizo Yizo. Fast forward to 2017 and Jabu Christopher Kubheka's life was so tainted, he ransacked the Soshanguve house he shared with his wife, looking for any tablets. He crushed and consumed them, and then took a tie from his cupboard and hanged himself. His neighbours saw him enter his house on Monday June 12 at 3pm. His wife arrived home about an hour later and discovered his limp body hanging from the burglar bars."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="kate-title">
-      <img src="kate.jpg" alt="Portrait photo of Kate Spade" />
-      <h2 id="kate-title">Kate Spade (1962-2018)</h2>
-      <p>
-        "Kate Spade's cause of death was suicide by hanging, the New York City Medical Examiner's Office confirmed on Thursday. Spade's body was found by a cleaner in the bedroom of her Park Avenue home on Tuesday. The police have said Spade left a note behind that pointed to suicide."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="chris-title">
-      <img src="chris.jpg" alt="Portrait photo of Kate Spade" />
-      <h2 id="chris-title">Chris Cornell (1964-2017)</h2>
-      <p>
-        "After hanging himself in his Detroit hotel room on May 18, 2017, Soundgarden frontman Chris Cornell was found dead at the age of just 52. Chris Cornell’s death was shocking but it wasn’t a complete surprise. After all, the Soundgarden frontman had a long history of drug addiction and depression before his apparent suicide in Detroit on May 18, 2017."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0" aria-labelledby="nichume-title">
-      <img src="nichume.webp" alt="Portrait photo of Nichume" />
-      <h2 id="nichume-title">Nichume Siwundla (1992-2019)</h2>
-      <p>
-        "Johannesburg – Local singer Nichume Siwundla has died after an apparent suicide a statement sent on behalf of her record label, Top Chap Media, confirmed on Friday. The singer, well known for featuring on Mobi Dixon's track Buthiza, hailed from the Eastern Cape and was also a qualified ophthalmologist. Accorxing to sources, the 27-year-old arrived at the appartment in Edenvale, Ekurhuleni, in the morning with her boyfriends. "They were visiting a friend at one of the apartments and it didn't seem as if they was anything wrong when they arrived" said the sources."
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0" aria-labelledby="anele-title">
-      <img src="anele.png" alt="Potrait photo of Anele" />
-      <h2 id="anele-title">Anele Tembe (1999-2021)</h2>
-      <p>
-        "Anele Tembe, 22, died in April 2021. She was engaged to the late multi-award-winning rapper Kiernan "AKA" Forbes. Her death was ruled a suicide after she fell from the 10th floor of the Pepperclub Hotel in Cape Town. After her tragic death, videos and photos emerged online showing the couple engaged in a heated argument. Despite this, police investigations concluded that Tembe took her own life, a notion that some netizens have fiercely disputed, suggesting instead that it was murder."
-      </p>
-    </article>
-
-    <article class="story story-left" tabindex="0"aria-labelledby="Poppa-title">
-      <img src="Lil-Poppa.jpg" alt="Potrait photo of lil poppa" />
-      <h2 id="lil-poppa-title">Lil Poppa (2000-2025)</h2>
-      <p>
-        "Florida rapper Lil Poppa has died by suicide, Georgia authorities said. He was 25. The Fulton County Medical Examiner's Office confirmed the rapper's death in a statement to NBC News. The cause of death was ruled a gunshot wound to the head and the manner of death was ruled a suicide, the office said. The Jacksonville rapper, whose real name is Janarious Wheeler, was signed to rapper Yo Gotti’s Collective Music Group and released songs including "Love & War," "Mind Over Matter," and "HAPPY TEARS." His most recent studio album was last year's "Almost Normal Again. Days before his death, he released the new track "Out of Town Bae. A representative for Wheeler did not immediately respond to a request for comment on Thursday.Music producer Scotty OTH told NBC affiliate WTLV of Jacksonville that Wheeler was a "very hard worker. I ain’t never seen nobody outwork Poppa. Poppa is the last man standing in the studio," he said.The pair made their first song together over five years ago.
-      </p>
-    </article>
-
-    <article class="story story-right" tabindex="0"aria-labelledby="moore-title">
-      <img src="rondale-moore.jpg" alt="Potrait photo of rondale moore" />
-      <h2 id="rondale-moore-title">Rondale Moore (2000-2025)</h2>
-      <p>
-        "Rondale Moore, a former NFL wide receiver, died at the age of 25 from a suspected self-inflicted gunshot wound. His death was confirmed by New Albany police, and an autopsy is currently under investigation. Moore was found in his garage, and the circumstances surrounding his death are still being evaluated. The Minnesota Vikings expressed their condolences and offered support to his family during this difficult time."
-      </p>
-    </article>
-  </main>
-  
-
-<footer style="background: linear-gradient(135deg, #1a1a1a, #333); color: white; padding: 40px 20px; font-size: 14px; text-align: center; margin-top: 40px;">
-  <div style="max-width: 1200px; margin: auto; padding: 0 20px;">
-    <h3 style="margin: 0; font-size: 24px; color: #04ff10;">The Dark Side Of Fame</h3>
-    <h4 style="margin: 10px 0; font-size: 20px;">The Underlying Crisis</h4>
-    <p style="margin: 10px 0;">Common Factors Behind Celebrity Suicides:</p>
-    <ul style="list-style-type: none; padding: 0; margin: 10px 0;">
-      <li><strong>Mental Health Stigma:</strong> Many celebrities avoid seeking help due to fear of judgment or career repercussions.</li>
-      <li><strong>Pressure to Maintain an Image:</strong> The expectation to appear "perfect" exacerbates feelings of isolation.</li>
-      <li><strong>Substance Abuse:</strong> Self-medication often worsens depression and anxiety.</li>
-      <li><strong>Traumatic Pasts:</strong> Childhood trauma can resurface later in life.</li>
-    </ul>
-    <h4 style="margin: 20px 0; font-size: 20px;">The South African Context</h4>
-    <p style="margin: 10px 0;">South Africa has one of the highest suicide rates globally, with men being five times more likely to die by suicide than women. Factors include:</p>
-    <ul style="list-style-type: none; padding: 0; margin: 10px 0;">
-      <li><strong>Historical Trauma:</strong> The legacy of apartheid and systemic violence has left deep psychological scars.</li>
-    </ul>
-    <p style="margin: 20px 0;">&copy; 2025 Journey4Change. All rights reserved.</p>
-    <p style="margin: 5px 0;">Designed to raise awareness for mental health in South Africa.</p>
-    <div style="margin-top: 20px;">
-      <a href="https://www.youtube.com/@journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.instagram.com/journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://x.com/j4j2026" target="_blank" style="color: white; margin: 0 10px;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
-</footer>
 
-<script>
-  function openNav() {
-    const sideNav = document.getElementById("sideNav");
-    sideNav.style.width = "280px";
-    document.body.style.overflow = "hidden"; // Disable background scroll
-  }
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+  </header>
 
-  function closeNav() {
-    const sideNav = document.getElementById("sideNav");
-    sideNav.style.width = "0";
-    document.body.style.overflow = "auto"; // Enable scroll again
-  }
-</script>
+  <!-- Crisis Band -->
+  <div class="crisis-band" role="alert">
+    <i class="fas fa-phone-alt"></i>
+    <span>If you are struggling right now, call SADAG:</span>
+    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
+    <span>· Available 24/7 · You are not alone</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-heart"></i> In Their Memory</span>
+      <h1>Their <em>Stories</em> Matter</h1>
+      <p>These are lives lost to suicide — each one a reminder of why we must break the silence, remove the shame, and build a world where no one suffers alone.</p>
+      <div class="hero-count">
+        <i class="fas fa-candle" style="color:var(--primary)"></i>
+        <span>Honouring <strong>20 lives</strong> — and the countless others we do not yet know.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" role="group" aria-label="Filter tributes">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCards('sa', this)">South African</button>
+    <button class="filter-btn" onclick="filterCards('international', this)">International</button>
+    <button class="filter-btn" onclick="filterCards('music', this)">Music</button>
+    <button class="filter-btn" onclick="filterCards('film', this)">Film & TV</button>
+    <button class="filter-btn" onclick="filterCards('sport', this)">Sport</button>
+  </div>
+
+  <!-- Tribute Grid -->
+  <div class="tribute-grid" id="tributeGrid">
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="siyabonga-name">
+      <div class="card-photo">
+        <img src="siyabonga.jpg" alt="Portrait of Siyabonga Zubane">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Actor · Gomora</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="siyabonga-name">Siyabonga Zubane</h2>
+        <div class="card-dates">1998 – 2022 · Age 23</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Siyabonga was popular for his role as Sdumo in Gomora. A family member said: 'He was nothing close to Sdumo. He was a nice shy guy who loved and respected people.' His death added to the growing list of young South African stars lost to suicide, exposing the intense pressures of fame."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His light lives on in every story shared.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="ebenhaezer-name">
+      <div class="card-photo">
+        <img src="Ebenhaezer.webp" alt="Portrait of Ebenhaezer Dibakwane">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Comedian · Actor · Writer</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="ebenhaezer-name">Ebenhaezer Dibakwane</h2>
+        <div class="card-dates">1994 – 2025 · Age 31</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"His family hopes his passing serves as a reminder of the importance of mental health: 'While this loss is devastating, we pray that it encourages people to check in on each other and prioritise their emotional well-being. Seeking professional help when needed is essential.'"</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His family's words carry his final wish.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="ceagan-name">
+      <div class="card-photo">
+        <img src="ceagan.jpg" alt="Portrait of Ceagan Arendse">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Actor · Arendsvlei</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="ceagan-name">Ceagan Arendse</h2>
+        <div class="card-dates">1989 – 2021 · Age 34</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Known for his portrayal of Woelag in Arendsvlei. His family confirmed: 'Ceagan unfortunately lost his battle with depression and succumbed to the disease through suicide.' A beloved talent taken too soon."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Remembered with love by fans across the country.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="avicii-name">
+      <div class="card-photo">
+        <img src="Aviciii.jpg" alt="Portrait of Avicii">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">DJ · Music Producer</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="avicii-name">Avicii (Tim Bergling)</h2>
+        <div class="card-dates">1989 – 2018 · Age 28</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Bergling died on 20 April 2018 in Muscat, Oman. His family later released an open letter speaking to the pain he carried behind the world-famous music. A generation of fans mourned one of the most gifted producers the world had seen."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His music continues to heal millions.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="shoki-name">
+      <div class="card-photo">
+        <img src="shoki.jpg" alt="Portrait of Shoki Mokgapa">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Actress · Award-Winning</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="shoki-name">Shoki Mokgapa</h2>
+        <div class="card-dates">1984 – 2014 · Age 34</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"After a long struggle with clinical depression she took her life. Her management said: 'She was a brave woman who had been seeking help but the disease proved to be stronger than she was.' Her bravery in seeking help should be remembered."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Seeking help is an act of courage.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="chester-name">
+      <div class="card-photo">
+        <img src="chester.jpg" alt="Portrait of Chester Bennington">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Linkin Park · Rock Legend</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="chester-name">Chester Bennington</h2>
+        <div class="card-dates">1976 – 2017 · Age 41</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Linkin Park's lead singer, whose voice carried millions through their own pain, lost his own battle. He was said to be close to Soundgarden's Chris Cornell, who had taken his own life months before. His music gave a generation permission to feel."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>"In the end, it doesn't even matter."</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="vincent-name">
+      <div class="card-photo">
+        <img src="vincent.avif" alt="Portrait of Vincent van der Merwe">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Conservationist · National Geographic Explorer</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="vincent-name">Vincent van der Merwe</h2>
+        <div class="card-dates">1983 – 2025 · Age 41</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"A globally renowned conservationist who organised the historic transfer of cheetahs to India. His family announced: 'Vincent sadly took his own life on Sunday, 16 March.' A man who dedicated his life to saving species could not be saved himself."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>The cheetahs he saved carry his legacy.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="music" tabindex="0" aria-labelledby="riky-name">
+      <div class="card-photo">
+        <img src="riky.jpg" alt="Portrait of Riky Rick">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Rapper · Cultural Icon</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="riky-name">Riky Rick</h2>
+        <div class="card-dates">1987 – 2022 · Age 34</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"His wife Bianca shared: 'He often said that I was saving his life without realizing that he too was saving mine. My king, my heart, my forever love. Thank you for giving us all that you had in this lifetime.' A pillar of South African hip-hop, gone too soon."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>A king who gave everything he had.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="music" tabindex="0" aria-labelledby="hhp-name">
+      <div class="card-photo">
+        <img src="hhp.jpg" alt="Portrait of HHP">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Rapper · Hip-Hop Pioneer</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="hhp-name">HHP (Jabulani Tsambo)</h2>
+        <div class="card-dates">1980 – 2018 · Age 38</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"'I'm depressed. I'm going out of control. I'm losing it.' Those were the heart-wrenching last words of hip-hop legend HHP. The Mahikeng-born rapper was one of South Africa's most beloved artists — a reminder that pain does not spare the celebrated."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His music shaped a generation of South Africans.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="anthony-name">
+      <div class="card-photo">
+        <img src="anthony.jpg" alt="Portrait of Anthony Bourdain">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Chef · Author · TV Host</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="anthony-name">Anthony Bourdain</h2>
+        <div class="card-dates">1956 – 2018 · Age 61</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"America's most beloved travel guide was found by his close friend Éric Ripert, who had become concerned when Bourdain missed dinner the night before. A man who connected the world through food and storytelling carried wounds the world could not see."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>He fed the world with curiosity and love.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="alexander-name">
+      <div class="card-photo">
+        <img src="alexander.avif" alt="Portrait of Lee Alexander McQueen">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Fashion Designer · Visionary</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="alexander-name">Lee Alexander McQueen</h2>
+        <div class="card-dates">1969 – 2010 · Age 40</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"The fashion world lost one of its most visionary designers. McQueen's work challenged convention and redefined beauty — yet behind the dazzling collections lay a man quietly fighting a battle that the glamour of fashion could not protect him from."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His art still graces runways and museums worldwide.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="naomi-name">
+      <div class="card-photo">
+        <img src="judd.webp" alt="Portrait of Naomi Judd">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Country Singer · The Judds</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="naomi-name">Naomi Judd</h2>
+        <div class="card-dates">1946 – 2022 · Age 76</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Her family shared: 'Our matriarch was dogged by an unfair foe. She was treated for PTSD and bipolar disorder, to which millions of Americans can relate.' Her story reminds us that mental illness does not discriminate by age, fame, or success."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Her music and her honesty live on.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="bongani-name">
+      <div class="card-photo">
+        <img src="bongani.jpg" alt="Portrait of Bongani Mayosi">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Professor · Cardiologist · UCT Dean</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="bongani-name">Prof. Bongani Mayosi</h2>
+        <div class="card-dates">1967 – 2018 · Age 51</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Mayosi had been experiencing depression for two years before his death. According to his family, the FeesMustFall protests contributed to his declining mental health. One of South Africa's greatest medical minds — a testament that brilliance does not shield from suffering."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His research saved and continues to save lives.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="jabu-name">
+      <div class="card-photo">
+        <img src="jabukubheka.webp" alt="Portrait of Jabu Christopher Kubheka">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Actor · Yizo Yizo</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="jabu-name">Jabu Christopher Kubheka</h2>
+        <div class="card-dates">1969 – 2017 · Age 48</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Bold. Cheeky. A fighter of justice. That was the Gunman South Africans came to celebrate on Yizo Yizo. His story is a reminder that what the world sees on screen and what a person carries inside can be worlds apart."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His performance defined a generation of South African TV.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="kate-name">
+      <div class="card-photo">
+        <img src="kate.jpg" alt="Portrait of Kate Spade">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Fashion Designer · Icon</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="kate-name">Kate Spade</h2>
+        <div class="card-dates">1962 – 2018 · Age 55</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"The designer whose colourful bags and accessories brought joy to millions was quietly battling her own darkness. Her death sparked a national conversation in the US about mental health and the hidden suffering behind public success."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Her brand lives on, now carrying her name with purpose.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="chris-name">
+      <div class="card-photo">
+        <img src="chris.jpg" alt="Portrait of Chris Cornell">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Soundgarden · Temple of the Dog</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="chris-name">Chris Cornell</h2>
+        <div class="card-dates">1964 – 2017 · Age 52</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Soundgarden frontman and one of rock's most powerful voices. Cornell had a long history with addiction and depression before his death in Detroit. His loss, months before Chester Bennington's, shook the rock world to its core."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Two legends gone — a call we must not ignore.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="music" tabindex="0" aria-labelledby="nichume-name">
+      <div class="card-photo">
+        <img src="nichume.webp" alt="Portrait of Nichume Siwundla">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Singer · Ophthalmologist</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="nichume-name">Nichume Siwundla</h2>
+        <div class="card-dates">1992 – 2019 · Age 27</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Known for featuring on Mobi Dixon's Buthiza, she was also a qualified ophthalmologist — a musician and a healer. Her story proves that those who dedicate themselves to helping others often carry their own struggles in silence."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>A gifted artist and healer taken far too soon.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="anele-name">
+      <div class="card-photo">
+        <img src="anele.png" alt="Portrait of Anele Tembe">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">South Africa</span>
+        <span class="card-year">Age 22</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="anele-name">Anele Tembe</h2>
+        <div class="card-dates">1999 – 2021 · Age 22</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"Anele was engaged to rapper AKA at the time of her passing. Her death at 22 sparked national grief and important conversations about mental health, relationships, and the silent battles young South Africans face every day."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>Her memory calls us to check on those we love.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="lilpoppa-name">
+      <div class="card-photo">
+        <img src="Lil-Poppa.jpg" alt="Portrait of Lil Poppa">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">Rapper · CMG</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="lilpoppa-name">Lil Poppa (Janarious Wheeler)</h2>
+        <div class="card-dates">2000 – 2025 · Age 25</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"A Florida rapper signed to Yo Gotti's Collective Music Group. A producer who worked with him said: 'I ain't never seen nobody outwork Poppa.' Days before his death, he released new music. Behind the relentless work ethic was a young man in pain."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>His music remains. His story must not be forgotten.</span></div>
+      </div>
+    </article>
+
+    <article class="tribute-card" data-region="international" data-category="sport" tabindex="0" aria-labelledby="rondale-name">
+      <div class="card-photo">
+        <img src="rondale-moore.jpg" alt="Portrait of Rondale Moore">
+        <div class="card-photo-overlay"></div>
+        <span class="card-region">International</span>
+        <span class="card-year">NFL Wide Receiver</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="rondale-name">Rondale Moore</h2>
+        <div class="card-dates">2000 – 2025 · Age 25</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">"A former NFL wide receiver who played at the highest level of professional sport. The Minnesota Vikings expressed their condolences. His passing is a reminder that athletic achievement and public success provide no armour against mental health struggles."</p>
+        <div class="card-footer"><i class="fas fa-heart"></i><span>We remember the person, not just the player.</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Context Section -->
+  <section class="context-section">
+    <div class="context-inner">
+      <div class="context-text">
+        <span class="section-label">Understanding the Crisis</span>
+        <h2>The Dark Side of Fame — and Everyday Life</h2>
+        <p>The stories above represent just a fraction of the lives lost to suicide every year. Most are not famous. Most die in silence. These public cases matter because they show us that success, wealth, and recognition offer no protection against mental health struggles.</p>
+        <p>In South Africa, approximately 23 people die by suicide every single day. Men are five times more likely to die by suicide than women. The legacy of apartheid and historical trauma has left deep psychological wounds across generations that remain largely untreated.</p>
+      </div>
+      <div class="factor-list">
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-eye-slash"></i></div>
+          <div>
+            <div class="factor-title">Mental Health Stigma</div>
+            <div class="factor-desc">Many avoid seeking help out of fear of judgement or career consequences — in entertainment, sport, and everyday communities.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-mask"></i></div>
+          <div>
+            <div class="factor-title">Pressure to Appear "Fine"</div>
+            <div class="factor-desc">The expectation to maintain a perfect image — on social media or on screen — isolates people from genuine connection.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-wine-bottle"></i></div>
+          <div>
+            <div class="factor-title">Substance Use as Coping</div>
+            <div class="factor-desc">Self-medication through alcohol and drugs is common when emotional support is absent — and it worsens outcomes significantly.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-history"></i></div>
+          <div>
+            <div class="factor-title">Historical & Childhood Trauma</div>
+            <div class="factor-desc">In South Africa, the legacy of apartheid and systemic violence has left intergenerational psychological scars that still go largely unaddressed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Story CTA -->
+  <section class="share-cta">
+    <div class="share-cta-inner">
+      <span class="section-label">Your Voice Matters</span>
+      <h2>Share Your Story</h2>
+      <p>If you have experienced depression, anxiety, or suicidal thoughts — and you are still here — your story can save someone else's life. Journey4Change is a safe space to speak.</p>
+      <div class="btn-group">
+        <a href="healing-journey.html" class="btn btn-primary"><i class="fas fa-pen"></i> Share Your Story</a>
+        <a href="mental-health-awareness.html" class="btn btn-ghost"><i class="fas fa-brain"></i> Get Help & Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2025 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html" class="active"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+
+    // Scroll reveal
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.tribute-card').forEach(c => cardObserver.observe(c));
+
+    // Filter
+    function filterCards(filter, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.tribute-card').forEach(card => {
+        const region = card.dataset.region;
+        const category = card.dataset.category;
+        const show = filter === 'all'
+          || filter === region
+          || filter === category;
+
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    // Header shadow
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.5)' : 'none';
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
