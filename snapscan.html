@@ -1,287 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Gateway - Mental Health Support</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <style>
-        .payment-option {
-            transition: all 0.3s ease;
-        }
-        .payment-option:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        .payment-option.selected {
-            border-color: #10b981;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-        .qr-code {
-            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
-                        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
-                        linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
-                        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Secure Donation Payment Gateway.">
+  <title>Journey4Change - Donate Securely</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY BAR ─── */
+    .utility-bar {
+      background-color: var(--dark);
+      color: rgba(255,255,255,0.75);
+      padding: 9px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.7);
+      margin-left: 18px;
+      font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ─── HEADER ─── */
+    header {
+      background: rgba(15, 31, 21, 0.96);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+      transform-origin: left;
+    }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+      padding: 80px 24px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.4);
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+    .page-hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      animation: fadeInUp 0.8s 0.15s ease-out both;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s 0.3s ease-out both;
+    }
+
+    /* ─── SECTION ─── */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+
+    /* ─── CARD BASE ─── */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid rgba(34,197,94,0.1);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .card-top-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    }
+    .card-body { padding: 40px 44px; }
+
+    .block-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .block-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      font-weight: 700;
+      margin-bottom: 32px;
+      position: relative;
+      display: inline-block;
+    }
+    .block-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+    }
+
+    /* ─── PAYMENT METHOD TILES ─── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .method-tile {
+      border: 1.5px solid #d4e8d9;
+      border-radius: var(--radius-sm);
+      padding: 22px 14px;
+      text-align: center;
+      cursor: pointer;
+      background: #fafcfb;
+      transition: all 0.25s;
+    }
+    .method-tile:hover {
+      border-color: var(--primary);
+      background: rgba(34,197,94,0.05);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .method-tile.selected {
+      border-color: var(--primary);
+      background: rgba(34,197,94,0.08);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+    }
+    .method-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(34,197,94,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      margin: 0 auto 14px;
+      transition: background 0.25s;
+    }
+    .method-tile.selected .method-icon,
+    .method-tile:hover .method-icon { background: rgba(34,197,94,0.18); }
+    .method-tile h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+    .method-tile p { font-size: 12px; color: var(--text-muted); }
+
+    /* ─── AMOUNT SELECTION ─── */
+    .amount-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .amount-label i { margin-right: 6px; color: var(--primary-dark); }
+
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .amount-btn {
+      padding: 13px 10px;
+      border: 1.5px solid #d4e8d9;
+      border-radius: var(--radius-sm);
+      background: #fafcfb;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .amount-btn:hover {
+      border-color: var(--primary);
+      background: rgba(34,197,94,0.06);
+    }
+    .amount-btn.selected {
+      border-color: var(--primary);
+      background: rgba(34,197,94,0.1);
+      color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+    }
+
+    .custom-amount-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .custom-amount-wrap label {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .custom-amount-wrap input {
+      padding: 11px 16px;
+      border: 1.5px solid #d4e8d9;
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: #fafcfb;
+      outline: none;
+      width: 160px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .custom-amount-wrap input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+      background: white;
+    }
+    .custom-amount-wrap input::placeholder { color: #9bb5a2; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(34,197,94,0.12);
+      margin: 36px 0;
+    }
+
+    /* ─── PAYMENT FORMS ─── */
+    .payment-form { display: none; }
+    .payment-form.active { display: block; animation: fadeInUp 0.4s ease-out both; }
+
+    /* SnapScan */
+    .snapscan-wrap { text-align: center; }
+    .qr-box {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px;
+      border-radius: var(--radius);
+      border: 2px dashed rgba(34,197,94,0.35);
+      background: #f0f7f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .qr-box i { font-size: 3rem; color: rgba(34,197,94,0.4); }
+    .qr-box p { font-size: 13px; color: var(--text-muted); }
+    .qr-amount { font-size: 1.1rem; font-weight: 700; color: var(--secondary); }
+
+    .store-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+    .store-badges a img { height: 42px; transition: opacity 0.25s; }
+    .store-badges a:hover img { opacity: 0.8; }
+
+    .snapscan-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* PayPal */
+    .paypal-box {
+      background: #f0f7f1;
+      border: 1px solid rgba(34,197,94,0.15);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .paypal-box i { font-size: 3rem; color: #003087; margin-bottom: 16px; display: block; }
+    .paypal-box p { color: var(--text-muted); font-size: 0.95rem; }
+    .paypal-amount-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--secondary);
+      font-weight: 700;
+      margin: 12px 0;
+    }
+
+    /* Card Form */
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .form-group label i { margin-right: 6px; color: var(--primary-dark); }
+    .form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #d4e8d9;
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      background: #fafcfb;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .form-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+      background: white;
+    }
+    .form-group input::placeholder { color: #9bb5a2; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .save-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .save-card input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
+
+    /* ─── BUTTONS ─── */
+    .btn-pay {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--primary);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 24px rgba(34,197,94,0.3);
+      width: 100%;
+    }
+    .btn-pay:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
+    }
+    .btn-pay-secondary {
+      background: white;
+      color: var(--secondary);
+      border: 2px solid var(--primary);
+      box-shadow: none;
+    }
+    .btn-pay-secondary:hover { background: rgba(34,197,94,0.06); box-shadow: none; }
+
+    /* ─── SECURITY NOTICE ─── */
+    .security-notice {
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .security-notice i { color: var(--primary-dark); margin-top: 3px; flex-shrink: 0; font-size: 1.1rem; }
+    .security-notice h4 { font-weight: 700; color: var(--secondary); font-size: 15px; margin-bottom: 2px; }
+    .security-notice p { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080f0a;
+      color: white;
+      padding: 80px 24px 36px;
+    }
+    .footer-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.1; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.7); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); border-color: var(--primary); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.55); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright { max-width: 1160px; margin: 30px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 8px; }
+
+    /* ─── SIDE NAV ─── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed; z-index: 1000;
+      top: 0; left: 0; background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
+    }
+    .nav-header { padding: 30px 28px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s; flex-shrink: 0; line-height: 1;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75); display: flex; align-items: center;
+      gap: 14px; transition: all 0.25s; white-space: nowrap;
+      border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: var(--primary-light); background: rgba(34,197,94,0.1); border-left-color: var(--primary); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .card-body { padding: 28px 22px; }
+      .method-grid { grid-template-columns: 1fr; }
+      .amount-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .section { padding: 60px 20px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <i data-lucide="heart" class="h-8 w-8 text-emerald-600"></i>
-                    <span class="ml-2 text-xl font-bold text-gray-900">MindCare Payment</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="donations.html" class="text-gray-600 hover:text-gray-900">Back to Home</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Secure Payment Gateway</h1>
-            <p class="text-lg text-gray-600">Choose your preferred payment method</p>
-        </div>
-
-        <!-- Payment Options -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Payment Methods</h2>
-            
-            <!-- Payment Method Selection -->
-            <div class="grid md:grid-cols-3 gap-4 mb-8">
-                <!-- SnapScan -->
-                <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer text-center" 
-                     onclick="selectPayment('snapscan')">
-                    <div class="w-16 h-16 mx-auto mb-3 bg-red-100 rounded-full flex items-center justify-center">
-                        <i data-lucide="qr-code" class="h-8 w-8 text-red-600"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">SnapScan</h3>
-                    <p class="text-sm text-gray-600">Scan QR code to pay</p>
-                </div>
-
-                <!-- PayPal -->
-                <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer text-center" 
-                     onclick="selectPayment('paypal')">
-                    <div class="w-16 h-16 mx-auto mb-3 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i data-lucide="credit-card" class="h-8 w-8 text-blue-600"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">PayPal</h3>
-                    <p class="text-sm text-gray-600">Pay with PayPal</p>
-                </div>
-
-                <!-- Credit/Debit Card -->
-                <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer text-center" 
-                     onclick="selectPayment('card')">
-                    <div class="w-16 h-16 mx-auto mb-3 bg-green-100 rounded-full flex items-center justify-center">
-                        <i data-lucide="banknote" class="h-8 w-8 text-green-600"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">Card Payment</h3>
-                    <p class="text-sm text-gray-600">Credit or Debit Card</p>
-                </div>
-            </div>
-
-            <!-- Amount Selection -->
-            <div class="mb-8">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Select Amount (ZAR)</label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                    <button class="amount-btn border-2 border-gray-200 rounded-lg p-3 hover:border-emerald-500 hover:bg-emerald-50" 
-                            onclick="selectAmount(50)">R50</button>
-                    <button class="amount-btn border-2 border-gray-200 rounded-lg p-3 hover:border-emerald-500 hover:bg-emerald-50" 
-                            onclick="selectAmount(100)">R100</button>
-                    <button class="amount-btn border-2 border-gray-200 rounded-lg p-3 hover:border-emerald-500 hover:bg-emerald-50" 
-                            onclick="selectAmount(250)">R250</button>
-                    <button class="amount-btn border-2 border-gray-200 rounded-lg p-3 hover:border-emerald-500 hover:bg-emerald-50" 
-                            onclick="selectAmount(500)">R500</button>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-gray-700 mr-2">Custom Amount:</span>
-                    <input type="number" id="customAmount" placeholder="Enter amount" 
-                           class="border border-gray-300 rounded-md px-3 py-2 w-32" 
-                           oninput="selectAmount(this.value)">
-                </div>
-            </div>
-
-            <!-- Payment Forms -->
-            
-            <!-- SnapScan Payment -->
-            <div id="snapscan-form" class="payment-form hidden">
-                <div class="text-center">
-                    <h3 class="text-xl font-semibold mb-4">SnapScan Payment</h3>
-                    <div class="qr-code w-64 h-64 mx-auto mb-4 rounded-lg border-2 border-gray-300 flex items-center justify-center">
-                        <div class="text-center">
-                            <i data-lucide="qr-code" class="h-16 w-16 text-gray-400 mx-auto mb-2"></i>
-                            <p class="text-gray-600">QR Code will appear here</p>
-                            <p class="text-sm text-gray-500">Amount: R<span id="snapscan-amount">0</span></p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">Open your SnapScan app and scan the QR code above</p>
-                    
-                    <!-- App Store Download Links -->
-                    <div class="mb-6">
-                        <p class="text-sm text-gray-500 mb-3">Don't have SnapScan? Download it now:</p>
-                        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                            <a href="https://play.google.com/store/apps/details?id=com.snapscan" target="_blank" 
-                               class="hover:opacity-80 transition-opacity">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                                     alt="Get it on Google Play" class="h-12">
-                            </a>
-                            <a href="https://apps.apple.com/za/app/snapscan/id1248439855" target="_blank" 
-                               class="hover:opacity-80 transition-opacity">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                                     alt="Download on the App Store" class="h-12">
-                            </a>
-                            <a href="https://appgallery.huawei.com/app/C102424941" target="_blank" 
-                               class="hover:opacity-80 transition-opacity">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Huawei_AppGallery_white_badge_EN.png" 
-                                     alt="Explore it on AppGallery" class="h-12 bg-black rounded-md px-2 py-1">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <button class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
-                        Generate SnapScan QR Code
-                    </button>
-                </div>
-            </div>
-
-            <!-- PayPal Payment -->
-            <div id="paypal-form" class="payment-form hidden">
-                <div class="text-center">
-                    <h3 class="text-xl font-semibold mb-4">PayPal Payment</h3>
-                    <p class="text-gray-600 mb-6">Amount: R<span id="paypal-amount">0</span></p>
-                    <div class="bg-gray-100 p-6 rounded-lg mb-4">
-                        <p class="text-gray-600 mb-4">You will be redirected to PayPal to complete your payment</p>
-                        <i data-lucide="shield-check" class="h-12 w-12 text-blue-600 mx-auto"></i>
-                    </div>
-                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                        Pay with PayPal
-                    </button>
-                </div>
-            </div>
-
-            <!-- Card Payment -->
-            <div id="card-form" class="payment-form hidden">
-                <h3 class="text-xl font-semibold mb-4">Card Payment</h3>
-                <p class="text-gray-600 mb-6">Amount: R<span id="card-amount">0</span></p>
-                
-                <form class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                        <input type="text" placeholder="1234 5678 9012 3456" 
-                               class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
-                            <input type="text" placeholder="MM/YY" 
-                                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                            <input type="text" placeholder="123" 
-                                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder Name</label>
-                        <input type="text" placeholder="John Doe" 
-                               class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <input type="checkbox" id="save-card" class="mr-2">
-                        <label for="save-card" class="text-sm text-gray-600">Save card for future payments</label>
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors">
-                        Pay R<span id="card-pay-amount">0</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Security Info -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-            <div class="flex items-center">
-                <i data-lucide="shield-check" class="h-6 w-6 text-blue-600 mr-3"></i>
-                <div>
-                    <h4 class="font-semibold text-blue-800">Secure Payment</h4>
-                    <p class="text-blue-700">Your payment information is encrypted and secure. We never store your card details.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Support -->
-        <div class="text-center">
-            <p class="text-gray-600">Need help? <a href="#" class="text-emerald-600 hover:text-emerald-700">Contact Support</a></p>
-        </div>
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i>
+      +27 82 813 4960
     </div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
 
-    <script>
-        let selectedPayment = '';
-        let selectedAmount = 0;
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" aria-label="Open menu" role="button" tabindex="0">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+  </header>
 
-        function selectPayment(method) {
-            // Remove previous selections
-            document.querySelectorAll('.payment-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Hide all forms
-            document.querySelectorAll('.payment-form').forEach(form => {
-                form.classList.add('hidden');
-            });
-            
-            // Select current option
-            event.currentTarget.classList.add('selected');
-            selectedPayment = method;
-            
-            // Show corresponding form
-            document.getElementById(method + '-form').classList.remove('hidden');
-            
-            // Update amount displays
-            updateAmountDisplays();
-        }
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="hero-eyebrow"><i class="fas fa-hand-holding-heart"></i> &nbsp; Make a Difference</span>
+      <h2>Secure Donation<br>Gateway</h2>
+      <p>Every rand you give fuels 3,000 km of hope — helping us reach communities across all 9 provinces of South Africa.</p>
+    </div>
+  </section>
 
-        function selectAmount(amount) {
-            // Remove previous amount selections
-            document.querySelectorAll('.amount-btn').forEach(btn => {
-                btn.classList.remove('border-emerald-500', 'bg-emerald-50');
-            });
-            
-            // If clicking a preset button, select it
-            if (event && event.currentTarget.classList.contains('amount-btn')) {
-                event.currentTarget.classList.add('border-emerald-500', 'bg-emerald-50');
-                document.getElementById('customAmount').value = '';
-            }
-            
-            selectedAmount = parseFloat(amount) || 0;
-            updateAmountDisplays();
-        }
+  <!-- Payment Section -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="card reveal">
+        <div class="card-top-bar"></div>
+        <div class="card-body">
 
-        function updateAmountDisplays() {
-            const amountElements = ['snapscan-amount', 'paypal-amount', 'card-amount', 'card-pay-amount'];
-            amountElements.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.textContent = selectedAmount;
-                }
-            });
-        }
+          <!-- Step 1: Method -->
+          <span class="block-label">Step 1</span>
+          <h2 class="block-heading">Choose Payment Method</h2>
 
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
+          <div class="method-grid">
+            <div class="method-tile" id="tile-snapscan" onclick="selectPayment('snapscan', this)">
+              <div class="method-icon"><i class="fas fa-qrcode"></i></div>
+              <h3>SnapScan</h3>
+              <p>Scan QR code to pay</p>
+            </div>
+            <div class="method-tile" id="tile-paypal" onclick="selectPayment('paypal', this)">
+              <div class="method-icon"><i class="fab fa-paypal"></i></div>
+              <h3>PayPal</h3>
+              <p>Pay with PayPal</p>
+            </div>
+            <div class="method-tile" id="tile-card" onclick="selectPayment('card', this)">
+              <div class="method-icon"><i class="fas fa-credit-card"></i></div>
+              <h3>Card Payment</h3>
+              <p>Credit or Debit Card</p>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <!-- Step 2: Amount -->
+          <span class="block-label">Step 2</span>
+          <h2 class="block-heading">Select Amount</h2>
+
+          <span class="amount-label"><i class="fas fa-coins"></i>Preset Amounts (ZAR)</span>
+          <div class="amount-grid">
+            <button class="amount-btn" onclick="selectAmount(50, this)">R50</button>
+            <button class="amount-btn" onclick="selectAmount(100, this)">R100</button>
+            <button class="amount-btn" onclick="selectAmount(250, this)">R250</button>
+            <button class="amount-btn" onclick="selectAmount(500, this)">R500</button>
+          </div>
+
+          <div class="custom-amount-wrap">
+            <label for="customAmount">Custom amount:</label>
+            <input type="number" id="customAmount" placeholder="Enter amount" min="1" oninput="setCustomAmount(this.value)">
+          </div>
+
+          <hr class="divider">
+
+          <!-- Step 3: Payment Form -->
+          <span class="block-label">Step 3</span>
+          <h2 class="block-heading">Complete Payment</h2>
+
+          <!-- Placeholder prompt -->
+          <div id="form-prompt" style="text-align:center; padding: 32px 0; color: var(--text-muted);">
+            <i class="fas fa-arrow-up" style="font-size:2rem; color: rgba(34,197,94,0.35); margin-bottom:12px; display:block;"></i>
+            <p>Select a payment method above to continue.</p>
+          </div>
+
+          <!-- ── SnapScan Form ── -->
+          <div id="form-snapscan" class="payment-form">
+            <div class="snapscan-wrap">
+              <div class="qr-box">
+                <i class="fas fa-qrcode"></i>
+                <p>QR Code</p>
+                <div class="qr-amount" id="snapscan-amount-display">R0</div>
+              </div>
+              <p class="snapscan-note">Open your SnapScan app and scan the code above to donate.</p>
+
+              <div class="store-badges">
+                <p style="font-size:12px;color:var(--text-muted);width:100%;margin-bottom:4px;">Don't have SnapScan? Download it:</p>
+                <a href="https://play.google.com/store/apps/details?id=com.snapscan" target="_blank" rel="noopener">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                </a>
+                <a href="https://apps.apple.com/za/app/snapscan/id1248439855" target="_blank" rel="noopener">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                </a>
+                <a href="https://appgallery.huawei.com/app/C102424941" target="_blank" rel="noopener">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Huawei_AppGallery_white_badge_EN.png" alt="AppGallery" style="background:#000;border-radius:6px;padding:4px 8px;">
+                </a>
+              </div>
+
+              <button class="btn-pay" onclick="handlePayment('snapscan')">
+                <i class="fas fa-qrcode"></i> Generate SnapScan QR Code
+              </button>
+            </div>
+          </div>
+
+          <!-- ── PayPal Form ── -->
+          <div id="form-paypal" class="payment-form">
+            <div class="paypal-box">
+              <i class="fab fa-paypal"></i>
+              <p>You will be securely redirected to PayPal to complete your donation.</p>
+              <div class="paypal-amount-display" id="paypal-amount-display">R0</div>
+            </div>
+            <button class="btn-pay" onclick="handlePayment('paypal')">
+              <i class="fab fa-paypal"></i> Continue to PayPal
+            </button>
+          </div>
+
+          <!-- ── Card Form ── -->
+          <div id="form-card" class="payment-form">
+            <form onsubmit="handleCardSubmit(event)">
+              <div class="form-group">
+                <label><i class="fas fa-credit-card"></i>Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label><i class="fas fa-calendar-alt"></i>Expiry Date</label>
+                  <input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+                </div>
+                <div class="form-group">
+                  <label><i class="fas fa-lock"></i>CVV</label>
+                  <input type="text" placeholder="123" maxlength="4" oninput="this.value=this.value.replace(/\D/g,'')">
+                </div>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-user"></i>Cardholder Name</label>
+                <input type="text" placeholder="Full name as on card">
+              </div>
+              <label class="save-card">
+                <input type="checkbox"> Save card for future donations
+              </label>
+              <button type="submit" class="btn-pay">
+                <i class="fas fa-shield-alt"></i> Pay <span id="card-amount-display">R0</span> Securely
+              </button>
+            </form>
+          </div>
+
+          <!-- Security notice -->
+          <div class="security-notice">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <h4>100% Secure Payment</h4>
+              <p>Your payment information is fully encrypted. We never store your card details or share your personal data.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Support link -->
+      <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--text-muted);">
+        Need help? <a href="contact.html" style="color:var(--primary-dark);font-weight:600;text-decoration:none;">Contact our support team</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3,000 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html" class="active"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
+
+  <script>
+    let currentMethod = '';
+    let currentAmount = 0;
+
+    // ── Navigation ──
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+    document.querySelector('.hamburger').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') openNav();
+    });
+    document.querySelector('.close-btn').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') closeNav();
+    });
+
+    // ── Scroll reveal ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Header shadow ──
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.25)' : 'none';
+    });
+
+    // ── Payment method selection ──
+    function selectPayment(method, tile) {
+      document.querySelectorAll('.method-tile').forEach(t => t.classList.remove('selected'));
+      tile.classList.add('selected');
+      currentMethod = method;
+
+      document.querySelectorAll('.payment-form').forEach(f => f.classList.remove('active'));
+      document.getElementById('form-prompt').style.display = 'none';
+      document.getElementById('form-' + method).classList.add('active');
+      updateAmounts();
+    }
+
+    // ── Amount selection ──
+    function selectAmount(amount, btn) {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+      if (btn) btn.classList.add('selected');
+      document.getElementById('customAmount').value = '';
+      currentAmount = parseFloat(amount) || 0;
+      updateAmounts();
+    }
+
+    function setCustomAmount(val) {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+      currentAmount = parseFloat(val) || 0;
+      updateAmounts();
+    }
+
+    function updateAmounts() {
+      const display = currentAmount > 0 ? 'R' + currentAmount.toLocaleString('en-ZA') : 'R0';
+      ['snapscan-amount-display', 'paypal-amount-display', 'card-amount-display'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = display;
+      });
+    }
+
+    // ── Card formatting ──
+    function formatCard(input) {
+      let v = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = v.replace(/(.{4})/g, '$1 ').trim();
+    }
+    function formatExpiry(input) {
+      let v = input.value.replace(/\D/g, '').substring(0, 4);
+      if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+      input.value = v;
+    }
+
+    // ── Payment handlers ──
+    function handlePayment(method) {
+      if (currentAmount <= 0) {
+        alert('Please select or enter a donation amount first.');
+        return;
+      }
+      if (method === 'snapscan') {
+        alert('SnapScan QR code would be generated here for R' + currentAmount + '. Integrate with SnapScan API to enable live QR generation.');
+      } else if (method === 'paypal') {
+        alert('Redirecting to PayPal for R' + currentAmount + '. Integrate your PayPal merchant link here.');
+      }
+    }
+
+    function handleCardSubmit(e) {
+      e.preventDefault();
+      if (currentAmount <= 0) {
+        alert('Please select or enter a donation amount first.');
+        return;
+      }
+      alert('Thank you! Your donation of R' + currentAmount + ' is being processed. Integrate a payment processor (e.g. Peach Payments, PayFast) here.');
+    }
+  </script>
 </body>
 </html>
