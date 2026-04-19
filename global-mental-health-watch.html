@@ -3,913 +3,1295 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Join the Journey4Change for mental health awareness across South Africa.">
-  <meta name="keywords" content="mental health, awareness, journey, South Africa">
-  <title>Journey4Change - Journey</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta name="description" content="Global Mental Health Watch - Journey4Change examines the worldwide mental health crisis, suicide statistics, regional causes, and crisis resources.">
+  <title>Global Mental Health Watch - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #04ff10;
-      --primary-light: #80ff86;
-      --secondary: #2E7D32;
-      --dark: #1a2a3a;
-      --light: #f5f5f5;
-      --accent: #ff6b6b;
-      --text: #333333;
-      --shadow: 0 4px 20px rgba(0,0,0,0.1);
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --crisis: #dc2626;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 20px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
     }
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    overflow-x: hidden;
-  }
-
-  .page-title {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #007bff;
-    color: white;
-    font-size: 2rem;
-  }
-
-  .text-box {
-    max-width: 100%;
-    padding: 1.5rem;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .text-box h2 {
-    color: #007bff;
-    margin-bottom: 1rem;
-  }
-
-  .text-box p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    font-size: 1rem;
-  }
-
-  figure {
-    margin: 2rem 0;
-    text-align: center;
-  }
-
-  figure img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  figcaption {
-    margin-top: 0.5rem;
-    font-style: italic;
-    font-size: 0.9rem;
-  }
-
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 15px 30px;
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.65);
+      padding: 9px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 70px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
-    }
-
-    .header-left {
-      display: flex;
       align-items: center;
-      gap: 15px;
+      font-size: 13px;
     }
-
-    .header-text span {
-      font-size: 20px;
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.65);
+      margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
     }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
 
-header {
-  background: linear-gradient(135deg, #04ff10, #2E7D32);
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-header img {
-  height: 60px;
-  width: auto;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-header img:hover {
-  transform: rotate(10deg);
-}
-
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.logo-text h1 {
-  margin-bottom: 2px;
-  line-height: 1.2;
-}
-
-.logo-text span {
-  margin-top: 0;
-  line-height: 1.1;
-  display: block;
-}
-
-.login-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  padding: 10px 25px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s;
-  border: none;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.login-btn:hover {
-  background: white;
-  color: #04ff10;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.hamburger:hover {
-  transform: scale(1.1);
-}
-
-.hamburger div {
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s;
-}
-
-.hamburger:hover div {
-  background: rgba(255,255,255,0.9);
-}
-
-    .side-nav {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      overflow-y: auto;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      padding-top: 80px;
-      backdrop-filter: blur(10px);
-      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
-      opacity: 0;
-    }
-
-    .side-nav.show {
-      width: 250px;
-      opacity: 1;
-    }
-
-    .side-nav a {
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 18px;
+    /* ── HEADER ── */
+    header {
+      background: rgba(15,31,21,0.96);
+      backdrop-filter: blur(12px);
       color: white;
-      display: block;
-      transition: all 0.3s;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+    .login-btn {
+      background: var(--primary); color: var(--dark);
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 14px;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
+    }
+
+    /* ── CRISIS BAND ── */
+    .crisis-band {
+      background: #7f1d1d;
+      color: white;
+      padding: 12px 40px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; font-size: 13px; font-weight: 600;
+      text-align: center; flex-wrap: wrap;
+    }
+    .crisis-band i { animation: alertPulse 2s ease-in-out infinite; }
+    .crisis-band a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
       position: relative;
       overflow: hidden;
+      padding: 110px 60px 100px;
     }
-
-    .side-nav a::before {
+    .hero::before {
       content: '';
-      position: absolute;
-      left: -100%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.1);
-      transition: left 0.3s;
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 90% 50%, rgba(34,197,94,0.08) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-bg-text {
+      position: absolute; right: -10px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(80px, 16vw, 220px); font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1; pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.35);
+      padding: 7px 18px; border-radius: 50px; margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 900; color: white; line-height: 1.05; margin-bottom: 24px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.65); font-size: 1.1rem;
+      max-width: 620px; line-height: 1.8; margin-bottom: 44px;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
     }
 
-    .side-nav a:hover::before {
-      left: 0;
+    /* Global stat pills in hero */
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      animation: fadeInUp 0.7s 0.45s ease-out both;
+    }
+    .hero-stat-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px; padding: 14px 20px;
+    }
+    .hero-stat-pill-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900;
+      color: var(--primary-light); line-height: 1;
+    }
+    .hero-stat-pill-label {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      line-height: 1.4; max-width: 120px;
     }
 
-    .side-nav a i {
-      margin-right: 10px;
-      width: 20px;
-      text-align: center;
+    /* ── QUICK NAV ── */
+    .quick-nav {
+      background: white;
+      border-bottom: 1px solid #e8f0e8;
+      padding: 0 40px;
+      display: flex; gap: 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 17px 22px; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none;
+      border-bottom: 2px solid transparent; white-space: nowrap;
+      transition: all 0.25s;
+    }
+    .quick-nav a:hover { color: var(--primary-dark); border-bottom-color: var(--primary); }
+
+    /* ── MAIN ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 80px 40px 100px; }
+
+    /* Section titles */
+    .section-head { margin-bottom: 48px; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      color: var(--secondary); font-weight: 900; line-height: 1.15;
+    }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin-top: 16px;
     }
 
-    .side-nav .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-      transition: transform 0.3s;
+    /* ── WHO ALERT BLOCK ── */
+    .who-alert {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 48px 52px;
+      margin-bottom: 60px;
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
-
-    .side-nav .close-btn:hover {
-      transform: rotate(90deg);
+    .who-alert::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 100% 50%, rgba(34,197,94,0.12) 0%, transparent 70%);
     }
-
-    .main-content {
-      flex: 1;
-      padding: 130px 20px 40px;
-      max-width: 800px;
-      margin: 0 auto;
-      transition: transform 0.3s;
-      margin-bottom: 0;
+    .who-alert-text { position: relative; z-index: 1; }
+    .who-alert-text .section-label { color: rgba(255,255,255,0.5); }
+    .who-alert-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); color: white; font-weight: 900; margin-bottom: 16px;
     }
-
-    .main-content.shifted {
-      transform: translateX(250px);
-      transition: trasnform 0.3;
+    .who-alert-text p { color: rgba(255,255,255,0.68); font-size: 1rem; margin-bottom: 14px; line-height: 1.8; }
+    .who-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 700;
+      text-decoration: none; transition: all 0.25s;
+      background: rgba(255,255,255,0.1); color: white;
+      border: 1px solid rgba(255,255,255,0.2);
     }
-
-    @media (max-width: 768px) {
-      .header-text span {
-        font-size: 16px;
-      }
-      .main-content {
-        padding: 100px 15px 30px;
-      }
-      h1 {
-        font-size: 2em;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      h3 {
-        font-size: 1.2em;
-      }
+    .who-link:hover { background: var(--primary); color: var(--dark); border-color: var(--primary); }
+    .who-stat-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .who-stat {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 20px 18px; text-align: center;
+      transition: background 0.3s;
     }
-
-    h1, h2, h3 {
-      text-align: center;
-      margin: 20px 0;
-      animation: fadeIn 1s ease-in;
+    .who-stat:hover { background: rgba(255,255,255,0.11); }
+    .who-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900; color: var(--primary-light); line-height: 1; margin-bottom: 8px;
     }
+    .who-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
 
-    h1 {
-      font-size: 2.5em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* ── REGION CARDS ── */
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
     }
-
-    h2 {
-      font-size: 2em;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    .region-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(34,197,94,0.08);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s, box-shadow 0.35s;
+      opacity: 0; transform: translateY(20px);
     }
-
-    h3 {
-      font-size: 1.5em;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    .region-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s;
     }
+    .region-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-    p, ul {
-      margin: 20px auto;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      box-shadow: var(--shadow);
-      animation: slideIn 1s ease-in;
+    .region-card-top {
+      padding: 24px 26px 18px;
+      border-bottom: 1px solid #f0f4f0;
+      display: flex; align-items: flex-start; gap: 16px;
     }
-
-    ul {
-      list-style-type: none;
+    .region-flag {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+      background: rgba(34,197,94,0.08);
     }
+    .region-title { flex: 1; }
+    .region-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--secondary); line-height: 1.2; margin-bottom: 4px;
+    }
+    .region-rate {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(34,197,94,0.08);
+      color: var(--primary-dark);
+      border: 1px solid rgba(34,197,94,0.2);
+      padding: 3px 10px; border-radius: 50px;
+      font-size: 11px; font-weight: 700;
+    }
+    .region-rate.high { background: rgba(220,38,38,0.07); color: #b91c1c; border-color: rgba(220,38,38,0.2); }
 
-    li {
-      background: rgba(255, 255, 255, 0.2);
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 10px;
+    .region-factors { padding: 18px 26px 22px; list-style: none; }
+    .region-factors li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid #f5f8f5;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .region-factors li:last-child { border-bottom: none; }
+    .region-factors li i { color: var(--crisis); font-size: 11px; margin-top: 4px; flex-shrink: 0; }
+    .region-factors strong { color: var(--text); font-weight: 600; }
+
+    /* ── COMMON THEMES ── */
+    .themes-section {
+      background: var(--dark);
+      border-radius: var(--radius);
+      padding: 56px 52px;
+      margin-bottom: 60px;
+      position: relative; overflow: hidden;
+    }
+    .themes-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 40% 60% at 80% 50%, rgba(34,197,94,0.08) 0%, transparent 70%);
+    }
+    .themes-inner { position: relative; z-index: 1; }
+    .themes-inner .section-label { color: rgba(255,255,255,0.4); }
+    .themes-inner h2 { color: white; font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 36px; }
+    .themes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .theme-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 24px 22px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .theme-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(34,197,94,0.2); }
+    .theme-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1rem; margin-bottom: 14px;
+    }
+    .theme-title { font-weight: 700; color: white; font-size: 14px; margin-bottom: 6px; }
+    .theme-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+    /* Prevention wins */
+    .wins-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 36px; }
+    .win-card {
+      background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 14px; padding: 22px 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .win-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(34,197,94,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 14px; flex-shrink: 0;
+    }
+    .win-title { font-weight: 700; color: var(--primary-light); font-size: 14px; margin-bottom: 4px; }
+    .win-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ── BURDEN SECTION ── */
+    .burden-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 52px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+      margin-bottom: 60px;
+    }
+    .burden-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 36px; }
+    .burden-card {
+      border-radius: 14px; padding: 28px 24px;
+      border: 1px solid rgba(34,197,94,0.1);
+      background: var(--light);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    .burden-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .burden-card-icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 18px;
     }
+    .burden-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--secondary); margin-bottom: 12px; }
+    .burden-stat { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--primary-dark); line-height: 1; margin-bottom: 8px; }
+    .burden-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-    a {
-      color: #ffdd57;
-      text-decoration: none;
-      transition: color 0.3s;
+    /* ── HOTLINES SECTION ── */
+    .hotlines-section { margin-bottom: 60px; }
+    .hotlines-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .hotline-group {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s;
     }
-
-    a:hover {
-      color: #fff;
+    .hotline-group.visible { opacity: 1; transform: translateY(0); }
+    .hotline-group:hover { box-shadow: var(--shadow-md); }
+    .hotline-group-header {
+      padding: 18px 22px;
+      background: var(--secondary);
+      display: flex; align-items: center; gap: 12px;
     }
-
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      position: relative;
-      margin-top: 20px;
-    }
-
-    .footer-section a {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      word-break: break-word;
-      display: inline-block;
-      max-width: 100%;
-    }
-
-
-    .footer-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .footer-logo img {
-      height: 50px;
-      border-radius: 50%;
-    }
-
-    .footer-links h4 {
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-links h4::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: var(--primary);
-    }
-
-    .footer-links a {
-      color: white;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-      transform: translateX(5px);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      justify-content: center;
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
+    .hotline-region-icon {
+      width: 36px; height: 36px; border-radius: 10px;
       background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
     }
-
-    .social-links a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
+    .hotline-region-name { font-weight: 700; color: white; font-size: 15px; }
+    .hotline-entries { padding: 10px 0; }
+    .hotline-entry {
+      padding: 12px 22px;
+      border-bottom: 1px solid #f0f4f0;
+      display: flex; align-items: flex-start; gap: 12px;
     }
+    .hotline-entry:last-child { border-bottom: none; }
+    .hotline-entry-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(34,197,94,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark); font-size: 12px; flex-shrink: 0; margin-top: 2px;
+    }
+    .hotline-name { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+    .hotline-value { font-size: 14px; font-weight: 600; color: var(--text); }
+    .hotline-value a { color: var(--primary-dark); text-decoration: none; transition: color 0.2s; }
+    .hotline-value a:hover { color: var(--primary); }
 
+    /* ── EMERGENCY CTA ── */
+    .emergency-cta {
+      background: linear-gradient(135deg, #7f1d1d, #991b1b);
+      border-radius: var(--radius);
+      padding: 56px 52px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .emergency-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(255,100,100,0.1) 0%, transparent 70%);
+    }
+    .emergency-cta-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+    .emergency-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fca5a5; padding: 6px 16px; border-radius: 50px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .emergency-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: white; font-weight: 900; margin-bottom: 16px;
+    }
+    .emergency-cta p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 30px; line-height: 1.7; }
+    .emergency-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      border-radius: 50px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-white { background: white; color: var(--crisis); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .btn-white:hover { background: #fef2f2; transform: translateY(-2px); }
+    .btn-outline-white { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 50px;
+      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.65); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
     .copyright {
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      opacity: 0.7;
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 8px;
     }
 
-   body.nonscroll {
-    overflow: hidden;
-    height: 100vh;
-   } 
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
     }
-
-    @keyframes slideIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
     }
-
-    @media screen and (min-width: 768px) {
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
     }
-    .text-box {
-      max-width: 800px;
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
     }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.1); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
 
-    .text-box p {
-      font-size: 1.1rem;
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .who-alert { grid-template-columns: 1fr; gap: 40px; }
+      .wins-grid { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .hero { padding: 80px 24px 70px; }
+      main { padding: 60px 20px 80px; }
+      .who-alert { padding: 36px 24px; }
+      .who-stat-grid { grid-template-columns: 1fr 1fr; }
+      .themes-section { padding: 40px 28px; }
+      .burden-section { padding: 36px 24px; }
+      .emergency-cta { padding: 40px 24px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
+      .quick-nav { padding: 0 20px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Header with Navigation -->
-<header class="header">
-  <div class="header-left">
-    <div class="hamburger" onclick="openNav()">
-      <div></div>
-      <div></div>
-      <div></div>
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
     </div>
-    <div class="logo-text">
-      <h1>Journey4Change</h1>
-      <span>Healing Together</span>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
 
-</header>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+  </header>
 
-  <div id="sideNav" class="side-nav">
-    <span class="close-btn" onclick="closeNav()">×</span>
+  <!-- Crisis Band -->
+  <div class="crisis-band" role="alert">
+    <i class="fas fa-phone-alt"></i>
+    <span>In crisis? Call SADAG now:</span>
+    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
+    <span>· 24/7 · Free · Confidential</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-text">GLOBAL</div>
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-globe-africa"></i> Global Report</span>
+      <h1>The <em>World</em> Is in Crisis</h1>
+      <p>Depression and anxiety are claiming lives every 40 seconds. Journey4Change, under the leadership of Euclid Tumelo Ramaila, issues this urgent call to examine the global mental health pandemic — and demand action.</p>
+      <div class="hero-stats">
+        <div class="hero-stat-pill">
+          <div class="hero-stat-pill-num">40s</div>
+          <div class="hero-stat-pill-label">One death by suicide every 40 seconds</div>
+        </div>
+        <div class="hero-stat-pill">
+          <div class="hero-stat-pill-num">700K+</div>
+          <div class="hero-stat-pill-label">Suicide deaths globally per year</div>
+        </div>
+        <div class="hero-stat-pill">
+          <div class="hero-stat-pill-num">4th</div>
+          <div class="hero-stat-pill-label">Leading cause of death for ages 15–29</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Nav -->
+  <nav class="quick-nav" aria-label="Page sections">
+    <a href="#overview"><i class="fas fa-chart-bar"></i> Overview</a>
+    <a href="#regions"><i class="fas fa-globe"></i> By Region</a>
+    <a href="#themes"><i class="fas fa-link"></i> Common Themes</a>
+    <a href="#burden"><i class="fas fa-weight-hanging"></i> The Burden</a>
+    <a href="#hotlines"><i class="fas fa-phone"></i> Crisis Hotlines</a>
+  </nav>
+
+  <main>
+
+    <!-- WHO Overview -->
+    <div id="overview" style="padding-top: 20px;">
+      <div class="who-alert reveal">
+        <div class="who-alert-text">
+          <span class="section-label">WHO 2024 Data</span>
+          <h2>The Alarming Reality of Mental Health Today</h2>
+          <p>Suicide is a global public health emergency. The data from the World Health Organisation reveals the staggering scale of a crisis that touches every continent, every culture, and every income level.</p>
+          <p>South Africa alone records approximately 23 suicide deaths per day — yet the country allocates less than 5% of its health budget to mental health services.</p>
+          <a href="https://www.who.int/news-room/fact-sheets/detail/suicide/" target="_blank" rel="noopener" class="who-link">
+            <i class="fas fa-external-link-alt"></i> WHO Suicide Fact Sheet
+          </a>
+        </div>
+        <div class="who-stat-grid">
+          <div class="who-stat">
+            <div class="who-stat-num">13.8</div>
+            <div class="who-stat-label">South Africa per 100,000</div>
+          </div>
+          <div class="who-stat">
+            <div class="who-stat-num">14.5</div>
+            <div class="who-stat-label">USA per 100,000</div>
+          </div>
+          <div class="who-stat">
+            <div class="who-stat-num">60%</div>
+            <div class="who-stat-label">Of global suicides occur in Asia</div>
+          </div>
+          <div class="who-stat">
+            <div class="who-stat-num">87.5</div>
+            <div class="who-stat-label">Lesotho per 100,000 (highest)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Regions -->
+    <div id="regions">
+      <div class="section-head reveal">
+        <span class="section-label">Country by Country</span>
+        <h2>Breakdown by Region</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="region-grid">
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇿🇦</div>
+            <div class="region-title">
+              <div class="region-name">South Africa</div>
+              <div class="region-rate high">23.5 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Gender-Based Violence:</strong> 1 in 3 women experience violence, causing severe trauma.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Unemployment:</strong> Youth unemployment exceeds 60%, fuelling hopelessness.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> Grief and caregiving burden (7.8 million living with HIV).</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Alcohol Abuse:</strong> Binge drinking culture exacerbates impulsive acts.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇺🇸</div>
+            <div class="region-title">
+              <div class="region-name">United States</div>
+              <div class="region-rate">14.5 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Gun Accessibility:</strong> 55% of suicides involve firearms.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Opioid Crisis:</strong> "Deaths of despair" in rural, economically depressed areas.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> 60% with depression receive no treatment due to cost or stigma.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Veteran Suicide:</strong> Veterans die by suicide 1.5× more than civilians.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇱🇹</div>
+            <div class="region-title">
+              <div class="region-name">Europe (varies)</div>
+              <div class="region-rate high">Lithuania: 26.1 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Lithuania (26.1):</strong> Post-Soviet trauma, alcoholism, and seasonal depression.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Belgium (20.5):</strong> High euthanasia rates including for mental illness.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>UK (10.1):</strong> Austerity cuts to mental health services since 2010.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🌏</div>
+            <div class="region-title">
+              <div class="region-name">Asia</div>
+              <div class="region-rate high">South Korea: 28.6 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>South Korea — Academic Pressure:</strong> Suicide is the #1 cause of death for ages 15–24.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>South Korea — Elderly Poverty:</strong> 40% of seniors live in poverty (highest OECD rate).</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>India (12.7) — Farmer Suicides:</strong> Debt from crop failures (30,000+ since 2018).</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>India — Dowry Pressures:</strong> 20 women die by suicide daily due to harassment.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇱🇸</div>
+            <div class="region-title">
+              <div class="region-name">Lesotho</div>
+              <div class="region-rate high">87.5 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Extreme Poverty:</strong> 49% live below the poverty line.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> 25% prevalence — highest globally — causing caregiver burnout.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Male Crisis:</strong> Men die 4× more, driven by cultural expectations as breadwinners.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇸🇿</div>
+            <div class="region-title">
+              <div class="region-name">Eswatini</div>
+              <div class="region-rate high">40.5 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Economic Collapse:</strong> 40% unemployment; 60% among youth.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> 27% adult prevalence — second highest globally.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Alcohol:</strong> Heavy drinking linked to 1 in 3 suicides among men.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇬🇾</div>
+            <div class="region-title">
+              <div class="region-name">Guyana</div>
+              <div class="region-rate high">40.9 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Pesticide Poisoning:</strong> 60% of suicides use agrochemicals — easy rural access.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Rural Poverty:</strong> Rice farmers face debt cycles from flooding and crop failure.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Domestic Violence:</strong> 1 in 2 women experience abuse, leading to suicidal ideation.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🌊</div>
+            <div class="region-title">
+              <div class="region-name">Kiribati</div>
+              <div class="region-rate high">30.6 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Climate Despair:</strong> Rising sea levels displace communities — existential hopelessness.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Youth Unemployment:</strong> 50% of under-25s are jobless.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Cultural Stigma:</strong> Mental health seen as weakness — fewer than 5% seek help.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🏝️</div>
+            <div class="region-title">
+              <div class="region-name">Micronesia</div>
+              <div class="region-rate high">29.0 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Cultural Erosion:</strong> Globalisation undermines traditional support systems.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Alcohol Abuse:</strong> 70% of suicides involve heavy drinking.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Isolation:</strong> Remote islands lack any mental health services.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇸🇷</div>
+            <div class="region-title">
+              <div class="region-name">Suriname</div>
+              <div class="region-rate high">25.9 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Economic Crisis:</strong> Hyperinflation reached 54% in 2023.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>LGBTQ+ Stigma:</strong> High suicide risk among queer youth.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> Only 1 psychiatrist per 100,000 people.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇿🇼</div>
+            <div class="region-title">
+              <div class="region-name">Zimbabwe</div>
+              <div class="region-rate high">23.6 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Hyperinflation:</strong> Currency collapse drives economic despair.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Political Violence:</strong> Decades of repression have left deep trauma.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Droughts:</strong> Farmer suicides spike during crop failures.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇲🇿</div>
+            <div class="region-title">
+              <div class="region-name">Mozambique</div>
+              <div class="region-rate high">23.2 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Post-War PTSD:</strong> Civil war (1977–1992) left generational trauma.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Climate Disasters:</strong> Repeated cyclones like Cyclone Idai (2019).</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Extreme Poverty:</strong> 60% live on less than $1.90 per day.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇨🇫</div>
+            <div class="region-title">
+              <div class="region-name">Central African Republic</div>
+              <div class="region-rate high">23.0 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Ongoing Conflict:</strong> Rebel violence has caused mass displacement.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Collapse:</strong> 70% of health facilities damaged or destroyed by war.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Child Soldiers:</strong> Former combatants face extreme psychological trauma.</div></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Common Themes -->
+    <div id="themes">
+      <div class="themes-section reveal">
+        <div class="themes-inner">
+          <span class="section-label">Patterns Across All Regions</span>
+          <h2>Common Themes — and What Works</h2>
+          <div class="themes-grid">
+            <div class="theme-card">
+              <div class="theme-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="theme-title">Economic Shocks</div>
+              <div class="theme-desc">Unemployment and poverty create hopelessness across every region studied. The link between financial despair and suicidal ideation is consistent and well-documented.</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-icon"><i class="fas fa-bomb"></i></div>
+              <div class="theme-title">Trauma & Conflict</div>
+              <div class="theme-desc">War, violence, and climate disasters leave generational psychological wounds that remain untreated — especially in low-income nations with no mental health infrastructure.</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-icon"><i class="fas fa-crosshairs"></i></div>
+              <div class="theme-title">Access to Lethal Means</div>
+              <div class="theme-desc">Guns in the USA, pesticides in Guyana, hanging in Asia. Restricting access to means of suicide has proven to reduce rates significantly.</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-icon"><i class="fas fa-eye-slash"></i></div>
+              <div class="theme-title">Stigma</div>
+              <div class="theme-desc">Mental health remains taboo in 80% of high-rate countries. Stigma stops people from seeking help before it is too late — and silence costs lives.</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 40px;">
+            <div class="section-label" style="color: rgba(255,255,255,0.4);">Prevention Works</div>
+            <h3 style="font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; margin-bottom: 20px;">Evidence-Based Wins</h3>
+            <div class="wins-grid">
+              <div class="win-card">
+                <div class="win-icon"><i class="fas fa-leaf"></i></div>
+                <div>
+                  <div class="win-title">Guyana: Pesticide Bans</div>
+                  <div class="win-desc">Restricting access to agrochemicals reduced suicide rates by 30% — one of the most effective single interventions ever recorded.</div>
+                </div>
+              </div>
+              <div class="win-card">
+                <div class="win-icon"><i class="fas fa-robot"></i></div>
+                <div>
+                  <div class="win-title">South Korea: AI Screening</div>
+                  <div class="win-desc">AI chatbots now screen for depression in schools, enabling early intervention before crises escalate.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burden Section -->
+    <div id="burden">
+      <div class="section-head reveal">
+        <span class="section-label">The Scale of Suffering</span>
+        <h2>The Crippling Impact of Mental Health Disorders</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="burden-section reveal reveal-delay-1">
+        <div class="burden-grid">
+          <div class="burden-card">
+            <div class="burden-card-icon"><i class="fas fa-users"></i></div>
+            <h4>Human Cost</h4>
+            <div class="burden-stat">1 in 4</div>
+            <div class="burden-desc">South Africans are affected by depression. Globally, 50% of mental health conditions begin before age 14 — yet most go undiagnosed and untreated.</div>
+          </div>
+          <div class="burden-card">
+            <div class="burden-card-icon"><i class="fas fa-coins"></i></div>
+            <h4>Economic Burden</h4>
+            <div class="burden-stat">$2.5T</div>
+            <div class="burden-desc">Lost to the global economy annually from mental health conditions — through lost productivity, absenteeism, and healthcare costs. South Africa alone loses R161 billion per year.</div>
+          </div>
+          <div class="burden-card">
+            <div class="burden-card-icon"><i class="fas fa-hospital"></i></div>
+            <h4>Treatment Gap</h4>
+            <div class="burden-stat">75%</div>
+            <div class="burden-desc">Of sufferers in low-income countries receive no treatment. 90% of suicide victims had a diagnosable mental disorder — meaning most deaths were preventable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotlines -->
+    <div id="hotlines">
+      <div class="section-head reveal">
+        <span class="section-label">Immediate Help</span>
+        <h2>Global Crisis Hotlines</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="hotlines-grid hotlines-section">
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🇿🇦</div>
+            <div class="hotline-region-name">South Africa</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">SADAG 24hr Helpline</div>
+                <div class="hotline-value"><a href="tel:0800567567">0800 567 567</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-sms"></i></div>
+              <div>
+                <div class="hotline-name">SADAG SMS Callback</div>
+                <div class="hotline-value">SMS 31393</div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="hotline-name">Website</div>
+                <div class="hotline-value"><a href="https://www.sadag.org" target="_blank" rel="noopener">www.sadag.org</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🇺🇸</div>
+            <div class="hotline-region-name">United States</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">National Lifeline</div>
+                <div class="hotline-value"><a href="tel:988">988</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-sms"></i></div>
+              <div>
+                <div class="hotline-name">Crisis Text Line</div>
+                <div class="hotline-value">Text HOME to 741741</div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="hotline-name">Mental Health America</div>
+                <div class="hotline-value"><a href="https://mhanational.org/resources/suicide-prevention/" target="_blank" rel="noopener">mhanational.org</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🇬🇧</div>
+            <div class="hotline-region-name">Europe</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">UK — Samaritans</div>
+                <div class="hotline-value"><a href="tel:116123">116 123</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">Germany — Telefonseelsorge</div>
+                <div class="hotline-value"><a href="tel:08001110111">0800 111 0 111</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="hotline-name">NHS Mental Health</div>
+                <div class="hotline-value"><a href="https://www.nhs.uk/mental-health/" target="_blank" rel="noopener">nhs.uk/mental-health</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🌏</div>
+            <div class="hotline-region-name">Asia</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">India — Vandrevala Foundation</div>
+                <div class="hotline-value"><a href="tel:+919999666555">+91 9999 666 555</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">Japan — Befrienders</div>
+                <div class="hotline-value"><a href="tel:+81352869090">+81-3-5286-9090</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🌍</div>
+            <div class="hotline-region-name">Southern Africa</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">Lesotho — SADAG Partner</div>
+                <div class="hotline-value"><a href="tel:0800567567">0800 567 567</a> (toll-free)</div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">Zimbabwe — Friendship Bench</div>
+                <div class="hotline-value"><a href="tel:+2638644010010">+263 8644 010 010</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="hotline-name">Eswatini — MH Foundation</div>
+                <div class="hotline-value"><a href="tel:+26824046777">+268 2404 6777</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotline-group">
+          <div class="hotline-group-header">
+            <div class="hotline-region-icon">🌐</div>
+            <div class="hotline-region-name">International Finder</div>
+          </div>
+          <div class="hotline-entries">
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="hotline-name">Find a Helpline</div>
+                <div class="hotline-value"><a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="hotline-name">WHO Prevention Guide</div>
+                <div class="hotline-value"><a href="https://www.who.int/initiatives/live-life-initiative-for-suicide-prevention/limit-access-to-means-of-suicide" target="_blank" rel="noopener">WHO Live Life Initiative</a></div>
+              </div>
+            </div>
+            <div class="hotline-entry">
+              <div class="hotline-entry-icon"><i class="fas fa-sms"></i></div>
+              <div>
+                <div class="hotline-name">Global Crisis Text</div>
+                <div class="hotline-value">Text HOME to 741741</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Emergency CTA -->
+    <div class="emergency-cta reveal">
+      <div class="emergency-cta-inner">
+        <div class="emergency-badge"><i class="fas fa-exclamation-triangle"></i> If You Need Help Now</div>
+        <h2>You Are Not Alone</h2>
+        <p>Whatever country you are in, whatever you are facing — help exists. Reaching out is not weakness. It is the bravest and most important thing you will ever do.</p>
+        <div class="emergency-btns">
+          <a href="https://www.sadag.org/" target="_blank" rel="noopener" class="btn btn-white">
+            <i class="fas fa-phone"></i> SADAG — 0800 567 567
+          </a>
+          <a href="https://findahelpline.com" target="_blank" rel="noopener" class="btn btn-outline-white">
+            <i class="fas fa-globe"></i> Find a Helpline
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2025 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
     <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
     <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
-    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
     <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
-    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global Mental Health Watch</a>
+    <a href="global-mental-health-watch.html" class="active"><i class="fas fa-newspaper"></i> Global MH Watch</a>
     <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
-    <a href="social-media.html"><i class="fas fa-hashtag"></i> <span>Social Media</span>
-    <a href="partnership.html"><i class="fas fa-handshake text-blue-500 mr-2"></i> Our Partners</a>
-  </div>
-
-  <div class="main-content">
-    <h1>Global Mental Health Crisis:</h1>
-    <p>Depression and Anxiety Are Claiming Lives Daily - Urgent Action Needed. Journey4Change, under the leadership of founder Euclid Tumelo Ramaila, issues this urgent call to address the growing mental health pandemic affecting every nation. With suicide rates skyrocketing and mental health services overwhelmed, we demand immediate global action.</p>
-    <h2>The Alarming Reality of Mental Health Today​</h2>
-    <p>Shocking Global Suicide Statistics (WHO 2024): <a href="https://www.who.int/news-room/fact-sheets/detail/suicide/">WHO Suicide Facts</a></p>
-    <ul>
-      <li>Every 40 seconds, someone dies by suicide worldwide.</li>
-      <li>South Africa: 13.8 suicides per 100,000 people (8,000+ deaths annually).</li>
-      <li>USA: 14.5 suicides per 100,000 (48,000+ deaths in 2023).</li>
-      <li>Asia: Accounts for 60% of world's suicides (Japan: 16.8/100,000).</li>
-      <li>Europe: Lithuania has highest EU rate at 21.6/100,000.</li>
-      <li>Global: Suicide is the 4th leading cause of death among 15-29 year olds.</li>
-    </ul>
-
-    <h2>Breakdown of the primary factors driving high suicide rates in each country/region, based on socioeconomic, cultural, and mental health data:</h2>
-    <h3>1. South Africa (23.5 per 100,000)</h3>
-    <ul>
-      <li>Gender-Based Violence: High rates of trauma among women (1 in 3 experience violence).</li>
-      <li>Unemployment: Youth unemployment exceeds 60%, fueling hopelessness.</li>
-      <li>HIV/AIDS Impact: Grief from losing family members (7.8 million people living with HIV).</li>
-      <li>Alcohol Abuse: Binge drinking culture exacerbates impulsive acts.</li>
-    </ul>
-    <h3>2. United States (14.5 per 100,000)</h3>
-    <ul>
-      <li>Gun Accessibility: 55% of suicides involve firearms (easy access = higher lethality).</li>
-      <li>Opioid Crisis: "Deaths of despair" (drugs/alcohol) in rural, economically depressed areas.</li>
-      <li>Healthcare Gaps: 60% with depression receive no treatment due to cost/stigma.</li>
-      <li>Veteran Suicide: Military veterans die by suicide 1.5x more than civilians.</li>
-    </ul>
-
-    <h3>3. Europe (Varies by Country)</h3>
-    <ul>
-      <li>Lithuania (26.1): Post-Soviet trauma, alcoholism, and harsh winters (seasonal depression).</li>
-      <li>Belgium (20.5): High euthanasia rates (including for mental illness).</li>
-      <li>UK (10.1): Austerity cuts to mental health services since 2010.</li>
-    </ul>
-
-    <h3>4. Asia</h3>
-    <ul>
-      <li><strong>South Korea (28.6):</strong>
-        <ul>
-          <li>Academic Pressure: Youth suicide #1 cause of death for ages 15–24.</li>
-          <li>Elderly Poverty: 40% of seniors live in poverty (highest OECD rate).</li>
-        </ul>
-      </li>
-      <li><strong>India (12.7):</strong>
-        <ul>
-          <li>Farmers Suicides: Debt from crop failures (30,000+ since 2018).</li>
-          <li>Dowry Pressures: 20 women die by suicide daily due to harassment.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h3>5. Lesotho (87.5 per 100,000)</h3>
-    <ul>
-      <li>Poverty: 49% live below the poverty line.</li>
-      <li>HIV/AIDS: 25% prevalence (highest globally) → caregiver burnout.</li>
-      <li>Male Crisis: Men die 4x more (cultural expectation to be breadwinners).</li>
-    </ul>
-    <h3>6. Eswatini/Swaziland (40.5 per 100,000)</h3>
-    <ul>
-      <li>Economic Collapse: 40% unemployment; 60% youth jobless.</li>
-      <li>HIV/AIDS: 27% adult prevalence → chronic grief.</li>
-      <li>Alcohol: Heavy drinking in men (linked to 1 in 3 suicides).</li>
-    </ul>
-    <h3>7. Guyana (40.9 per 100,000)</h3>
-    <ul>
-      <li>Pesticide Poisoning: 60% of suicides use agrochemicals (easy access).</li>
-      <li>Rural Poverty: Rice farmers face debt cycles from flooding/crop failure.</li>
-      <li>Domestic Violence: 1 in 2 women experience abuse → suicidal ideation.</li>
-    </ul>
-
-    <h3>8. Kiribati (30.6 per 100,000)</h3>
-    <ul>
-      <li>Climate Despair: Rising sea levels displace communities (existential hopelessness).</li>
-      <li>Youth Unemployment: 50% of under-25s jobless.</li>
-      <li>Cultural Stigma: Mental health = "weakness"; &lt;5% seek help.</li>
-    </ul>
-    <h3>9. Micronesia (29.0 per 100,000)</h3>
-    <ul>
-      <li>Cultural Erosion: Globalization undermines traditional support systems.</li>
-    <li>Poverty: 49% live below the poverty line.</li>
-    <li>HIV/AIDS: 25% prevalence (highest globally) → caregiver burnout.</li>
-    <li>Male Crisis: Men die 4x more (cultural expectation to be breadwinners).</li>
-</ul>
-<h3>6. Eswatini/Swaziland (40.5 per 100,000)</h3>
-<ul>
-    <li>Economic Collapse: 40% unemployment; 60% youth jobless.</li>
-    <li>HIV/AIDS: 27% adult prevalence → chronic grief.</li>
-    <li>Alcohol: Heavy drinking in men (linked to 1 in 3 suicides).</li>
-</ul>
-<h3>7. Guyana (40.9 per 100,000)</h3>
-<ul>
-    <li>Pesticide Poisoning: 60% of suicides use agrochemicals (easy access).</li>
-    <li>Rural Poverty: Rice farmers face debt cycles from flooding/crop failure.</li>
-    <li>Domestic Violence: 1 in 2 women experience abuse → suicidal ideation.</li>
-</ul>
-
-<h3>8. Kiribati (30.6 per 100,000)</h3>
-<ul>
-    <li>Climate Despair: Rising sea levels displace communities (existential hopelessness).</li>
-    <li>Youth Unemployment: 50% of under-25s jobless.</li>
-    <li>Cultural Stigma: Mental health = "weakness"; &lt;5% seek help.</li>
-</ul>
-<h3>9. Micronesia (29.0 per 100,000)</h3>
-<ul>
-    <li>Cultural Erosion: Globalization undermines traditional support systems.</li>
-    <li>Alcohol Abuse: 70% of suicides involve heavy drinking.</li>
-    <li>Isolation: Remote islands lack mental health services.</li>
-</ul>
-<h3>10. Suriname (25.9 per 100,000)</h3>
-<ul>
-    <li>Economic Crisis: Hyperinflation (2023: 54%) → poverty.</li>
-    <li>LGBTQ+ Stigma: High suicide risk among queer youth.</li>
-    <li>Healthcare Gaps: 1 psychiatrist per 100,000 people.</li>
-</ul>
-
-<h3>11. Zimbabwe (23.6 per 100,000)</h3>
-<ul>
-    <li>Hyperinflation: Currency collapse → economic despair.</li>
-    <li>Political Violence: Trauma from decades of repression.</li>
-    <li>Droughts: Farmers’ suicides spike during crop failures.</li>
-</ul>
-<h3>12. Mozambique (23.2 per 100,000)</h3>
-<ul>
-    <li>Post-War PTSD: Civil war (1977–1992) left generational trauma.</li>
-    <li>Cyclone Trauma: Repeated climate disasters (e.g., Cyclone Idai 2019).</li>
-    <li>Poverty: 60% live on &lt;$1.90/day.</li>
-</ul>
-<h3>13. Central African Republic (23.0 per 100,000)</h3>
-<ul>
-    <li>Ongoing Conflict: Rebel violence → mass displacement.</li>
-    <li>Healthcare Collapse: 70% of facilities damaged by war.</li>
-    <li>Child Soldiers: Former combatants at high risk.</li>
-</ul>
-
-<h2>Common Themes</h2>
-<ul>
-    <li>Economic Shocks: Unemployment/poverty → hopelessness.</li>
-    <li>Trauma: War, violence, or climate disasters.</li>
-    <li>Access to Lethal Means: Guns (USA), pesticides (Guyana), hanging (Asia).</li>
-    <li>Stigma: Mental health = taboo in 80% of these countries.</li>
-</ul>
-<h2>Prevention Works:</h2>
-<ul>
-    <li>Guyana: Pesticide bans reduced suicides by 30%.</li>
-    <li>South Korea: AI chatbots now screen for depression in schools.</li>
-</ul>
-<h2>Crisis Resources:</h2>
-<ul>
-    <li>Global Hotlines: <a href="https://findahelpline.com">findahelpline.com</a></li>
-    <li>WHO Guide: <a href="https://www.who.int/initiatives/live-life-initiative-for-suicide-prevention/limit-access-to-means-of-suicide">Limit Access to Means of Suicide</a></li>
-</ul>
-
-<h2>The Crippling Impact of Mental Health Disorders</h2>
-<h3>Human Cost:</h3>
-<ul>
-    <li>Depression affects 1 in 4 South Africans.</li>
-    <li>50% of mental health conditions begin by age 14.</li>
-</ul>
-<h3>Economic Burden:</h3>
-<ul>
-    <li>Costs global economy $2.5 trillion annually.</li>
-    <li>South Africa loses R161 billion yearly to mental health issues.</li>
-</ul>
-<h3>Treatment Gap:</h3>
-<ul>
-    <li>75% of sufferers in low-income countries receive no treatment.</li>
-    <li>90% of suicide victims had a diagnosable mental disorder.</li>
-</ul>
-
-<h2>Global Mental Health Support Contacts</h2>
-<h3>South Africa:</h3>
-<ul>
-    <li>📞 SADAG (South African Depression and Anxiety Group):</li>
-    <li>📞 24hr Helpline: 0800 567 567</li>
-    <li>SMS 31393 (callback service)</li>
-    <li>Website: <a href="https://www.sadag.org">www.sadag.org</a></li>
-</ul>
-<h3>United States:</h3>
-<ul>
-    <li>📞 National Suicide Prevention Lifeline: 988</li>
-    <li>📞 Crisis Text Line: Text HOME to 741741</li>
-    <li>🌐 <a href="https://mhanational.org/resources/suicide-prevention/">Mental Health America</a></li>
-</ul>
-
-<h3>Europe:</h3>
-<ul>
-    <li>📞 UK Samaritans: 116 123</li>
-    <li>🌐 <a href="https://www.nhs.uk/mental-health/">https://www.nhs.uk/mental-health/</a></li>
-    <li>📞 Germany Telefonseelsorge: 0800 111 0 111</li>
-    <li>🌐 <a href="https://www.rcpsych.ac.uk/mental-health">https://www.rcpsych.ac.uk/mental-health</a></li>
-</ul>
-<h3>Asia:</h3>
-<ul>
-    <li>📞 India (Vandrevala Foundation): +91 9999 666 555</li>
-    <li>🌐 <a href="https://www.vandrevalafoundation.com">https://www.vandrevalafoundation.com</a></li>
-    <li>📞 Japan (BestFrienders): +81-3-5286-9090</li>
-    <li>🌐 <a href="https://www.befrienders-jpn.org">https://www.befrienders-jpn.org</a></li>
-</ul>
-
-<h3>Lesotho:</h3>
-<ul>
-    <li>📞 SADAG (South African partner): Call 0800 567 567 (toll-free from Lesotho)</li>
-    <li>Lesotho Mental Health Association:</li>
-    <li>Phone: +266 2231 2476</li>
-    <li>Email: info@lmha.org.ls (Note: Verify active status)</li>
-    <li>WHO Lesotho Office: +266 2231 1178 (for policy-level referrals)</li>
-</ul>
-<h3>Guyana:</h3>
-<ul>
-    <li>📞 Guyana Suicide Prevention Helpline: +592 223 0001 (24/7)</li>
-    <li>Mental Health Unit, Ministry of Health:</li>
-    <li>Phone: +592 226 1560</li>
-    <li>Website: <a href="https://health.gov.gy">health.gov.gy</a></li>
-    <li>Samaritans Guyana: Text HELP to 592-600-7890</li>
-</ul>
-
-<h3>Eswatini (Swaziland):</h3>
-<ul>
-    <li>Eswatini Mental Health Foundation:</li>
-    <li>Phone: +268 2404 6777</li>
-    <li>WhatsApp: +268 7612 3456</li>
-    <li>WHO Eswatini: +268 2404 2300 (for emergency referrals)</li>
-    <li>SADAG: 0800 567 567 (accessible from Eswatini)</li>
-</ul>
-<h3>Kiribati:</h3>
-<ul>
-    <li>Kiribati National Counselling Service:</li>
-    <li>Phone: +686 28100</li>
-    <li>Email: mentalhealth@health.gov.ki</li>
-    <li>Pacific Islands Mental Health Network:</li>
-    <li>Website: <a href="https://www.kfha.org.ki/">https://www.kfha.org.ki/</a> (regional support)</li>
-</ul>
-
-<h3>Micronesia:</h3>
-<ul>
-    <li>Micronesia Behavioral Health:</li>
-    <li>Phone: 998</li>
-    <li>Crisis Text Line: Text HELP to 741741 (international service)</li>
-    <li>WHO Pacific Office: +679 323 4100 (for resources)</li>
-</ul>
-<h3>Suriname:</h3>
-<ul>
-    <li>Suriname Mental Health Foundation:</li>
-    <li>Phone: +597 498 900 (24/7)</li>
-    <li>Email: smhf@sr.net</li>
-    <li>Lifeline Suriname: +597 123 (toll-free)</li>
-</ul>
-
-<h3>Zimbabwe:</h3>
-<ul>
-    <li>Zimbabwe National Suicide Prevention: +263 8644 010 010 (hotline)</li>
-    <li>Friendship Bench Initiative:</li>
-    <li>WhatsApp: +263 8644 010 010</li>
-    <li>Website: <a href="https://friendshipbenchzimbabwe.org">friendshipbenchzimbabwe.org</a></li>
-</ul>
-<h3>Mozambique:</h3>
-<ul>
-    <li>Ministry of Health Mental Health Unit:</li>
-    <li>Phone: +258 21 32 12 74</li>
-    <li>Email: mentalhealth@misaude.gov.mz</li>
-    <li>WHO Mozambique: +258 21 48 48 00 (for referrals)</li>
-</ul>
-
-<h3>Central African Republic:</h3>
-<ul>
-    <li>CAR Red Cross Psychological Support:</li>
-    <li>Phone: +236 72 02 58 47</li>
-    <li>WHO CAR Office: +236 21 61 17 00</li>
-</ul>
-
-<ul>
-<section class="fade-in delay-2 emergency-section">
-  <h2>You're Not Alone: Emergency Support</h2>
-  <p>If you're struggling, know that help is available immediately:</p>
-  <ul> 
-    <li><strong>SADAG (South Africa):</strong> Call 0800 567 567</li>
-    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
-    <li><strong>International Suicide Hotlines:</strong>
-      <a href="https://www.opencounseling.com/suicide-hotlines" style="color:rgb(0, 0, 0); text-decoration:underline;">
-        Find your country's hotline
-      </a>
-    </li>
-  </ul>
-  <div class="button-container">
-    <a class="sadag-button" href="https://www.sadag.org/" target="_blank">
-      <i class="fas fa-phone"></i> SADAG Website
-    </a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-about">
-      <div class="footer-logo">
-        <img src="Journey4Change.png" alt="Journey4Change Logo">
-        <div class="footer-logo-text">
-          <h3>Journey4Change</h3>
-          <p>Healing Together</p>
-        </div>
-      </div>
-      <p>Raising awareness for mental health across South Africa through a 3000km journey of hope and healing.</p>
-      <div class="social-links">
-        <a href="https://www.youtube.com/@journey4change2026" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/journey4change2026" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@journey4change2026" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/share/v/1CFYt9V34j/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://x.com/j4j2026" target="_blank"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="my-story.html">My Story</a></li>
-        <li><a href="journey4change.html">Journey for Change</a></li>
-        <li><a href="mental-health-awareness.html">Mental Health Awareness</a></li>
-        <li><a href="their-story.html">Their Story</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h4>Resources</h4>
-      <ul>
-        <li><a href="global-mental-health-watch.html">Global Mental Health Watch</a></li>
-        <li><a href="donations.html">Donations</a></li>
-        <li><a href="social-media.html">Social Media</a></li>
-        <li><a href="partnership.html">Our Partners</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h4>Contact</h4>
-      <ul>
-        <li><i class="fas fa-phone"></i> +27 82 813 4960</li>
-        <li><i class="fas fa-envelope"></i> journey4change.info<br>@gmail.com</li>
-        <li><i class="fas fa-map-marker-alt"></i> PO Box 177, LETABA, 0870</li>
-      </ul>
-    </div>
-  </div>
-  <div class="copyright">
-    &copy; 2025 Journey4Change. All rights reserved.
-  </div>
-</footer>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
 
   <script>
-function openNav() {
-  const sideNav = document.getElementById("sideNav");
-  sideNav.classList.add('show');
-  document.querySelector('.main-content').classList.add('shifted');
-  document.body.style.overflow = 'hidden';
-  document.body.classList.add("nonscroll");
-  
-  // Add overlay click handler
-  const overlay = document.createElement('div');
-  overlay.id = 'navOverlay';
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
-  overlay.style.left = '250px';
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.background = 'rgba(0,0,0,0.5)';
-  overlay.style.zIndex = '999';
-  overlay.addEventListener('click', closeNav);
-  document.body.appendChild(overlay);
-}
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
 
-function closeNav() {
-  const sideNav = document.getElementById("sideNav");
-  sideNav.classList.remove('show');
-  document.querySelector('.main-content').classList.remove('shifted');
-  document.body.style.overflow = 'auto';
-  document.body.classList.remove("nonscroll");
-  
-  // Remove overlay
-  const overlay = document.getElementById('navOverlay');
-  if (overlay) {
-    overlay.remove();
-  }
-}
-
-    // Animate section when it comes into view
-    document.addEventListener('DOMContentLoaded', function () {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.fade-in').forEach(section => {
-        observer.observe(section);
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal, .region-card, .hotline-group').forEach(el => obs.observe(el));
+
+    // Stagger region cards
+    document.querySelectorAll('.region-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 50}ms`;
+    });
+
+    // Header shadow
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
     });
   </script>
 </body>
 </html>
-
