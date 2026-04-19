@@ -1,1546 +1,1023 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealingJourney - Support for Depression & Anxiety Survivors</title>
-    <meta name="description" content="Stories of hope and healing from survivors who overcame depression and anxiety. Find resources, community support, and crisis help. You are not alone.">
-    
-    <style>
-        /* Healing & Recovery Design System */
-        :root {
-            /* Healing Color Palette */
-            --background: 210 20% 98%;
-            --foreground: 215 25% 27%;
-            
-            /* Calming Blues */
-            --primary: 210 100% 56%;
-            --primary-foreground: 210 20% 98%;
-            --primary-soft: 210 60% 85%;
-            
-            /* Healing Greens */
-            --healing: 150 40% 60%;
-            --healing-foreground: 210 20% 98%;
-            --healing-soft: 150 30% 90%;
-            
-            /* Warm Support */
-            --warmth: 35 100% 74%;
-            --warmth-foreground: 215 25% 27%;
-            --warmth-soft: 35 60% 92%;
-            
-            /* Card System */
-            --card: 0 0% 100%;
-            --card-foreground: 215 25% 27%;
-            
-            /* Interactive Elements */
-            --secondary: 210 60% 85%;
-            --secondary-foreground: 215 25% 27%;
-            
-            --muted: 210 30% 95%;
-            --muted-foreground: 215 15% 50%;
-            
-            --accent: 150 30% 90%;
-            --accent-foreground: 215 25% 27%;
-            
-            /* Form Elements */
-            --border: 210 20% 88%;
-            --input: 210 20% 92%;
-            --ring: 210 100% 56%;
-            
-            /* Utility */
-            --destructive: 0 84% 60%;
-            --destructive-foreground: 210 20% 98%;
-            
-            --radius: 0.75rem;
-            
-            /* Gradients */
-            --gradient-hero: linear-gradient(135deg, hsl(210 100% 56%), hsl(150 40% 60%));
-            --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 30% 97%));
-            --gradient-warmth: linear-gradient(120deg, hsl(35 100% 74%), hsl(35 80% 80%));
-            
-            /* Shadows */
-            --shadow-gentle: 0 4px 20px -4px hsl(210 100% 56% / 0.1);
-            --shadow-card: 0 2px 16px -2px hsl(210 20% 20% / 0.08);
-            --shadow-hero: 0 8px 32px -8px hsl(210 100% 56% / 0.2);
-            
-            /* Animations */
-            --transition-gentle: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: hsl(var(--background));
-            color: hsl(var(--foreground));
-            line-height: 1.6;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: hsl(var(--background) / 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid hsl(var(--border));
-            box-shadow: var(--shadow-gentle);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: hsl(var(--foreground));
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-        }
-
-        .nav-link {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: hsl(var(--muted-foreground));
-            text-decoration: none;
-            padding: 0.5rem 0;
-            transition: var(--transition-gentle);
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: hsl(var(--primary));
-            border-bottom-color: hsl(var(--primary));
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: var(--radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-gentle);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: hsl(var(--primary));
-            color: hsl(var(--primary-foreground));
-        }
-
-        .btn-primary:hover {
-            background: hsl(var(--primary) / 0.9);
-        }
-
-        .btn-healing {
-            background: hsl(var(--healing));
-            color: hsl(var(--healing-foreground));
-        }
-
-        .btn-healing:hover {
-            background: hsl(var(--healing) / 0.9);
-        }
-
-        .btn-outline {
-            border: 2px solid hsl(var(--primary));
-            color: hsl(var(--primary));
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background: hsl(var(--primary));
-            color: hsl(var(--primary-foreground));
-        }
-
-        .btn-lg {
-            padding: 0.75rem 2rem;
-            font-size: 1.125rem;
-        }
-
-        .btn-emergency {
-            background: hsl(var(--destructive));
-            color: hsl(var(--destructive-foreground));
-            font-size: 1.25rem;
-            font-weight: bold;
-            padding: 1rem 2rem;
-        }
-
-        .btn-emergency:hover {
-            background: hsl(var(--destructive) / 0.9);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gradient-hero);
-            color: hsl(var(--primary-foreground));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 64rem;
-            margin: 0 auto;
-            padding: 5rem 1.5rem;
-            z-index: 10;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 4.5rem;
-            }
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        @media (min-width: 768px) {
-            .hero p {
-                font-size: 1.5rem;
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: hsl(var(--muted-foreground));
-            text-align: center;
-            max-width: 48rem;
-            margin: 0 auto 4rem;
-        }
-
-        /* Card Styles */
-        .card {
-            background: var(--gradient-card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 1.5rem;
-            transition: var(--transition-gentle);
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-hero);
-        }
-
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .grid-2 {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .grid-3 {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 1024px) {
-            .grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .grid-4 {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .grid-4 {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* Backgrounds */
-        .bg-healing-soft {
-            background: hsl(var(--healing-soft));
-        }
-
-        .bg-accent {
-            background: hsl(var(--accent));
-        }
-
-        .bg-warmth-soft {
-            background: hsl(var(--warmth-soft));
-        }
-
-        .bg-muted {
-            background: hsl(var(--muted));
-        }
-
-        .bg-emergency {
-            background: hsl(var(--destructive) / 0.1);
-            border: 2px solid hsl(var(--destructive) / 0.3);
-            border-radius: var(--radius);
-            padding: 2rem;
-        }
-
-        /* Badge Styles */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .badge-healing {
-            background: hsl(var(--healing-soft));
-            color: hsl(var(--healing));
-        }
-
-        .badge-outline {
-            border: 1px solid hsl(var(--border));
-            background: transparent;
-        }
-
-        .badge-emergency {
-            background: hsl(var(--destructive));
-            color: hsl(var(--destructive-foreground));
-            font-size: 1.125rem;
-            padding: 0.5rem 1rem;
-        }
-
-        /* Text Utilities */
-        .text-center {
-            text-align: center;
-        }
-
-        .text-muted {
-            color: hsl(var(--muted-foreground));
-        }
-
-        .text-primary {
-            color: hsl(var(--primary));
-        }
-
-        .text-healing {
-            color: hsl(var(--healing));
-        }
-
-        .text-destructive {
-            color: hsl(var(--destructive));
-        }
-
-        .font-bold {
-            font-weight: bold;
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-3xl {
-            font-size: 1.875rem;
-        }
-
-        .text-sm {
-            font-size: 0.875rem;
-        }
-
-        .text-xs {
-            font-size: 0.75rem;
-        }
-
-        /* Margin & Padding Utilities */
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-12 { margin-bottom: 3rem; }
-        .mb-16 { margin-bottom: 4rem; }
-
-        .mt-4 { margin-top: 1rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .mt-12 { margin-top: 3rem; }
-        .mt-16 { margin-top: 4rem; }
-
-        .p-4 { padding: 1rem; }
-        .p-6 { padding: 1.5rem; }
-        .p-8 { padding: 2rem; }
-
-        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-
-        /* Border Utilities */
-        .border-l-4 {
-            border-left: 4px solid hsl(var(--muted));
-        }
-
-        .border-healing {
-            border-color: hsl(var(--healing));
-        }
-
-        /* Quote Style */
-        .quote-card {
-            border-left: 4px solid hsl(var(--warmth));
-            background: hsl(var(--warmth-soft));
-            padding: 1rem;
-            border-radius: var(--radius);
-        }
-
-        /* Footer */
-        .footer {
-            background: hsl(var(--foreground));
-            color: hsl(var(--background));
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0 1.5rem;
-        }
-
-        /* Emergency Alert */
-        .emergency-alert {
-            position: sticky;
-            top: 4rem;
-            z-index: 40;
-            background: hsl(var(--destructive));
-            color: hsl(var(--destructive-foreground));
-            padding: 1rem;
-            text-align: center;
-            display: none;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 53%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40%, 43% {
-                transform: translateY(-10px);
-            }
-            70% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Icon Styles */
-        .icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .icon-lg {
-            width: 2rem;
-            height: 2rem;
-        }
-
-        .icon-xl {
-            width: 3rem;
-            height: 3rem;
-        }
-
-        /* Feature Icons */
-        .feature-icon {
-            width: 4rem;
-            height: 4rem;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-
-        .feature-icon.healing {
-            background: hsl(var(--healing));
-            color: hsl(var(--healing-foreground));
-        }
-
-        .feature-icon.primary {
-            background: hsl(var(--primary));
-            color: hsl(var(--primary-foreground));
-        }
-
-        .feature-icon.warmth {
-            background: hsl(var(--warmth));
-            color: hsl(var(--warmth-foreground));
-        }
-
-        .feature-icon.destructive {
-            background: hsl(var(--destructive));
-            color: hsl(var(--destructive-foreground));
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: hsl(var(--background));
-            border-top: 1px solid hsl(var(--border));
-            padding: 1rem;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: hsl(var(--muted-foreground));
-            text-decoration: none;
-            border-radius: var(--radius);
-            margin-bottom: 0.5rem;
-            transition: var(--transition-gentle);
-        }
-
-        .mobile-menu a:hover {
-            background: hsl(var(--muted));
-            color: hsl(var(--foreground));
-        }
-
-        .menu-toggle {
-            display: block;
-            background: none;
-            border: 1px solid hsl(var(--border));
-            padding: 0.5rem;
-            border-radius: var(--radius);
-            cursor: pointer;
-        }
-
-        @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
-
-        /* Stats */
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: hsl(var(--primary));
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive utilities */
-        .hidden-mobile {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .hidden-mobile {
-                display: block;
-            }
-        }
-
-        /* International resources grid */
-        .international-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .international-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .international-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .resource-item {
-            padding: 1rem;
-            border: 1px solid hsl(var(--border));
-            border-radius: var(--radius);
-            transition: var(--transition-gentle);
-        }
-
-        .resource-item:hover {
-            background: hsl(var(--muted) / 0.5);
-        }
-
-        /* Crisis card styling */
-        .crisis-card {
-            border: 2px solid hsl(var(--destructive) / 0.3);
-            background: hsl(var(--destructive) / 0.05);
-        }
-
-        .crisis-card.urgent {
-            border-color: hsl(var(--primary) / 0.3);
-            background: hsl(var(--primary) / 0.05);
-        }
-
-        .crisis-card.support {
-            border-color: hsl(var(--healing) / 0.3);
-            background: hsl(var(--healing) / 0.05);
-        }
-
-        /* Link styles */
-        a {
-            color: hsl(var(--primary));
-            transition: var(--transition-gentle);
-        }
-
-        a:hover {
-            opacity: 0.8;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Healing Journey — Share your story of surviving depression or anxiety. Journey4Change creates a safe space for South Africans to speak, heal, and inspire.">
+  <title>Healing Journey - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --crisis: #dc2626;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 18px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--dark); color: rgba(255,255,255,0.65);
+      padding: 9px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px;
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.65); margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s; display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ── HEADER ── */
+    header {
+      background: rgba(15,31,21,0.96); backdrop-filter: blur(12px);
+      color: white; padding: 14px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+    .login-btn {
+      background: var(--primary); color: var(--dark);
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 14px;
+      text-decoration: none; display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.35); }
+
+    /* ── CRISIS BAND ── */
+    .crisis-band {
+      background: #7f1d1d; color: white;
+      padding: 12px 40px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; font-size: 13px; font-weight: 600;
+      text-align: center; flex-wrap: wrap;
+    }
+    .crisis-band i { animation: alertPulse 2s ease-in-out infinite; }
+    .crisis-band a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark); position: relative; overflow: hidden;
+      padding: 110px 60px 100px; text-align: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 50% 40%, rgba(34,197,94,0.09) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.35);
+      padding: 7px 18px; border-radius: 50px; margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 900; color: white; line-height: 1.05; margin-bottom: 22px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.65); font-size: 1.1rem;
+      max-width: 580px; margin: 0 auto 40px; line-height: 1.8;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
+    }
+    .hero-btns {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      animation: fadeInUp 0.7s 0.45s ease-out both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      border-radius: 50px; text-decoration: none; transition: all 0.3s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 6px 24px rgba(34,197,94,0.3); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(34,197,94,0.4); }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(255,255,255,0.25); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
+
+    /* ── PAGE NAV ── */
+    .page-nav {
+      background: white; border-bottom: 1px solid #e8f0e8;
+      padding: 0 40px; display: flex; gap: 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .page-nav::-webkit-scrollbar { display: none; }
+    .page-nav a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 17px 22px; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none;
+      border-bottom: 2px solid transparent; white-space: nowrap;
+      transition: all 0.25s;
+    }
+    .page-nav a:hover { color: var(--primary-dark); border-bottom-color: var(--primary); }
+
+    /* ── MAIN ── */
+    main { max-width: 1160px; margin: 0 auto; padding: 80px 40px 100px; }
+
+    .section-head { margin-bottom: 48px; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--secondary); font-weight: 900;
+    }
+    .section-head p { color: var(--text-muted); font-size: 1rem; margin-top: 12px; max-width: 600px; }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin-top: 14px;
+    }
+
+    /* ── STORY CARDS ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .story-card {
+      background: white; border-radius: var(--radius);
+      border: 1px solid rgba(34,197,94,0.08);
+      box-shadow: var(--shadow-sm);
+      padding: 32px 28px;
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(18px);
+    }
+    .story-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s, border-color 0.35s;
+    }
+    .story-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(34,197,94,0.2); }
+    .story-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    }
+    .story-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+    .story-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(34,197,94,0.1); border: 2px solid rgba(34,197,94,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 900; color: var(--primary-dark);
+      flex-shrink: 0;
+    }
+    .story-quote-icon { font-size: 2rem; color: rgba(34,197,94,0.15); line-height: 1; }
+    .story-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--secondary); font-weight: 700; margin-bottom: 2px; }
+    .story-meta { font-size: 12px; color: var(--text-muted); }
+    .story-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(34,197,94,0.08); color: var(--primary-dark);
+      border: 1px solid rgba(34,197,94,0.2);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .story-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+    .story-pullquote {
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      background: rgba(34,197,94,0.05);
+      border-radius: 0 10px 10px 0;
+      font-style: italic; font-size: 13px; font-weight: 600;
+      color: var(--secondary);
+    }
+
+    /* ── SHARE FORM ── */
+    .share-section {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 56px 52px;
+      margin-bottom: 60px;
+      position: relative; overflow: hidden;
+    }
+    .share-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 90% 50%, rgba(34,197,94,0.12) 0%, transparent 70%);
+    }
+    .share-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .share-text .section-label { color: rgba(255,255,255,0.45); }
+    .share-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem); color: white; font-weight: 900; margin-bottom: 16px;
+    }
+    .share-text p { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; margin-bottom: 14px; }
+    .share-promise {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .promise-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .promise-item i { color: var(--primary-light); font-size: 12px; flex-shrink: 0; }
+
+    /* Story form */
+    .story-form { }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.7); margin-bottom: 7px;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px;
+      color: white; background: rgba(255,255,255,0.08);
+      transition: all 0.25s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--primary);
+      background: rgba(255,255,255,0.12); box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .form-group select { color: rgba(255,255,255,0.7); }
+    .form-group select option { background: var(--secondary); color: white; }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .submit-btn {
+      width: 100%; padding: 14px; border: none; border-radius: 50px;
+      background: var(--primary); color: var(--dark);
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 4px;
+    }
+    .submit-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.35); }
+    .form-success {
+      display: none; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 10px; padding: 16px 20px; color: var(--primary-light);
+      font-weight: 600; margin-top: 14px; text-align: center;
+    }
+
+    /* ── COPING TOOLS ── */
+    .coping-section {
+      background: white; border-radius: var(--radius);
+      padding: 52px; box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(34,197,94,0.08);
+      margin-bottom: 60px;
+    }
+    .coping-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px; margin-top: 32px;
+    }
+    .coping-card {
+      background: var(--light); border-radius: 14px;
+      padding: 24px 22px; border: 1px solid rgba(34,197,94,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .coping-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .coping-icon {
+      width: 48px; height: 48px; border-radius: 13px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark); font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+    .coping-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--secondary); margin-bottom: 8px; }
+    .coping-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── RESOURCES SECTION ── */
+    .resources-section { margin-bottom: 60px; }
+    .resources-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    }
+    .resource-card {
+      background: white; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(34,197,94,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .resource-card-top { padding: 22px 22px 16px; border-bottom: 1px solid #f0f4f0; }
+    .resource-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 12px;
+    }
+    .resource-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--secondary); margin-bottom: 6px; }
+    .resource-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .resource-card-footer {
+      padding: 14px 22px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .resource-link {
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      color: var(--primary-dark); display: flex; align-items: center; gap: 5px;
+      transition: gap 0.2s;
+    }
+    .resource-link:hover { gap: 10px; }
+    .resource-contact { font-size: 12px; color: var(--text-muted); }
+
+    /* ── EMERGENCY BLOCK ── */
+    .emergency-block {
+      background: linear-gradient(135deg, #7f1d1d, #991b1b);
+      border-radius: var(--radius);
+      padding: 50px 52px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .emergency-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(255,100,100,0.1) 0%, transparent 70%);
+    }
+    .emergency-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .emergency-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fca5a5; padding: 6px 16px; border-radius: 50px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .emergency-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem); color: white; font-weight: 900; margin-bottom: 14px;
+    }
+    .emergency-block p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 28px; line-height: 1.7; }
+    .emergency-numbers {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px;
+    }
+    .emergency-num {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 16px;
+      text-align: center; transition: background 0.25s;
+    }
+    .emergency-num:hover { background: rgba(255,255,255,0.13); }
+    .emergency-num-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .emergency-num-value { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 2px; }
+    .emergency-num-desc { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .emergency-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-crisis {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .btn-crisis-white { background: white; color: var(--crisis); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .btn-crisis-white:hover { background: #fef2f2; transform: translateY(-2px); }
+    .btn-crisis-outline { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
+    .btn-crisis-outline:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+
+    /* ── HOPE CLOSE ── */
+    .hope-close {
+      background: var(--light); border-radius: var(--radius);
+      padding: 56px; text-align: center;
+      border: 1px solid rgba(34,197,94,0.1);
+    }
+    .hope-close-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
+    .hope-close h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--secondary); margin-bottom: 16px; }
+    .hope-close p { color: var(--text-muted); font-size: 1.05rem; max-width: 540px; margin: 0 auto 10px; line-height: 1.8; }
+
+    /* ── FOOTER ── */
+    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 50px;
+      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.65); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 8px;
+    }
+
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.1); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .share-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .hero { padding: 80px 24px 70px; }
+      main { padding: 60px 20px 80px; }
+      .share-section { padding: 36px 24px; }
+      .coping-section { padding: 36px 24px; }
+      .emergency-block { padding: 36px 24px; }
+      .hope-close { padding: 40px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="#hero" class="logo">
-                <span>💚</span>
-                HealingJourney
+
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
+    </div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+  </header>
+
+  <!-- Crisis Band -->
+  <div class="crisis-band" role="alert">
+    <i class="fas fa-phone-alt"></i>
+    <span>If you are in crisis right now, call SADAG:</span>
+    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
+    <span>· Available 24/7 · Free · You are not alone</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-heart"></i> Healing Journey</span>
+      <h1>Your Story Can <em>Save</em> a Life</h1>
+      <p>This is a safe space for South Africans to share their journeys through depression, anxiety, and survival. Every story matters. Every voice matters. <em>You</em> matter.</p>
+      <div class="hero-btns">
+        <a href="#share" class="btn btn-primary"><i class="fas fa-pen"></i> Share Your Story</a>
+        <a href="#stories" class="btn btn-ghost"><i class="fas fa-book-open"></i> Read Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page Nav -->
+  <nav class="page-nav" aria-label="Page sections">
+    <a href="#stories"><i class="fas fa-book-open"></i> Stories</a>
+    <a href="#share"><i class="fas fa-pen"></i> Share Yours</a>
+    <a href="#coping"><i class="fas fa-seedling"></i> Coping Tools</a>
+    <a href="#resources"><i class="fas fa-hands-helping"></i> Resources</a>
+    <a href="#emergency"><i class="fas fa-phone-alt"></i> Emergency</a>
+  </nav>
+
+  <main>
+
+    <!-- Stories -->
+    <div id="stories">
+      <div class="section-head reveal">
+        <span class="section-label">Survivor Stories</span>
+        <h2>Stories of Hope & Healing</h2>
+        <p>Real journeys from darkness to light. These voices belong to people who kept going — and want you to know that you can too.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="story-grid">
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">Lerato M.</div>
+              <div class="story-meta">Limpopo · 2024</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-brain"></i> Depression</div>
+          <p class="story-text">After losing my grandmother I couldn't get out of bed. Three years of silence and shame. I found Journey4Change and realised there was a name for what I was feeling — and that I wasn't weak. Through therapy and community, I found my way back to myself.</p>
+          <div class="story-pullquote">Small moments of joy became my foundation.</div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">Sipho K.</div>
+              <div class="story-meta">Gauteng · 2024</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-shield-alt"></i> Suicidal Ideation</div>
+          <p class="story-text">I got to the edge in 2023. I didn't tell anyone for months. One night I called SADAG and a stranger talked me through it. That call changed everything. I'm still here. I'm in therapy now. I jog every morning. Life is hard but I choose it every day.</p>
+          <div class="story-pullquote">Asking for help was the bravest thing I ever did.</div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">Elena R.</div>
+              <div class="story-meta">Western Cape · 2023</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-cloud-rain"></i> Major Depression</div>
+          <p class="story-text">After losing my job and going through a divorce, depression hit like a tsunami. I felt worthless. Support groups and volunteering slowly brought light back. Recovery taught me resilience I never knew I had. Today I help facilitate a community healing circle every month.</p>
+          <div class="story-pullquote">Finding purpose in helping others healed me.</div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">David K.</div>
+              <div class="story-meta">KwaZulu-Natal · 2024</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-users"></i> Social Anxiety</div>
+          <p class="story-text">I avoided people, classes, everything. Through group therapy and mindfulness I learned self-compassion. Now I'm studying and have real friendships. The anxious version of me is still there sometimes — but he's brave now too. One small step at a time.</p>
+          <div class="story-pullquote">Self-compassion was the key to my healing.</div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">Nomsa T.</div>
+              <div class="story-meta">Free State · 2025</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-bolt"></i> Anxiety & PTSD</div>
+          <p class="story-text">Domestic violence left me scared of everything. I didn't think healing was possible for me. A social worker referred me to SADAG. Two years later I have my own apartment, I'm finishing my diploma, and I speak at awareness events. My pain became my purpose.</p>
+          <div class="story-pullquote">Healing is not linear, but it is real.</div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <div>
+              <div class="story-name">James O.</div>
+              <div class="story-meta">Eastern Cape · 2024</div>
+            </div>
+            <div class="story-quote-icon">"</div>
+          </div>
+          <div class="story-badge"><i class="fas fa-running"></i> Recovery Journey</div>
+          <p class="story-text">Unemployment after matric broke me. I spent 18 months barely leaving the house. My mother noticed and took me to a clinic. The counsellor said something that stayed with me: "Your future self is depending on the choices you make today." I'm still choosing to stay.</p>
+          <div class="story-pullquote">My future self was worth fighting for.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Share Form -->
+    <div id="share">
+      <div class="share-section reveal">
+        <div class="share-inner">
+          <div class="share-text">
+            <span class="section-label">Add Your Voice</span>
+            <h2>Share Your Story</h2>
+            <p>Your experience — whatever it is — can be the reason someone else chooses to seek help. You don't need to have everything figured out. You just need to be willing to speak.</p>
+            <p>All stories are reviewed before publishing and you choose your own level of anonymity.</p>
+            <div class="share-promise">
+              <div class="promise-item"><i class="fas fa-lock"></i> Your information is kept private</div>
+              <div class="promise-item"><i class="fas fa-eye"></i> You choose how much to share</div>
+              <div class="promise-item"><i class="fas fa-check-circle"></i> Stories are reviewed with care</div>
+              <div class="promise-item"><i class="fas fa-heart"></i> Every story is valued and respected</div>
+            </div>
+          </div>
+          <div class="story-form">
+            <form onsubmit="submitStory(event)" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sname">Display Name</label>
+                  <input type="text" id="sname" placeholder="e.g. Lerato M. or Anonymous" required>
+                </div>
+                <div class="form-group">
+                  <label for="slocation">Province</label>
+                  <select id="slocation">
+                    <option value="">Select province…</option>
+                    <option>Limpopo</option>
+                    <option>Gauteng</option>
+                    <option>Western Cape</option>
+                    <option>KwaZulu-Natal</option>
+                    <option>Eastern Cape</option>
+                    <option>Free State</option>
+                    <option>North West</option>
+                    <option>Mpumalanga</option>
+                    <option>Northern Cape</option>
+                    <option>Outside South Africa</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="scondition">What did you face?</label>
+                <select id="scondition">
+                  <option value="">Select…</option>
+                  <option>Depression</option>
+                  <option>Anxiety</option>
+                  <option>Suicidal Ideation / Attempt</option>
+                  <option>PTSD</option>
+                  <option>Social Anxiety</option>
+                  <option>Bipolar Disorder</option>
+                  <option>Substance Abuse</option>
+                  <option>Grief & Loss</option>
+                  <option>Prefer not to say</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sstory">Your Story</label>
+                <textarea id="sstory" rows="6" placeholder="Share your journey in your own words. There is no wrong way to tell it…" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="squote">A sentence that helped you (optional)</label>
+                <input type="text" id="squote" placeholder="e.g. 'Small steps still count as movement'">
+              </div>
+              <div class="form-group">
+                <label for="semail">Email (optional — only for follow-up)</label>
+                <input type="email" id="semail" placeholder="your@email.com">
+              </div>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit My Story
+              </button>
+              <div class="form-success" id="storySuccess">
+                <i class="fas fa-check-circle"></i> Thank you for your courage. Your story has been received and will be reviewed with care.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coping Tools -->
+    <div id="coping">
+      <div class="section-head reveal">
+        <span class="section-label">Right Now</span>
+        <h2>Quick Coping Tools</h2>
+        <p>Simple, proven techniques you can use anywhere, anytime when feeling overwhelmed.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="coping-section reveal reveal-delay-1">
+        <div class="coping-grid">
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-eye"></i></div>
+            <h4>5-4-3-2-1 Grounding</h4>
+            <p>Name 5 things you see, 4 you hear, 3 you can touch, 2 you smell, 1 you taste. Anchors you in the present moment.</p>
+          </div>
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-wind"></i></div>
+            <h4>Box Breathing</h4>
+            <p>Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. Repeat 4 times. Calms the nervous system immediately.</p>
+          </div>
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-running"></i></div>
+            <h4>Move Your Body</h4>
+            <p>Even a 10-minute walk releases mood-lifting endorphins. Movement is one of the most effective natural antidepressants.</p>
+          </div>
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-pen"></i></div>
+            <h4>Write It Down</h4>
+            <p>Write exactly how you feel without editing. Getting thoughts out of your head and onto paper creates distance and clarity.</p>
+          </div>
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-phone"></i></div>
+            <h4>Call Someone</h4>
+            <p>A friend, family member, or crisis line. Human connection is the most powerful tool available — and it is always free.</p>
+          </div>
+          <div class="coping-card">
+            <div class="coping-icon"><i class="fas fa-moon"></i></div>
+            <h4>Progressive Relaxation</h4>
+            <p>Tense each muscle group for 5 seconds, then release. Work from your toes to your shoulders. Releases physical tension.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div id="resources">
+      <div class="section-head reveal">
+        <span class="section-label">Professional Help</span>
+        <h2>Find Support</h2>
+        <p>Professional resources, online therapy, and SA-based organisations ready to help.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="resources-grid resources-section">
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-card-top">
+            <div class="resource-card-icon" style="background:rgba(34,197,94,0.1);color:var(--primary-dark)"><i class="fas fa-brain"></i></div>
+            <h3>SADAG</h3>
+            <p>Africa's largest mental health support network — counselling, helplines, and resources across all 9 provinces.</p>
+          </div>
+          <div class="resource-card-footer">
+            <a href="https://www.sadag.org" target="_blank" rel="noopener" class="resource-link">Visit SADAG <i class="fas fa-arrow-right"></i></a>
+            <span class="resource-contact">0800 567 567</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="resource-card-top">
+            <div class="resource-card-icon" style="background:rgba(139,92,246,0.1);color:#7c3aed"><i class="fas fa-comments"></i></div>
+            <h3>7 Cups</h3>
+            <p>Free, anonymous online emotional support — trained listeners available around the clock for any kind of crisis or worry.</p>
+          </div>
+          <div class="resource-card-footer">
+            <a href="https://www.7cups.com" target="_blank" rel="noopener" class="resource-link" style="color:#7c3aed">Visit 7 Cups <i class="fas fa-arrow-right"></i></a>
+            <span class="resource-contact">Free & online</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-card-top">
+            <div class="resource-card-icon" style="background:rgba(14,165,233,0.1);color:#0369a1"><i class="fas fa-laptop"></i></div>
+            <h3>BetterHelp</h3>
+            <p>Affordable online therapy with licensed professionals. Message, phone, or video sessions — whenever suits you.</p>
+          </div>
+          <div class="resource-card-footer">
+            <a href="https://www.betterhelp.com" target="_blank" rel="noopener" class="resource-link" style="color:#0369a1">Visit BetterHelp <i class="fas fa-arrow-right"></i></a>
+            <span class="resource-contact">Online therapy</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="resource-card-top">
+            <div class="resource-card-icon" style="background:rgba(249,115,22,0.1);color:#c2410c"><i class="fas fa-users"></i></div>
+            <h3>DBSA</h3>
+            <p>The Depression and Bipolar Support Alliance — peer-led support groups, wellness tools, and online communities.</p>
+          </div>
+          <div class="resource-card-footer">
+            <a href="https://www.dbsalliance.org" target="_blank" rel="noopener" class="resource-link" style="color:#c2410c">Visit DBSA <i class="fas fa-arrow-right"></i></a>
+            <span class="resource-contact">Support groups</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergency -->
+    <div id="emergency">
+      <div class="emergency-block reveal">
+        <div class="emergency-inner">
+          <div class="emergency-badge"><i class="fas fa-exclamation-triangle"></i> If You Need Help Now</div>
+          <h2>You Are Not Alone — Help Is Here</h2>
+          <p>If you are in crisis or having thoughts of suicide or self-harm, please reach out immediately. These services are free, confidential, and available 24 hours a day.</p>
+          <div class="emergency-numbers">
+            <div class="emergency-num">
+              <div class="emergency-num-label">South Africa · SADAG</div>
+              <div class="emergency-num-value">0800 567 567</div>
+              <div class="emergency-num-desc">Free · 24/7</div>
+            </div>
+            <div class="emergency-num">
+              <div class="emergency-num-label">South Africa · Lifeline</div>
+              <div class="emergency-num-value">0861 322 322</div>
+              <div class="emergency-num-desc">Free · 24/7</div>
+            </div>
+            <div class="emergency-num">
+              <div class="emergency-num-label">Global · Crisis Text</div>
+              <div class="emergency-num-value">Text HOME to 741741</div>
+              <div class="emergency-num-desc">Free · Anonymous</div>
+            </div>
+          </div>
+          <div class="emergency-btns">
+            <a href="https://www.sadag.org" target="_blank" rel="noopener" class="btn-crisis btn-crisis-white">
+              <i class="fas fa-external-link-alt"></i> Visit SADAG
             </a>
-            
-            <div class="nav-links">
-                <a href="#hero" class="nav-link active">Home</a>
-                <a href="#stories" class="nav-link">Stories</a>
-                <a href="#resources" class="nav-link">Resources</a>
-                <a href="#community" class="nav-link">Community</a>
-                <a href="#support" class="nav-link">Support</a>
-                <a href="#support" class="btn btn-healing">Get Help Now</a>
-            </div>
-            
-            <button class="menu-toggle" onclick="toggleMobileMenu()">
-                <span>☰</span>
-            </button>
+            <a href="https://findahelpline.com" target="_blank" rel="noopener" class="btn-crisis btn-crisis-outline">
+              <i class="fas fa-globe"></i> Find a Helpline
+            </a>
+          </div>
         </div>
-        
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#hero" onclick="closeMobileMenu()">Home</a>
-            <a href="#stories" onclick="closeMobileMenu()">Stories</a>
-            <a href="#resources" onclick="closeMobileMenu()">Resources</a>
-            <a href="#community" onclick="closeMobileMenu()">Community</a>
-            <a href="#support" onclick="closeMobileMenu()">Support</a>
-            <a href="#support" class="btn btn-healing" onclick="closeMobileMenu()">Get Help Now</a>
+      </div>
+    </div>
+
+    <!-- Hope Close -->
+    <div class="hope-close reveal">
+      <span class="hope-close-icon"><i class="fas fa-seedling"></i></span>
+      <h2>Your Story Is Not Over Yet</h2>
+      <p>Thousands of South Africans have walked through darkness and found their way to light. Healing is not linear — but it is real, and it is possible.</p>
+      <p>You deserve support every step of the way. Journey4Change walks with you.</p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>You Are Not Alone</h1>
-            <p>Stories of resilience, hope and healing from survivors who overcame depression and anxiety. Your journey matters and recovery is possible.</p>
-            
-            <div class="hero-buttons">
-                <a href="#stories" class="btn btn-lg" style="background: hsl(var(--primary-foreground)); color: hsl(var(--primary));">Read Survivor Stories</a>
-                <a href="testimony.html" class="btn btn-outline btn-lg" style="border-color: hsl(var(--primary-foreground)); color: hsl(var(--primary-foreground));">Share Your Story</a>
-            </div>
-            
-            <div class="scroll-indicator">
-                <span style="font-size: 2rem;">↓</span>
-            </div>
+        <p>Raising awareness for mental health across South Africa through a 3 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
         </div>
-    </section>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2025 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
 
-    <!-- Survivor Stories -->
-    <section id="stories" class="section bg-healing-soft">
-        <div class="container">
-            <h2 class="section-title">Stories of Hope & Healing</h2>
-            <p class="section-subtitle">Real survivors sharing their journeys from darkness to light. Every story is unique, but the courage to heal connects us all.</p>
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 
-            <div class="grid grid-2 mb-12">
-                <!-- Story 1 -->
-                <div class="card animate-fade-in">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Sarah M.</h3>
-                            <p class="text-muted">Age 28</p>
-                        </div>
-                        <span style="font-size: 2rem; opacity: 0.5;">💬</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="badge badge-healing">Depression & Anxiety</span>
-                        <span class="badge badge-outline">3 years to recovery</span>
-                    </div>
-                    <p class="mb-4">For three years, I couldn't see past the darkness. Simple tasks felt impossible. Through therapy, meditation, and the support of amazing people, I learned that healing isn't linear. Today, I wake up grateful for small moments and proud of how far I've come.</p>
-                    <div class="quote-card">
-                        <p class="text-sm font-semibold">"Small moments of joy became my foundation"</p>
-                    </div>
-                </div>
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  </nav>
 
-                <!-- Story 2 -->
-                <div class="card animate-fade-in">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Marcus J.</h3>
-                            <p class="text-muted">Age 34</p>
-                        </div>
-                        <span style="font-size: 2rem; opacity: 0.5;">💬</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="badge badge-healing">Severe Anxiety</span>
-                        <span class="badge badge-outline">2 years of therapy</span>
-                    </div>
-                    <p class="mb-4">Panic attacks controlled my life. I couldn't drive, work, or socialize without fear. CBT and gradual exposure therapy changed everything. I still have anxious moments, but now I have tools. I recently gave a presentation to 100 people - something I never thought possible.</p>
-                    <div class="quote-card">
-                        <p class="text-sm font-semibold">"Tools and techniques gave me my life back"</p>
-                    </div>
-                </div>
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
 
-                <!-- Story 3 -->
-                <div class="card animate-fade-in">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Elena R.</h3>
-                            <p class="text-muted">Age 42</p>
-                        </div>
-                        <span style="font-size: 2rem; opacity: 0.5;">💬</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="badge badge-healing">Major Depression</span>
-                        <span class="badge badge-outline">4 years journey</span>
-                    </div>
-                    <p class="mb-4">After losing my job and going through a divorce, depression hit like a tsunami. I felt worthless and hopeless. Support groups and finding purpose through volunteering slowly brought light back into my world. Recovery taught me resilience I never knew I had.</p>
-                    <div class="quote-card">
-                        <p class="text-sm font-semibold">"Finding purpose in helping others healed me"</p>
-                    </div>
-                </div>
+    function submitStory(e) {
+      e.preventDefault();
+      const name = document.getElementById('sname').value.trim();
+      const story = document.getElementById('sstory').value.trim();
+      if (!name || !story) return;
+      document.getElementById('storySuccess').style.display = 'block';
+      e.target.reset();
+      setTimeout(() => { document.getElementById('storySuccess').style.display = 'none'; }, 8000);
+    }
 
-                <!-- Story 4 -->
-                <div class="card animate-fade-in">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">David K.</h3>
-                            <p class="text-muted">Age 25</p>
-                        </div>
-                        <span style="font-size: 2rem; opacity: 0.5;">💬</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="badge badge-healing">Social Anxiety</span>
-                        <span class="badge badge-outline">18 months of growth</span>
-                    </div>
-                    <p class="mb-4">College was torture because of social anxiety. I avoided classes, events, and making friends. Through group therapy and mindfulness practices, I learned self-compassion. Now I'm in graduate school and have meaningful relationships. The shy kid is still there, but he's brave now too.</p>
-                    <div class="quote-card">
-                        <p class="text-sm font-semibold">"Self-compassion was the key to my healing"</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <p class="text-muted mb-6">Have a story to share? Your experience could inspire others on their healing journey.</p>
-                <button class="btn btn-healing btn-lg">Share Your Story</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="section">
-        <div class="container">
-            <h2 class="section-title">Healing Resources</h2>
-            <p class="section-subtitle">Professional help, crisis support, and self-care tools to support your journey. Remember: seeking help is a sign of strength, not weakness.</p>
-
-            <!-- Crisis Alert -->
-            <div class="bg-emergency text-center mb-12">
-                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                    <span style="font-size: 2rem; margin-right: 1rem;">📞</span>
-                    <h3 class="text-xl font-bold text-destructive">In Crisis? Get Help Now</h3>
-                </div>
-                <p class="mb-4">If you're having thoughts of suicide or self-harm, please reach out immediately:</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
-                    <a href="tel:988" class="badge badge-emergency">Call 0800 567 567 (SA)</a>
-                    <a href="sms:741741?body=HOME" class="badge badge-emergency">Text HOME to 31393</a>
-                </div>
-            </div>
-
-            <!-- Resource Categories -->
-            <div class="grid grid-2 mb-16">
-                <!-- Crisis Support -->
-                <div class="card">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div class="feature-icon destructive">
-                            <span style="font-size: 1.5rem;">📞</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Crisis Support</h3>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">National Suicide Prevention Lifeline</h4>
-                            <p class="text-sm text-muted mb-2">24/7 crisis support</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">988</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Crisis Text Line</h4>
-                            <p class="text-sm text-muted mb-2">Text-based crisis counseling</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">Text HOME to 741741</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">SAMHSA Helpline</h4>
-                            <p class="text-sm text-muted mb-2">Mental health treatment referrals</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">1-800-662-4357</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Therapy & Professional Help -->
-                <div class="card">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div class="feature-icon primary">
-                            <span style="font-size: 1.5rem;">🧠</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Therapy & Professional Help</h3>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Psychology Today</h4>
-                            <p class="text-sm text-muted mb-2">Find therapists near you</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">psychologytoday.com</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">BetterHelp</h4>
-                            <p class="text-sm text-muted mb-2">Online therapy platform</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">betterhelp.com</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">NAMI</h4>
-                            <p class="text-sm text-muted mb-2">Mental health support & advocacy</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">nami.org</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Self-Care Tools -->
-                <div class="card">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div class="feature-icon healing">
-                            <span style="font-size: 1.5rem;">💚</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Self-Care Tools</h3>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Headspace</h4>
-                            <p class="text-sm text-muted mb-2">Meditation & mindfulness</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">headspace.com</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Calm</h4>
-                            <p class="text-sm text-muted mb-2">Sleep stories & relaxation</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">calm.com</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Daylio</h4>
-                            <p class="text-sm text-muted mb-2">Mood tracking app</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">daylio.net</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Support Communities -->
-                <div class="card">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div class="feature-icon warmth">
-                            <span style="font-size: 1.5rem;">👥</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Support Communities</h3>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">7 Cups</h4>
-                            <p class="text-sm text-muted mb-2">Free emotional support</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">7cups.com</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Depression and Bipolar Support Alliance</h4>
-                            <p class="text-sm text-muted mb-2">Peer support groups</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">dbsalliance.org</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-healing" style="padding-left: 1rem;">
-                            <h4 class="font-semibold">Anxiety and Depression Association</h4>
-                            <p class="text-sm text-muted mb-2">Educational resources & support</p>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="text-primary font-semibold">adaa.org</span>
-                                <span>🔗</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Coping Tools -->
-            <div class="card bg-warmth-soft">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <span style="font-size: 1.5rem;">💚</span>
-                    <h3 class="text-xl font-bold">Quick Coping Tools</h3>
-                </div>
-                <p class="text-muted mb-6">Simple techniques you can use anywhere, anytime when feeling overwhelmed:</p>
-                <div class="grid grid-2">
-                    <div style="background: hsl(var(--card)); padding: 1rem; border-radius: var(--radius);">
-                        <h4 class="font-semibold mb-2">5-4-3-2-1 Grounding</h4>
-                        <p class="text-sm text-muted">5 things you see, 4 you hear, 3 you touch, 2 you smell, 1 you taste</p>
-                    </div>
-                    <div style="background: hsl(var(--card)); padding: 1rem; border-radius: var(--radius);">
-                        <h4 class="font-semibold mb-2">Box Breathing</h4>
-                        <p class="text-sm text-muted">Inhale 4 counts, hold 4, exhale 4, hold 4</p>
-                    </div>
-                    <div style="background: hsl(var(--card)); padding: 1rem; border-radius: var(--radius);">
-                        <h4 class="font-semibold mb-2">Progressive Muscle Relaxation</h4>
-                        <p class="text-sm text-muted">Tense and release each muscle group</p>
-                    </div>
-                    <div style="background: hsl(var(--card)); padding: 1rem; border-radius: var(--radius);">
-                        <h4 class="font-semibold mb-2">Mindful Walking</h4>
-                        <p class="text-sm text-muted">Focus on each step and your surroundings</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="community" class="section bg-accent">
-        <div class="container">
-            <h2 class="section-title">Join Our Healing Community</h2>
-            <p class="section-subtitle">You don't have to heal alone. Connect with thousands of survivors who understand your journey and are here to support you every step of the way.</p>
-
-            <!-- Community Stats -->
-            <div class="grid grid-4 mb-16">
-                <div class="card text-center">
-                    <div class="stat-number">0</div>
-                    <p class="text-muted">Community Members</p>
-                </div>
-                <div class="card text-center">
-                    <div class="stat-number text-healing">24/7</div>
-                    <p class="text-muted">Support Available</p>
-                </div>
-                <div class="card text-center">
-                    <div class="stat-number" style="color: hsl(var(--warmth));">16</div>
-                    <p class="text-muted">Stories Shared</p>
-                </div>
-                <div class="card text-center">
-                    <div class="stat-number">95%</div>
-                    <p class="text-muted">Feel Supported</p>
-                </div>
-            </div>
-
-            <!-- Community Features -->
-            <div class="grid grid-2 mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold mb-8">Community Features</h3>
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <div style="display: flex; align-items: start; gap: 1rem;">
-                            <div class="feature-icon healing">
-                                <span>👥</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-2">Peer Support Groups</h4>
-                                <p class="text-muted">Connect with others who understand your journey in moderated, safe spaces.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; gap: 1rem;">
-                            <div class="feature-icon healing">
-                                <span>💬</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-2">24/7 Chat Rooms</h4>
-                                <p class="text-muted">Anonymous, judgment-free conversations whenever you need someone to listen.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; gap: 1rem;">
-                            <div class="feature-icon healing">
-                                <span>📅</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-2">Virtual Events</h4>
-                                <p class="text-muted">Weekly workshops, healing circles, and guest speaker sessions.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; gap: 1rem;">
-                            <div class="feature-icon healing">
-                                <span>🛡️</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-2">Safe & Moderated</h4>
-                                <p class="text-muted">Trained moderators ensure a supportive, harassment-free environment.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-bold mb-4" style="display: flex; align-items: center; gap: 0.75rem;">
-                        <span>📅</span>
-                        Upcoming Events
-                    </h3>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="bg-muted p-3" style="border-radius: var(--radius);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <h4 class="font-semibold">Mindfulness Monday</h4>
-                                    <p class="text-sm text-muted">Guided meditation for anxiety relief</p>
-                                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.25rem;">
-                                        <span class="text-xs text-primary font-semibold"></span>
-                                        <span class="text-xs text-muted" style="display: flex; align-items: center; gap: 0.25rem;">
-                                            <span>👥</span>
-                                            0 attending
-                                        </span>
-                                    </div>
-                                </div>
-                                <button class="btn">Join</button>
-                            </div>
-                        </div>
-                        <div class="bg-muted p-3" style="border-radius: var(--radius);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <h4 class="font-semibold">Share & Support Circle</h4>
-                                    <p class="text-sm text-muted">Open forum for sharing experiences</p>
-                                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.25rem;">
-                                        <span class="text-xs text-primary font-semibold"></span>
-                                        <span class="text-xs text-muted" style="display: flex; align-items: center; gap: 0.25rem;">
-                                            <span>👥</span>
-                                            0 attending
-                                        </span>
-                                    </div>
-                                </div>
-                                <button class="btn">Join</button>
-                            </div>
-                        </div>
-                        <div class="bg-muted p-3" style="border-radius: var(--radius);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <h4 class="font-semibold">Coping Skills Workshop</h4>
-                                    <p class="text-sm text-muted">Learning healthy coping mechanisms</p>
-                                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.25rem;">
-                                        <span class="text-xs text-primary font-semibold"></span>
-                                        <span class="text-xs text-muted" style="display: flex; align-items: center; gap: 0.25rem;">
-                                            <span>👥</span>
-                                            0 attending
-                                        </span>
-                                    </div>
-                                </div>
-                                <button class="btn">Join</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Join CTA -->
-            <div class="text-center">
-                <div class="bg-healing-soft p-8" style="border-radius: var(--radius);">
-                    <h3 class="text-2xl font-bold mb-4">Ready to Join Our Community?</h3>
-                    <p class="text-muted mb-6">Take the first step towards healing together. Our community is free, safe, and always here for you.</p>
-                    <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-                        <button class="btn btn-healing btn-lg">Join Community</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Support Section -->
-    <section id="support" class="section py-20">
-        <div class="container">
-            <h2 class="section-title">Immediate Support & Crisis Resources</h2>
-            <p class="section-subtitle">If you're in crisis or need immediate support, help is available 24/7. You are not alone, and your life matters.</p>
-
-            <!-- Emergency Alert -->
-            <div class="bg-emergency text-center mb-12">
-                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                    <span style="font-size: 3rem; margin-right: 1rem;">⚠️</span>
-                    <h3 class="text-3xl font-bold text-destructive">Emergency Support</h3>
-                </div>
-                <p class="text-lg mb-6">If you're having thoughts of suicide or self-harm, please get help immediately:</p>
-                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
-                    <a href="tel:988" class="btn btn-emergency">Call 0800 567 567 Now</a>
-                    <a href="sms:741741?body=HOME" class="btn btn-primary btn-lg">Text HOME to 31393</a>
-                </div>
-                <p class="text-sm text-muted">Available 24/7 • Free & Confidential • Trained Crisis Counselors</p>
-            </div>
-
-            <!-- Immediate Help Guide -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8">When You Need Help Right Now</h3>
-                <div class="grid grid-4">
-                    <div class="card crisis-card text-center">
-                        <div class="feature-icon destructive">
-                            <span>⚠️</span>
-                        </div>
-                        <h4 class="font-bold mb-2">Call 911 or Emergency Services</h4>
-                        <p class="text-sm text-muted">If you're in immediate physical danger or planning to harm yourself</p>
-                    </div>
-                    <div class="card crisis-card text-center">
-                        <div class="feature-icon destructive">
-                            <span>💚</span>
-                        </div>
-                        <h4 class="font-bold mb-2">Go to Emergency Room</h4>
-                        <p class="text-sm text-muted">If you're having thoughts of suicide or feel unsafe</p>
-                    </div>
-                    <div class="card crisis-card urgent text-center">
-                        <div class="feature-icon primary">
-                            <span>📞</span>
-                        </div>
-                        <h4 class="font-bold mb-2">Call Crisis Hotline</h4>
-                        <p class="text-sm text-muted">If you need someone to talk to right now</p>
-                    </div>
-                    <div class="card crisis-card support text-center">
-                        <div class="feature-icon healing">
-                            <span>👥</span>
-                        </div>
-                        <h4 class="font-bold mb-2">Reach Out to Trusted Person</h4>
-                        <p class="text-sm text-muted">Call a friend, family member, or counselor</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Crisis Resources -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8">24/7 Crisis Support</h3>
-                <div class="grid grid-3">
-                    <!-- National Suicide Prevention Lifeline -->
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h3 class="text-lg font-bold">National Suicide Prevention Lifeline</h3>
-                            <span class="badge" style="background: hsl(var(--primary)); color: white;">Phone</span>
-                        </div>
-                        <div class="text-center p-4 bg-muted mb-4" style="border-radius: var(--radius);">
-                            <div class="text-2xl font-bold text-primary mb-2">988</div>
-                            <p class="text-sm text-muted">24/7 crisis support and suicide prevention</p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🕐</span>
-                                <span class="text-sm font-semibold">24/7</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🌐</span>
-                                <span class="text-sm">Multiple languages available</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🛡️</span>
-                                <span class="text-sm">Free & Confidential</span>
-                            </div>
-                        </div>
-                        <a href="tel:988" class="btn btn-primary" style="width: 100%;">
-                            Call Now
-                            <span style="margin-left: 0.5rem;">→</span>
-                        </a>
-                    </div>
-
-                    <!-- Crisis Text Line -->
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h3 class="text-lg font-bold">Crisis Text Line</h3>
-                            <span class="badge" style="background: hsl(var(--healing)); color: white;">Text</span>
-                        </div>
-                        <div class="text-center p-4 bg-muted mb-4" style="border-radius: var(--radius);">
-                            <div class="text-2xl font-bold text-primary mb-2">Text HOME to 741741</div>
-                            <p class="text-sm text-muted">Free, 24/7 support via text message</p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🕐</span>
-                                <span class="text-sm font-semibold">24/7</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🌐</span>
-                                <span class="text-sm">English & Spanish</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🛡️</span>
-                                <span class="text-sm">Free & Confidential</span>
-                            </div>
-                        </div>
-                        <a href="sms:741741?body=HOME" class="btn btn-primary" style="width: 100%;">
-                            Text Now
-                            <span style="margin-left: 0.5rem;">→</span>
-                        </a>
-                    </div>
-
-                    <!-- SAMHSA National Helpline -->
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h3 class="text-lg font-bold">SAMHSA National Helpline</h3>
-                            <span class="badge" style="background: hsl(var(--primary)); color: white;">Phone</span>
-                        </div>
-                        <div class="text-center p-4 bg-muted mb-4" style="border-radius: var(--radius);">
-                            <div class="text-2xl font-bold text-primary mb-2">1-800-662-4357</div>
-                            <p class="text-sm text-muted">Treatment referral and information service</p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🕐</span>
-                                <span class="text-sm font-semibold">24/7</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🌐</span>
-                                <span class="text-sm">English & Spanish</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span>🛡️</span>
-                                <span class="text-sm">Free & Confidential</span>
-                            </div>
-                        </div>
-                        <a href="tel:18006624357" class="btn btn-primary" style="width: 100%;">
-                            Call Now
-                            <span style="margin-left: 0.5rem;">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- International Resources -->
-            <div class="card mb-16">
-                <h3 class="text-xl font-bold mb-4" style="display: flex; align-items: center; gap: 0.75rem;">
-                    <span>🌐</span>
-                    International Crisis Resources
-                </h3>
-                <div class="international-grid">
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">UK</h4>
-                                <p class="text-sm text-muted">Samaritans</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">116 123</span>
-                        </div>
-                    </div>
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">Canada</h4>
-                                <p class="text-sm text-muted">Talk Suicide Canada</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">1-833-456-4566</span>
-                        </div>
-                    </div>
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">Australia</h4>
-                                <p class="text-sm text-muted">Lifeline</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">13 11 14</span>
-                        </div>
-                    </div>
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">Germany</h4>
-                                <p class="text-sm text-muted">Telefonseelsorge</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">0800 111 0 111</span>
-                        </div>
-                    </div>
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">France</h4>
-                                <p class="text-sm text-muted">SOS Amitié</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">09 72 39 40 50</span>
-                        </div>
-                    </div>
-                    <div class="resource-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 class="font-semibold">Japan</h4>
-                                <p class="text-sm text-muted">TELL Lifeline</p>
-                            </div>
-                            <span class="badge badge-outline text-primary">03-5774-0992</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-6 p-4 bg-healing-soft" style="border-radius: var(--radius);">
-                    <p class="text-sm">
-                        <strong>Note:</strong> This list is not comprehensive. Search for local crisis resources in your area or contact your local emergency services.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Hope Message -->
-            <div class="text-center">
-                <div class="bg-warmth-soft p-8" style="max-width: 48rem; margin: 0 auto; border-radius: var(--radius);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">💚</div>
-                    <h3 class="text-2xl font-bold mb-4">You Are Not Alone</h3>
-                    <p class="text-lg mb-4">Crisis doesn't last forever. Pain can be treated. Hope can be restored. Recovery is possible, and you deserve support every step of the way.</p>
-                    <p class="text-muted">Thousands of people have walked this path before you and found their way to healing. Your story isn't over yet.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="mb-4">
-                <span class="text-2xl font-bold">HealingJourney</span>
-            </div>
-            <p style="opacity: 0.8; margin-bottom: 1rem; max-width: 32rem; margin-left: auto; margin-right: auto;">
-                Supporting survivors of depression and anxiety on their path to healing. 
-                Every journey is unique, but no one has to walk it alone.
-            </p>
-            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem;">
-                <p class="text-sm" style="opacity: 0.6;">
-                    If you're in crisis, please call 0800 567 567 (SA) or your local emergency services. 
-                    This site provides support but doesn't replace professional medical care.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.08 });
 
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.remove('active');
-        }
+    document.querySelectorAll('.reveal, .story-card, .resource-card').forEach((el, i) => {
+      if (el.classList.contains('story-card') || el.classList.contains('resource-card')) {
+        el.style.transitionDelay = `${i * 60}ms`;
+      }
+      obs.observe(el);
+    });
 
-        // Active navigation link
-        function updateActiveNavLink() {
-            const sections = ['hero', 'stories', 'resources', 'community', 'support'];
-            const navLinks = document.querySelectorAll('.nav-link');
-            const scrollY = window.scrollY + 100;
-
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = document.getElementById(sections[i]);
-                if (section && section.offsetTop <= scrollY) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    const activeLink = document.querySelector(`[href="#${sections[i]}"]`);
-                    if (activeLink) activeLink.classList.add('active');
-                    break;
-                }
-            }
-        }
-
-        // Scroll event listener
-        window.addEventListener('scroll', updateActiveNavLink);
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.menu-toggle');
-            
-            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-                menu.classList.remove('active');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80; // Account for fixed nav
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animate elements
-        document.querySelectorAll('.animate-fade-in').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-
-        // Initialize
-        updateActiveNavLink();
-    </script>
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+    });
+  </script>
 </body>
 </html>
-
-
-
