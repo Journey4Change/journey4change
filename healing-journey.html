@@ -289,71 +289,6 @@
     .form-group select option { background: var(--secondary); color: white; }
     .form-group textarea { resize: vertical; min-height: 130px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-    /* ── SEND VIA CHOOSER ── */
-    .send-via-group { margin-bottom: 20px; }
-    .send-via-label {
-      display: block; font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.7); margin-bottom: 12px;
-    }
-    .send-via-options {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-    }
-    .send-via-option {
-      position: relative;
-    }
-    .send-via-option input[type="radio"] {
-      position: absolute; opacity: 0; width: 0; height: 0;
-    }
-    .send-via-option label {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 8px; padding: 16px 10px;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      cursor: pointer;
-      background: rgba(255,255,255,0.06);
-      transition: all 0.25s;
-      text-align: center;
-      color: rgba(255,255,255,0.65);
-      font-size: 12px; font-weight: 600;
-      letter-spacing: 0.02em;
-      min-height: 90px;
-      margin-bottom: 0;
-    }
-    .send-via-option label i {
-      font-size: 1.5rem;
-      transition: transform 0.25s;
-    }
-    .send-via-option label:hover {
-      border-color: rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      transform: translateY(-2px);
-    }
-    .send-via-option input[type="radio"]:checked + label {
-      background: rgba(34,197,94,0.15);
-      border-color: var(--primary);
-      color: white;
-      box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
-    }
-    .send-via-option input[type="radio"]:checked + label i {
-      transform: scale(1.15);
-    }
-    /* Channel-specific accent colours on check */
-    .send-via-option.whatsapp input[type="radio"]:checked + label { background: rgba(37,211,102,0.15); border-color: #25d366; box-shadow: 0 0 0 3px rgba(37,211,102,0.2); }
-    .send-via-option.whatsapp label i { color: #25d366; }
-    .send-via-option.instagram input[type="radio"]:checked + label { background: rgba(225,48,108,0.15); border-color: #e1306c; box-shadow: 0 0 0 3px rgba(225,48,108,0.2); }
-    .send-via-option.instagram label i { color: #e1306c; }
-    .send-via-option.email input[type="radio"]:checked + label { background: rgba(59,130,246,0.15); border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
-    .send-via-option.email label i { color: #60a5fa; }
-
-    .send-via-hint {
-      margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.4);
-      display: flex; align-items: center; gap: 6px;
-      min-height: 18px; transition: opacity 0.25s;
-    }
-    .send-via-hint i { font-size: 11px; }
-
     .submit-btn {
       width: 100%; padding: 14px; border: none; border-radius: 50px;
       background: var(--primary); color: var(--dark);
@@ -583,12 +518,8 @@
       .emergency-block { padding: 36px 24px; }
       .hope-close { padding: 40px 24px; }
       .form-row { grid-template-columns: 1fr; }
-      .send-via-options { grid-template-columns: repeat(3, 1fr); }
       .footer-container { grid-template-columns: 1fr; gap: 28px; }
       .copyright { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 380px) {
-      .send-via-options { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -813,42 +744,8 @@
                 <label for="semail">Email (optional — only for follow-up)</label>
                 <input type="email" id="semail" placeholder="your@email.com">
               </div>
-
-              <!-- ── SEND VIA CHOOSER ── -->
-              <div class="send-via-group">
-                <span class="send-via-label"><i class="fas fa-paper-plane" style="margin-right:6px;color:var(--primary-light)"></i>How would you like to send your story?</span>
-                <div class="send-via-options">
-
-                  <div class="send-via-option whatsapp">
-                    <input type="radio" name="sendvia" id="via-whatsapp" value="whatsapp">
-                    <label for="via-whatsapp">
-                      <i class="fab fa-whatsapp"></i>
-                      WhatsApp
-                    </label>
-                  </div>
-
-                  <div class="send-via-option instagram">
-                    <input type="radio" name="sendvia" id="via-instagram" value="instagram">
-                    <label for="via-instagram">
-                      <i class="fab fa-instagram"></i>
-                      Instagram
-                    </label>
-                  </div>
-
-                  <div class="send-via-option email">
-                    <input type="radio" name="sendvia" id="via-email" value="email">
-                    <label for="via-email">
-                      <i class="fas fa-envelope"></i>
-                      Email
-                    </label>
-                  </div>
-
-                </div>
-                <div class="send-via-hint" id="sendViaHint"></div>
-              </div>
-
-              <button type="submit" class="submit-btn" id="submitBtn">
-                <i class="fas fa-paper-plane"></i> <span id="submitBtnText">Send My Story</span>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit My Story
               </button>
               <div class="form-success" id="storySuccess">
                 <i class="fas fa-check-circle"></i> Thank you for your courage. Your story has been received and will be reviewed with care.
@@ -1042,6 +939,7 @@
           <li><a href="media.html">Media</a></li>
           <li><a href="social-media.html">Social Media</a></li>
           <li><a href="partnership.html">Our Partners</a></li>
+          <li><a href="myteam.html">The Team</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -1076,10 +974,11 @@
     <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
     <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
     <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+    <a href="myteam.html"><i class="fas fa-users"></i> The Team</a>
+    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
   </nav>
 
   <script>
-    // ── NAV ──
     function openNav() {
       document.getElementById('sideNav').style.width = '280px';
       document.getElementById('navOverlay').classList.add('active');
@@ -1091,76 +990,17 @@
       document.body.classList.remove('nonscroll');
     }
 
-    // ── SEND VIA HINTS ──
-    const hints = {
-      whatsapp:  { icon: 'fab fa-whatsapp', text: 'Opens WhatsApp to +27 82 813 4960 with your story pre-filled.' },
-      instagram: { icon: 'fab fa-instagram', text: 'Opens the Journey4Change Instagram profile — send a DM with your story.' },
-      email:     { icon: 'fas fa-envelope',  text: 'Opens your email app pre-addressed to journey4change.info@gmail.com.' }
-    };
-    const btnLabels = {
-      whatsapp:  'Send via WhatsApp',
-      instagram: 'Go to Instagram DM',
-      email:     'Send via Email'
-    };
-
-    document.querySelectorAll('input[name="sendvia"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        const h = hints[radio.value];
-        const hintEl = document.getElementById('sendViaHint');
-        hintEl.innerHTML = `<i class="${h.icon}"></i> ${h.text}`;
-        document.getElementById('submitBtnText').textContent = btnLabels[radio.value];
-      });
-    });
-
-    // ── SUBMIT ──
     function submitStory(e) {
       e.preventDefault();
-      const name    = document.getElementById('sname').value.trim();
-      const story   = document.getElementById('sstory').value.trim();
-      const quote   = document.getElementById('squote').value.trim();
-      const loc     = document.getElementById('slocation').value;
-      const cond    = document.getElementById('scondition').value;
-      const channel = document.querySelector('input[name="sendvia"]:checked');
-
-      if (!name || !story) {
-        alert('Please fill in your display name and your story before sending.');
-        return;
-      }
-      if (!channel) {
-        alert('Please choose how you would like to send your story (WhatsApp, Instagram, or Email).');
-        return;
-      }
-
-      // Build message body
-      const body = [
-        `Name: ${name}`,
-        loc   ? `Province: ${loc}` : '',
-        cond  ? `Experience: ${cond}` : '',
-        `\nMy Story:\n${story}`,
-        quote ? `\nQuote that helped me: "${quote}"` : ''
-      ].filter(Boolean).join('\n');
-
-      if (channel.value === 'whatsapp') {
-        const waText = encodeURIComponent(body);
-        window.open(`https://wa.me/27828134960?text=${waText}`, '_blank');
-      } else if (channel.value === 'instagram') {
-        // Instagram doesn't support pre-filled DM links; open profile
-        window.open('https://instagram.com/journey4change2026', '_blank');
-      } else if (channel.value === 'email') {
-        const subject = encodeURIComponent('Healing Journey Story Submission');
-        const mailBody = encodeURIComponent(body);
-        window.location.href = `mailto:journey4change.info@gmail.com?subject=${subject}&body=${mailBody}`;
-      }
-
-      // Show success
+      const name = document.getElementById('sname').value.trim();
+      const story = document.getElementById('sstory').value.trim();
+      if (!name || !story) return;
       document.getElementById('storySuccess').style.display = 'block';
       e.target.reset();
-      document.getElementById('sendViaHint').innerHTML = '';
-      document.getElementById('submitBtnText').textContent = 'Send My Story';
       setTimeout(() => { document.getElementById('storySuccess').style.display = 'none'; }, 8000);
     }
 
-    // ── SCROLL REVEAL ──
+    // Scroll reveal
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
