@@ -14,14 +14,12 @@
       --primary-dark: #16a34a;
       --secondary: #14532d;
       --dark: #0f1f15;
-      --dark-mid: #1a2f1f;
       --light: #f8faf8;
       --accent: #f97316;
       --text: #1c2b20;
       --text-muted: #4b6a53;
       --white: #ffffff;
       --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.11);
       --shadow-lg: 0 24px 60px rgba(0,0,0,0.16);
       --radius: 20px;
       --radius-sm: 10px;
@@ -117,10 +115,10 @@
     }
     .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.3); }
 
-    /* ─── HERO BANNER ─── */
+    /* ─── HERO ─── */
     .team-hero {
       background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 55%, #0a1a10 100%);
-      padding: 90px 40px 100px;
+      padding: 90px 40px 110px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -129,9 +127,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3C/g%3E%3C/svg%3E");
     }
-    /* Decorative arcs */
     .team-hero::after {
       content: '';
       position: absolute;
@@ -173,10 +170,7 @@
       margin-bottom: 20px;
       animation: fadeUp 0.7s 0.12s ease both;
     }
-    .team-hero h2 em {
-      font-style: italic;
-      color: var(--primary-light);
-    }
+    .team-hero h2 em { font-style: italic; color: var(--primary-light); }
     .team-hero p {
       font-size: 1.1rem;
       color: rgba(255,255,255,0.65);
@@ -204,14 +198,11 @@
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb i { font-size: 10px; color: #ccc; }
 
-    /* ─── SECTION WRAPPER ─── */
+    /* ─── SECTIONS ─── */
     .section { padding: 90px 24px; }
     .section-inner { max-width: 1160px; margin: 0 auto; }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 64px;
-    }
+    .section-title { text-align: center; margin-bottom: 64px; }
     .section-label {
       display: inline-block;
       font-size: 11px;
@@ -249,7 +240,7 @@
       font-size: 1.05rem;
     }
 
-    /* ─── FOUNDER CARD — FEATURED ─── */
+    /* ─── FOUNDER CARD ─── */
     .founder-wrap {
       display: grid;
       grid-template-columns: 420px 1fr;
@@ -295,17 +286,13 @@
       inset: 0;
       background: linear-gradient(to right, transparent 60%, rgba(15,31,21,0.15));
     }
-    /* Green accent strip */
     .founder-img-side::after {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+      left: 0; top: 0; bottom: 0;
       width: 5px;
       background: linear-gradient(to bottom, var(--primary-light), var(--primary-dark));
     }
-
     .founder-content {
       padding: 56px 52px;
       display: flex;
@@ -327,8 +314,7 @@
     .founder-role::before {
       content: '';
       display: block;
-      width: 28px;
-      height: 2px;
+      width: 28px; height: 2px;
       background: var(--primary);
       border-radius: 2px;
     }
@@ -352,13 +338,12 @@
       margin-bottom: 16px;
       line-height: 1.75;
     }
-    .founder-content p:last-of-type { margin-bottom: 28px; }
-
     .founder-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 28px;
+      margin-top: 4px;
     }
     .tag {
       background: rgba(34,197,94,0.1);
@@ -369,10 +354,7 @@
       border-radius: 50px;
       border: 1px solid rgba(34,197,94,0.2);
     }
-    .founder-socials {
-      display: flex;
-      gap: 10px;
-    }
+    .founder-socials { display: flex; gap: 10px; flex-wrap: wrap; }
     .social-pill {
       display: inline-flex;
       align-items: center;
@@ -394,13 +376,11 @@
     }
     .social-pill i { font-size: 14px; }
 
-    /* ─── TEAM GRID ─── */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
+    /* ─── SINGLE TEAM MEMBER (centred) ─── */
+    .team-single {
+      display: flex;
+      justify-content: center;
     }
-
     .team-card {
       background: white;
       border-radius: var(--radius);
@@ -409,15 +389,16 @@
       border: 1px solid var(--border);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
       position: relative;
+      width: 100%;
+      max-width: 480px;
     }
     .team-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
-
     .card-img-wrap {
       position: relative;
-      height: 280px;
+      height: 320px;
       overflow: hidden;
     }
     .card-img-wrap img {
@@ -429,7 +410,6 @@
       transition: transform 0.6s ease;
     }
     .team-card:hover .card-img-wrap img { transform: scale(1.07); }
-
     .card-img-overlay {
       position: absolute;
       inset: 0;
@@ -441,29 +421,22 @@
       transition: opacity 0.35s;
     }
     .team-card:hover .card-img-overlay { opacity: 1; }
-
     .overlay-socials { display: flex; gap: 8px; }
     .overlay-socials a {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 50%;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 13px;
       text-decoration: none;
       transition: background 0.25s;
     }
     .overlay-socials a:hover { background: var(--primary); color: var(--dark); }
-
     .role-badge {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 16px; right: 16px;
       background: var(--primary);
       color: var(--dark);
       font-size: 10px;
@@ -474,7 +447,31 @@
       border-radius: 50px;
     }
 
-    .card-body { padding: 24px 26px 28px; }
+    /* Coming soon overlay on image */
+    .coming-soon-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,31,21,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .coming-soon-badge {
+      background: var(--primary);
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-body { padding: 28px 30px 24px; }
     .card-body .role {
       font-size: 11px;
       font-weight: 700;
@@ -489,14 +486,13 @@
     .card-body .role::before {
       content: '';
       display: block;
-      width: 18px;
-      height: 2px;
+      width: 18px; height: 2px;
       background: var(--primary);
       border-radius: 2px;
     }
     .card-body h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--secondary);
       margin-bottom: 4px;
@@ -509,14 +505,13 @@
       margin-bottom: 14px;
     }
     .card-body p {
-      font-size: 0.93rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.7;
     }
-
     .card-footer {
       border-top: 1px solid var(--border);
-      padding: 14px 26px;
+      padding: 14px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -532,13 +527,10 @@
       border-radius: 50px;
     }
     .contact-icon {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       border-radius: 50%;
       background: rgba(34,197,94,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       color: var(--primary-dark);
       font-size: 13px;
       text-decoration: none;
@@ -576,7 +568,7 @@
     }
     .values-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 20px;
     }
     .value-item {
@@ -588,11 +580,7 @@
       transition: transform 0.3s, background 0.3s;
     }
     .value-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.09); }
-    .value-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      display: block;
-    }
+    .value-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
     .value-item h4 {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
@@ -602,15 +590,8 @@
     .value-item p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
     /* ─── JOIN SECTION ─── */
-    .join-section {
-      background: white;
-      border-top: 1px solid var(--border);
-    }
-    .join-inner {
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    .join-section { background: white; border-top: 1px solid var(--border); }
+    .join-inner { max-width: 760px; margin: 0 auto; text-align: center; }
     .join-inner h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.9rem, 4vw, 2.6rem);
@@ -635,19 +616,11 @@
     }
     .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 4px 20px rgba(34,197,94,0.3); }
     .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(34,197,94,0.4); }
-    .btn-outline {
-      background: transparent;
-      color: var(--secondary);
-      border: 1.5px solid rgba(20,83,45,0.3);
-    }
+    .btn-outline { background: transparent; color: var(--secondary); border: 1.5px solid rgba(20,83,45,0.3); }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); background: rgba(34,197,94,0.05); transform: translateY(-3px); }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: #080f0a;
-      color: white;
-      padding: 80px 24px 36px;
-    }
+    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
     .footer-container {
       max-width: 1160px;
       margin: 0 auto;
@@ -678,14 +651,10 @@
     .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
     .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
     .copyright {
-      max-width: 1160px;
-      margin: 30px auto 0;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: rgba(255,255,255,0.28);
-      flex-wrap: wrap;
-      gap: 8px;
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between;
+      font-size: 13px; color: rgba(255,255,255,0.28);
+      flex-wrap: wrap; gap: 8px;
     }
 
     /* ─── SIDE NAV ─── */
@@ -720,10 +689,7 @@
     }
     .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
     .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
-    .nav-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px);
-    }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
     .nav-overlay.active { display: block; }
     body.nonscroll { overflow: hidden; }
 
@@ -732,16 +698,10 @@
       from { opacity: 0; transform: translateY(26px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 920px) {
@@ -757,8 +717,8 @@
       .section { padding: 64px 20px; }
       .footer-container { grid-template-columns: 1fr; }
       .founder-content { padding: 28px 24px; }
-      .team-grid { grid-template-columns: 1fr; }
       .values-grid { grid-template-columns: 1fr 1fr; }
+      .team-card { max-width: 100%; }
     }
     @media (max-width: 400px) {
       .values-grid { grid-template-columns: 1fr; }
@@ -799,7 +759,7 @@
     <div class="hero-inner">
       <div class="hero-eyebrow"><i class="fas fa-users"></i> The People Behind the Purpose</div>
       <h2>Meet <em>Our Team</em></h2>
-      <p>Every kilometre walked, every story shared, every life touched, it starts with these people. Passionate, qualified, and deeply committed to mental health in South Africa.</p>
+      <p>Every kilometre walked, every story shared, every life touched — it starts with these people. Passionate, qualified, and deeply committed to mental health in South Africa.</p>
     </div>
   </div>
 
@@ -812,19 +772,25 @@
     </div>
   </div>
 
-  <!-- ── FOUNDER SECTION ── -->
+  <!-- ═══════════════════════════════
+       FOUNDER SECTION
+  ═══════════════════════════════ -->
   <section class="section">
     <div class="section-inner">
 
       <div class="section-title reveal">
         <div class="section-label">The Visionary</div>
-        <h2>Founder</h2>
+        <h2>Our Founder</h2>
         <p>The mind, the heart, and the feet behind Journey4Change.</p>
       </div>
 
       <div class="founder-wrap reveal reveal-delay-1">
-        <!-- Replace "euclid.jpg" with your actual photo file -->
+
         <div class="founder-img-side">
+          <!--
+            PHOTO: Replace "euclid.jpg" with your actual photo.
+            The onerror fallback shows a placeholder if the file is missing.
+          -->
           <img
             src="euclid.jpg"
             alt="Euclid Tumelo Ramaila — Founder of Journey4Change"
@@ -838,11 +804,11 @@
           <h3>Euclid Tumelo<br>Ramaila</h3>
           <p class="founder-sub">Limpopo, South Africa &nbsp;·&nbsp; Journey4Change, Est. 2025</p>
 
-          <p>Euclid Tumelo Ramaila is the founder and driving force of Journey4Change, a bold mental health awareness initiative that takes him across all 9 provinces of South Africa, covering over 3,000 km on foot. His mission is simple yet profound: to break the stigma surrounding mental health, one conversation and one kilometre at a time.</p>
+          <p>Euclid Tumelo Ramaila is the founder and driving force of Journey4Change — a bold mental health awareness initiative that takes him across all 9 provinces of South Africa, covering over 3,000 km on foot. His mission is simple yet profound: to break the stigma surrounding mental health, one conversation and one kilometre at a time.</p>
 
-          <p>Born and raised in Limpopo, Euclid knows firsthand the silence that surrounds mental illness in many South African communities. This journey is his answer to that silence, a declaration that no one should suffer alone, and that healing is possible when people feel seen and heard.</p>
+          <p>Born and raised in Limpopo, Euclid knows firsthand the silence that surrounds mental illness in many South African communities. This journey is his answer to that silence — a declaration that no one should suffer alone, and that healing is possible when people feel seen and heard.</p>
 
-          <p>Through his travels, Euclid plans to partners with schools, clinics, churches, and community organisations, creating safe spaces for open dialogue about depression, anxiety, trauma, and the everyday mental health challenges people face but rarely speak about.</p>
+          <p>Through his travels, Euclid plans to partner with schools, clinics, churches, and community organisations, creating safe spaces for open dialogue about depression, anxiety, trauma, and the everyday mental health challenges people face but rarely speak about.</p>
 
           <div class="founder-tags">
             <span class="tag"><i class="fas fa-road" style="font-size:10px;margin-right:4px;"></i> 3 000+ km Journey</span>
@@ -857,12 +823,15 @@
             <a href="mailto:journey4change.info@gmail.com" class="social-pill"><i class="fas fa-envelope"></i> Email</a>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div><!-- /.founder-wrap -->
+
+    </div><!-- /.section-inner -->
   </section>
 
-  <!-- ── CORE TEAM ── -->
+  <!-- ═══════════════════════════════
+       CORE TEAM SECTION
+  ═══════════════════════════════ -->
   <section class="section" style="background: #f0f7f1; padding-top: 20px;">
     <div class="section-inner">
 
@@ -872,43 +841,58 @@
         <p>Qualified, compassionate professionals who bring clinical depth and community heart to the Journey4Change mission.</p>
       </div>
 
-      <div class="team-grid">
+      <!-- Single card centred -->
+      <div class="team-single">
 
-        <!-- Psychologist -->
         <div class="team-card reveal reveal-delay-1">
           <div class="card-img-wrap">
+            <!--
+              PHOTO: Replace "girl.png" with your psychologist's actual photo.
+              The coming-soon overlay will hide until you're ready — just remove
+              the .coming-soon-overlay div below when you have the real photo.
+            -->
             <img
               src="girl.png"
-              alt="Dr Lerato Dlamini — Clinical Psychologist"
+              alt="Organisation Psychologist — Journey4Change"
               onerror="this.src='https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80&fit=crop&crop=face'"
             >
-            <div class="role-badge">Psychologist</div>
-            <div class="card-img-overlay">
-              <div class="overlay-socials">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Remove this block once you have the real photo & name -->
+            <div class="coming-soon-overlay">
+              <div class="coming-soon-badge">
+                <i class="fas fa-clock"></i> Details Coming Soon
               </div>
             </div>
+
+            <div class="role-badge">Psychologist</div>
           </div>
+
           <div class="card-body">
             <div class="role">Clinical Psychologist</div>
-            <h3>Anonymous</h3>
-            <p class="qualif">MA Clinical Psychology (UNISA) · HPCSA Registered · 11 Years Experience</p>
-            <p>coming soon</p>
-            <p>Coming soon</p>
+            <h3>To Be Announced</h3>
+            <p class="qualif">MA Clinical Psychology · HPCSA Registered</p>
+            <p>Our qualified psychologist provides the clinical backbone of Journey4Change — offering on-route counselling, psychological first aid at community engagements, and helping develop the mental health education content shared across all 9 provinces.</p>
+            <p style="margin-top:10px;">Full details will be shared soon. Watch this space.</p>
           </div>
+
           <div class="card-footer">
             <div class="card-footer-tags">
               <span class="mini-tag">Trauma Care</span>
               <span class="mini-tag">HPCSA</span>
               <span class="mini-tag">Community MH</span>
             </div>
-            <a href="mailto:journey4change.info@gmail.com" class="contact-icon" aria-label="Contact"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:journey4change.info@gmail.com" class="contact-icon" aria-label="Contact us"><i class="fas fa-envelope"></i></a>
           </div>
-        </div>
+        </div><!-- /.team-card -->
 
+      </div><!-- /.team-single -->
 
-  <!-- ── VALUES STRIP ── -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ═══════════════════════════════
+       VALUES STRIP
+  ═══════════════════════════════ -->
   <div class="values-strip">
     <div class="values-inner reveal">
       <div class="section-label">What Unites Us</div>
@@ -922,7 +906,7 @@
         <div class="value-item">
           <span class="value-icon">🌍</span>
           <h4>Ubuntu</h4>
-          <p>We are because of others. Community is not the backdrop it is the work itself.</p>
+          <p>We are because of others. Community is not the backdrop — it is the work itself.</p>
         </div>
         <div class="value-item">
           <span class="value-icon">🔬</span>
@@ -932,24 +916,26 @@
         <div class="value-item">
           <span class="value-icon">🗣️</span>
           <h4>Brave Conversations</h4>
-          <p>We go to the hard places literally and figuratively so no one suffers in silence.</p>
+          <p>We go to the hard places — literally and figuratively — so no one suffers in silence.</p>
         </div>
         <div class="value-item">
           <span class="value-icon">♻️</span>
           <h4>Sustainability</h4>
-          <p>Our impact is built to last beyond the walk through partnerships, education, and community roots.</p>
+          <p>Our impact is built to last beyond the walk — through partnerships, education, and community roots.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── JOIN THE TEAM ── -->
+  <!-- ═══════════════════════════════
+       JOIN THE TEAM
+  ═══════════════════════════════ -->
   <section class="section join-section">
     <div class="section-inner">
       <div class="join-inner reveal">
         <div class="section-label" style="display:block;text-align:center;">Grow With Us</div>
         <h2>Want to Walk With Us?</h2>
-        <p>Journey4Change is always looking for passionate volunteers, mental health professionals, storytellers, and sponsors who want to make a difference in South Africa's mental health landscape. If that sounds like you let's talk.</p>
+        <p>Journey4Change is always looking for passionate volunteers, mental health professionals, storytellers, and sponsors who want to make a difference in South Africa's mental health landscape. If that sounds like you — let's talk.</p>
         <div class="btn-group">
           <a href="contact.html" class="btn btn-primary"><i class="fas fa-handshake"></i> Get Involved</a>
           <a href="donations.html" class="btn btn-outline"><i class="fas fa-hand-holding-heart"></i> Support Our Work</a>
@@ -958,7 +944,9 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ═══════════════════════════════
+       FOOTER
+  ═══════════════════════════════ -->
   <footer>
     <div class="footer-container">
       <div class="footer-about">
@@ -977,6 +965,7 @@
           <a href="https://x.com/j4j2026" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
         </div>
       </div>
+
       <div class="footer-links">
         <h4>Pages</h4>
         <ul>
@@ -987,6 +976,7 @@
           <li><a href="their-story.html">Their Story</a></li>
         </ul>
       </div>
+
       <div class="footer-links">
         <h4>Resources</h4>
         <ul>
@@ -997,6 +987,7 @@
           <li><a href="myteam.html">The Team</a></li>
         </ul>
       </div>
+
       <div class="footer-links">
         <h4>Contact</h4>
         <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
