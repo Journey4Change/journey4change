@@ -539,6 +539,20 @@
     }
     .contact-icon:hover { background: var(--primary); color: var(--dark); transform: scale(1.1); }
 
+    /* Contact icon colour variants */
+    .contact-icons-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .contact-icon--wa   { background: rgba(37,211,102,0.1);  color: #25d366; }
+    .contact-icon--call { background: rgba(34,197,94,0.1);   color: var(--primary-dark); }
+    .contact-icon--email{ background: rgba(249,115,22,0.1);  color: var(--accent); }
+
+    .contact-icon--wa:hover   { background: #25d366;          color: white;        transform: scale(1.1); }
+    .contact-icon--call:hover { background: var(--primary);   color: var(--dark);  transform: scale(1.1); }
+    .contact-icon--email:hover{ background: var(--accent);    color: white;        transform: scale(1.1); }
+
     /* ─── VALUES STRIP ─── */
     .values-strip {
       background: linear-gradient(135deg, var(--secondary), var(--dark));
@@ -881,7 +895,18 @@
               <span class="mini-tag">HPCSA</span>
               <span class="mini-tag">Community MH</span>
             </div>
-            <a href="mailto:journey4change.info@gmail.com" class="contact-icon" aria-label="Contact us"><i class="fas fa-envelope"></i></a>
+            <div class="contact-icons-row">
+              <!-- Replace number/email below with the psychologist's real details -->
+              <a href="https://wa.me/27790000000" target="_blank" class="contact-icon contact-icon--wa" aria-label="WhatsApp" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="tel:+27790000000" class="contact-icon contact-icon--call" aria-label="Call" title="Call">
+                <i class="fas fa-phone"></i>
+              </a>
+              <a href="mailto:psychologist@journey4change.co.za" class="contact-icon contact-icon--email" aria-label="Email" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
           </div>
         </div><!-- /.team-card -->
 
