@@ -37,7 +37,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── UTILITY BAR ─── */
     .utility-bar {
       background: var(--dark);
       color: rgba(255,255,255,0.7);
@@ -58,7 +57,6 @@
     }
     .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
 
-    /* ─── HEADER ─── */
     header {
       background: rgba(15,31,21,0.96);
       backdrop-filter: blur(12px);
@@ -115,7 +113,6 @@
     }
     .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.3); }
 
-    /* ─── HERO ─── */
     .team-hero {
       background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 55%, #0a1a10 100%);
       padding: 90px 40px 110px;
@@ -179,7 +176,6 @@
       animation: fadeUp 0.7s 0.24s ease both;
     }
 
-    /* ─── BREADCRUMB ─── */
     .breadcrumb-bar {
       background: white;
       border-bottom: 1px solid var(--border);
@@ -198,7 +194,6 @@
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb i { font-size: 10px; color: #ccc; }
 
-    /* ─── SECTIONS ─── */
     .section { padding: 90px 24px; }
     .section-inner { max-width: 1160px; margin: 0 auto; }
 
@@ -240,7 +235,6 @@
       font-size: 1.05rem;
     }
 
-    /* ─── FOUNDER CARD ─── */
     .founder-wrap {
       display: grid;
       grid-template-columns: 420px 1fr;
@@ -376,7 +370,7 @@
     }
     .social-pill i { font-size: 14px; }
 
-    /* ─── SINGLE TEAM MEMBER (centred) ─── */
+
     .team-single {
       display: flex;
       justify-content: center;
@@ -447,7 +441,6 @@
       border-radius: 50px;
     }
 
-    /* Coming soon overlay on image */
     .coming-soon-overlay {
       position: absolute;
       inset: 0;
@@ -539,7 +532,7 @@
     }
     .contact-icon:hover { background: var(--primary); color: var(--dark); transform: scale(1.1); }
 
-    /* Contact icon colour variants */
+
     .contact-icons-row {
       display: flex;
       gap: 8px;
@@ -553,7 +546,6 @@
     .contact-icon--call:hover { background: var(--primary);   color: var(--dark);  transform: scale(1.1); }
     .contact-icon--email:hover{ background: var(--accent);    color: white;        transform: scale(1.1); }
 
-    /* ─── VALUES STRIP ─── */
     .values-strip {
       background: linear-gradient(135deg, var(--secondary), var(--dark));
       padding: 70px 24px;
@@ -603,7 +595,7 @@
     }
     .value-item p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
-    /* ─── JOIN SECTION ─── */
+
     .join-section { background: white; border-top: 1px solid var(--border); }
     .join-inner { max-width: 760px; margin: 0 auto; text-align: center; }
     .join-inner h2 {
@@ -633,7 +625,7 @@
     .btn-outline { background: transparent; color: var(--secondary); border: 1.5px solid rgba(20,83,45,0.3); }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); background: rgba(34,197,94,0.05); transform: translateY(-3px); }
 
-    /* ─── FOOTER ─── */
+
     footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
     .footer-container {
       max-width: 1160px;
@@ -671,7 +663,7 @@
       flex-wrap: wrap; gap: 8px;
     }
 
-    /* ─── SIDE NAV ─── */
+
     .side-nav {
       height: 100%; width: 0;
       position: fixed; z-index: 1000; top: 0; left: 0;
@@ -707,7 +699,7 @@
     .nav-overlay.active { display: block; }
     body.nonscroll { overflow: hidden; }
 
-    /* ─── ANIMATIONS ─── */
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(26px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -717,7 +709,7 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
 
-    /* ─── RESPONSIVE ─── */
+
     @media (max-width: 920px) {
       .founder-wrap { grid-template-columns: 1fr; }
       .founder-img-side { min-height: 340px; }
@@ -741,7 +733,7 @@
 </head>
 <body>
 
-  <!-- Utility Bar -->
+
   <div class="utility-bar">
     <div class="utility-left">
       <i class="fas fa-phone"></i> +27 82 813 4960
@@ -754,7 +746,7 @@
     </div>
   </div>
 
-  <!-- Header -->
+
   <header id="mainHeader">
     <div class="header-left">
       <div class="hamburger" onclick="openNav()" aria-label="Open menu" role="button" tabindex="0">
@@ -768,7 +760,6 @@
     <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
   </header>
 
-  <!-- Hero -->
   <div class="team-hero">
     <div class="hero-inner">
       <div class="hero-eyebrow"><i class="fas fa-users"></i> The People Behind the Purpose</div>
@@ -777,7 +768,6 @@
     </div>
   </div>
 
-  <!-- Breadcrumb -->
   <div class="breadcrumb-bar">
     <div class="breadcrumb">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -786,9 +776,6 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       FOUNDER SECTION
-  ═══════════════════════════════ -->
   <section class="section">
     <div class="section-inner">
 
@@ -801,10 +788,6 @@
       <div class="founder-wrap reveal reveal-delay-1">
 
         <div class="founder-img-side">
-          <!--
-            PHOTO: Replace "euclid.jpg" with your actual photo.
-            The onerror fallback shows a placeholder if the file is missing.
-          -->
           <img
             src="euclid.jpg"
             alt="Euclid Tumelo Ramaila — Founder of Journey4Change"
@@ -833,19 +816,18 @@
 
           <div class="founder-socials">
             <a href="https://www.instagram.com/journey4change2026" target="_blank" class="social-pill"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://x.com/j4j2026" target="_blank" class="social-pill"><i class="fab fa-x-twitter"></i> X / Twitter</a>
+            <a href="https://x.com/journey4change_" target="_blank" class="social-pill"><i class="fab fa-x-twitter"></i> X / Twitter</a>
             <a href="mailto:journey4change.info@gmail.com" class="social-pill"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://tiktok.com/journey4change2026" terget="_blank" class="social-pill"><i class="feb fa-tiktok"></i> TikTok</a>
           </div>
         </div>
 
-      </div><!-- /.founder-wrap -->
+      </div>
 
-    </div><!-- /.section-inner -->
+    </div>
   </section>
 
-  <!-- ═══════════════════════════════
-       CORE TEAM SECTION
-  ═══════════════════════════════ -->
+
   <section class="section" style="background: #f0f7f1; padding-top: 20px;">
     <div class="section-inner">
 
@@ -855,23 +837,18 @@
         <p>Qualified, compassionate professionals who bring clinical depth and community heart to the Journey4Change mission.</p>
       </div>
 
-      <!-- Single card centred -->
+  
       <div class="team-single">
 
         <div class="team-card reveal reveal-delay-1">
           <div class="card-img-wrap">
-            <!--
-              PHOTO: Replace "girl.png" with your psychologist's actual photo.
-              The coming-soon overlay will hide until you're ready — just remove
-              the .coming-soon-overlay div below when you have the real photo.
-            -->
+
             <img
               src="girl.png"
               alt="Organisation Psychologist — Journey4Change"
               onerror="this.src='https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80&fit=crop&crop=face'"
             >
 
-            <!-- Remove this block once you have the real photo & name -->
             <div class="coming-soon-overlay">
               <div class="coming-soon-badge">
                 <i class="fas fa-clock"></i> Details Coming Soon
@@ -883,7 +860,7 @@
 
           <div class="card-body">
             <div class="role">Clinical Psychologist</div>
-            <h3>To Be Announced</h3>
+            <h3>Mfanelo Moyane</h3>
             <p class="qualif">MA Clinical Psychology · HPCSA Registered</p>
             <p>Our qualified psychologist provides the clinical backbone of Journey4Change — offering on-route counselling, psychological first aid at community engagements, and helping develop the mental health education content shared across all 9 provinces.</p>
             <p style="margin-top:10px;">Full details will be shared soon. Watch this space.</p>
@@ -896,28 +873,22 @@
               <span class="mini-tag">Community MH</span>
             </div>
             <div class="contact-icons-row">
-              <!-- Replace number/email below with the psychologist's real details -->
-              <a href="https://wa.me/27790000000" target="_blank" class="contact-icon contact-icon--wa" aria-label="WhatsApp" title="WhatsApp">
+              <a href="https://wa.me/+27849910575" target="_blank" class="contact-icon contact-icon--wa" aria-label="WhatsApp" title="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
               </a>
-              <a href="tel:+27790000000" class="contact-icon contact-icon--call" aria-label="Call" title="Call">
+              <a href="tel:+27849910575" class="contact-icon contact-icon--call" aria-label="Call" title="Call">
                 <i class="fas fa-phone"></i>
               </a>
-              <a href="mailto:psychologist@journey4change.co.za" class="contact-icon contact-icon--email" aria-label="Email" title="Email">
+              <a href="mailto:@journey4change.info@gail.com" class="contact-icon contact-icon--email" aria-label="Email" title="Email">
                 <i class="fas fa-envelope"></i>
               </a>
             </div>
           </div>
-        </div><!-- /.team-card -->
-
-      </div><!-- /.team-single -->
-
-    </div><!-- /.section-inner -->
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- ═══════════════════════════════
-       VALUES STRIP
-  ═══════════════════════════════ -->
   <div class="values-strip">
     <div class="values-inner reveal">
       <div class="section-label">What Unites Us</div>
@@ -952,9 +923,6 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       JOIN THE TEAM
-  ═══════════════════════════════ -->
   <section class="section join-section">
     <div class="section-inner">
       <div class="join-inner reveal">
@@ -969,9 +937,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════
-       FOOTER
-  ═══════════════════════════════ -->
   <footer>
     <div class="footer-container">
       <div class="footer-about">
@@ -1026,10 +991,8 @@
     </div>
   </footer>
 
-  <!-- Side Nav Overlay -->
   <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 
-  <!-- Side Nav -->
   <nav id="sideNav" class="side-nav" aria-label="Main navigation">
     <div class="nav-header">
       <span>Navigation</span>
