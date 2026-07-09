@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Comprehensive guide to all mental health disorders based on DSM-5-TR and ICD-11.">
+  <title>Journey4Change - All Mental Health Disorders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --primary:#22c55e;--primary-light:#4ade80;--primary-dark:#16a34a;
+      --secondary:#14532d;--dark:#0f1f15;--light:#f8faf8;
+      --text:#1c2b20;--text-muted:#4b6a53;--white:#ffffff;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.08);--shadow-md:0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg:0 20px 50px rgba(0,0,0,0.18);--radius:16px;--radius-sm:8px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background-color:var(--light);color:var(--text);line-height:1.7;overflow-x:hidden;}
+
+    /* UTILITY */
+    .utility-bar{background:var(--dark);color:rgba(255,255,255,.75);padding:9px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+    .utility-left{display:flex;align-items:center;gap:8px;}
+    .utility-left i{color:var(--primary);font-size:12px;}
+    .utility-right a{color:rgba(255,255,255,.7);margin-left:18px;font-size:16px;transition:color .25s,transform .25s;display:inline-block;}
+    .utility-right a:hover{color:var(--primary);transform:translateY(-2px);}
+
+    /* HEADER */
+    header{background:rgba(15,31,21,.96);backdrop-filter:blur(12px);color:white;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:900;border-bottom:1px solid rgba(34,197,94,.15);transition:box-shadow .3s;}
+    .header-left{display:flex;align-items:center;gap:22px;}
+    .logo-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;line-height:1.1;}
+    .logo-text span{font-size:11px;font-weight:500;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:2px;}
+    .hamburger{display:flex;flex-direction:column;justify-content:space-between;width:26px;height:20px;cursor:pointer;gap:5px;}
+    .hamburger div{height:2px;background:white;border-radius:2px;transition:all .3s;}
+    .hamburger:hover div:nth-child(2){width:70%;}
+    .login-btn{background:var(--primary);color:var(--dark);padding:9px 22px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .25s;display:flex;align-items:center;gap:7px;}
+    .login-btn:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.35);}
+
+    /* PAGE HERO */
+    .page-hero{background:linear-gradient(135deg,#0f1f15 0%,#1a3a22 60%,#0f1f15 100%);padding:80px 24px 70px;text-align:center;color:white;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+    .page-hero-inner{position:relative;z-index:1;max-width:780px;margin:0 auto;}
+    .page-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-light);border:1px solid rgba(74,222,128,.4);padding:6px 18px;border-radius:50px;margin-bottom:20px;}
+    .page-hero h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+    .page-hero p{font-size:1.05rem;opacity:.85;max-width:620px;margin:0 auto 24px;}
+    .hero-disclaimer{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;font-size:13px;color:rgba(255,255,255,.75);}
+    .hero-disclaimer i{color:var(--primary-light);}
+
+    /* CRISIS */
+    .crisis-banner{background:linear-gradient(90deg,var(--primary-dark),#166534);color:white;padding:13px 40px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;text-align:center;font-size:14px;font-weight:500;}
+    .crisis-banner i{font-size:17px;color:var(--primary-light);}
+    .crisis-number{background:white;color:var(--primary-dark);padding:6px 18px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .2s;}
+    .crisis-number:hover{transform:scale(1.05);}
+
+    /* CATEGORY TABS */
+    .cat-nav{background:white;border-bottom:1px solid rgba(34,197,94,.12);position:sticky;top:64px;z-index:800;box-shadow:var(--shadow-sm);}
+    .cat-nav-inner{max-width:1200px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .cat-nav-inner::-webkit-scrollbar{display:none;}
+    .cat-tab{flex-shrink:0;padding:14px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text-muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:7px;white-space:nowrap;}
+    .cat-tab:hover{color:var(--primary-dark);}
+    .cat-tab.active{color:var(--primary-dark);border-bottom-color:var(--primary);}
+    .cat-tab .tab-icon{font-size:.95rem;}
+
+    /* SEARCH */
+    .search-bar{background:#f0f7f1;border-bottom:1px solid rgba(34,197,94,.1);padding:13px 24px;}
+    .search-inner{max-width:1200px;margin:0 auto;display:flex;gap:14px;align-items:center;}
+    .search-wrap{flex:1;position:relative;}
+    .search-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;}
+    .search-wrap input{width:100%;padding:10px 16px 10px 40px;border:1.5px solid rgba(34,197,94,.2);border-radius:50px;font-family:'DM Sans',sans-serif;font-size:14px;background:white;color:var(--text);outline:none;transition:border-color .25s;}
+    .search-wrap input:focus{border-color:var(--primary);}
+    .result-count{font-size:13px;color:var(--text-muted);white-space:nowrap;font-weight:600;}
+
+    /* LAYOUT */
+    .section{padding:70px 24px;}
+    .section-inner{max-width:1200px;margin:0 auto;}
+    .section-title{text-align:center;margin-bottom:50px;}
+    .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px;}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--secondary);font-weight:700;position:relative;display:inline-block;}
+    .section-title h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));border-radius:2px;}
+    .section-title p{color:var(--text-muted);font-size:1rem;max-width:640px;margin:26px auto 0;}
+
+    /* PANELS */
+    .cat-panel{display:none;}
+    .cat-panel.active{display:block;}
+
+    /* DISORDER CARDS GRID */
+    .disorders-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
+    .disorder-card{background:white;border-radius:var(--radius);padding:24px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+    .disorder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .disorder-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+    .disorder-card.hidden{display:none;}
+    .disorder-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px;}
+    .disorder-icon{width:46px;height:46px;border-radius:12px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--primary-dark);flex-shrink:0;transition:background .3s;}
+    .disorder-card:hover .disorder-icon{background:rgba(34,197,94,.2);}
+    .disorder-title{flex:1;}
+    .disorder-title h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--secondary);font-weight:700;line-height:1.3;}
+    .disorder-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(34,197,94,.08);color:var(--primary-dark);padding:2px 8px;border-radius:50px;border:1px solid rgba(34,197,94,.15);margin-top:4px;}
+    .disorder-desc{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;}
+    .disorder-symptoms{margin-top:10px;}
+    .disorder-symptoms-label{font-size:10px;font-weight:700;color:var(--primary-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+    .symptom-tags{display:flex;flex-wrap:wrap;gap:5px;}
+    .stag{font-size:11px;background:var(--light);color:var(--text-muted);padding:2px 9px;border-radius:50px;border:1px solid rgba(0,0,0,.06);}
+
+    /* CATEGORY GROUP HEADER */
+    .group-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid rgba(34,197,94,.15);}
+    .group-icon{width:50px;height:50px;border-radius:14px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--primary-dark);flex-shrink:0;}
+    .group-header h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--secondary);font-weight:700;}
+    .group-header p{font-size:13px;color:var(--text-muted);margin-top:2px;}
+    .group-section{margin-bottom:56px;}
+
+    /* STATS */
+    .stats{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);position:relative;overflow:hidden;}
+    .stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.6;}
+    .stats-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:22px;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+    .stat-item{padding:32px 20px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-align:center;color:white;transition:transform .3s;backdrop-filter:blur(8px);}
+    .stat-item:hover{transform:translateY(-5px);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--primary-light);line-height:1;margin-bottom:8px;}
+    .stat-text{font-size:.85rem;color:rgba(255,255,255,.7);}
+
+    /* CTA */
+    .cta-section{background:var(--dark);color:white;text-align:center;}
+    .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:white;margin-bottom:16px;}
+    .cta-section p{max-width:680px;margin:0 auto 32px;color:rgba(255,255,255,.7);font-size:1rem;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 6px 24px rgba(34,197,94,.35);}
+    .btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.5);}
+    .btn-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#080f0a;color:white;padding:80px 24px 36px;}
+    .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .footer-logo-icon{width:44px;height:44px;border-radius:50%;background:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0;}
+    .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
+    .social-links{display:flex;gap:12px;}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:50%;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .25s;border:1px solid rgba(255,255,255,.08);}
+    .social-links a:hover{background:var(--primary);color:var(--dark);border-color:var(--primary);transform:translateY(-3px);}
+    .footer-links h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:20px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .25s,padding-left .25s;display:inline-block;}
+    .footer-links a:hover{color:var(--primary-light);padding-left:4px;}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;color:rgba(255,255,255,.55);font-size:14px;}
+    .footer-contact-item i{color:var(--primary);margin-top:3px;width:14px;flex-shrink:0;}
+    .copyright{max-width:1160px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:8px;}
+
+    /* SIDE NAV */
+    .side-nav{height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background:var(--dark);overflow-y:auto;overflow-x:hidden;transition:width .4s cubic-bezier(.25,.46,.45,.94);border-right:1px solid rgba(34,197,94,.2);}
+    .nav-header{padding:30px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+    .nav-header span{font-family:'Playfair Display',serif;font-size:16px;color:white;white-space:nowrap;}
+    .close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:white;transition:background .25s,transform .25s;flex-shrink:0;line-height:1;}
+    .close-btn:hover{background:rgba(34,197,94,.2);transform:rotate(90deg);}
+    .side-nav a{padding:14px 28px;text-decoration:none;font-size:15px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:14px;transition:all .25s;white-space:nowrap;border-left:3px solid transparent;}
+    .side-nav a i{width:18px;text-align:center;color:var(--primary);flex-shrink:0;}
+    .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
+    .nav-overlay.active{display:block;}
+    body.nonscroll{overflow:hidden;}
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}
+
+    .bg-alt{background:#f0f7f1;}
+    .no-results{text-align:center;padding:60px 20px;color:var(--text-muted);}
+    .no-results i{font-size:3rem;color:rgba(34,197,94,.2);margin-bottom:16px;display:block;}
+
+    @media(max-width:900px){.footer-container{grid-template-columns:1fr 1fr;gap:36px;}}
+    @media(max-width:600px){header{padding:14px 20px;}.utility-bar{padding:8px 20px;}.section{padding:56px 20px;}.cat-tab{padding:12px 14px;font-size:12px;}.disorders-grid{grid-template-columns:1fr;}.footer-container{grid-template-columns:1fr;gap:28px;}.copyright{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+  <div class="utility-right">
+    <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</div>
+
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu"><div></div><div></div><div></div></div>
+    <div class="logo-text"><h1>Journey4Change</h1><span>Healing Together</span></div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-eyebrow"><i class="fas fa-brain"></i> &nbsp; Mental Health Education</span>
+    <h2>All Mental Health Disorders</h2>
+    <p>A comprehensive, compassionate guide to every recognised mental health disorder — based on DSM-5-TR and ICD-11. Understanding is the beginning of healing.</p>
+    <span class="hero-disclaimer"><i class="fas fa-info-circle"></i> This page is educational, not diagnostic. Always consult a qualified professional.</span>
+  </div>
+</div>
+
+<div class="crisis-banner">
+  <i class="fas fa-shield-heart"></i>
+  <span>If you are in crisis right now, help is available 24/7.</span>
+  <a href="tel:0800121314" class="crisis-number">Call 0800 12 13 14 — Free</a>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-nav">
+  <div class="cat-nav-inner">
+    <button class="cat-tab active" onclick="switchCat('all',this)"><span class="tab-icon">🧠</span> All Disorders</button>
+    <button class="cat-tab" onclick="switchCat('neuro',this)"><span class="tab-icon">🧩</span> Neurodevelopmental</button>
+    <button class="cat-tab" onclick="switchCat('psychotic',this)"><span class="tab-icon">🌀</span> Psychotic</button>
+    <button class="cat-tab" onclick="switchCat('mood',this)"><span class="tab-icon">🌤</span> Mood &amp; Bipolar</button>
+    <button class="cat-tab" onclick="switchCat('anxiety',this)"><span class="tab-icon">😰</span> Anxiety</button>
+    <button class="cat-tab" onclick="switchCat('ocd',this)"><span class="tab-icon">🔁</span> OCD &amp; Related</button>
+    <button class="cat-tab" onclick="switchCat('trauma',this)"><span class="tab-icon">💔</span> Trauma &amp; Stress</button>
+    <button class="cat-tab" onclick="switchCat('dissociative',this)"><span class="tab-icon">🪞</span> Dissociative</button>
+    <button class="cat-tab" onclick="switchCat('somatic',this)"><span class="tab-icon">🫀</span> Somatic &amp; Bodily</button>
+    <button class="cat-tab" onclick="switchCat('eating',this)"><span class="tab-icon">🍽</span> Feeding &amp; Eating</button>
+    <button class="cat-tab" onclick="switchCat('sleep',this)"><span class="tab-icon">😴</span> Sleep-Wake</button>
+    <button class="cat-tab" onclick="switchCat('sexual',this)"><span class="tab-icon">💜</span> Sexual &amp; Gender</button>
+    <button class="cat-tab" onclick="switchCat('substance',this)"><span class="tab-icon">💊</span> Substance &amp; Addiction</button>
+    <button class="cat-tab" onclick="switchCat('personality',this)"><span class="tab-icon">🎭</span> Personality</button>
+    <button class="cat-tab" onclick="switchCat('neurocog',this)"><span class="tab-icon">🧬</span> Neurocognitive</button>
+    <button class="cat-tab" onclick="switchCat('childhood',this)"><span class="tab-icon">👶</span> Childhood &amp; Behaviour</button>
+    <button class="cat-tab" onclick="switchCat('paraphilic',this)"><span class="tab-icon">🔒</span> Paraphilic</button>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search any disorder, symptom, or keyword..." oninput="applySearch()">
+    </div>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section class="section">
+<div class="section-inner">
+<div id="noResults" class="no-results" style="display:none"><i class="fas fa-search"></i><p>No disorders found. Try a different search term.</p></div>
+<div id="allCards">
+
+<!-- ══ 1. NEURODEVELOPMENTAL ══ -->
+<div class="group-section" data-cat="neuro">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-puzzle-piece"></i></div><div><h3>Neurodevelopmental Disorders</h3><p>Conditions with onset in early development, affecting brain function, learning, and behaviour.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="neuro" data-text="autism spectrum disorder asd social communication repetitive"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-puzzle-piece"></i></div><div class="disorder-title"><h3>Autism Spectrum Disorder (ASD)</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">A developmental condition characterised by differences in social communication, social interaction, and restricted or repetitive patterns of behaviour and interests. It is a spectrum — no two people experience it the same way.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Social communication differences</span><span class="stag">Repetitive behaviours</span><span class="stag">Sensory sensitivities</span><span class="stag">Restricted interests</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="adhd attention deficit hyperactivity disorder inattention impulsivity"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-bolt"></i></div><div class="disorder-title"><h3>ADHD — Attention-Deficit/Hyperactivity Disorder</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">A pattern of inattention and/or hyperactivity-impulsivity that interferes with functioning or development. Exists in three presentations: predominantly inattentive, predominantly hyperactive-impulsive, or combined.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Inattention</span><span class="stag">Hyperactivity</span><span class="stag">Impulsivity</span><span class="stag">Difficulty organising</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="intellectual disability id cognitive adaptive functioning"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-graduation-cap"></i></div><div class="disorder-title"><h3>Intellectual Disability</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">Significant limitations in both intellectual functioning (reasoning, problem-solving, planning) and adaptive behaviour (practical, social, and conceptual skills), originating during the developmental period.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Low IQ</span><span class="stag">Adaptive skill deficits</span><span class="stag">Communication difficulties</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="specific learning disorder dyslexia dyscalculia reading writing math"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-book"></i></div><div class="disorder-title"><h3>Specific Learning Disorder</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">Persistent difficulties in learning academic skills including reading (dyslexia), written expression (dysgraphia), or mathematics (dyscalculia) that are not explained by intellectual disability or inadequate instruction.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Dyslexia</span><span class="stag">Dyscalculia</span><span class="stag">Dysgraphia</span><span class="stag">Slow academic progress</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="communication disorder speech language social pragmatic"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-comments"></i></div><div class="disorder-title"><h3>Communication Disorders</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">A group of disorders including Language Disorder, Speech Sound Disorder, Childhood-Onset Fluency Disorder (stuttering), and Social (Pragmatic) Communication Disorder — affecting how a person understands and uses language.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Stuttering</span><span class="stag">Limited vocabulary</span><span class="stag">Speech sound errors</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="developmental coordination disorder dyspraxia motor skills clumsy"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-running"></i></div><div class="disorder-title"><h3>Developmental Coordination Disorder (Dyspraxia)</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">Acquisition and execution of coordinated motor skills is substantially below expected levels. Affects daily activities like tying shoelaces, handwriting, sports, and using tools.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Poor motor coordination</span><span class="stag">Clumsiness</span><span class="stag">Slow motor learning</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neuro" data-text="tourette syndrome tic disorder motor vocal tics"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-wave-square"></i></div><div class="disorder-title"><h3>Tourette's Syndrome &amp; Tic Disorders</h3><span class="disorder-tag">Neurodevelopmental</span></div></div><p class="disorder-desc">Repetitive, involuntary movements and vocalisations called tics. Tourette's involves both motor and vocal tics for more than a year. Other tic disorders include Persistent Motor or Vocal Tic Disorder and Provisional Tic Disorder.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Motor tics</span><span class="stag">Vocal tics</span><span class="stag">Urge to tic</span><span class="stag">Fluctuating severity</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 2. PSYCHOTIC ══ -->
+<div class="group-section" data-cat="psychotic">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-circle-half-stroke"></i></div><div><h3>Schizophrenia Spectrum &amp; Psychotic Disorders</h3><p>Disorders characterised by delusions, hallucinations, disorganised thinking, and disturbances in perception of reality.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="schizophrenia hallucinations delusions psychosis positive negative"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-circle-half-stroke"></i></div><div class="disorder-title"><h3>Schizophrenia</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">A chronic condition involving disruptions in thinking, perception, emotions, and behaviour. Positive symptoms include hallucinations and delusions; negative symptoms include flat affect, social withdrawal, and lack of motivation.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Hallucinations</span><span class="stag">Delusions</span><span class="stag">Disorganised speech</span><span class="stag">Flat affect</span><span class="stag">Avolition</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="schizoaffective disorder schizophrenia mood depression bipolar"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-yin-yang"></i></div><div class="disorder-title"><h3>Schizoaffective Disorder</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">A combination of schizophrenia symptoms (hallucinations, delusions) and mood disorder symptoms (major depressive or manic episodes). Exists in depressive type and bipolar type.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Psychotic symptoms</span><span class="stag">Mood episodes</span><span class="stag">Functional impairment</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="delusional disorder fixed false beliefs erotomania persecutory grandiose"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-eye"></i></div><div class="disorder-title"><h3>Delusional Disorder</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">Presence of one or more fixed, false beliefs (delusions) for at least one month, without the other symptoms of schizophrenia. Types include persecutory, grandiose, erotomanic, jealous, somatic, and mixed.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Non-bizarre delusions</span><span class="stag">Relatively preserved functioning</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="brief psychotic disorder sudden onset short duration stress"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-bolt"></i></div><div class="disorder-title"><h3>Brief Psychotic Disorder</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">Sudden onset of at least one psychotic symptom (delusions, hallucinations, or disorganised speech) lasting at least one day but less than one month, with eventual full return to previous functioning.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Sudden onset</span><span class="stag">Short duration</span><span class="stag">Full recovery</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="schizophreniform disorder schizophrenia shorter duration 6 months"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hourglass-half"></i></div><div class="disorder-title"><h3>Schizophreniform Disorder</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">Symptoms identical to schizophrenia but lasting between one and six months. May resolve completely or progress to schizophrenia.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Psychotic symptoms</span><span class="stag">1–6 month duration</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="shared psychotic disorder folie a deux induced beliefs partner"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-user-group"></i></div><div class="disorder-title"><h3>Shared Psychotic Disorder (Folie à Deux)</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">Delusions that develop in an individual in the context of a close relationship with another person who already has a psychotic disorder. The shared beliefs are often persecutory.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Shared delusions</span><span class="stag">Close relationship</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="psychotic" data-text="substance induced psychotic disorder drug alcohol medication"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-pills"></i></div><div class="disorder-title"><h3>Substance/Medication-Induced Psychotic Disorder</h3><span class="disorder-tag">Psychotic</span></div></div><p class="disorder-desc">Hallucinations or delusions caused directly by intoxication or withdrawal from substances like alcohol, cannabis, stimulants, or hallucinogens, or from medications.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Substance-related onset</span><span class="stag">Hallucinations</span><span class="stag">Delusions</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 3. MOOD & BIPOLAR ══ -->
+<div class="group-section" data-cat="mood">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-cloud-sun"></i></div><div><h3>Bipolar &amp; Depressive (Mood) Disorders</h3><p>Disorders involving abnormal mood states — depression, mania, hypomania — that significantly affect quality of life.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="mood" data-text="major depressive disorder mdd depression sadness low mood hopelessness"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-cloud-rain"></i></div><div class="disorder-title"><h3>Major Depressive Disorder (MDD)</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">Persistent low mood, loss of interest or pleasure in activities, and a range of emotional and physical symptoms that impair daily functioning. One of the most common mental health conditions globally.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Persistent sadness</span><span class="stag">Loss of interest</span><span class="stag">Fatigue</span><span class="stag">Sleep changes</span><span class="stag">Suicidal thoughts</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="persistent depressive disorder dysthymia chronic low mood 2 years"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-cloud"></i></div><div class="disorder-title"><h3>Persistent Depressive Disorder (Dysthymia)</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">Chronic, low-grade depression lasting at least two years (one year in children and adolescents). Less severe than major depression but significantly impacts quality of life over the long term.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Chronic low mood</span><span class="stag">Low energy</span><span class="stag">Poor self-esteem</span><span class="stag">Hopelessness</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="bipolar I disorder mania depressive episodes extreme mood swings"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-arrows-up-down"></i></div><div class="disorder-title"><h3>Bipolar I Disorder</h3><span class="disorder-tag">Bipolar</span></div></div><p class="disorder-desc">Defined by at least one manic episode lasting at least 7 days (or shorter if hospitalisation is required). Depressive episodes typically also occur. Mania can include elevated mood, grandiosity, decreased need for sleep, reckless behaviour, and psychosis.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Manic episodes</span><span class="stag">Depressive episodes</span><span class="stag">Grandiosity</span><span class="stag">Decreased sleep</span><span class="stag">Reckless behaviour</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="bipolar II disorder hypomania depressive episodes hypomanic"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-wave-square"></i></div><div class="disorder-title"><h3>Bipolar II Disorder</h3><span class="disorder-tag">Bipolar</span></div></div><p class="disorder-desc">At least one hypomanic episode and at least one major depressive episode. No full manic episodes. Often misdiagnosed as depression because the hypomanic periods may feel productive.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Hypomania</span><span class="stag">Major depression</span><span class="stag">No full mania</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="cyclothymic disorder cyclothymia mood swings mild chronic 2 years"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-rotate"></i></div><div class="disorder-title"><h3>Cyclothymic Disorder</h3><span class="disorder-tag">Bipolar</span></div></div><p class="disorder-desc">Chronic, fluctuating mood disturbance involving numerous periods of hypomanic and depressive symptoms that do not meet full criteria for hypomanic or major depressive episodes, lasting at least 2 years.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Mood swings</span><span class="stag">Chronic 2+ years</span><span class="stag">Sub-threshold symptoms</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="premenstrual dysphoric disorder pmdd mood symptoms menstrual cycle"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-circle-dot"></i></div><div class="disorder-title"><h3>Premenstrual Dysphoric Disorder (PMDD)</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">Severe mood, behavioural, and physical symptoms in the week before menstruation that improve after the period starts. More severe than PMS and significantly disrupts daily functioning.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Mood lability</span><span class="stag">Irritability</span><span class="stag">Depressed mood</span><span class="stag">Cyclical pattern</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="disruptive mood dysregulation disorder dmdd temper outbursts children"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-face-angry"></i></div><div class="disorder-title"><h3>Disruptive Mood Dysregulation Disorder (DMDD)</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">Characterised by severe, recurrent temper outbursts that are grossly disproportionate to situations, and persistent irritable or angry mood between outbursts in children and adolescents up to age 18.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Severe temper outbursts</span><span class="stag">Chronic irritability</span><span class="stag">Children 6–18</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="seasonal affective disorder sad winter depression seasonal pattern"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-snowflake"></i></div><div class="disorder-title"><h3>Seasonal Affective Disorder (SAD)</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">A recurrent pattern of major depressive episodes tied to particular seasons — most commonly starting in autumn/winter and remitting in spring. Less common summer-pattern SAD also exists.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Seasonal pattern</span><span class="stag">Hypersomnia</span><span class="stag">Carbohydrate cravings</span><span class="stag">Weight gain</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="mood" data-text="postpartum postnatal depression ppd new mother after birth"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-baby"></i></div><div class="disorder-title"><h3>Postpartum/Perinatal Depression</h3><span class="disorder-tag">Depressive</span></div></div><p class="disorder-desc">Major depressive episode with onset during pregnancy or within 4 weeks after delivery. Affects both mothers and fathers. More severe than the typical "baby blues" and requires professional treatment.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Depressed mood</span><span class="stag">Inability to bond</span><span class="stag">Extreme anxiety</span><span class="stag">Postpartum onset</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 4. ANXIETY ══ -->
+<div class="group-section" data-cat="anxiety">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-face-anxious"></i></div><div><h3>Anxiety &amp; Fear-Related Disorders</h3><p>Disorders characterised by excessive fear, anxiety, and related behavioural disturbances.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="generalised anxiety disorder gad excessive worry chronic tension"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-circle-exclamation"></i></div><div class="disorder-title"><h3>Generalised Anxiety Disorder (GAD)</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Excessive, difficult-to-control worry about multiple different topics (health, finances, work, relationships) occurring more days than not for at least 6 months, accompanied by physical symptoms.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Excessive worry</span><span class="stag">Muscle tension</span><span class="stag">Sleep disturbance</span><span class="stag">Restlessness</span><span class="stag">Fatigue</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="panic disorder panic attacks fear catastrophic physical symptoms heart racing"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-heart-pulse"></i></div><div class="disorder-title"><h3>Panic Disorder</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Recurrent, unexpected panic attacks — sudden surges of intense fear with physical symptoms such as racing heart, shortness of breath, chest pain, dizziness, and fear of dying or losing control. Followed by persistent concern about future attacks.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Panic attacks</span><span class="stag">Anticipatory anxiety</span><span class="stag">Avoidance behaviour</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="agoraphobia fear public places crowds being trapped escaping difficult"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-map"></i></div><div class="disorder-title"><h3>Agoraphobia</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Intense fear and avoidance of situations where escape might be difficult or help unavailable — such as crowds, public transport, open spaces, or being outside alone. Often develops after panic attacks.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Fear of crowds</span><span class="stag">Avoidance</span><span class="stag">Homebound in severe cases</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="social anxiety disorder social phobia fear embarrassment judgment others"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-people-group"></i></div><div class="disorder-title"><h3>Social Anxiety Disorder (Social Phobia)</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Marked fear of social situations where the person may be scrutinised, judged negatively, or embarrassed. Leads to significant avoidance of social interactions, affecting relationships, education, and work.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Fear of judgment</span><span class="stag">Social avoidance</span><span class="stag">Blushing/sweating</span><span class="stag">Performance anxiety</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="specific phobia spider blood injection heights flying animals irrational fear"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-spider"></i></div><div class="disorder-title"><h3>Specific Phobia</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Intense, irrational fear of a specific object or situation — such as animals, heights, flying, blood, injections, thunder, or enclosed spaces — that is out of proportion to actual danger and leads to avoidance.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Specific trigger</span><span class="stag">Immediate fear response</span><span class="stag">Avoidance</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="separation anxiety disorder fear separation attachment figures adults children"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-link-slash"></i></div><div class="disorder-title"><h3>Separation Anxiety Disorder</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Excessive fear or anxiety about separation from attachment figures, beyond what is developmentally expected. Can affect children and adults, causing distress, sleep problems, and somatic complaints when separated.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Fear of separation</span><span class="stag">Nightmares about separation</span><span class="stag">Somatic complaints</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="anxiety" data-text="selective mutism speaking certain situations children school social anxiety"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-comment-slash"></i></div><div class="disorder-title"><h3>Selective Mutism</h3><span class="disorder-tag">Anxiety</span></div></div><p class="disorder-desc">Consistent failure to speak in specific social situations (e.g. school) despite speaking in other contexts (e.g. at home). Often related to social anxiety and can significantly impact education and social development.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">No speech in some contexts</span><span class="stag">Speaks in others</span><span class="stag">Childhood onset</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 5. OCD ══ -->
+<div class="group-section" data-cat="ocd">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-rotate"></i></div><div><h3>Obsessive-Compulsive &amp; Related Disorders</h3><p>Disorders characterised by intrusive thoughts and repetitive behaviours or mental acts aimed at reducing anxiety.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="ocd" data-text="obsessive compulsive disorder ocd intrusive thoughts rituals contamination checking"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-rotate"></i></div><div class="disorder-title"><h3>Obsessive-Compulsive Disorder (OCD)</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Recurring, unwanted obsessions (intrusive thoughts, images, or urges) and/or compulsions (repetitive behaviours or mental acts) performed to reduce distress. Common themes: contamination, harm, symmetry, forbidden thoughts.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Obsessions</span><span class="stag">Compulsions</span><span class="stag">Ego-dystonic</span><span class="stag">Time-consuming</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="ocd" data-text="body dysmorphic disorder bdd appearance perceived defect preoccupation"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-mirror"></i></div><div class="disorder-title"><h3>Body Dysmorphic Disorder (BDD)</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Preoccupation with one or more perceived defects in physical appearance that are not observable or appear slight to others. Causes significant distress and repetitive behaviours like mirror checking, reassurance-seeking, or camouflaging.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Appearance preoccupation</span><span class="stag">Mirror checking</span><span class="stag">Significant distress</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="ocd" data-text="hoarding disorder excessive saving clutter difficulty discarding"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-boxes-stacked"></i></div><div class="disorder-title"><h3>Hoarding Disorder</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Persistent difficulty discarding possessions, regardless of their actual value, due to distress associated with discarding them. Results in clutter that compromises living spaces and impairs functioning.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Difficulty discarding</span><span class="stag">Excessive accumulation</span><span class="stag">Cluttered living spaces</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="ocd" data-text="trichotillomania hair pulling disorder compulsive hair loss"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hand"></i></div><div class="disorder-title"><h3>Trichotillomania (Hair-Pulling Disorder)</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Recurrent, compulsive urges to pull out hair from the scalp, eyebrows, eyelashes, or other areas of the body, resulting in hair loss and significant distress or impairment.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Hair pulling</span><span class="stag">Hair loss</span><span class="stag">Tension before pulling</span><span class="stag">Relief after pulling</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="ocd" data-text="excoriation skin picking disorder dermatillomania wounds sores lesions"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hand-dots"></i></div><div class="disorder-title"><h3>Excoriation (Skin-Picking) Disorder</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Recurrent picking of one's own skin, leading to skin lesions, wounds, and significant distress or impairment. Despite repeated attempts to stop, the behaviour persists.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Skin picking</span><span class="stag">Skin lesions</span><span class="stag">Attempts to stop</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="ocd" data-text="olfactory reference syndrome smell body odour preoccupation embarrassment"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-nose"></i></div><div class="disorder-title"><h3>Olfactory Reference Disorder</h3><span class="disorder-tag">OCD-Related</span></div></div><p class="disorder-desc">Persistent preoccupation with the belief that one emits a foul or unpleasant body odour that is not detectable by others. Causes significant shame, embarrassment, and social avoidance.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Smell preoccupation</span><span class="stag">Social avoidance</span><span class="stag">Checking behaviour</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 6. TRAUMA & STRESS ══ -->
+<div class="group-section" data-cat="trauma">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-heart-crack"></i></div><div><h3>Trauma- &amp; Stressor-Related Disorders</h3><p>Disorders definitionally associated with exposure to a traumatic or stressful event.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="trauma" data-text="ptsd post traumatic stress disorder trauma flashbacks nightmares hypervigilance"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-burst"></i></div><div class="disorder-title"><h3>Post-Traumatic Stress Disorder (PTSD)</h3><span class="disorder-tag">Trauma-Related</span></div></div><p class="disorder-desc">Develops after exposure to a traumatic event. Involves intrusive re-experiencing (flashbacks, nightmares), persistent avoidance of trauma reminders, negative alterations in mood and cognition, and hyperarousal.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Flashbacks</span><span class="stag">Nightmares</span><span class="stag">Hypervigilance</span><span class="stag">Avoidance</span><span class="stag">Emotional numbing</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="complex ptsd cptsd prolonged trauma abuse repeated childhood emotional regulation"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-layer-group"></i></div><div class="disorder-title"><h3>Complex PTSD (C-PTSD)</h3><span class="disorder-tag">Trauma-Related</span></div></div><p class="disorder-desc">Develops after prolonged, repeated trauma — such as childhood abuse, domestic violence, or captivity. In addition to PTSD symptoms, includes severe difficulties in emotion regulation, identity, and relationships.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">PTSD symptoms</span><span class="stag">Emotion dysregulation</span><span class="stag">Negative self-concept</span><span class="stag">Relationship difficulties</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="acute stress disorder short term trauma one month reaction dissociation"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-clock"></i></div><div class="disorder-title"><h3>Acute Stress Disorder</h3><span class="disorder-tag">Trauma-Related</span></div></div><p class="disorder-desc">Occurs within 3 days to 1 month after exposure to a traumatic event and involves intrusion symptoms, negative mood, dissociation, avoidance, and arousal. Often precedes PTSD if untreated.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">3 days to 1 month</span><span class="stag">Dissociation</span><span class="stag">Intrusion</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="adjustment disorder emotional behavioural symptoms stress life event"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-scale-unbalanced"></i></div><div class="disorder-title"><h3>Adjustment Disorder</h3><span class="disorder-tag">Stress-Related</span></div></div><p class="disorder-desc">Emotional or behavioural symptoms in response to an identifiable stressor (divorce, job loss, illness) that are disproportionate and cause significant distress. Resolves within 6 months after the stressor ends.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Identifiable stressor</span><span class="stag">Depression/anxiety</span><span class="stag">Behavioural changes</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="prolonged grief disorder complicated grief loss bereavement yearning"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-heart-broken"></i></div><div class="disorder-title"><h3>Prolonged Grief Disorder</h3><span class="disorder-tag">Stress-Related</span></div></div><p class="disorder-desc">Intense yearning and longing for the deceased, difficulty accepting the death, bitterness about the loss, and inability to engage in life — persisting more than 12 months after bereavement (6 months in ICD-11).</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Intense yearning</span><span class="stag">Grief beyond 12 months</span><span class="stag">Functional impairment</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="reactive attachment disorder childhood neglect early care failure bonding"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-child"></i></div><div class="disorder-title"><h3>Reactive Attachment Disorder</h3><span class="disorder-tag">Trauma-Related</span></div></div><p class="disorder-desc">A pattern of emotionally withdrawn behaviour toward caregivers in children following severe social neglect or deprivation. The child rarely seeks comfort from caregivers and shows minimal positive emotions.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Withdrawn from caregivers</span><span class="stag">Social neglect history</span><span class="stag">Limited positive affect</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="trauma" data-text="disinhibited social engagement disorder disd indiscriminate children strangers"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-walking-arrow-right"></i></div><div class="disorder-title"><h3>Disinhibited Social Engagement Disorder</h3><span class="disorder-tag">Trauma-Related</span></div></div><p class="disorder-desc">A pattern of behaviour in children involving culturally inappropriate, overly familiar behaviour with relative strangers — willingness to go off with strangers, overly affectionate — following early social neglect.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Indiscriminate approach</span><span class="stag">No hesitation with strangers</span><span class="stag">Neglect history</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 7. DISSOCIATIVE ══ -->
+<div class="group-section" data-cat="dissociative">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-person-half-dress"></i></div><div><h3>Dissociative Disorders</h3><p>Disruptions in consciousness, memory, identity, emotion, perception, behaviour, and sense of self.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="dissociative" data-text="dissociative identity disorder did multiple personality alter trauma"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-masks-theater"></i></div><div class="disorder-title"><h3>Dissociative Identity Disorder (DID)</h3><span class="disorder-tag">Dissociative</span></div></div><p class="disorder-desc">Disruption of identity characterised by two or more distinct personality states or "alters," each with their own perspective, way of relating, and sense of self. Associated with severe early childhood trauma. Formerly called Multiple Personality Disorder.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Multiple identity states</span><span class="stag">Memory gaps</span><span class="stag">Trauma history</span><span class="stag">Identity disruption</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="dissociative" data-text="dissociative amnesia memory loss trauma autobiographical information psychogenic"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-brain"></i></div><div class="disorder-title"><h3>Dissociative Amnesia</h3><span class="disorder-tag">Dissociative</span></div></div><p class="disorder-desc">Inability to recall important autobiographical information — usually traumatic or stressful — that is too extensive to be explained by ordinary forgetting. May include dissociative fugue (purposeful travel with memory loss).</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Memory gaps</span><span class="stag">Trauma-related</span><span class="stag">Not organic</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="dissociative" data-text="depersonalisation derealisation disorder feeling unreal detached from body environment"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-ghost"></i></div><div class="disorder-title"><h3>Depersonalisation/Derealisation Disorder</h3><span class="disorder-tag">Dissociative</span></div></div><p class="disorder-desc">Persistent or recurrent experiences of feeling detached from one's mental processes or body (depersonalisation) or feeling as if one is an outside observer of one's surroundings (derealisation). Reality testing remains intact.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Feeling unreal</span><span class="stag">Detached from body</span><span class="stag">Intact reality testing</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 8. SOMATIC ══ -->
+<div class="group-section" data-cat="somatic">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-stethoscope"></i></div><div><h3>Somatic Symptom &amp; Bodily Distress Disorders</h3><p>Disorders involving significant focus on physical symptoms causing distress or functional disruption.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="somatic" data-text="somatic symptom disorder physical symptoms excessive thoughts health anxiety"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-circle-exclamation"></i></div><div class="disorder-title"><h3>Somatic Symptom Disorder</h3><span class="disorder-tag">Somatic</span></div></div><p class="disorder-desc">One or more somatic symptoms causing distress or disruption, accompanied by excessive thoughts, feelings, or behaviours related to the symptoms or associated health concerns that are disproportionate and persistent.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Physical symptoms</span><span class="stag">Excessive health anxiety</span><span class="stag">Disproportionate concern</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="somatic" data-text="illness anxiety disorder health anxiety hypochondria fear serious illness"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hospital"></i></div><div class="disorder-title"><h3>Illness Anxiety Disorder (Health Anxiety)</h3><span class="disorder-tag">Somatic</span></div></div><p class="disorder-desc">Preoccupation with having or acquiring a serious illness, despite little or no somatic symptoms. Excessive health-related behaviours (frequent checking, doctor visits) or maladaptive avoidance of medical care.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Disease preoccupation</span><span class="stag">Minimal symptoms</span><span class="stag">Doctor shopping</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="somatic" data-text="functional neurological symptom disorder conversion disorder weakness paralysis seizures neurological"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-bolt-lightning"></i></div><div class="disorder-title"><h3>Functional Neurological Symptom Disorder (Conversion Disorder)</h3><span class="disorder-tag">Somatic</span></div></div><p class="disorder-desc">Neurological symptoms such as weakness, paralysis, tremor, non-epileptic seizures, vision or speech problems that cannot be explained by neurological disease. Evidence of incompatibility with neurological conditions.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Neurological symptoms</span><span class="stag">No organic cause</span><span class="stag">Motor/sensory symptoms</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="somatic" data-text="factitious disorder munchausen syndrome faking illness imposed self other"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-mask"></i></div><div class="disorder-title"><h3>Factitious Disorder (Munchausen Syndrome)</h3><span class="disorder-tag">Somatic</span></div></div><p class="disorder-desc">Falsification of physical or psychological symptoms, or induction of injury or disease, associated with identified deception even without obvious external reward. Can be imposed on oneself or on another person.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Deliberate symptom fabrication</span><span class="stag">Deception</span><span class="stag">Medical seeking</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="somatic" data-text="psychological factors affecting medical condition physical illness worsened anxiety stress"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-link"></i></div><div class="disorder-title"><h3>Psychological Factors Affecting Other Medical Conditions</h3><span class="disorder-tag">Somatic</span></div></div><p class="disorder-desc">A medical symptom or condition is adversely affected by psychological or behavioural factors — such as anxiety worsening asthma, or stress delaying wound healing. The psychological factors are clinically significant.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Medical condition</span><span class="stag">Psychological influence</span><span class="stag">Adverse health outcomes</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 9. EATING ══ -->
+<div class="group-section" data-cat="eating">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-utensils"></i></div><div><h3>Feeding &amp; Eating Disorders</h3><p>Persistent disturbances in eating behaviour with harmful consequences to physical and mental health.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="eating" data-text="anorexia nervosa restriction low weight intense fear distorted body image"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-scale-balanced"></i></div><div class="disorder-title"><h3>Anorexia Nervosa</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Restriction of food intake leading to significantly low body weight, intense fear of weight gain, and disturbed body image. Highest mortality rate of any psychiatric condition. Exists in restricting and binge-purge subtypes.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Food restriction</span><span class="stag">Low body weight</span><span class="stag">Distorted body image</span><span class="stag">Fear of weight gain</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="bulimia nervosa binge eating purging compensatory behaviour self-induced vomiting laxatives"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-arrows-rotate"></i></div><div class="disorder-title"><h3>Bulimia Nervosa</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Recurrent episodes of binge eating followed by compensatory behaviours (purging, laxative use, excessive exercise) to prevent weight gain. Self-evaluation is unduly influenced by body shape and weight.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Binge eating</span><span class="stag">Purging</span><span class="stag">Compensatory behaviour</span><span class="stag">Guilt/shame</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="binge eating disorder bed excessive eating loss of control distress no purging"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-face-sad-tear"></i></div><div class="disorder-title"><h3>Binge Eating Disorder (BED)</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Recurrent episodes of consuming large quantities of food in a short period, accompanied by a sense of loss of control and marked distress. Unlike bulimia, there are no regular compensatory behaviours.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Binge episodes</span><span class="stag">Loss of control</span><span class="stag">No purging</span><span class="stag">Distress</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="avoidant restrictive food intake disorder arfid sensory food aversion weight loss nutrition"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-ban"></i></div><div class="disorder-title"><h3>Avoidant/Restrictive Food Intake Disorder (ARFID)</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Restriction of food intake based on sensory characteristics, fear of aversive consequences (choking, vomiting), or apparent lack of interest in eating — not related to body image concerns, causing nutritional deficiency.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Food restriction</span><span class="stag">Sensory avoidance</span><span class="stag">Nutritional deficiency</span><span class="stag">No body image distortion</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="pica eating non-food items dirt clay hair chalk childhood"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-mountain"></i></div><div class="disorder-title"><h3>Pica</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Persistent eating of non-nutritive, non-food substances (dirt, clay, chalk, soap, paper, hair) for at least one month, at a developmental level where it is inappropriate. Can cause serious medical complications.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Non-food eating</span><span class="stag">Persistent 1+ month</span><span class="stag">Medical risks</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="rumination disorder regurgitation rechewing swallowing food infants children adults"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-rotate-left"></i></div><div class="disorder-title"><h3>Rumination Disorder</h3><span class="disorder-tag">Eating</span></div></div><p class="disorder-desc">Repeated regurgitation of food over at least one month — re-chewing, re-swallowing, or spitting out food that was previously swallowed. Not due to a gastrointestinal condition or another eating disorder.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Food regurgitation</span><span class="stag">Re-chewing</span><span class="stag">1+ month duration</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="eating" data-text="orthorexia nervosa obsession healthy eating food purity not dsm"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-leaf"></i></div><div class="disorder-title"><h3>Orthorexia Nervosa</h3><span class="disorder-tag">Eating (Emerging)</span></div></div><p class="disorder-desc">An obsessive focus on "healthy" or "pure" eating that is not yet an official DSM-5 diagnosis but is widely recognised. Preoccupation with food quality impairs social, professional, and nutritional functioning.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Food purity obsession</span><span class="stag">Rigid dietary rules</span><span class="stag">Social impairment</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 10. SLEEP-WAKE ══ -->
+<div class="group-section" data-cat="sleep">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-moon"></i></div><div><h3>Sleep-Wake Disorders</h3><p>Disorders characterised by dissatisfaction with sleep quality, timing, or amount, causing significant distress or impairment.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="sleep" data-text="insomnia disorder difficulty falling staying asleep early morning waking"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-moon"></i></div><div class="disorder-title"><h3>Insomnia Disorder</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">Predominant complaint of difficulty initiating sleep, maintaining sleep, or early-morning awakening with inability to return to sleep, occurring at least 3 nights per week for at least 3 months despite adequate opportunity.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Difficulty falling asleep</span><span class="stag">Night waking</span><span class="stag">Early awakening</span><span class="stag">Daytime impairment</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="sleep" data-text="hypersomnolence disorder excessive sleepiness narcolepsy sleep attack cataplexy orexin"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-bed"></i></div><div class="disorder-title"><h3>Hypersomnolence Disorder &amp; Narcolepsy</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">Hypersomnolence involves excessive daytime sleepiness despite adequate sleep. Narcolepsy adds cataplexy (sudden muscle weakness triggered by emotions), sleep paralysis, and hallucinations due to orexin deficiency.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Excessive sleepiness</span><span class="stag">Cataplexy</span><span class="stag">Sleep paralysis</span><span class="stag">Hypnagogic hallucinations</span></div></div></div>
+
+    <div class="disorder-card searchable" data-text="breathing sleep obstructive sleep apnea central snoring airway oxygen" data-cat="sleep"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-lungs"></i></div><div class="disorder-title"><h3>Sleep-Related Breathing Disorders</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">Including Obstructive Sleep Apnea (repeated airway obstruction), Central Sleep Apnea (breathing control failure), and Sleep-Related Hypoventilation. Cause fragmented sleep, snoring, and daytime sleepiness.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Snoring</span><span class="stag">Apnea episodes</span><span class="stag">Daytime fatigue</span><span class="stag">Morning headaches</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="sleep" data-text="circadian rhythm sleep disorder shift work jet lag delayed phase sleep-wake cycle"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-clock-rotate-left"></i></div><div class="disorder-title"><h3>Circadian Rhythm Sleep-Wake Disorders</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">A persistent pattern of sleep disruption due to misalignment between one's internal clock and external environment. Types include Delayed Sleep Phase, Advanced Sleep Phase, Irregular, Non-24-Hour, Shift Work, and Jet Lag types.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Misaligned body clock</span><span class="stag">Insomnia at desired times</span><span class="stag">Sleepiness at work/school</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="sleep" data-text="parasomnias sleepwalking night terrors REM sleep behaviour disorder nightmares sleep disorders"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-walking-dashed-line-arrow-right"></i></div><div class="disorder-title"><h3>Parasomnias</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">Abnormal behaviours, experiences, or physiological events during sleep or sleep-wake transitions. Includes Sleepwalking, Sleep Terrors, Nightmare Disorder, Sleep Paralysis, REM Sleep Behaviour Disorder, and Exploding Head Syndrome.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Sleepwalking</span><span class="stag">Night terrors</span><span class="stag">REM behaviour</span><span class="stag">Vivid nightmares</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="sleep" data-text="restless legs syndrome willis-ekbom urge move legs sleep uncomfortable sensations"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-running"></i></div><div class="disorder-title"><h3>Restless Legs Syndrome (Willis-Ekbom Disease)</h3><span class="disorder-tag">Sleep-Wake</span></div></div><p class="disorder-desc">An urge to move the legs (or arms) usually accompanied by uncomfortable, distressing sensations. Worsens with rest and is relieved by movement. Symptoms are worse in the evening and at night, disrupting sleep.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Urge to move legs</span><span class="stag">Evening worsening</span><span class="stag">Relief with movement</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 11. SEXUAL & GENDER ══ -->
+<div class="group-section" data-cat="sexual">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-venus-mars"></i></div><div><h3>Sexual Dysfunctions &amp; Gender Dysphoria</h3><p>Disorders affecting sexual functioning and gender identity distress.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="sexual" data-text="sexual dysfunctions desire arousal orgasm pain erection ejaculation"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-heart"></i></div><div class="disorder-title"><h3>Sexual Dysfunctions</h3><span class="disorder-tag">Sexual</span></div></div><p class="disorder-desc">A group of conditions including Erectile Disorder, Female Sexual Interest/Arousal Disorder, Female Orgasmic Disorder, Male Hypoactive Sexual Desire, Premature Ejaculation, Delayed Ejaculation, and Genito-Pelvic Pain/Penetration Disorder (vaginismus/dyspareunia).</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Desire difficulties</span><span class="stag">Arousal problems</span><span class="stag">Orgasm difficulties</span><span class="stag">Pain during sex</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="sexual" data-text="gender dysphoria incongruence gender assigned birth transgender non-binary identity distress"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-transgender"></i></div><div class="disorder-title"><h3>Gender Dysphoria</h3><span class="disorder-tag">Gender Identity</span></div></div><p class="disorder-desc">Significant distress caused by the incongruence between one's experienced or expressed gender and one's assigned gender. The diagnosis focuses on distress, not on gender identity itself. ICD-11 reclassifies this as "Gender Incongruence" outside mental disorders.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Gender incongruence</span><span class="stag">Significant distress</span><span class="stag">Desire for different gender</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 12. SUBSTANCE & ADDICTION ══ -->
+<div class="group-section" data-cat="substance">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-pills"></i></div><div><h3>Substance Use &amp; Addictive Disorders</h3><p>Disorders related to substance misuse and behavioural addictions causing significant impairment.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="substance" data-text="alcohol use disorder alcoholism dependence abuse drinking"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-wine-bottle"></i></div><div class="disorder-title"><h3>Alcohol Use Disorder (AUD)</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">A problematic pattern of alcohol use leading to clinically significant impairment or distress — including tolerance, withdrawal, loss of control, and continued use despite harmful consequences. Ranges from mild to severe.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Tolerance</span><span class="stag">Withdrawal</span><span class="stag">Loss of control</span><span class="stag">Craving</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="opioid use disorder heroin morphine codeine dependence pain killer addiction"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-syringe"></i></div><div class="disorder-title"><h3>Opioid Use Disorder</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic pattern of opioid use including heroin, morphine, codeine, and prescription pain killers. Characterised by strong cravings, withdrawal (muscle aches, vomiting, anxiety), tolerance, and continued use despite harm.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Cravings</span><span class="stag">Severe withdrawal</span><span class="stag">Tolerance</span><span class="stag">Continued use despite harm</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="stimulant use disorder cocaine meth amphetamine crack tik addiction"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-bolt"></i></div><div class="disorder-title"><h3>Stimulant Use Disorder</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic use of cocaine, amphetamines, tik (methamphetamine), and other stimulants. Causes euphoria, hyperactivity, paranoia, and psychosis with heavy use. Withdrawal involves crash, fatigue, and depression.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Euphoria seeking</span><span class="stag">Paranoia</span><span class="stag">Crash/withdrawal</span><span class="stag">Psychosis</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="cannabis use disorder marijuana weed dagga dependence THC"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-cannabis"></i></div><div class="disorder-title"><h3>Cannabis Use Disorder</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic cannabis use causing clinically significant impairment — tolerance, withdrawal (irritability, sleep disruption, appetite changes), difficulty cutting down, and continued use despite negative consequences.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Tolerance</span><span class="stag">Withdrawal</span><span class="stag">Motivational deficits</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="tobacco nicotine use disorder smoking cigarettes dependence withdrawal"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-smoking"></i></div><div class="disorder-title"><h3>Tobacco/Nicotine Use Disorder</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic pattern of tobacco or nicotine use characterised by strong cravings, withdrawal symptoms (irritability, anxiety, difficulty concentrating), and inability to quit despite health consequences.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Nicotine cravings</span><span class="stag">Withdrawal</span><span class="stag">Continued use despite illness</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="hallucinogen use disorder lsd mushrooms psilocybin psychedelic HPPD persistent perception"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-eye"></i></div><div class="disorder-title"><h3>Hallucinogen Use Disorder &amp; HPPD</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic use of LSD, psilocybin mushrooms, mescaline, and similar substances. Hallucinogen Persisting Perception Disorder (HPPD) involves re-experiencing perceptual symptoms (flashbacks) after cessation of use.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Perceptual disturbances</span><span class="stag">Flashbacks (HPPD)</span><span class="stag">Distress</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="inhalant use disorder glue sniffing paint solvent huffing volatile"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-wind"></i></div><div class="disorder-title"><h3>Inhalant Use Disorder</h3><span class="disorder-tag">Substance</span></div></div><p class="disorder-desc">Problematic use of inhaled substances — glue, paint, aerosols, solvents — causing intoxication. Can cause permanent brain damage, sudden death, and serious neurological effects even from a single use.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Volatile substance use</span><span class="stag">Neurological damage</span><span class="stag">High medical risk</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="gambling disorder behavioural addiction betting casino internet betting compulsive"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-dice"></i></div><div class="disorder-title"><h3>Gambling Disorder</h3><span class="disorder-tag">Behavioural Addiction</span></div></div><p class="disorder-desc">Persistent and recurrent problematic gambling behaviour causing significant impairment — preoccupation with gambling, needing to bet increasing amounts, failed attempts to stop, lying about gambling, and continuing despite financial ruin.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Gambling preoccupation</span><span class="stag">Chasing losses</span><span class="stag">Lying</span><span class="stag">Financial harm</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="substance" data-text="internet gaming disorder gaming addiction screen time compulsive video games icd-11"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-gamepad"></i></div><div class="disorder-title"><h3>Gaming Disorder</h3><span class="disorder-tag">Behavioural Addiction</span></div></div><p class="disorder-desc">Recognised by ICD-11 as a pattern of persistent or recurrent gaming behaviour characterised by impaired control, increasing priority given to gaming, and continuation despite negative consequences — lasting at least 12 months.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Loss of gaming control</span><span class="stag">Priority over other activities</span><span class="stag">Continued despite harm</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 13. PERSONALITY ══ -->
+<div class="group-section" data-cat="personality">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-masks-theater"></i></div><div><h3>Personality Disorders</h3><p>Enduring patterns of inner experience and behaviour deviating markedly from cultural expectations, pervasive across situations, leading to distress or impairment.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="personality" data-text="borderline personality disorder bpd emotional dysregulation unstable identity fear abandonment self-harm"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-wave-square"></i></div><div class="disorder-title"><h3>Borderline Personality Disorder (BPD)</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive instability of self-image, interpersonal relationships, and emotions. Intense fear of abandonment, impulsivity, chronic emptiness, self-harm, and rapidly shifting moods. ICD-11 describes this as "Emotionally Unstable PD."</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Fear of abandonment</span><span class="stag">Unstable relationships</span><span class="stag">Self-harm</span><span class="stag">Identity disturbance</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="narcissistic personality disorder npd grandiosity entitlement lack empathy admiration"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-crown"></i></div><div class="disorder-title"><h3>Narcissistic Personality Disorder (NPD)</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of grandiosity, need for admiration, and lack of empathy. Sense of entitlement, exploitative behaviour, envy of others, and arrogance. Underlying fragile self-esteem despite outward confidence.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Grandiosity</span><span class="stag">Entitlement</span><span class="stag">Lack of empathy</span><span class="stag">Admiration-seeking</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="antisocial personality disorder aspd sociopath conduct disorder deceit criminal violation rights"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-gavel"></i></div><div class="disorder-title"><h3>Antisocial Personality Disorder (ASPD)</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of disregard for and violation of others' rights — deceitfulness, impulsivity, aggressiveness, reckless disregard for safety, irresponsibility, and lack of remorse. Requires history of Conduct Disorder before age 15.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Deceitfulness</span><span class="stag">Impulsivity</span><span class="stag">Aggression</span><span class="stag">Lack of remorse</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="avoidant personality disorder social inhibition inadequacy hypersensitive criticism rejection shy"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-shelter"></i></div><div class="disorder-title"><h3>Avoidant Personality Disorder (AvPD)</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of social inhibition, feelings of inadequacy, and extreme sensitivity to negative evaluation. Avoids occupational activities involving interpersonal contact and is reluctant to engage unless certain of being liked.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Social avoidance</span><span class="stag">Fear of rejection</span><span class="stag">Low self-image</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="obsessive compulsive personality disorder ocpd perfectionism control orderliness rigidity rules"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-list-check"></i></div><div class="disorder-title"><h3>Obsessive-Compulsive Personality Disorder (OCPD)</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Preoccupation with orderliness, perfectionism, and mental and interpersonal control at the expense of flexibility, openness, and efficiency. Distinct from OCD — symptoms are ego-syntonic (feel right to the person).</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Perfectionism</span><span class="stag">Rigidity</span><span class="stag">Hoarding tendencies</span><span class="stag">Workaholism</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="paranoid personality disorder distrust suspicion motives others persecution"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-user-secret"></i></div><div class="disorder-title"><h3>Paranoid Personality Disorder</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive distrust and suspiciousness of others such that their motives are interpreted as malevolent. Suspects exploitation, is reluctant to confide in others, reads hidden meanings into events, and bears grudges persistently.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Pervasive distrust</span><span class="stag">Suspicious</span><span class="stag">Grudge-bearing</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="schizoid personality disorder detachment emotional coldness solitary social relationships little interest"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person"></i></div><div class="disorder-title"><h3>Schizoid Personality Disorder</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of detachment from social relationships and restricted range of emotional expression. Little desire for close relationships, chooses solitary activities, appears indifferent to praise or criticism.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Social detachment</span><span class="stag">Emotional coldness</span><span class="stag">Solitary lifestyle</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="schizotypal personality disorder eccentric magical thinking odd perceptions social anxiety ideas reference"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-star-of-david"></i></div><div class="disorder-title"><h3>Schizotypal Personality Disorder</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of social and interpersonal deficits marked by acute discomfort with close relationships, eccentric behaviour, and cognitive or perceptual distortions — magical thinking, ideas of reference, unusual perceptions.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Magical thinking</span><span class="stag">Ideas of reference</span><span class="stag">Eccentric behaviour</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="dependent personality disorder excessive need care submissive clinging inability decide alone"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-handshake"></i></div><div class="disorder-title"><h3>Dependent Personality Disorder</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Excessive need to be taken care of, leading to submissive and clinging behaviour and fear of separation. Difficulty making decisions without excessive advice, difficulty disagreeing for fear of loss of support.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Difficulty deciding alone</span><span class="stag">Fear of abandonment</span><span class="stag">Submissive behaviour</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="personality" data-text="histrionic personality disorder excessive emotionality attention seeking drama theatrical seductive"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-star"></i></div><div class="disorder-title"><h3>Histrionic Personality Disorder</h3><span class="disorder-tag">Personality</span></div></div><p class="disorder-desc">Pervasive pattern of excessive emotionality and attention-seeking behaviour — uncomfortable when not the centre of attention, sexually provocative, theatrical, easily influenced, and considers relationships more intimate than they are.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Attention-seeking</span><span class="stag">Dramatic</span><span class="stag">Suggestible</span><span class="stag">Shallow emotions</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 14. NEUROCOGNITIVE ══ -->
+<div class="group-section" data-cat="neurocog">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-microscope"></i></div><div><h3>Neurocognitive Disorders</h3><p>Disorders characterised by a decline in cognitive function from a previously attained level.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="neurocog" data-text="dementia major neurocognitive disorder alzheimer memory loss cognitive decline elderly"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-brain"></i></div><div class="disorder-title"><h3>Major Neurocognitive Disorder (Dementia)</h3><span class="disorder-tag">Neurocognitive</span></div></div><p class="disorder-desc">Significant cognitive decline affecting one or more cognitive domains — memory, language, perception, social cognition, attention, or executive function — severe enough to interfere with independence. Includes Alzheimer's disease, vascular dementia, Lewy body dementia, frontotemporal dementia, and others.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Memory loss</span><span class="stag">Language difficulties</span><span class="stag">Loss of independence</span><span class="stag">Executive dysfunction</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neurocog" data-text="mild neurocognitive disorder MCI mild cognitive impairment modest decline independence preserved"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-magnifying-glass"></i></div><div class="disorder-title"><h3>Mild Neurocognitive Disorder (MCI)</h3><span class="disorder-tag">Neurocognitive</span></div></div><p class="disorder-desc">Modest cognitive decline from a previous level of performance in one or more cognitive domains that does not interfere with independence in everyday activities. May represent an early stage of dementia in some cases.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Modest cognitive decline</span><span class="stag">Independence preserved</span><span class="stag">Subjective memory concerns</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="neurocog" data-text="delirium acute confusion fluctuating consciousness medical cause hospitalised elderly"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-triangle-exclamation"></i></div><div class="disorder-title"><h3>Delirium</h3><span class="disorder-tag">Neurocognitive</span></div></div><p class="disorder-desc">Acute disturbance in attention and awareness developing over a short period (hours to days), fluctuating in severity, accompanied by additional cognitive disturbance. Always has an underlying medical cause — infections, medications, surgery.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Acute confusion</span><span class="stag">Fluctuating consciousness</span><span class="stag">Medical cause</span><span class="stag">Disorientation</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 15. CHILDHOOD & BEHAVIOUR ══ -->
+<div class="group-section" data-cat="childhood">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-child"></i></div><div><h3>Disruptive, Impulse-Control &amp; Childhood Behavioural Disorders</h3><p>Disorders involving problems with emotional and behavioural self-control, primarily affecting children and adolescents.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="childhood" data-text="oppositional defiant disorder odd angry irritable argumentative vindictive children authority"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-face-angry"></i></div><div class="disorder-title"><h3>Oppositional Defiant Disorder (ODD)</h3><span class="disorder-tag">Disruptive</span></div></div><p class="disorder-desc">Pattern of angry/irritable mood, argumentative/defiant behaviour, and vindictiveness lasting at least 6 months — directed at authority figures. Common in children and adolescents, often preceding conduct disorder.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Defiance</span><span class="stag">Irritability</span><span class="stag">Argumentativeness</span><span class="stag">Vindictiveness</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="childhood" data-text="conduct disorder aggression rule violation animal cruelty destruction theft deceit"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-skull"></i></div><div class="disorder-title"><h3>Conduct Disorder</h3><span class="disorder-tag">Disruptive</span></div></div><p class="disorder-desc">Repetitive and persistent pattern of behaviour violating the basic rights of others or major age-appropriate societal norms — aggression to people/animals, property destruction, deceitfulness, theft, and serious rule violations.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Aggression</span><span class="stag">Rule violations</span><span class="stag">Property destruction</span><span class="stag">Deceitfulness</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="childhood" data-text="intermittent explosive disorder ied sudden aggression outbursts impulsive anger road rage"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-explosion"></i></div><div class="disorder-title"><h3>Intermittent Explosive Disorder (IED)</h3><span class="disorder-tag">Impulse-Control</span></div></div><p class="disorder-desc">Recurrent, significant impulsive outbursts of aggression — verbal or physical — that are grossly disproportionate to the situation and not better explained by another disorder. Often described as "road rage," anger attacks, or domestic violence.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Explosive outbursts</span><span class="stag">Disproportionate anger</span><span class="stag">Remorse after</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="childhood" data-text="kleptomania stealing impulse control failure recurrent theft not for value"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hand-holding"></i></div><div class="disorder-title"><h3>Kleptomania</h3><span class="disorder-tag">Impulse-Control</span></div></div><p class="disorder-desc">Recurrent failure to resist impulses to steal objects not needed for personal use or monetary value. Rising tension before the theft, gratification during, and often guilt or shame after. Not motivated by anger or delusions.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Recurrent stealing</span><span class="stag">Not for monetary gain</span><span class="stag">Tension then relief</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="childhood" data-text="pyromania fire setting deliberate compulsive tension fascination fire"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-fire"></i></div><div class="disorder-title"><h3>Pyromania</h3><span class="disorder-tag">Impulse-Control</span></div></div><p class="disorder-desc">Deliberate and purposeful fire-setting on more than one occasion, preceded by tension or affective arousal. Fascination with fire and its context. Gratification when setting or witnessing fires. Not for monetary gain or ideology.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Repeated fire-setting</span><span class="stag">Fire fascination</span><span class="stag">Tension before</span><span class="stag">Relief after</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="childhood" data-text="enuresis bedwetting incontinence urine children elimination disorder"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-droplet"></i></div><div class="disorder-title"><h3>Elimination Disorders (Enuresis &amp; Encopresis)</h3><span class="disorder-tag">Childhood</span></div></div><p class="disorder-desc">Enuresis: repeated voiding of urine in bed or clothes in children old enough for continence. Encopresis: repeated passage of faeces in inappropriate places. Both cause significant distress and are often associated with other developmental issues.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Bedwetting</span><span class="stag">Faecal incontinence</span><span class="stag">Age-inappropriate</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 16. PARAPHILIC ══ -->
+<div class="group-section" data-cat="paraphilic">
+  <div class="group-header"><div class="group-icon"><i class="fas fa-lock"></i></div><div><h3>Paraphilic Disorders</h3><p>Intense and persistent sexual interests in atypical objects, situations, or individuals that cause distress or involve harm to others.</p></div></div>
+  <div class="disorders-grid">
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="voyeuristic disorder watching unsuspecting people undressing peeping sexual arousal"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-eye-slash"></i></div><div class="disorder-title"><h3>Voyeuristic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual arousal from observing an unsuspecting person who is naked, undressing, or engaging in sexual activity. The person has acted on these urges or is markedly distressed by them.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Non-consensual observation</span><span class="stag">Recurrent urges</span><span class="stag">Distress or harm</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="exhibitionistic disorder exposing genitals unsuspecting public flashing arousal"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-person-rays"></i></div><div class="disorder-title"><h3>Exhibitionistic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual arousal from exposing one's genitals to an unsuspecting person. The person has acted on these urges or is markedly distressed.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Genital exposure</span><span class="stag">Unsuspecting victim</span><span class="stag">Recurrent</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="frotteuristic disorder touching rubbing non-consenting person crowd sexual arousal"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-hand"></i></div><div class="disorder-title"><h3>Frotteuristic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual arousal from touching or rubbing against a non-consenting person. Typically occurs in crowded places. The person has acted on these urges or is markedly distressed.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Touching non-consenting</span><span class="stag">Crowded settings</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="sexual masochism sadism pain humiliation BDSM disorder distress consent"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-link"></i></div><div class="disorder-title"><h3>Sexual Masochism &amp; Sadism Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Sexual Masochism Disorder: arousal from being humiliated, beaten, or made to suffer. Sexual Sadism Disorder: arousal from inflicting suffering on others. Only a disorder if causing distress or involving non-consenting persons.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Pain/humiliation arousal</span><span class="stag">Distress or non-consent</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="pedophilic disorder sexual attraction children pre-pubescent abuse child sexual abuse"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-ban"></i></div><div class="disorder-title"><h3>Pedophilic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual urges or fantasies involving prepubescent children (generally 13 years or younger). The person has acted on these urges or is markedly distressed. Any sexual act with a child is a crime regardless of diagnosis.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Sexual interest in children</span><span class="stag">Criminal behaviour</span><span class="stag">Recurrent urges</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="fetishistic disorder non-living objects parts body sexual arousal distress"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-shoe-prints"></i></div><div class="disorder-title"><h3>Fetishistic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual arousal from non-living objects or highly specific focus on non-genital body parts, causing clinically significant distress or impairment. The paraphilia itself (fetish) is only a disorder if causing harm or distress.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Object/body part focus</span><span class="stag">Distress or impairment</span></div></div></div>
+
+    <div class="disorder-card searchable" data-cat="paraphilic" data-text="transvestic disorder cross-dressing sexual arousal clothing opposite gender distress"><div class="disorder-header"><div class="disorder-icon"><i class="fas fa-shirt"></i></div><div class="disorder-title"><h3>Transvestic Disorder</h3><span class="disorder-tag">Paraphilic</span></div></div><p class="disorder-desc">Intense and recurrent sexual arousal from cross-dressing (wearing clothing associated with a different gender), causing clinically significant distress or impairment. Distinct from gender dysphoria and from non-sexual cross-dressing.</p><div class="disorder-symptoms"><div class="disorder-symptoms-label">Key Features</div><div class="symptom-tags"><span class="stag">Cross-dressing arousal</span><span class="stag">Significant distress</span></div></div></div>
+  </div>
+</div>
+
+</div><!-- end allCards -->
+</div>
+</section>
+
+<!-- STATS -->
+<section class="section stats">
+  <div class="section-inner">
+    <div class="section-title reveal" style="margin-bottom:44px">
+      <div class="section-label" style="color:rgba(255,255,255,.5)">The Global Picture</div>
+      <h2 style="color:white">Mental Health Worldwide</h2>
+    </div>
+    <div class="stats-container">
+      <div class="stat-item reveal reveal-delay-1"><div class="stat-number">1 in 4</div><div class="stat-text">People globally experience a mental health condition in their lifetime</div></div>
+      <div class="stat-item reveal reveal-delay-2"><div class="stat-number">300M+</div><div class="stat-text">People live with depression worldwide</div></div>
+      <div class="stat-item reveal reveal-delay-3"><div class="stat-number">20%</div><div class="stat-text">Of children and adolescents have a mental health condition</div></div>
+      <div class="stat-item reveal reveal-delay-4"><div class="stat-number">75%</div><div class="stat-text">Of people in low-income countries receive no treatment</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label" style="color:rgba(255,255,255,.4)">You Are Not Alone</div>
+      <h2>Understanding Is the Beginning of Healing</h2>
+    </div>
+    <p class="reveal reveal-delay-1">If you recognise yourself or someone you care about in this guide, please reach out to a qualified mental health professional. Journey4Change is here to connect you to support.</p>
+    <div class="cta-btns reveal reveal-delay-2">
+      <a href="tel:0800121314" class="btn btn-primary"><i class="fas fa-phone"></i> Call 0800 12 13 14 — Free</a>
+      <a href="mental-health-awareness.html" class="btn btn-secondary"><i class="fas fa-brain"></i> Mental Health Page</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><i class="fas fa-seedling"></i></div>
+        <div class="footer-logo-text"><h3>Journey4Change</h3><p>Healing Together</p></div>
+      </div>
+      <p>Breaking the stigma around mental health across all 9 provinces of South Africa — through education, awareness, and compassionate community support.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="gbv.html">GBV Awareness</a></li>
+        <li><a href="recovery.html">Drug Recovery</a></li>
+        <li><a href="recovery-support.html">Recovery Support</a></li>
+        <li><a href="treatment-centres.html">Treatment Centres</a></li>
+        <li><a href="donations.html">Donate</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+    <span>Powered by neurAila Intelligence Group</span>
+  </div>
+</footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+<!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+
+<script>
+  function openNav(){document.getElementById('sideNav').style.width='280px';document.getElementById('navOverlay').classList.add('active');document.body.classList.add('nonscroll');}
+  function closeNav(){document.getElementById('sideNav').style.width='0';document.getElementById('navOverlay').classList.remove('active');document.body.classList.remove('nonscroll');}
+  document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
+  document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
+
+  const hdr=document.getElementById('mainHeader');
+  window.addEventListener('scroll',()=>{hdr.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.25)':'none';});
+
+  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.06});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  let currentCat='all';
+
+  function switchCat(cat, btn){
+    currentCat=cat;
+    document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('resultCount').textContent='';
+    filterCards();
+    window.scrollTo({top:document.querySelector('.cat-nav').offsetTop-70,behavior:'smooth'});
+  }
+
+  function applySearch(){ filterCards(); }
+
+  function filterCards(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const cards=document.querySelectorAll('.disorder-card.searchable');
+    let visible=0;
+    cards.forEach(card=>{
+      const catMatch=currentCat==='all'||card.dataset.cat===currentCat;
+      const text=(card.dataset.text||'')+' '+card.innerText.toLowerCase();
+      const textMatch=!q||text.includes(q);
+      const show=catMatch&&textMatch;
+      card.classList.toggle('hidden',!show);
+      if(show)visible++;
+    });
+    // Show/hide group sections
+    document.querySelectorAll('.group-section').forEach(gs=>{
+      const catMatch=currentCat==='all'||gs.dataset.cat===currentCat;
+      const hasVisible=[...gs.querySelectorAll('.disorder-card.searchable')].some(c=>!c.classList.contains('hidden'));
+      gs.style.display=(catMatch&&hasVisible)||(!q&&catMatch)?'':'none';
+    });
+    const rc=document.getElementById('resultCount');
+    rc.textContent=q?visible+' result'+(visible!==1?'s':'')+' found':'';
+    document.getElementById('noResults').style.display=visible===0&&q?'block':'none';
+  }
+
+  // Init: show all
+  filterCards();
+</script>
+</body>
+</html>
