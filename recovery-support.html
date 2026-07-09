@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Recovery Support: tools, groups, peer mentors, daily check-ins and resources to help you stay strong.">
+  <title>Journey4Change - Recovery Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background-color:var(--light);color:var(--text);line-height:1.7;overflow-x:hidden;}
+
+    /* UTILITY BAR */
+    .utility-bar{background:var(--dark);color:rgba(255,255,255,.75);padding:9px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+    .utility-left{display:flex;align-items:center;gap:8px;}
+    .utility-left i{color:var(--primary);font-size:12px;}
+    .utility-right a{color:rgba(255,255,255,.7);margin-left:18px;font-size:16px;transition:color .25s,transform .25s;display:inline-block;}
+    .utility-right a:hover{color:var(--primary);transform:translateY(-2px);}
+
+    /* HEADER */
+    header{background:rgba(15,31,21,.96);backdrop-filter:blur(12px);color:white;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:900;border-bottom:1px solid rgba(34,197,94,.15);transition:box-shadow .3s;}
+    .header-left{display:flex;align-items:center;gap:22px;}
+    .logo-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;line-height:1.1;}
+    .logo-text span{font-size:11px;font-weight:500;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:2px;}
+    .hamburger{display:flex;flex-direction:column;justify-content:space-between;width:26px;height:20px;cursor:pointer;gap:5px;}
+    .hamburger div{height:2px;background:white;border-radius:2px;transition:all .3s;}
+    .hamburger:hover div:nth-child(2){width:70%;}
+    .login-btn{background:var(--primary);color:var(--dark);padding:9px 22px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .25s;display:flex;align-items:center;gap:7px;}
+    .login-btn:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.35);}
+
+    /* HERO */
+    .hero{position:relative;width:100%;min-height:88vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f1f15 0%,#1a3a22 55%,#0f1f15 100%);}
+    .hero-bg-canvas{position:absolute;inset:0;z-index:1;overflow:hidden;}
+    .particle{position:absolute;border-radius:50%;background:rgba(34,197,94,.09);animation:floatParticle linear infinite;}
+    @keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20vh) scale(1.2);opacity:0;}}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,13,.35) 0%,rgba(10,20,13,.65) 100%);z-index:2;}
+    .hero-content{position:relative;z-index:3;text-align:center;color:white;padding:0 24px;max-width:820px;}
+    .hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-light);border:1px solid rgba(74,222,128,.4);padding:6px 18px;border-radius:50px;margin-bottom:24px;animation:fadeInUp .8s ease-out both;}
+    .hero h2{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,.4);animation:fadeInUp .8s .15s ease-out both;}
+    .hero h2 em{font-style:normal;color:var(--primary-light);}
+    .hero p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:36px;opacity:.9;max-width:560px;margin-left:auto;margin-right:auto;animation:fadeInUp .8s .3s ease-out both;}
+    .btn-group{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;animation:fadeInUp .8s .45s ease-out both;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 6px 24px rgba(34,197,94,.35);}
+    .btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,197,94,.45);}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px);}
+    .btn-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);border-color:white;}
+
+    /* CRISIS */
+    .crisis-banner{background:linear-gradient(90deg,var(--primary-dark),#166534);color:white;padding:14px 40px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;text-align:center;font-size:14px;font-weight:500;}
+    .crisis-banner i{font-size:18px;color:var(--primary-light);}
+    .crisis-number{background:white;color:var(--primary-dark);padding:6px 18px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .2s;}
+    .crisis-number:hover{transform:scale(1.05);}
+
+    /* SECTIONS */
+    .section{padding:90px 24px;}
+    .section-inner{max-width:1160px;margin:0 auto;}
+    .section-title{text-align:center;margin-bottom:60px;}
+    .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px;}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);color:var(--secondary);font-weight:700;position:relative;display:inline-block;}
+    .section-title h2::after{content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));border-radius:2px;}
+    .section-title p{color:var(--text-muted);font-size:1.05rem;max-width:580px;margin:28px auto 0;}
+
+    .bg-alt{background:#f0f7f1;}
+    .bg-dark{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);}
+
+    /* ─── DAILY CHECK-IN WIDGET ─── */
+    .checkin-widget{background:linear-gradient(135deg,var(--secondary) 0%,#1d6b3c 100%);border-radius:var(--radius);padding:48px 44px;color:white;position:relative;overflow:hidden;margin-bottom:0;}
+    .checkin-widget::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
+    .checkin-widget::after{content:'';position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;}
+    .checkin-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    .checkin-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+    .checkin-widget h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;margin-bottom:12px;line-height:1.2;}
+    .checkin-widget p{color:rgba(255,255,255,.8);margin-bottom:28px;font-size:.98rem;}
+    .checkin-days{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+    .day-circle{width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(255,255,255,.6);cursor:pointer;transition:all .25s;}
+    .day-circle.done{background:var(--primary);border-color:var(--primary);color:var(--dark);}
+    .day-circle .day-num{font-size:14px;line-height:1;}
+    .day-circle .day-label{font-size:8px;margin-top:1px;text-transform:uppercase;letter-spacing:.05em;}
+    .checkin-btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:14px 30px;border-radius:50px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;}
+    .checkin-btn:hover{background:var(--primary-light);transform:translateY(-2px);}
+    .streak-display{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:32px;text-align:center;}
+    .streak-number{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--primary-light);line-height:1;}
+    .streak-label{font-size:14px;color:rgba(255,255,255,.7);letter-spacing:.05em;text-transform:uppercase;margin-top:6px;}
+    .streak-sub{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;}
+    .milestone-badges{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;}
+    .mbadge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:5px 14px;font-size:11px;color:rgba(255,255,255,.65);}
+    .mbadge.earned{background:rgba(34,197,94,.15);border-color:var(--primary);color:var(--primary-light);}
+
+    /* ─── SUPPORT PILLARS CARDS ─── */
+    .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+    .pillar-card{background:white;border-radius:var(--radius);padding:32px 28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+    .pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .pillar-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+    .pillar-icon{width:58px;height:58px;border-radius:16px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--primary-dark);margin-bottom:20px;transition:background .3s;}
+    .pillar-card:hover .pillar-icon{background:rgba(34,197,94,.2);}
+    .pillar-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--secondary);margin-bottom:10px;}
+    .pillar-card p{color:var(--text-muted);font-size:.93rem;margin-bottom:18px;}
+    .pillar-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary-dark);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1.5px solid rgba(34,197,94,.3);padding-bottom:1px;transition:all .2s;}
+    .pillar-link:hover{color:var(--primary);border-color:var(--primary);}
+
+    /* ─── PEER MENTORS ─── */
+    .mentors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;}
+    .mentor-card{background:white;border-radius:var(--radius);padding:28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;display:flex;gap:18px;align-items:flex-start;}
+    .mentor-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+    .mentor-avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:22px;flex-shrink:0;position:relative;}
+    .mentor-online{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid white;}
+    .mentor-body h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--secondary);margin-bottom:3px;}
+    .mentor-tag{font-size:11px;color:var(--primary-dark);font-weight:600;background:rgba(34,197,94,.1);padding:2px 8px;border-radius:50px;display:inline-block;margin-bottom:8px;}
+    .mentor-body p{font-size:13px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;}
+    .mentor-sober{font-size:12px;font-weight:700;color:var(--primary-dark);}
+    .mentor-sober span{color:var(--text-muted);font-weight:400;}
+    .connect-btn{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;transition:all .25s;margin-top:10px;}
+    .connect-btn:hover{background:var(--primary-light);transform:translateY(-1px);}
+
+    /* ─── RECOVERY TOOLS ─── */
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+    .tool-card{background:white;border-radius:var(--radius);border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .3s,box-shadow .3s;}
+    .tool-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+    .tool-header{padding:24px 26px 18px;border-bottom:1px solid rgba(34,197,94,.08);display:flex;align-items:center;gap:14px;}
+    .tool-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+    .tool-icon.green{background:rgba(34,197,94,.12);color:var(--primary-dark);}
+    .tool-icon.blue{background:rgba(59,130,246,.1);color:#1d4ed8;}
+    .tool-icon.purple{background:rgba(168,85,247,.1);color:#7c3aed;}
+    .tool-icon.orange{background:rgba(249,115,22,.1);color:#c2410c;}
+    .tool-header h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--secondary);}
+    .tool-body{padding:18px 26px 24px;}
+    .tool-body p{color:var(--text-muted);font-size:.93rem;margin-bottom:16px;}
+
+    /* Breathing exercise */
+    .breathing-ring{width:100px;height:100px;border-radius:50%;border:3px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;cursor:pointer;transition:all .3s;}
+    .breathing-ring-inner{width:60px;height:60px;border-radius:50%;background:rgba(34,197,94,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--primary-dark);text-align:center;transition:all 4s ease-in-out;}
+    .breathing-ring.inhale .breathing-ring-inner{width:90px;height:90px;background:rgba(34,197,94,.3);}
+    .breathing-ring.exhale .breathing-ring-inner{width:40px;height:40px;background:rgba(34,197,94,.08);}
+    .breathing-text{text-align:center;font-size:13px;color:var(--text-muted);margin-bottom:10px;}
+    .start-breath-btn{width:100%;padding:10px;background:var(--primary);color:var(--dark);border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .25s;}
+    .start-breath-btn:hover{background:var(--primary-light);}
+
+    /* Mood tracker */
+    .mood-options{display:flex;justify-content:space-between;margin:10px 0 14px;}
+    .mood-opt{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:6px;border-radius:10px;transition:background .2s;flex:1;}
+    .mood-opt:hover{background:rgba(34,197,94,.06);}
+    .mood-opt.selected{background:rgba(34,197,94,.12);}
+    .mood-emoji{font-size:1.6rem;}
+    .mood-label{font-size:10px;color:var(--text-muted);font-weight:600;}
+    .mood-save-btn{width:100%;padding:10px;background:var(--primary);color:var(--dark);border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .25s;}
+    .mood-save-btn:hover{background:var(--primary-light);}
+
+    /* Urge log */
+    .urge-meter{display:flex;gap:4px;margin:10px 0 14px;}
+    .urge-bar{flex:1;height:28px;border-radius:6px;border:1.5px solid rgba(34,197,94,.2);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(34,197,94,.4);}
+    .urge-bar:hover,.urge-bar.active{background:var(--primary);color:var(--dark);border-color:var(--primary);}
+    .urge-save-btn{width:100%;padding:10px;background:var(--primary-dark);color:white;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .25s;}
+    .urge-save-btn:hover{background:var(--secondary);}
+    .urge-tip{background:rgba(34,197,94,.06);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--text-muted);margin-top:10px;border-left:3px solid var(--primary);}
+
+    /* Journaling */
+    .journal-textarea{width:100%;border:1.5px solid rgba(34,197,94,.2);border-radius:var(--radius-sm);padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);resize:none;outline:none;transition:border-color .25s;background:var(--light);height:90px;}
+    .journal-textarea:focus{border-color:var(--primary);}
+    .journal-prompt{font-size:11px;color:var(--text-muted);margin-bottom:8px;font-style:italic;}
+    .journal-save-btn{width:100%;padding:10px;background:var(--primary);color:var(--dark);border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .25s;margin-top:10px;}
+    .journal-save-btn:hover{background:var(--primary-light);}
+
+    /* ─── SUPPORT GROUPS ─── */
+    .groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+    .group-card{background:white;border-radius:var(--radius);padding:26px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;}
+    .group-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+    .group-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .group-icon{width:48px;height:48px;border-radius:14px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--primary-dark);flex-shrink:0;}
+    .group-top h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--secondary);font-weight:700;}
+    .group-meta{font-size:11px;color:var(--text-muted);}
+    .group-card p{font-size:13px;color:var(--text-muted);margin-bottom:14px;line-height:1.6;}
+    .group-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    .group-schedule{font-size:12px;font-weight:600;color:var(--primary-dark);}
+    .join-btn{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);padding:7px 18px;border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .join-btn:hover{background:var(--primary-light);transform:translateY(-1px);}
+    .group-count{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-muted);}
+    .group-count i{color:var(--primary);}
+
+    /* ─── MOTIVATIONAL QUOTES ─── */
+    .quote-carousel{position:relative;background:white;border-radius:var(--radius);padding:48px 56px;box-shadow:var(--shadow-md);border:1px solid rgba(34,197,94,.08);text-align:center;overflow:hidden;}
+    .quote-carousel::before{content:'"';font-family:'Playfair Display',serif;font-size:8rem;color:rgba(34,197,94,.08);position:absolute;top:-20px;left:20px;line-height:1;}
+    .quote-text{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3vw,1.7rem);color:var(--secondary);font-style:italic;line-height:1.5;margin-bottom:20px;position:relative;z-index:1;}
+    .quote-author{font-size:14px;font-weight:600;color:var(--primary-dark);}
+    .quote-nav{display:flex;justify-content:center;gap:10px;margin-top:24px;}
+    .quote-dot{width:8px;height:8px;border-radius:50%;background:rgba(34,197,94,.25);cursor:pointer;transition:all .25s;}
+    .quote-dot.active{background:var(--primary);width:24px;border-radius:4px;}
+    .quote-arrows{display:flex;gap:12px;justify-content:center;margin-top:16px;}
+    .qbtn{width:40px;height:40px;border-radius:50%;background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.2);color:var(--primary-dark);font-size:15px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;}
+    .qbtn:hover{background:var(--primary);color:white;border-color:var(--primary);}
+
+    /* ─── EMERGENCY / COPING ─── */
+    .coping-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+    .coping-card{background:white;border-radius:var(--radius);padding:24px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s;position:relative;overflow:hidden;}
+    .coping-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .coping-card:hover{transform:translateY(-5px);}
+    .coping-number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:rgba(34,197,94,.2);line-height:1;margin-bottom:8px;}
+    .coping-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--secondary);margin-bottom:8px;}
+    .coping-card p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+    /* ─── STATS ─── */
+    .stats{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);position:relative;overflow:hidden;}
+    .stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.6;}
+    .stats-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+    .stat-item{padding:36px 24px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-align:center;color:white;transition:transform .3s;backdrop-filter:blur(8px);}
+    .stat-item:hover{transform:translateY(-5px);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--primary-light);line-height:1;margin-bottom:10px;}
+    .stat-text{font-size:.9rem;color:rgba(255,255,255,.7);}
+
+    /* ─── CTA ─── */
+    .cta-section{background:var(--dark);color:white;text-align:center;}
+    .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:white;margin-bottom:18px;}
+    .cta-section p{max-width:680px;margin:0 auto 36px;color:rgba(255,255,255,.7);font-size:1.05rem;}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#080f0a;color:white;padding:80px 24px 36px;}
+    .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .footer-logo-icon{width:44px;height:44px;border-radius:50%;background:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0;}
+    .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
+    .social-links{display:flex;gap:12px;}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:50%;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .25s;border:1px solid rgba(255,255,255,.08);}
+    .social-links a:hover{background:var(--primary);color:var(--dark);border-color:var(--primary);transform:translateY(-3px);}
+    .footer-links h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:20px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .25s,padding-left .25s;display:inline-block;}
+    .footer-links a:hover{color:var(--primary-light);padding-left:4px;}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;color:rgba(255,255,255,.55);font-size:14px;}
+    .footer-contact-item i{color:var(--primary);margin-top:3px;width:14px;flex-shrink:0;}
+    .copyright{max-width:1160px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:8px;}
+
+    /* SIDE NAV */
+    .side-nav{height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background:var(--dark);overflow-y:auto;overflow-x:hidden;transition:width .4s cubic-bezier(.25,.46,.45,.94);border-right:1px solid rgba(34,197,94,.2);}
+    .nav-header{padding:30px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+    .nav-header span{font-family:'Playfair Display',serif;font-size:16px;color:white;white-space:nowrap;}
+    .close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:white;transition:background .25s,transform .25s;flex-shrink:0;line-height:1;}
+    .close-btn:hover{background:rgba(34,197,94,.2);transform:rotate(90deg);}
+    .side-nav a{padding:14px 28px;text-decoration:none;font-size:15px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:14px;transition:all .25s;white-space:nowrap;border-left:3px solid transparent;}
+    .side-nav a i{width:18px;text-align:center;color:var(--primary);flex-shrink:0;}
+    .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
+    .nav-overlay.active{display:block;}
+    body.nonscroll{overflow:hidden;}
+
+    /* REVEAL */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:28px;right:28px;background:var(--secondary);color:white;padding:14px 22px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;box-shadow:var(--shadow-lg);z-index:9999;transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.25,.46,.45,.94);display:flex;align-items:center;gap:10px;border-left:4px solid var(--primary);}
+    .toast.show{transform:translateY(0);opacity:1;}
+    .toast i{color:var(--primary);}
+
+    @media(max-width:900px){.checkin-inner{grid-template-columns:1fr;}.footer-container{grid-template-columns:1fr 1fr;gap:36px;}}
+    @media(max-width:600px){header{padding:14px 20px;}.utility-bar{padding:8px 20px;}.section{padding:64px 20px;}.quote-carousel{padding:36px 28px;}.checkin-widget{padding:30px 22px;}.footer-container{grid-template-columns:1fr;gap:28px;}.copyright{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+  <div class="utility-right">
+    <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu"><div></div><div></div><div></div></div>
+    <div class="logo-text"><h1>Journey4Change</h1><span>Healing Together</span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-canvas" id="particleCanvas"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow"><i class="fas fa-hands-holding-heart"></i> &nbsp; Recovery Support</span>
+    <h2>You Are <em>Not</em><br>Walking This Alone</h2>
+    <p>Daily tools, peer mentors, support groups, and a community that understands, everything you need to stay strong on your recovery journey.</p>
+    <div class="btn-group">
+      <a href="#checkin" class="btn btn-primary"><i class="fas fa-check-circle"></i> Daily Check-In</a>
+      <a href="#groups" class="btn btn-secondary"><i class="fas fa-users"></i> Join a Group</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS BANNER -->
+<div class="crisis-banner">
+  <i class="fas fa-shield-heart"></i>
+  <span>If you feel like using right now, reach out immediately.</span>
+  <a href="tel:0800121314" class="crisis-number">Call 0800 12 13 14 — Free &amp; Confidential</a>
+</div>
+
+<!-- ─── DAILY CHECK-IN ─── -->
+<section class="section" id="checkin">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Every Day Counts</div>
+      <h2>Your Daily Check-In</h2>
+      <p>Mark each sober day. Watch your streak grow. Celebrate every milestone because every single day matters.</p>
+    </div>
+
+    <div class="checkin-widget reveal">
+      <div class="checkin-inner">
+        <div>
+          <span class="checkin-badge"><i class="fas fa-fire"></i> Streak Tracker</span>
+          <h3>How are you doing today?</h3>
+          <p>Check in daily to track your sober days, earn milestone badges, and remind yourself how far you have already come.</p>
+          <div class="checkin-days" id="weekDays"></div>
+          <button class="checkin-btn" onclick="markToday()">
+            <i class="fas fa-check-circle"></i> Mark Today as Sober
+          </button>
+        </div>
+        <div>
+          <div class="streak-display">
+            <div class="streak-number" id="streakCount">0</div>
+            <div class="streak-label">Day Streak</div>
+            <div class="streak-sub">Keep going — one day at a time</div>
+            <div class="milestone-badges" id="milestoneBadges">
+              <span class="mbadge">🎯 1 Day</span>
+              <span class="mbadge">🌱 7 Days</span>
+              <span class="mbadge">💪 30 Days</span>
+              <span class="mbadge">🏆 90 Days</span>
+              <span class="mbadge">⭐ 1 Year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SUPPORT PILLARS ─── -->
+<section class="section bg-alt">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">How We Support You</div>
+      <h2>Four Pillars of Recovery</h2>
+      <p>Recovery is more than stopping, it is rebuilding. These four pillars are the foundation of lasting change.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-icon"><i class="fas fa-heart-pulse"></i></div>
+        <h3>Physical Wellness</h3>
+        <p>Your body needs to heal too. Access guides on nutrition, sleep, exercise, and what to expect physically during recovery.</p>
+        <a href="#" class="pillar-link"><i class="fas fa-arrow-right"></i> Wellness Resources</a>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-icon"><i class="fas fa-brain"></i></div>
+        <h3>Mental Health</h3>
+        <p>Addiction and mental health are deeply connected. Find counsellors, breathing exercises, and tools to manage anxiety and depression.</p>
+        <a href="mental-health-awareness.html" class="pillar-link"><i class="fas fa-arrow-right"></i> Mental Health Page</a>
+      </div>
+      <div class="pillar-card reveal reveal-delay-3">
+        <div class="pillar-icon"><i class="fas fa-people-group"></i></div>
+        <h3>Community</h3>
+        <p>You are not alone. Connect with peer mentors, join support groups, and share your story with people who truly understand.</p>
+        <a href="#groups" class="pillar-link"><i class="fas fa-arrow-right"></i> Find a Group</a>
+      </div>
+      <div class="pillar-card reveal reveal-delay-4">
+        <div class="pillar-icon"><i class="fas fa-compass"></i></div>
+        <h3>Purpose &amp; Direction</h3>
+        <p>Recovery opens the door to a new life. Explore vocational training, life skills, and how to rebuild relationships and meaning.</p>
+        <a href="recovery.html" class="pillar-link"><i class="fas fa-arrow-right"></i> Recovery Journey</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RECOVERY TOOLS ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">In Your Pocket</div>
+      <h2>Recovery Tools</h2>
+      <p>Simple, powerful tools for the moments when you need them most. Use them anytime, anywhere.</p>
+    </div>
+    <div class="tools-grid">
+
+      <!-- Breathing -->
+      <div class="tool-card reveal reveal-delay-1">
+        <div class="tool-header">
+          <div class="tool-icon green"><i class="fas fa-wind"></i></div>
+          <h3>4-7-8 Breathing</h3>
+        </div>
+        <div class="tool-body">
+          <p>Calm cravings and anxiety in minutes with this proven breathing technique.</p>
+          <div class="breathing-ring" id="breathRing">
+            <div class="breathing-ring-inner" id="breathText">Tap to<br>Start</div>
+          </div>
+          <div class="breathing-text" id="breathPhase">Breathe in for 4 · Hold for 7 · Out for 8</div>
+          <button class="start-breath-btn" onclick="startBreathing()">Start Breathing Exercise</button>
+        </div>
+      </div>
+
+      <!-- Mood Tracker -->
+      <div class="tool-card reveal reveal-delay-2">
+        <div class="tool-header">
+          <div class="tool-icon blue"><i class="fas fa-face-smile"></i></div>
+          <h3>Mood Tracker</h3>
+        </div>
+        <div class="tool-body">
+          <p>Check in with how you are feeling. Tracking your mood helps you spot patterns before they become problems.</p>
+          <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">How are you feeling right now?</p>
+          <div class="mood-options" id="moodOptions">
+            <div class="mood-opt" onclick="selectMood(this,'😔','Low')"><span class="mood-emoji">😔</span><span class="mood-label">Low</span></div>
+            <div class="mood-opt" onclick="selectMood(this,'😐','Okay')"><span class="mood-emoji">😐</span><span class="mood-label">Okay</span></div>
+            <div class="mood-opt" onclick="selectMood(this,'🙂','Good')"><span class="mood-emoji">🙂</span><span class="mood-label">Good</span></div>
+            <div class="mood-opt" onclick="selectMood(this,'😊','Great')"><span class="mood-emoji">😊</span><span class="mood-label">Great</span></div>
+            <div class="mood-opt" onclick="selectMood(this,'🤩','Amazing')"><span class="mood-emoji">🤩</span><span class="mood-label">Amazing</span></div>
+          </div>
+          <button class="mood-save-btn" onclick="saveMood()">Save Today's Mood</button>
+        </div>
+      </div>
+
+      <!-- Urge Surfer -->
+      <div class="tool-card reveal reveal-delay-3">
+        <div class="tool-header">
+          <div class="tool-icon purple"><i class="fas fa-water"></i></div>
+          <h3>Urge Surfer</h3>
+        </div>
+        <div class="tool-body">
+          <p>When a craving hits, log it. Urges peak and pass — riding them out is a skill that gets stronger every time.</p>
+          <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">How strong is the urge? (1 = mild, 10 = intense)</p>
+          <div class="urge-meter" id="urgeMeter">
+            <div class="urge-bar" onclick="setUrge(this,1)">1</div>
+            <div class="urge-bar" onclick="setUrge(this,2)">2</div>
+            <div class="urge-bar" onclick="setUrge(this,3)">3</div>
+            <div class="urge-bar" onclick="setUrge(this,4)">4</div>
+            <div class="urge-bar" onclick="setUrge(this,5)">5</div>
+            <div class="urge-bar" onclick="setUrge(this,6)">6</div>
+            <div class="urge-bar" onclick="setUrge(this,7)">7</div>
+            <div class="urge-bar" onclick="setUrge(this,8)">8</div>
+            <div class="urge-bar" onclick="setUrge(this,9)">9</div>
+            <div class="urge-bar" onclick="setUrge(this,10)">10</div>
+          </div>
+          <button class="urge-save-btn" onclick="saveUrge()">Log This Urge</button>
+          <div class="urge-tip" id="urgeTip">Tip: Cravings usually pass within 15–20 minutes. Take a walk, call someone, or use the breathing tool.</div>
+        </div>
+      </div>
+
+      <!-- Journal -->
+      <div class="tool-card reveal reveal-delay-4">
+        <div class="tool-header">
+          <div class="tool-icon orange"><i class="fas fa-book-open"></i></div>
+          <h3>Recovery Journal</h3>
+        </div>
+        <div class="tool-body">
+          <p>Writing helps process emotions and celebrate wins. A few lines a day can transform your recovery.</p>
+          <p class="journal-prompt" id="journalPrompt">Loading today's prompt...</p>
+          <textarea class="journal-textarea" id="journalText" placeholder="Write your thoughts here..."></textarea>
+          <button class="journal-save-btn" onclick="saveJournal()"><i class="fas fa-save"></i> Save Entry</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── COPING STRATEGIES ─── -->
+<section class="section bg-alt">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">When Cravings Hit</div>
+      <h2>Coping Strategies</h2>
+      <p>Keep these in your mind. Practice them before you need them. They work.</p>
+    </div>
+    <div class="coping-grid">
+      <div class="coping-card reveal reveal-delay-1">
+        <div class="coping-number">01</div>
+        <h4>Call Someone</h4>
+        <p>Pick up the phone before you pick up. Call a peer mentor, sponsor, family member, or the 0800 12 13 14 helpline. Connection breaks cravings.</p>
+      </div>
+      <div class="coping-card reveal reveal-delay-2">
+        <div class="coping-number">02</div>
+        <h4>Move Your Body</h4>
+        <p>Walk, run, do push-ups, stretch. Physical movement releases endorphins that naturally reduce cravings and anxiety within minutes.</p>
+      </div>
+      <div class="coping-card reveal reveal-delay-3">
+        <div class="coping-number">03</div>
+        <h4>Change the Scene</h4>
+        <p>Remove yourself from the trigger environment immediately. Go to a different room, walk outside, go to a shop — location change breaks the craving cycle.</p>
+      </div>
+      <div class="coping-card reveal reveal-delay-4">
+        <div class="coping-number">04</div>
+        <h4>Breathe Through It</h4>
+        <p>Use the 4-7-8 breathing tool. Controlled breathing activates your parasympathetic nervous system, reducing the physical sensation of craving.</p>
+      </div>
+      <div class="coping-card reveal reveal-delay-1">
+        <div class="coping-number">05</div>
+        <h4>Remember Your Why</h4>
+        <p>Write your three biggest reasons for staying sober on a card. Read it now. Your family. Your health. Your future. Let those reasons be louder than the craving.</p>
+      </div>
+      <div class="coping-card reveal reveal-delay-2">
+        <div class="coping-number">06</div>
+        <h4>Delay for 20 Minutes</h4>
+        <p>Tell yourself you will wait 20 minutes before doing anything. Cravings peak and pass. Most urges fade on their own if you ride them out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PEER MENTORS ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">People Who Have Been There</div>
+      <h2>Peer Mentors</h2>
+      <p>Connect with someone who understands from the inside. Our peer mentors are in recovery themselves and trained to support you.</p>
+    </div>
+    <div class="mentors-grid">
+      <div class="mentor-card reveal reveal-delay-1">
+        <div class="mentor-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a);">T<div class="mentor-online"></div></div>
+        <div class="mentor-body">
+          <h4>Thabo M.</h4>
+          <span class="mentor-tag">Substance Abuse Recovery</span>
+          <p>From Johannesburg. Struggled with tik and alcohol for 8 years before finding recovery. Now walks alongside others making that same journey.</p>
+          <div class="mentor-sober">3 Years Sober <span>· Gauteng</span></div>
+          <a href="contact.html" class="connect-btn"><i class="fas fa-comments"></i> Connect with Thabo</a>
+        </div>
+      </div>
+      <div class="mentor-card reveal reveal-delay-2">
+        <div class="mentor-avatar" style="background:linear-gradient(135deg,#4ade80,#22c55e);">A<div class="mentor-online"></div></div>
+        <div class="mentor-body">
+          <h4>Amahle D.</h4>
+          <span class="mentor-tag">Family Recovery Support</span>
+          <p>From Durban. Lost a brother to addiction before beginning her own recovery journey. Specialises in family healing and women in recovery.</p>
+          <div class="mentor-sober">14 Months Sober <span>· KwaZulu-Natal</span></div>
+          <a href="contact.html" class="connect-btn"><i class="fas fa-comments"></i> Connect with Amahle</a>
+        </div>
+      </div>
+      <div class="mentor-card reveal reveal-delay-3">
+        <div class="mentor-avatar" style="background:linear-gradient(135deg,#16a34a,#14532d);">R<div class="mentor-online"></div></div>
+        <div class="mentor-body">
+          <h4>Ruan V.</h4>
+          <span class="mentor-tag">Heroin &amp; Poly-Drug Recovery</span>
+          <p>From Cape Town. Went through treatment four times before finding the support that worked. Believes no case is too far gone.</p>
+          <div class="mentor-sober">6 Years Sober <span>· Western Cape</span></div>
+          <a href="contact.html" class="connect-btn"><i class="fas fa-comments"></i> Connect with Ruan</a>
+        </div>
+      </div>
+      <div class="mentor-card reveal reveal-delay-4">
+        <div class="mentor-avatar" style="background:linear-gradient(135deg,#4ade80,#16a34a);">N<div class="mentor-online"></div></div>
+        <div class="mentor-body">
+          <h4>Nomsa K.</h4>
+          <span class="mentor-tag">Youth &amp; Teen Recovery</span>
+          <p>From Polokwane. Started using at 15. Now 24 and mentors young people who are where she once was. Passionate about youth recovery in Limpopo.</p>
+          <div class="mentor-sober">4 Years Sober <span>· Limpopo</span></div>
+          <a href="contact.html" class="connect-btn"><i class="fas fa-comments"></i> Connect with Nomsa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SUPPORT GROUPS ─── -->
+<section class="section bg-alt" id="groups">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Together We Are Stronger</div>
+      <h2>Support Groups</h2>
+      <p>You do not have to share everything — just being in a room with people who understand is powerful. Find your group.</p>
+    </div>
+    <div class="groups-grid">
+      <div class="group-card reveal reveal-delay-1">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-users"></i></div>
+          <div><h4>Journey4Change Open Group</h4><span class="group-meta">Open to everyone · All substances</span></div>
+        </div>
+        <p>Our flagship weekly group. Share your story, hear others, and find encouragement for the week ahead. No judgement, no pressure — just people showing up for each other.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-calendar"></i> Wednesdays 6:00 PM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-map-marker-alt"></i> Polokwane + Online</div></div>
+          <button class="join-btn" onclick="showToast('You\'re registered for the Wednesday group!')"><i class="fas fa-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="group-card reveal reveal-delay-2">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-people-roof"></i></div>
+          <div><h4>Family &amp; Loved Ones Group</h4><span class="group-meta">For families · Free · Online</span></div>
+        </div>
+        <p>Addiction hurts families too. This group is for parents, partners, siblings, and children of people in recovery. Learn how to support without enabling.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-calendar"></i> Saturdays 10:00 AM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-video"></i> Online via WhatsApp</div></div>
+          <button class="join-btn" onclick="showToast('You\'re registered for the Family Group!')"><i class="fas fa-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="group-card reveal reveal-delay-3">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-person-running"></i></div>
+          <div><h4>Young Adults Recovery Circle</h4><span class="group-meta">Ages 18–35 · All backgrounds</span></div>
+        </div>
+        <p>A safe space designed for young adults navigating recovery alongside education, careers, and relationships. Peer-led, honest, and judgement-free.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-calendar"></i> Fridays 5:30 PM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-video"></i> Online + Various cities</div></div>
+          <button class="join-btn" onclick="showToast('You\'re registered for the Youth Circle!')"><i class="fas fa-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="group-card reveal reveal-delay-1">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-venus"></i></div>
+          <div><h4>Women in Recovery</h4><span class="group-meta">Women only · Safe space</span></div>
+        </div>
+        <p>A women-only space where members can speak openly about experiences unique to women in recovery — including trauma, motherhood, and rebuilding confidence.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-calendar"></i> Tuesdays 7:00 PM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-video"></i> Online · Private</div></div>
+          <button class="join-btn" onclick="showToast('You\'re registered for Women in Recovery!')"><i class="fas fa-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="group-card reveal reveal-delay-2">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-book-open-reader"></i></div>
+          <div><h4>12-Step Companion Group</h4><span class="group-meta">NA/AA aligned · All welcome</span></div>
+        </div>
+        <p>A companion group for those working a 12-step programme. Share progress on your steps, discuss the principles, and support each other through the process.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-calendar"></i> Mondays &amp; Thursdays</div><div class="group-count" style="margin-top:4px"><i class="fas fa-map-marker-alt"></i> Multiple locations</div></div>
+          <button class="join-btn" onclick="showToast('You\'re registered for 12-Step Group!')"><i class="fas fa-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="group-card reveal reveal-delay-3">
+        <div class="group-top">
+          <div class="group-icon"><i class="fas fa-mobile-screen"></i></div>
+          <div><h4>WhatsApp Support Community</h4><span class="group-meta">24/7 · Text-based · National</span></div>
+        </div>
+        <p>A moderated WhatsApp community for daily encouragement, check-ins, and peer support — active 24/7 for those moments between formal meetings.</p>
+        <div class="group-footer">
+          <div><div class="group-schedule"><i class="fas fa-clock"></i> Active 24 hours a day</div><div class="group-count" style="margin-top:4px"><i class="fab fa-whatsapp"></i> WhatsApp Group</div></div>
+          <a href="https://wa.me/27828134960?text=I'd+like+to+join+the+Journey4Change+support+community" target="_blank" rel="noopener" class="join-btn"><i class="fab fa-whatsapp"></i> Join Community</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MOTIVATIONAL QUOTES ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Words for the Journey</div>
+      <h2>Daily Encouragement</h2>
+    </div>
+    <div class="quote-carousel reveal">
+      <div class="quote-text" id="quoteText">"Recovery is not a race. You do not have to feel guilty if it takes you longer than you thought."</div>
+      <div class="quote-author" id="quoteAuthor">— Journey4Change Community</div>
+      <div class="quote-arrows">
+        <button class="qbtn" onclick="prevQuote()"><i class="fas fa-chevron-left"></i></button>
+        <button class="qbtn" onclick="nextQuote()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="quote-nav" id="quoteDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section class="section stats">
+  <div class="section-inner">
+    <div class="section-title reveal" style="margin-bottom:48px">
+      <div class="section-label" style="color:rgba(255,255,255,.5)">The Community We Are Building</div>
+      <h2 style="color:white">Recovery in Numbers</h2>
+    </div>
+    <div class="stats-container">
+      <div class="stat-item reveal reveal-delay-1"><div class="stat-number">72%</div><div class="stat-text">Of people in recovery credit peer support as vital to staying sober</div></div>
+      <div class="stat-item reveal reveal-delay-2"><div class="stat-number">6</div><div class="stat-text">Active support groups across South Africa</div></div>
+      <div class="stat-item reveal reveal-delay-3"><div class="stat-number">4</div><div class="stat-text">Peer mentors available to connect with right now</div></div>
+      <div class="stat-item reveal reveal-delay-4"><div class="stat-number">∞</div><div class="stat-text">Strength available when you ask for help</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section cta-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label" style="color:rgba(255,255,255,.4)">Start Right Now</div>
+      <h2>Your Support Is Here. Always.</h2>
+    </div>
+    <p class="reveal reveal-delay-1">Whether you are on day one or year five, you deserve support today. Check in, join a group, or reach out to a mentor — and remember that the free helpline is always available.</p>
+    <div class="cta-btns reveal reveal-delay-2">
+      <a href="tel:0800121314" class="btn btn-primary"><i class="fas fa-phone"></i> Call 0800 12 13 14 — Free</a>
+      <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Journey4Change</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><i class="fas fa-seedling"></i></div>
+        <div class="footer-logo-text"><h3>Journey4Change</h3><p>Healing Together</p></div>
+      </div>
+      <p>Walking alongside individuals and families through addiction recovery and mental health — across South Africa. Free, confidential, and always here.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Recovery</h4>
+      <ul>
+        <li><a href="recovery.html">Drug Recovery</a></li>
+        <li><a href="recovery-support.html">Recovery Support</a></li>
+        <li><a href="treatment-centres.html">Treatment Centres</a></li>
+        <li><a href="donations.html">Donate</a></li>
+        <li><a href="partnership.html">Our Partners</a></li>
+        <li><a href="myteam.html">The Team</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+    <span>Powered by neurAila Intelligence Group</span>
+  </div>
+</footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+  
+<!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script>
+  // ── Nav ──
+  function openNav(){document.getElementById('sideNav').style.width='280px';document.getElementById('navOverlay').classList.add('active');document.body.classList.add('nonscroll');}
+  function closeNav(){document.getElementById('sideNav').style.width='0';document.getElementById('navOverlay').classList.remove('active');document.body.classList.remove('nonscroll');}
+  document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
+  document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
+
+  // ── Header shadow ──
+  const hdr=document.querySelector('header');
+  window.addEventListener('scroll',()=>{hdr.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.25)':'none';});
+
+  // ── Reveal ──
+  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // ── Toast ──
+  function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+
+  // ── Particles ──
+  const canvas=document.getElementById('particleCanvas');
+  [60,90,120,50,80,100,70,40,110,55].forEach((size,i)=>{
+    const durations=[12,18,14,20,16,22,10,24,15,19];
+    const delays=[0,3,6,1,9,4,7,2,5,11];
+    const lefts=[5,15,30,45,60,72,85,95,25,55];
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText=`width:${size}px;height:${size}px;left:${lefts[i]}%;animation-duration:${durations[i]}s;animation-delay:${delays[i]}s;`;
+    canvas.appendChild(p);
+  });
+
+  // ── Streak / Check-in ──
+  let streak=parseInt(localStorage.getItem('j4c_streak')||'0');
+  let lastCheck=localStorage.getItem('j4c_lastcheck')||'';
+  const today=new Date().toDateString();
+
+  function renderDays(){
+    const wd=document.getElementById('weekDays');
+    const days=['S','M','T','W','T','F','S'];
+    const now=new Date();
+    wd.innerHTML='';
+    for(let i=6;i>=0;i--){
+      const d=new Date(now);d.setDate(now.getDate()-i);
+      const dc=document.createElement('div');
+      dc.className='day-circle';
+      const isToday=d.toDateString()===today;
+      const isDone=d.toDateString()===lastCheck||(streak>0&&i<streak&&i<=6);
+      if(isDone)dc.classList.add('done');
+      dc.innerHTML=`<span class="day-num">${d.getDate()}</span><span class="day-label">${days[d.getDay()]}</span>`;
+      if(isToday)dc.style.borderColor='rgba(74,222,128,.8)';
+      wd.appendChild(dc);
+    }
+  }
+
+  function updateStreak(){
+    document.getElementById('streakCount').textContent=streak;
+    const badges=document.querySelectorAll('#milestoneBadges .mbadge');
+    const thresholds=[1,7,30,90,365];
+    badges.forEach((b,i)=>{if(streak>=thresholds[i])b.classList.add('earned');else b.classList.remove('earned');});
+  }
+
+  function markToday(){
+    if(lastCheck===today){showToast('Already checked in today! See you tomorrow 💚');return;}
+    const prev=new Date(lastCheck);
+    const diff=Math.floor((new Date(today)-prev)/(1000*60*60*24));
+    streak=diff===1?streak+1:1;
+    lastCheck=today;
+    localStorage.setItem('j4c_streak',streak);
+    localStorage.setItem('j4c_lastcheck',lastCheck);
+    updateStreak();renderDays();
+    showToast(`Day ${streak} marked! ${streak===1?'First step taken!':streak===7?'🌱 One week!':streak===30?'💪 One month!':streak===90?'🏆 Three months!':'Keep going 💚'}`);
+  }
+
+  renderDays();updateStreak();
+
+  // ── Breathing Exercise ──
+  let breathActive=false,breathInterval=null,breathPhase=0;
+  const phases=[
+    {name:'Breathe In',duration:4000,class:'inhale'},
+    {name:'Hold',duration:7000,class:''},
+    {name:'Breathe Out',duration:8000,class:'exhale'},
+    {name:'Rest',duration:2000,class:''}
+  ];
+  function startBreathing(){
+    if(breathActive){clearTimeout(breathInterval);breathActive=false;const r=document.getElementById('breathRing'),t=document.getElementById('breathText');r.className='breathing-ring';t.textContent='Tap to\nStart';document.getElementById('breathPhase').textContent='Breathe in for 4 · Hold for 7 · Out for 8';document.querySelector('.start-breath-btn').textContent='Start Breathing Exercise';return;}
+    breathActive=true;breathPhase=0;document.querySelector('.start-breath-btn').textContent='Stop Exercise';runPhase();
+  }
+  function runPhase(){
+    if(!breathActive)return;
+    const p=phases[breathPhase%phases.length];
+    const r=document.getElementById('breathRing'),t=document.getElementById('breathText');
+    r.className='breathing-ring '+(p.class||'');
+    t.innerHTML=p.name+(p.name==='Breathe In'?'<br>4s':p.name==='Hold'?'<br>7s':p.name==='Breathe Out'?'<br>8s':'');
+    document.getElementById('breathPhase').textContent=p.name;
+    breathInterval=setTimeout(()=>{breathPhase++;runPhase();},p.duration);
+  }
+
+  // ── Mood Tracker ──
+  let selectedMood=null;
+  function selectMood(el,emoji,label){document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');selectedMood={emoji,label};}
+  function saveMood(){if(!selectedMood){showToast('Please select a mood first.');return;}showToast(`Mood saved: ${selectedMood.emoji} ${selectedMood.label}. Thank you for checking in!`);document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));selectedMood=null;}
+
+  // ── Urge Meter ──
+  let selectedUrge=null;
+  function setUrge(el,val){document.querySelectorAll('.urge-bar').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedUrge=val;const tips=['Urges this mild usually pass in minutes. Try a short walk.','A manageable urge. Use the breathing tool now.','This is real — call someone you trust right now.','Strong urge. Leave where you are immediately and call 0800 12 13 14.','CRISIS LEVEL — Call 0800 12 13 14 right now. You can do this.'];document.getElementById('urgeTip').textContent=val<=2?tips[0]:val<=4?tips[1]:val<=6?tips[2]:val<=8?tips[3]:tips[4];}
+  function saveUrge(){if(!selectedUrge){showToast('Please rate the urge level first.');return;}showToast(`Urge logged at level ${selectedUrge}. You noticed it — that is strength. It will pass.`);document.querySelectorAll('.urge-bar').forEach(b=>b.classList.remove('active'));selectedUrge=null;}
+
+  // ── Journal ──
+  const prompts=['What is one thing I am grateful for today?','What challenged me today, and how did I handle it?','What does my recovery mean to the people I love?','Name three things that went right today, however small.','What would I tell my past self about where I am now?','What is one healthy thing I can do for myself today?','Who supported me recently, and how can I thank them?'];
+  document.getElementById('journalPrompt').textContent='Today\'s prompt: '+prompts[new Date().getDay()%prompts.length];
+  function saveJournal(){const txt=document.getElementById('journalText').value.trim();if(!txt){showToast('Write something before saving.');return;}const entries=JSON.parse(localStorage.getItem('j4c_journal')||'[]');entries.push({date:new Date().toLocaleDateString(),text:txt});localStorage.setItem('j4c_journal',JSON.stringify(entries));document.getElementById('journalText').value='';showToast('Journal entry saved! Keep writing — you are doing great. 💚');}
+
+  // ── Quotes ──
+  const quotes=[
+    {text:'Recovery is not a race. You do not have to feel guilty if it takes you longer than you thought.',author:'Journey4Change Community'},
+    {text:'You do not have to see the whole staircase — just take the first step.',author:'Martin Luther King Jr.'},
+    {text:'The secret of getting ahead is getting started.',author:'Mark Twain'},
+    {text:'Every moment is a fresh beginning.',author:'T.S. Eliot'},
+    {text:'Believe you can and you are halfway there.',author:'Theodore Roosevelt'},
+    {text:'Recovery is something you have to work on every single day, and it is something that does not get a day off.',author:'Demi Lovato'},
+    {text:'You are braver than you believe, stronger than you seem, and smarter than you think.',author:'A.A. Milne'},
+    {text:'In the middle of difficulty lies opportunity.',author:'Albert Einstein'},
+    {text:'The best time to plant a tree was twenty years ago. The second best time is now.',author:'Chinese Proverb'},
+    {text:'What lies behind us and what lies before us are tiny matters compared to what lies within us.',author:'Ralph Waldo Emerson'}
+  ];
+  let currentQ=0;
+  function renderQuote(){document.getElementById('quoteText').textContent='"'+quotes[currentQ].text+'"';document.getElementById('quoteAuthor').textContent='— '+quotes[currentQ].author;document.querySelectorAll('.quote-dot').forEach((d,i)=>{d.classList.toggle('active',i===currentQ);});}
+  function buildDots(){const nav=document.getElementById('quoteDots');nav.innerHTML='';quotes.forEach((_,i)=>{const d=document.createElement('div');d.className='quote-dot'+(i===0?' active':'');d.onclick=()=>{currentQ=i;renderQuote();};nav.appendChild(d);});}
+  function nextQuote(){currentQ=(currentQ+1)%quotes.length;renderQuote();}
+  function prevQuote(){currentQ=(currentQ-1+quotes.length)%quotes.length;renderQuote();}
+  buildDots();renderQuote();
+  setInterval(nextQuote,8000);
+</script>
+</body>
+</html>
