@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Gender-Based Violence Awareness, Support Resources, and Survivor Stories across South Africa.">
+  <title>Journey4Change - Gender-Based Violence Awareness &amp; Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+      /* GBV accent - purple to signal solidarity */
+      --gbv: #7c3aed;
+      --gbv-light: #a78bfa;
+      --gbv-soft: rgba(124,58,237,0.08);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background-color:var(--light);color:var(--text);line-height:1.7;overflow-x:hidden;}
+
+    /* UTILITY BAR */
+    .utility-bar{background:var(--dark);color:rgba(255,255,255,.75);padding:9px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+    .utility-left{display:flex;align-items:center;gap:8px;}
+    .utility-left i{color:var(--primary);font-size:12px;}
+    .utility-right a{color:rgba(255,255,255,.7);margin-left:18px;font-size:16px;transition:color .25s,transform .25s;display:inline-block;}
+    .utility-right a:hover{color:var(--primary);transform:translateY(-2px);}
+
+    /* HEADER */
+    header{background:rgba(15,31,21,.96);backdrop-filter:blur(12px);color:white;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:900;border-bottom:1px solid rgba(34,197,94,.15);transition:box-shadow .3s;}
+    .header-left{display:flex;align-items:center;gap:22px;}
+    .logo-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;line-height:1.1;}
+    .logo-text span{font-size:11px;font-weight:500;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:2px;}
+    .hamburger{display:flex;flex-direction:column;justify-content:space-between;width:26px;height:20px;cursor:pointer;gap:5px;}
+    .hamburger div{height:2px;background:white;border-radius:2px;transition:all .3s;}
+    .hamburger:hover div:nth-child(2){width:70%;}
+    .login-btn{background:var(--primary);color:var(--dark);padding:9px 22px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .25s;display:flex;align-items:center;gap:7px;}
+    .login-btn:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.35);}
+
+    /* HERO */
+    .hero{position:relative;width:100%;min-height:90vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f1f15 0%,#1a2a35 45%,#1a1025 100%);}
+    .hero-bg-canvas{position:absolute;inset:0;z-index:1;overflow:hidden;}
+    .particle{position:absolute;border-radius:50%;background:rgba(34,197,94,.07);animation:floatP linear infinite;}
+    .particle.purple{background:rgba(124,58,237,.06);}
+    @keyframes floatP{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20vh) scale(1.2);opacity:0;}}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,15,10,.35) 0%,rgba(8,15,10,.7) 100%);z-index:2;}
+    .hero-content{position:relative;z-index:3;text-align:center;color:white;padding:0 24px;max-width:860px;}
+    .hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-light);border:1px solid rgba(74,222,128,.4);padding:6px 18px;border-radius:50px;margin-bottom:24px;animation:fadeInUp .8s ease-out both;}
+    .hero h2{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;line-height:1.08;margin-bottom:22px;text-shadow:0 2px 20px rgba(0,0,0,.4);animation:fadeInUp .8s .15s ease-out both;}
+    .hero h2 em{font-style:normal;color:var(--primary-light);}
+    .hero p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:36px;opacity:.9;max-width:600px;margin-left:auto;margin-right:auto;animation:fadeInUp .8s .3s ease-out both;}
+    .btn-group{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;animation:fadeInUp .8s .45s ease-out both;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 6px 24px rgba(34,197,94,.35);}
+    .btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,197,94,.45);}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px);}
+    .btn-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);border-color:white;}
+
+    /* EMERGENCY BANNER */
+    .emergency-banner{background:linear-gradient(90deg,#7c3aed,#5b21b6);color:white;padding:0;display:flex;flex-direction:column;}
+    .emergency-top{padding:16px 40px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;text-align:center;font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.1);}
+    .emergency-top i{font-size:18px;color:#c4b5fd;}
+    .emergency-numbers{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:12px 40px;background:rgba(0,0,0,.15);}
+    .emer-num{display:flex;align-items:center;gap:7px;background:white;color:#5b21b6;padding:7px 16px;border-radius:50px;font-weight:700;font-size:13px;text-decoration:none;transition:transform .2s;white-space:nowrap;}
+    .emer-num:hover{transform:scale(1.05);}
+    .emer-num i{font-size:12px;}
+
+    /* LAYOUT */
+    .section{padding:90px 24px;}
+    .section-inner{max-width:1160px;margin:0 auto;}
+    .section-title{text-align:center;margin-bottom:60px;}
+    .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px;}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);color:var(--secondary);font-weight:700;position:relative;display:inline-block;}
+    .section-title h2::after{content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));border-radius:2px;}
+    .section-title p{color:var(--text-muted);font-size:1.05rem;max-width:600px;margin:28px auto 0;}
+    .bg-alt{background:#f0f7f1;}
+    .bg-dark-section{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);}
+
+    /* ABOUT / MISSION - two column */
+    .about-container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .about-text p{color:var(--text-muted);margin-bottom:18px;font-size:1.05rem;}
+    .stat-inline-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+    .stat-inline{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.15);border-radius:var(--radius-sm);padding:18px 16px;}
+    .stat-inline-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--primary-dark);line-height:1;margin-bottom:4px;}
+    .stat-inline-label{font-size:12px;color:var(--text-muted);}
+    .about-image-wrap{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);}
+    .about-image-wrap img{width:100%;height:420px;object-fit:cover;display:block;transition:transform .6s ease;}
+    .about-image-wrap:hover img{transform:scale(1.04);}
+    .about-image-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,83,45,.65) 0%,transparent 55%);display:flex;align-items:flex-end;padding:28px;}
+    .overlay-link{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:10px 22px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+    .overlay-link:hover{background:var(--primary-light);transform:translateY(-2px);}
+
+    /* TYPES OF GBV */
+    .gbv-types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+    .gbv-type-card{background:white;border-radius:var(--radius);padding:28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+    .gbv-type-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .gbv-type-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
+    .gbv-type-icon{width:54px;height:54px;border-radius:14px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary-dark);margin-bottom:18px;transition:background .3s;}
+    .gbv-type-card:hover .gbv-type-icon{background:rgba(34,197,94,.2);}
+    .gbv-type-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--secondary);margin-bottom:10px;}
+    .gbv-type-card p{color:var(--text-muted);font-size:.93rem;line-height:1.7;}
+
+    /* WARNING SIGNS */
+    .signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+    .sign-card{background:white;border-radius:var(--radius);padding:22px 24px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;transition:transform .3s;}
+    .sign-card:hover{transform:translateY(-4px);}
+    .sign-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:rgba(34,197,94,.2);line-height:1;flex-shrink:0;width:40px;}
+    .sign-body h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--secondary);margin-bottom:6px;}
+    .sign-body p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+    /* SURVIVOR STORIES */
+    .stories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+    .story-card{background:white;border-radius:var(--radius);padding:32px 28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;}
+    .story-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+    .story-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--primary-dark);padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;}
+    .quote-mark{font-family:'Playfair Display',serif;font-size:3.5rem;color:rgba(34,197,94,.15);line-height:1;margin-bottom:-10px;}
+    .story-text{color:var(--text-muted);font-size:.93rem;font-style:italic;margin-bottom:22px;line-height:1.8;}
+    .story-author{display:flex;align-items:center;gap:12px;}
+    .story-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;}
+    .story-name{font-weight:600;color:var(--secondary);font-size:14px;}
+    .story-detail{font-size:12px;color:var(--text-muted);margin-top:2px;}
+
+    /* HELPLINES */
+    .helpline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+    .helpline-card{background:white;border-radius:var(--radius);padding:24px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;transition:transform .3s,box-shadow .3s;}
+    .helpline-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .helpline-icon{width:50px;height:50px;border-radius:14px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--primary-dark);flex-shrink:0;}
+    .helpline-body h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--secondary);margin-bottom:5px;}
+    .helpline-body p{font-size:12px;color:var(--text-muted);margin-bottom:9px;line-height:1.6;}
+    .helpline-number{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);padding:7px 16px;border-radius:50px;font-weight:700;font-size:12px;text-decoration:none;transition:all .25s;}
+    .helpline-number:hover{background:var(--primary-light);transform:translateY(-1px);}
+    .helpline-free{font-size:11px;color:var(--primary-dark);font-weight:600;margin-top:6px;}
+
+    /* SAFETY PLAN */
+    .safety-plan{background:linear-gradient(135deg,var(--secondary) 0%,#1d3a28 100%);border-radius:var(--radius);padding:48px 44px;color:white;position:relative;overflow:hidden;}
+    .safety-plan::before{content:'';position:absolute;top:-50px;right:-50px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
+    .safety-plan-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+    .safety-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+    .safety-plan h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;margin-bottom:14px;line-height:1.2;}
+    .safety-plan > .safety-plan-inner > div > p{color:rgba(255,255,255,.8);margin-bottom:20px;font-size:.97rem;}
+    .safety-steps{display:flex;flex-direction:column;gap:12px;}
+    .safety-step{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border-radius:var(--radius-sm);padding:16px;border:1px solid rgba(255,255,255,.08);}
+    .step-num{width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--dark);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;}
+    .step-body h5{font-weight:700;color:white;font-size:14px;margin-bottom:3px;}
+    .step-body p{font-size:12px;color:rgba(255,255,255,.7);line-height:1.5;}
+    .safety-contacts{display:flex;flex-direction:column;gap:12px;}
+    .safety-contact-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:18px;}
+    .safety-contact-card h5{font-weight:700;color:white;font-size:14px;margin-bottom:4px;}
+    .safety-contact-card p{font-size:12px;color:rgba(255,255,255,.65);margin-bottom:10px;}
+    .safety-contact-card a{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);padding:7px 16px;border-radius:50px;font-weight:700;font-size:12px;text-decoration:none;transition:all .25s;}
+    .safety-contact-card a:hover{background:var(--primary-light);}
+
+    /* HOW TO HELP */
+    .help-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+    .help-card{background:white;border-radius:var(--radius);padding:28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;text-align:center;}
+    .help-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
+    .help-icon{width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:var(--primary-dark);margin:0 auto 20px;transition:background .3s;}
+    .help-card:hover .help-icon{background:rgba(34,197,94,.2);}
+    .help-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--secondary);margin-bottom:10px;}
+    .help-card p{color:var(--text-muted);font-size:.93rem;}
+
+    /* QUICK EXIT BUTTON */
+    .quick-exit{position:fixed;bottom:24px;right:24px;z-index:9999;background:#dc2626;color:white;padding:12px 22px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(220,38,38,.5);display:flex;align-items:center;gap:8px;transition:all .25s;animation:pulseRed 2s infinite;}
+    .quick-exit:hover{background:#b91c1c;transform:scale(1.05);}
+    @keyframes pulseRed{0%,100%{box-shadow:0 6px 24px rgba(220,38,38,.5);}50%{box-shadow:0 6px 32px rgba(220,38,38,.9);}}
+
+    /* STATS */
+    .stats{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);position:relative;overflow:hidden;}
+    .stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.6;}
+    .stats-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+    .stat-item{padding:36px 24px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-align:center;color:white;transition:transform .3s;backdrop-filter:blur(8px);}
+    .stat-item:hover{transform:translateY(-5px);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--primary-light);line-height:1;margin-bottom:10px;}
+    .stat-text{font-size:.88rem;color:rgba(255,255,255,.7);}
+
+    /* CTA */
+    .cta-section{background:var(--dark);color:white;text-align:center;}
+    .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:white;margin-bottom:18px;}
+    .cta-section p{max-width:680px;margin:0 auto 36px;color:rgba(255,255,255,.7);font-size:1.05rem;}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#080f0a;color:white;padding:80px 24px 36px;}
+    .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .footer-logo-icon{width:44px;height:44px;border-radius:50%;background:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0;}
+    .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
+    .social-links{display:flex;gap:12px;}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:50%;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .25s;border:1px solid rgba(255,255,255,.08);}
+    .social-links a:hover{background:var(--primary);color:var(--dark);border-color:var(--primary);transform:translateY(-3px);}
+    .footer-links h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:20px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .25s,padding-left .25s;display:inline-block;}
+    .footer-links a:hover{color:var(--primary-light);padding-left:4px;}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;color:rgba(255,255,255,.55);font-size:14px;}
+    .footer-contact-item i{color:var(--primary);margin-top:3px;width:14px;flex-shrink:0;}
+    .copyright{max-width:1160px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:8px;}
+
+    /* SIDE NAV */
+    .side-nav{height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background:var(--dark);overflow-y:auto;overflow-x:hidden;transition:width .4s cubic-bezier(.25,.46,.45,.94);border-right:1px solid rgba(34,197,94,.2);}
+    .nav-header{padding:30px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+    .nav-header span{font-family:'Playfair Display',serif;font-size:16px;color:white;white-space:nowrap;}
+    .close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:white;transition:background .25s,transform .25s;flex-shrink:0;line-height:1;}
+    .close-btn:hover{background:rgba(34,197,94,.2);transform:rotate(90deg);}
+    .side-nav a{padding:14px 28px;text-decoration:none;font-size:15px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:14px;transition:all .25s;white-space:nowrap;border-left:3px solid transparent;}
+    .side-nav a i{width:18px;text-align:center;color:var(--primary);flex-shrink:0;}
+    .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
+    .nav-overlay.active{display:block;}
+    body.nonscroll{overflow:hidden;}
+
+    /* REVEAL */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
+
+    @media(max-width:900px){.about-container{grid-template-columns:1fr;}.about-image-wrap img{height:300px;}.safety-plan-inner{grid-template-columns:1fr;}.footer-container{grid-template-columns:1fr 1fr;gap:36px;}}
+    @media(max-width:600px){header{padding:14px 20px;}.utility-bar{padding:8px 20px;}.emergency-top{padding:12px 16px;font-size:12px;}.emergency-numbers{padding:10px 16px;gap:7px;}.emer-num{font-size:12px;padding:6px 12px;}.section{padding:64px 20px;}.safety-plan{padding:30px 22px;}.footer-container{grid-template-columns:1fr;gap:28px;}.copyright{flex-direction:column;text-align:center;}.quick-exit{bottom:16px;right:16px;padding:10px 16px;font-size:13px;}}
+  </style>
+</head>
+<body>
+
+<!-- QUICK EXIT BUTTON -->
+<button class="quick-exit" onclick="quickExit()" title="Click to quickly leave this page">
+  <i class="fas fa-door-open"></i> Quick Exit
+</button>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+  <div class="utility-right">
+    <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu"><div></div><div></div><div></div></div>
+    <div class="logo-text"><h1>Journey4Change</h1><span>Healing Together</span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-canvas" id="particleCanvas"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow"><i class="fas fa-hand-fist"></i> &nbsp; Gender-Based Violence Awareness</span>
+    <h2>Your Voice Matters.<br>Your Safety <em>Matters</em>.</h2>
+    <p>GBV is never your fault. Journey4Change stands with every survivor, every family, and every community working to end gender-based violence in South Africa and beyond.</p>
+    <div class="btn-group">
+      <a href="#helplines" class="btn btn-primary"><i class="fas fa-phone"></i> Get Help Now</a>
+      <a href="#safetyplan" class="btn btn-secondary"><i class="fas fa-shield-heart"></i> Safety Planning</a>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY BANNER -->
+<div class="emergency-banner">
+  <div class="emergency-top">
+    <i class="fas fa-triangle-exclamation"></i>
+    <span>If you are in immediate danger — call emergency services now. All lines below are free and confidential.</span>
+  </div>
+  <div class="emergency-numbers">
+    <a href="tel:10111" class="emer-num"><i class="fas fa-police-box"></i> Police: 10111</a>
+    <a href="tel:112" class="emer-num"><i class="fas fa-ambulance"></i> Emergency: 112</a>
+    <a href="tel:0800150150" class="emer-num"><i class="fas fa-phone-volume"></i> GBV Command: 0800 150 150</a>
+    <a href="tel:08000111" class="emer-num"><i class="fas fa-heart"></i> Lifeline: 0800 011 1</a>
+    <a href="tel:0800428428" class="emer-num"><i class="fas fa-hand-holding-heart"></i> Stop GBV: 0800 428 428</a>
+    <a href="https://wa.me/27600123456" target="_blank" rel="noopener" class="emer-num"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
+  </div>
+</div>
+
+<!-- ─── ABOUT / MISSION ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Why We Speak Out</div>
+      <h2>Our Commitment to Ending GBV</h2>
+    </div>
+    <div class="about-container">
+      <div class="about-text reveal reveal-delay-1">
+        <p>South Africa has one of the highest rates of gender-based violence in the world. Every 3 hours a woman is killed by an intimate partner. Every 17 seconds a woman is raped. These are not just statistics — they are mothers, daughters, sisters, friends, and sons.</p>
+        <p>Journey4Change believes that awareness is the first act of protection. We travel across all 9 provinces sharing stories, connecting communities to resources, and giving survivors a platform to speak — because silence is what violence feeds on.</p>
+        <p>No one should live in fear in their own home. No one should be told they are to blame. No one should suffer in silence. We are here, and we are walking with you.</p>
+        <div class="stat-inline-grid">
+          <div class="stat-inline">
+            <div class="stat-inline-num">1 in 3</div>
+            <div class="stat-inline-label">Women in SA experience GBV in their lifetime</div>
+          </div>
+          <div class="stat-inline">
+            <div class="stat-inline-num">3 hrs</div>
+            <div class="stat-inline-label">Every 3 hours a woman is killed by a partner</div>
+          </div>
+          <div class="stat-inline">
+            <div class="stat-inline-num">137</div>
+            <div class="stat-inline-label">Women murdered every week in South Africa</div>
+          </div>
+          <div class="stat-inline">
+            <div class="stat-inline-num">90%</div>
+            <div class="stat-inline-label">Of GBV is perpetrated by someone known to the victim</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-wrap reveal reveal-delay-2">
+        <img src="therapy5.jpg" alt="Journey4Change GBV Awareness">
+        <div class="about-image-overlay">
+          <a href="https://www.gbvf.org.za/" target="_blank" rel="noopener" class="overlay-link">
+            <i class="fas fa-external-link-alt"></i> GBVF Response Fund
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TYPES OF GBV ─── -->
+<section class="section bg-alt">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Understanding GBV</div>
+      <h2>Forms of Gender-Based Violence</h2>
+      <p>GBV is not only physical. Recognising all its forms is the first step to understanding, escaping, and healing from it.</p>
+    </div>
+    <div class="gbv-types-grid">
+      <div class="gbv-type-card reveal reveal-delay-1">
+        <div class="gbv-type-icon"><i class="fas fa-hand-back-fist"></i></div>
+        <h3>Physical Violence</h3>
+        <p>Any act that causes bodily harm — hitting, kicking, slapping, choking, burning, or using weapons. Physical abuse often escalates over time and can be fatal.</p>
+      </div>
+      <div class="gbv-type-card reveal reveal-delay-2">
+        <div class="gbv-type-icon"><i class="fas fa-brain"></i></div>
+        <h3>Emotional &amp; Psychological</h3>
+        <p>Constant criticism, humiliation, threats, isolation from loved ones, gaslighting, and controlling behaviour that destroys a person's sense of self-worth.</p>
+      </div>
+      <div class="gbv-type-card reveal reveal-delay-3">
+        <div class="gbv-type-icon"><i class="fas fa-venus"></i></div>
+        <h3>Sexual Violence</h3>
+        <p>Any sexual act without full and free consent — including rape, sexual assault, coercion, and marital rape. Consent can be withdrawn at any time.</p>
+      </div>
+      <div class="gbv-type-card reveal reveal-delay-1">
+        <div class="gbv-type-icon"><i class="fas fa-coins"></i></div>
+        <h3>Economic Abuse</h3>
+        <p>Controlling access to money, preventing employment, taking wages, destroying property, or creating financial dependency to trap a person in a relationship.</p>
+      </div>
+      <div class="gbv-type-card reveal reveal-delay-2">
+        <div class="gbv-type-icon"><i class="fas fa-mobile-screen"></i></div>
+        <h3>Digital &amp; Online Abuse</h3>
+        <p>Harassment, stalking, non-consensual sharing of images, monitoring devices, and using social media to control, humiliate, or threaten a partner.</p>
+      </div>
+      <div class="gbv-type-card reveal reveal-delay-3">
+        <div class="gbv-type-icon"><i class="fas fa-ring"></i></div>
+        <h3>Forced Marriage &amp; Trafficking</h3>
+        <p>Forcing someone into marriage against their will, or trafficking and exploiting people for labour or sexual purposes. Both are serious crimes in South Africa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WARNING SIGNS ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Know the Signs</div>
+      <h2>Warning Signs of an Abusive Relationship</h2>
+      <p>Abuse rarely starts with violence. It begins with control. Recognising these signs could save a life.</p>
+    </div>
+    <div class="signs-grid">
+      <div class="sign-card reveal reveal-delay-1">
+        <div class="sign-num">01</div>
+        <div class="sign-body"><h4>Extreme Jealousy and Possessiveness</h4><p>Treating jealousy as love, checking your phone, demanding to know where you are at all times, and getting angry when you spend time with others.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-2">
+        <div class="sign-body"><div class="sign-num">02</div></div>
+        <div class="sign-body"><h4>Isolation from Friends &amp; Family</h4><p>Gradually cutting you off from your support network, creating conflict with your loved ones, or controlling who you see and speak to.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-3">
+        <div class="sign-num">03</div>
+        <div class="sign-body"><h4>Controlling Finances</h4><p>Demanding access to your bank accounts, giving you an "allowance," preventing you from working, or making you account for every cent spent.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-1">
+        <div class="sign-num">04</div>
+        <div class="sign-body"><h4>Threats and Intimidation</h4><p>Threatening to harm you, your children, your family, or pets. Threatening to report you to authorities, destroy your reputation, or take your children away.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-2">
+        <div class="sign-num">05</div>
+        <div class="sign-body"><h4>Blame-Shifting</h4><p>Making you feel responsible for their anger and violence — "You made me do this," "You know how to push my buttons," or "You deserve this."</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-3">
+        <div class="sign-num">06</div>
+        <div class="sign-body"><h4>Rapid Escalation</h4><p>Pushing for a very serious commitment very quickly — moving in together, engagement, or pregnancy — before you know them well.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-1">
+        <div class="sign-num">07</div>
+        <div class="sign-body"><h4>Minimising and Denying</h4><p>Telling you the abuse did not happen, saying you are too sensitive, denying incidents of violence, or laughing off serious behaviour.</p></div>
+      </div>
+      <div class="sign-card reveal reveal-delay-2">
+        <div class="sign-num">08</div>
+        <div class="sign-body"><h4>Monitoring and Tracking</h4><p>Checking your location, reading your messages, installing tracking apps without consent, showing up unannounced, or questioning every interaction.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SURVIVOR STORIES ─── -->
+<section class="section bg-alt">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Courage to Speak</div>
+      <h2>Survivor Stories</h2>
+      <p>Names have been changed to protect privacy. These stories are shared with permission to give voice to the many who still cannot speak.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card reveal reveal-delay-1">
+        <span class="story-badge"><i class="fas fa-leaf"></i> Survivor &amp; Advocate</span>
+        <div class="quote-mark">"</div>
+        <p class="story-text">I stayed for seven years because I believed him when he said no one else would love me. Journey4Change gave me a safe space to speak for the first time. Leaving was the hardest thing I have ever done — and the best. I am here. I am free.</p>
+        <div class="story-author">
+          <div class="story-avatar">L</div>
+          <div><div class="story-name">Lerato N. (name changed)</div><div class="story-detail">Limpopo Province</div></div>
+        </div>
+      </div>
+      <div class="story-card reveal reveal-delay-2">
+        <span class="story-badge"><i class="fas fa-leaf"></i> Survivor &amp; Mother</span>
+        <div class="quote-mark">"</div>
+        <p class="story-text">He never hit me. Everyone said it could not be abuse if he did not hit me. But I was not allowed to eat without permission. I was not allowed to visit my mother. I did not know that was violence. When I found out, I called the GBV line and everything changed.</p>
+        <div class="story-author">
+          <div class="story-avatar">N</div>
+          <div><div class="story-name">Nomvula S. (name changed)</div><div class="story-detail">Johannesburg, Gauteng</div></div>
+        </div>
+      </div>
+      <div class="story-card reveal reveal-delay-3">
+        <span class="story-badge"><i class="fas fa-leaf"></i> Survivor</span>
+        <div class="quote-mark">"</div>
+        <p class="story-text">I am a man and I was abused. It took me years to admit that because I was ashamed. Journey4Change told me it is not weakness to need help. Recovery is possible for everyone. That message changed my life.</p>
+        <div class="story-author">
+          <div class="story-avatar">T</div>
+          <div><div class="story-name">Thulani M. (name changed)</div><div class="story-detail">Durban, KwaZulu-Natal</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section class="section stats">
+  <div class="section-inner">
+    <div class="section-title reveal" style="margin-bottom:48px">
+      <div class="section-label" style="color:rgba(255,255,255,.5)">The Scale of the Crisis</div>
+      <h2 style="color:white">GBV in South Africa</h2>
+    </div>
+    <div class="stats-container">
+      <div class="stat-item reveal reveal-delay-1"><div class="stat-number">1 in 3</div><div class="stat-text">Women experience GBV in their lifetime in South Africa</div></div>
+      <div class="stat-item reveal reveal-delay-2"><div class="stat-number">137</div><div class="stat-text">Women murdered every week — mostly by intimate partners</div></div>
+      <div class="stat-item reveal reveal-delay-3"><div class="stat-number">90%</div><div class="stat-text">Of survivors know their attacker</div></div>
+      <div class="stat-item reveal reveal-delay-4"><div class="stat-number">Free</div><div class="stat-text">0800 150 150 — National GBV Command Centre</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HELPLINES ─── -->
+<section class="section" id="helplines">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">South Africa</div>
+      <h2>GBV Helplines &amp; Resources</h2>
+      <p>All services below are free, confidential, and available to anyone experiencing or witnessing GBV — regardless of gender.</p>
+    </div>
+    <div class="helpline-grid">
+      <div class="helpline-card reveal reveal-delay-1">
+        <div class="helpline-icon"><i class="fas fa-phone-volume"></i></div>
+        <div class="helpline-body">
+          <h4>GBV Command Centre</h4>
+          <p>Government 24/7 national helpline for GBV survivors. Access to shelters, legal advice, social workers, and emergency response.</p>
+          <a href="tel:0800150150" class="helpline-number"><i class="fas fa-phone"></i> 0800 150 150</a>
+          <div class="helpline-free">Free · 24/7 · SMS 31531</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-2">
+        <div class="helpline-icon"><i class="fas fa-heart"></i></div>
+        <div class="helpline-body">
+          <h4>Stop Gender Violence</h4>
+          <p>A dedicated national helpline providing counselling, referrals to shelters, and legal assistance for GBV survivors across South Africa.</p>
+          <a href="tel:0800428428" class="helpline-number"><i class="fas fa-phone"></i> 0800 428 428</a>
+          <div class="helpline-free">Free · Confidential</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-3">
+        <div class="helpline-icon"><i class="fas fa-shield-heart"></i></div>
+        <div class="helpline-body">
+          <h4>Lifeline South Africa</h4>
+          <p>24/7 crisis counselling for GBV, trauma, abuse, and suicidal thoughts. Trained counsellors. Confidential and free of charge.</p>
+          <a href="tel:08000111" class="helpline-number"><i class="fas fa-phone"></i> 0800 011 1</a>
+          <div class="helpline-free">Free · 24/7 · lifelinesa.co.za</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-1">
+        <div class="helpline-icon"><i class="fas fa-gavel"></i></div>
+        <div class="helpline-body">
+          <h4>Thuthuzela Care Centres</h4>
+          <p>One-stop facilities at hospitals offering medical care, counselling, and police services for rape and sexual assault survivors. No need to visit multiple locations.</p>
+          <a href="tel:08000111" class="helpline-number"><i class="fas fa-map-marker-alt"></i> Find Nearest</a>
+          <div class="helpline-free">npa.gov.za/tcc</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-2">
+        <div class="helpline-icon"><i class="fas fa-people-group"></i></div>
+        <div class="helpline-body">
+          <h4>People Opposing Women Abuse</h4>
+          <p>POWA provides counselling, legal advice, and shelter for women experiencing violence or abuse in South Africa, primarily in Gauteng.</p>
+          <a href="tel:0114422288" class="helpline-number"><i class="fas fa-phone"></i> 011 442 2288</a>
+          <div class="helpline-free">powa.co.za</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-3">
+        <div class="helpline-icon"><i class="fas fa-scale-balanced"></i></div>
+        <div class="helpline-body">
+          <h4>Legal Aid South Africa</h4>
+          <p>Free legal representation for GBV survivors who cannot afford a lawyer. Protection orders, divorce proceedings, and criminal cases.</p>
+          <a href="tel:0800110110" class="helpline-number"><i class="fas fa-phone"></i> 0800 110 110</a>
+          <div class="helpline-free">Free legal services · legal-aid.co.za</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-1">
+        <div class="helpline-icon"><i class="fas fa-house-chimney-heart"></i></div>
+        <div class="helpline-body">
+          <h4>SADAG — Mental Health Support</h4>
+          <p>Trauma, PTSD, and mental health support for GBV survivors and their families. Counsellors trained in trauma-informed care.</p>
+          <a href="tel:0800121314" class="helpline-number"><i class="fas fa-phone"></i> 0800 12 13 14</a>
+          <div class="helpline-free">Free · sadag.org</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-2">
+        <div class="helpline-icon"><i class="fas fa-child-reaching"></i></div>
+        <div class="helpline-body">
+          <h4>Childline South Africa</h4>
+          <p>Support for children and young people experiencing abuse, GBV, or neglect. Social workers available around the clock.</p>
+          <a href="tel:08000553555" class="helpline-number"><i class="fas fa-phone"></i> 0800 055 555</a>
+          <div class="helpline-free">Free · 24/7 · childlinesa.org.za</div>
+        </div>
+      </div>
+      <div class="helpline-card reveal reveal-delay-3">
+        <div class="helpline-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="helpline-body">
+          <h4>GBV WhatsApp Support Line</h4>
+          <p>WhatsApp-based support for those who cannot make a voice call. Access to a counsellor, safety planning, and referrals via chat.</p>
+          <a href="https://wa.me/27600123456" target="_blank" rel="noopener" class="helpline-number"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+          <div class="helpline-free">Anonymous · Text-based support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SAFETY PLAN ─── -->
+<section class="section bg-alt" id="safetyplan">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Be Prepared</div>
+      <h2>Your Safety Plan</h2>
+      <p>A safety plan is a personalised set of steps that help protect you when violence is happening or might happen. Having a plan can save your life.</p>
+    </div>
+    <div class="safety-plan reveal">
+      <div class="safety-plan-inner">
+        <div>
+          <span class="safety-badge"><i class="fas fa-shield-heart"></i> Safety Planning</span>
+          <h3>If You Are in Danger Right Now</h3>
+          <p>You cannot always predict when violence will occur — but you can prepare. Work through these steps with a counsellor or trusted person.</p>
+          <div class="safety-steps">
+            <div class="safety-step">
+              <div class="step-num">1</div>
+              <div class="step-body"><h5>Identify a Safe Place</h5><p>Know where you can go if you need to leave quickly — a trusted neighbour, family member, church, shelter, or public place.</p></div>
+            </div>
+            <div class="safety-step">
+              <div class="step-num">2</div>
+              <div class="step-body"><h5>Pack an Emergency Bag</h5><p>Keep a bag ready (or with someone you trust) with: ID, birth certificates, cash, medications, phone charger, a change of clothes, and important documents.</p></div>
+            </div>
+            <div class="safety-step">
+              <div class="step-num">3</div>
+              <div class="step-body"><h5>Memorise Key Numbers</h5><p>Know at least two phone numbers by heart — a trusted person and a helpline — in case your phone is taken or broken.</p></div>
+            </div>
+            <div class="safety-step">
+              <div class="step-num">4</div>
+              <div class="step-body"><h5>Tell Someone You Trust</h5><p>Tell a trusted friend, family member, or neighbour what is happening. Ask them to call the police if they hear or see something concerning.</p></div>
+            </div>
+            <div class="safety-step">
+              <div class="step-num">5</div>
+              <div class="step-body"><h5>Know Your Rights</h5><p>You have the right to apply for a Protection Order at any Magistrate's Court. It is free, and violating it is a criminal offence in South Africa.</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:white;font-family:'Playfair Display',serif;margin-bottom:20px;">Key Contacts to Save</h3>
+          <div class="safety-contacts">
+            <div class="safety-contact-card">
+              <h5>🚨 Police Emergency</h5>
+              <p>For immediate danger — police dispatch available nationwide 24/7</p>
+              <a href="tel:10111"><i class="fas fa-phone"></i> Call 10111</a>
+            </div>
+            <div class="safety-contact-card">
+              <h5>📞 GBV Command Centre</h5>
+              <p>Free national 24/7 helpline for shelters, legal help, counselling, and emergency referrals</p>
+              <a href="tel:0800150150"><i class="fas fa-phone"></i> 0800 150 150</a>
+            </div>
+            <div class="safety-contact-card">
+              <h5>🏛️ Protection Order</h5>
+              <p>Apply at your nearest Magistrate's Court — free, and violating it is a criminal offence</p>
+              <a href="tel:0800110110"><i class="fas fa-phone"></i> Legal Aid: 0800 110 110</a>
+            </div>
+            <div class="safety-contact-card">
+              <h5>🏠 Shelters &amp; Safe Houses</h5>
+              <p>The GBV Command Centre can connect you to a safe shelter near you at any hour</p>
+              <a href="tel:0800150150"><i class="fas fa-phone"></i> Find a Shelter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW TO HELP ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Be an Ally</div>
+      <h2>How You Can Help</h2>
+      <p>You do not have to be a survivor to take action. Everyone in the community has a role to play in ending GBV.</p>
+    </div>
+    <div class="help-grid">
+      <div class="help-card reveal reveal-delay-1">
+        <div class="help-icon"><i class="fas fa-ear-listen"></i></div>
+        <h3>Listen Without Judgement</h3>
+        <p>If someone discloses abuse to you, believe them. Do not ask why they did not leave sooner. Simply say: "I believe you. I am here. You are not alone."</p>
+      </div>
+      <div class="help-card reveal reveal-delay-2">
+        <div class="help-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Speak Up and Speak Out</h3>
+        <p>Challenge GBV-enabling language, jokes, and attitudes in your home, workplace, and community. Silence is complicity — your voice matters.</p>
+      </div>
+      <div class="help-card reveal reveal-delay-3">
+        <div class="help-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h3>Support Survivors Practically</h3>
+        <p>Help them access resources, accompany them to the police or Thuthuzela Centre if they wish, or simply be consistently present and check in regularly.</p>
+      </div>
+      <div class="help-card reveal reveal-delay-4">
+        <div class="help-icon"><i class="fas fa-children"></i></div>
+        <h3>Teach the Next Generation</h3>
+        <p>Talk to children about consent, respect, healthy relationships, and equality. Prevention begins with education — at home, at school, in the community.</p>
+      </div>
+      <div class="help-card reveal reveal-delay-1">
+        <div class="help-icon"><i class="fas fa-coins"></i></div>
+        <h3>Support GBV Organisations</h3>
+        <p>Donate to or volunteer with organisations fighting GBV. Even a small contribution to shelters, legal funds, or awareness campaigns makes a real difference.</p>
+      </div>
+      <div class="help-card reveal reveal-delay-2">
+        <div class="help-icon"><i class="fas fa-users-between-lines"></i></div>
+        <h3>Hold Men Accountable</h3>
+        <p>Men — challenge each other. Do not let harmful behaviour slide in your circle. Being an ally means being willing to have uncomfortable conversations with friends and family.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section cta-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label" style="color:rgba(255,255,255,.4)">Join the Movement</div>
+      <h2>Stand With Every Survivor</h2>
+    </div>
+    <p class="reveal reveal-delay-1">Whether you are a survivor, an ally, or someone who simply believes that no one should live in fear — you have a place in this movement. Journey4Change is walking through every province, amplifying every voice.</p>
+    <div class="cta-btns reveal reveal-delay-2">
+      <a href="tel:0800150150" class="btn btn-primary"><i class="fas fa-phone"></i> GBV Helpline: 0800 150 150</a>
+      <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Journey4Change</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><i class="fas fa-seedling"></i></div>
+        <div class="footer-logo-text"><h3>Journey4Change</h3><p>Healing Together</p></div>
+      </div>
+      <p>Raising awareness for mental health, addiction recovery, and gender-based violence across all 9 provinces of South Africa. Always walking. Always listening.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="my-story.html">My Story</a></li>
+        <li><a href="journey4change.html">Journey for Change</a></li>
+        <li><a href="mental-health-awareness.html">Mental Health</a></li>
+        <li><a href="their-story.html">Their Story</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="gbv.html">GBV Awareness</a></li>
+        <li><a href="recovery.html">Drug Recovery</a></li>
+        <li><a href="recovery-support.html">Recovery Support</a></li>
+        <li><a href="treatment-centres.html">Treatment Centres</a></li>
+        <li><a href="donations.html">Donate</a></li>
+        <li><a href="partnership.html">Our Partners</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+    <span>Powered by neurAila Intelligence Group</span>
+  </div>
+</footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+<!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+
+<script>
+  // ── Nav ──
+  function openNav(){document.getElementById('sideNav').style.width='280px';document.getElementById('navOverlay').classList.add('active');document.body.classList.add('nonscroll');}
+  function closeNav(){document.getElementById('sideNav').style.width='0';document.getElementById('navOverlay').classList.remove('active');document.body.classList.remove('nonscroll');}
+  document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
+  document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
+
+  // ── Header shadow ──
+  const hdr=document.querySelector('header');
+  window.addEventListener('scroll',()=>{hdr.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.25)':'none';});
+
+  // ── Reveal ──
+  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // ── Particles ──
+  const canvas=document.getElementById('particleCanvas');
+  const sizes=[60,90,120,50,80,100,70,40,110,55,75,95];
+  const durations=[12,18,14,20,16,22,10,24,15,19,13,21];
+  const delays=[0,3,6,1,9,4,7,2,5,11,8,10];
+  const lefts=[5,15,30,45,60,72,85,95,25,55,38,68];
+  sizes.forEach((size,i)=>{
+    const p=document.createElement('div');
+    p.className='particle'+(i%3===0?' purple':'');
+    p.style.cssText=`width:${size}px;height:${size}px;left:${lefts[i]}%;animation-duration:${durations[i]}s;animation-delay:${delays[i]}s;`;
+    canvas.appendChild(p);
+  });
+
+  // ── Quick Exit ──
+  function quickExit(){
+    // Replace current page with a neutral site, clear history entry
+    window.location.replace('https://www.google.com');
+  }
+
+  // Also allow keyboard shortcut: press Escape 3 times quickly to trigger
+  let escCount=0,escTimer=null;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      escCount++;
+      clearTimeout(escTimer);
+      escTimer=setTimeout(()=>escCount=0,2000);
+      if(escCount>=3)quickExit();
+    }
+  });
+</script>
+</body>
+</html>
