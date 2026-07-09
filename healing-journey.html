@@ -265,7 +265,6 @@
     .promise-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.7); }
     .promise-item i { color: var(--primary-light); font-size: 12px; flex-shrink: 0; }
 
-    /* Story form */
     .story-form { }
     .form-group { margin-bottom: 16px; }
     .form-group label {
@@ -303,6 +302,50 @@
       border-radius: 10px; padding: 16px 20px; color: var(--primary-light);
       font-weight: 600; margin-top: 14px; text-align: center;
     }
+
+    /* Share method selector */
+    .share-method-group {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    }
+    .share-method-option {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 16px 10px; border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 12px; cursor: pointer; transition: all 0.22s;
+      background: rgba(255,255,255,0.06); position: relative;
+      text-align: center;
+    }
+    .share-method-option input {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .share-method-option i { font-size: 1.3rem; color: rgba(255,255,255,0.55); transition: color 0.22s; }
+    .share-method-option span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .share-method-option:hover { border-color: rgba(34,197,94,0.4); background: rgba(255,255,255,0.09); }
+    .share-method-option.selected {
+      border-color: var(--primary); background: rgba(34,197,94,0.14);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+    }
+    .share-method-option.selected i,
+    .share-method-option.selected span { color: var(--primary-light); }
+
+    /* Share result panel */
+    .share-result {
+      display: none; margin-top: 16px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 14px; padding: 20px 22px;
+    }
+    .share-result h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem; color: white;
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    }
+    .share-result h4 i { color: var(--primary-light); }
+    .share-result-preview {
+      background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px 16px;
+      font-size: 12.5px; color: rgba(255,255,255,0.75);
+      white-space: pre-wrap; max-height: 180px; overflow-y: auto;
+      line-height: 1.6; font-family: 'DM Sans', sans-serif;
+    }
+    .share-result .btn { margin-top: 14px; width: 100%; justify-content: center; }
+    .share-result-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 10px; line-height: 1.6; }
 
     /* ── COPING TOOLS ── */
     .coping-section {
@@ -520,6 +563,7 @@
       .form-row { grid-template-columns: 1fr; }
       .footer-container { grid-template-columns: 1fr; gap: 28px; }
       .copyright { flex-direction: column; text-align: center; }
+      .share-method-group { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -549,7 +593,6 @@
         <span>Healing Together</span>
       </div>
     </div>
-    <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
   </header>
 
   <!-- Crisis Band -->
@@ -693,7 +736,7 @@
             </div>
           </div>
           <div class="story-form">
-            <form onsubmit="submitStory(event)" novalidate>
+            <form id="storyForm" onsubmit="submitStory(event)" novalidate>
               <div class="form-row">
                 <div class="form-group">
                   <label for="sname">Display Name</label>
@@ -744,11 +787,42 @@
                 <label for="semail">Email (optional — only for follow-up)</label>
                 <input type="email" id="semail" placeholder="your@email.com">
               </div>
+
+              <div class="form-group">
+                <label>How would you like to send your story?</label>
+                <div class="share-method-group" id="shareMethodGroup">
+                  <label class="share-method-option selected" data-method="email">
+                    <input type="radio" name="smethod" value="email" checked>
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                  </label>
+                  <label class="share-method-option" data-method="whatsapp">
+                    <input type="radio" name="smethod" value="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                  </label>
+                  <label class="share-method-option" data-method="instagram">
+                    <input type="radio" name="smethod" value="instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                  </label>
+                </div>
+              </div>
+
               <button type="submit" class="submit-btn">
                 <i class="fas fa-paper-plane"></i> Submit My Story
               </button>
               <div class="form-success" id="storySuccess">
-                <i class="fas fa-check-circle"></i> Thank you for your courage. Your story has been received and will be reviewed with care.
+                <i class="fas fa-check-circle"></i> Thank you for your courage. Here's your story, ready to send.
+              </div>
+
+              <div class="share-result" id="shareResult">
+                <h4><i class="fas fa-paper-plane"></i> Sending via <span id="resultMethodName"></span></h4>
+                <div class="share-result-preview" id="resultPreview"></div>
+                <a id="resultActionBtn" class="btn btn-primary" target="_blank" rel="noopener" href="#">
+                  <i class="fas fa-external-link-alt"></i> Open
+                </a>
+                <p class="share-result-note" id="resultNote"></p>
               </div>
             </form>
           </div>
@@ -962,20 +1036,27 @@
   <nav id="sideNav" class="side-nav" aria-label="Main navigation">
     <div class="nav-header">
       <span>Navigation</span>
-      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
     </div>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
-    <a href="journey4change.html"><i class="fas fa-road"></i> Journey for Change</a>
-    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
-    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
-    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
-    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
-    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
-    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
-    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
-    <a href="myteam.html"><i class="fas fa-users"></i> The Team</a>
-    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
   </nav>
 
   <script>
@@ -990,13 +1071,74 @@
       document.body.classList.remove('nonscroll');
     }
 
+    // Share method selector (visually highlight the chosen card)
+    document.querySelectorAll('.share-method-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.share-method-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+      });
+    });
+
+    const WHATSAPP_NUMBER = '27849910575'; // +27 84 991 0575, no spaces/plus for wa.me
+    const EMAIL_ADDRESS = 'journey4change.story@gmail.com';
+    const INSTAGRAM_URL = 'https://instagram.com/journey4change2026';
+
     function submitStory(e) {
       e.preventDefault();
       const name = document.getElementById('sname').value.trim();
+      const province = document.getElementById('slocation').value;
+      const condition = document.getElementById('scondition').value;
       const story = document.getElementById('sstory').value.trim();
+      const quote = document.getElementById('squote').value.trim();
+      const email = document.getElementById('semail').value.trim();
+      const methodInput = document.querySelector('input[name="smethod"]:checked');
+      const method = methodInput ? methodInput.value : 'email';
+
       if (!name || !story) return;
+
+      let messageText = `New Story Submission — Journey4Change\n\nName: ${name}`;
+      if (province) messageText += `\nProvince: ${province}`;
+      if (condition) messageText += `\nTopic: ${condition}`;
+      messageText += `\n\nStory:\n${story}`;
+      if (quote) messageText += `\n\nA sentence that helped: "${quote}"`;
+      if (email) messageText += `\n\nReply email: ${email}`;
+
+      const resultBox = document.getElementById('shareResult');
+      const resultPreview = document.getElementById('resultPreview');
+      const resultBtn = document.getElementById('resultActionBtn');
+      const resultNote = document.getElementById('resultNote');
+      const resultMethodName = document.getElementById('resultMethodName');
+
+      resultPreview.textContent = messageText;
+
+      if (method === 'email') {
+        resultMethodName.textContent = 'Email';
+        const subject = encodeURIComponent('My Story — Journey4Change');
+        const body = encodeURIComponent(messageText);
+        resultBtn.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+        resultBtn.innerHTML = '<i class="fas fa-envelope"></i> Open Email App';
+        resultNote.innerHTML = `This opens your email app with the message pre-filled to <strong>${EMAIL_ADDRESS}</strong>. Just hit send.`;
+      } else if (method === 'whatsapp') {
+        resultMethodName.textContent = 'WhatsApp';
+        const text = encodeURIComponent(messageText);
+        resultBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+        resultBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Open WhatsApp';
+        resultNote.innerHTML = `This opens WhatsApp with the message pre-filled to send to <strong>+27 84 991 0575</strong>. Just hit send.`;
+      } else if (method === 'instagram') {
+        resultMethodName.textContent = 'Instagram';
+        resultBtn.href = INSTAGRAM_URL;
+        resultBtn.innerHTML = '<i class="fab fa-instagram"></i> Open Instagram';
+        resultNote.innerHTML = `Instagram doesn't support pre-filled DMs. Your story has been copied to your clipboard — just open a DM to <strong>@journey4change2026</strong> and paste it in.`;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(messageText).catch(() => {});
+        }
+      }
+
+      resultBox.style.display = 'block';
       document.getElementById('storySuccess').style.display = 'block';
-      e.target.reset();
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
       setTimeout(() => { document.getElementById('storySuccess').style.display = 'none'; }, 8000);
     }
 
