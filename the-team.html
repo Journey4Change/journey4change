@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Meet the team behind Journey4Change — the people walking, healing, and fighting for mental health across South Africa.">
+  <title>Journey4Change - Our Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --accent: #f97316;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,0.16);
+      --radius: 20px;
+      --radius-sm: 10px;
+      --border: rgba(34,197,94,0.12);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .utility-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 9px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.65);
+      margin-left: 18px;
+      font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    header {
+      background: rgba(15,31,21,0.96);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      gap: 6px;
+    }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+    .login-btn {
+      background: var(--primary);
+      color: var(--dark);
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.25s;
+    }
+    .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.3); }
+
+    .team-hero {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 55%, #0a1a10 100%);
+      padding: 90px 40px 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .team-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 120px;
+      background: var(--light);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.35);
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s ease both;
+    }
+    .team-hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s 0.12s ease both;
+    }
+    .team-hero h2 em { font-style: italic; color: var(--primary-light); }
+    .team-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto;
+      animation: fadeUp 0.7s 0.24s ease both;
+    }
+
+    .breadcrumb-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+    }
+    .breadcrumb {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a { color: var(--primary-dark); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb i { font-size: 10px; color: #ccc; }
+
+    .section { padding: 90px 24px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+
+    .section-title { text-align: center; margin-bottom: 64px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--secondary);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+    }
+    .section-title p {
+      margin-top: 28px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.05rem;
+    }
+
+    .founder-wrap {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 0;
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      margin-bottom: 80px;
+      position: relative;
+    }
+    .founder-wrap::before {
+      content: 'FOUNDER';
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      background: var(--primary);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      padding: 5px 14px;
+      border-radius: 50px;
+      z-index: 10;
+    }
+    .founder-img-side {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+    }
+    .founder-img-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .founder-wrap:hover .founder-img-side img { transform: scale(1.04); }
+    .founder-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(15,31,21,0.15));
+    }
+    .founder-img-side::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(to bottom, var(--primary-light), var(--primary-dark));
+    }
+    .founder-content {
+      padding: 56px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(160deg, #ffffff 0%, #f3faf5 100%);
+    }
+    .founder-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+    .founder-role::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .founder-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--secondary);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .founder-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .founder-content p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+      margin-top: 4px;
+    }
+    .tag {
+      background: rgba(34,197,94,0.1);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+    .founder-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: 1.5px solid #d1e7d5;
+      color: var(--text-muted);
+    }
+    .social-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      background: rgba(34,197,94,0.07);
+      transform: translateY(-2px);
+    }
+    .social-pill i { font-size: 14px; }
+
+
+    .team-single {
+      display: flex;
+      justify-content: center;
+    }
+    .team-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-img-wrap {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .team-card:hover .card-img-wrap img { transform: scale(1.07); }
+    .card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,20,13,0.75) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .team-card:hover .card-img-overlay { opacity: 1; }
+    .overlay-socials { display: flex; gap: 8px; }
+    .overlay-socials a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 13px;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .overlay-socials a:hover { background: var(--primary); color: var(--dark); }
+    .role-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--primary);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .coming-soon-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,31,21,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .coming-soon-badge {
+      background: var(--primary);
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-body { padding: 28px 30px 24px; }
+    .card-body .role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-body .role::before {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .card-body .qualif {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .card-body p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .card-footer {
+      border-top: 1px solid var(--border);
+      padding: 14px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafff9;
+    }
+    .card-footer-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .mini-tag {
+      background: rgba(34,197,94,0.08);
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .contact-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary-dark);
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .contact-icon:hover { background: var(--primary); color: var(--dark); transform: scale(1.1); }
+
+
+    .contact-icons-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .contact-icon--wa   { background: rgba(37,211,102,0.1);  color: #25d366; }
+    .contact-icon--call { background: rgba(34,197,94,0.1);   color: var(--primary-dark); }
+    .contact-icon--email{ background: rgba(249,115,22,0.1);  color: var(--accent); }
+
+    .contact-icon--wa:hover   { background: #25d366;          color: white;        transform: scale(1.1); }
+    .contact-icon--call:hover { background: var(--primary);   color: var(--dark);  transform: scale(1.1); }
+    .contact-icon--email:hover{ background: var(--accent);    color: white;        transform: scale(1.1); }
+
+    .values-strip {
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+      padding: 70px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .values-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .values-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .values-inner .section-label { color: rgba(255,255,255,0.45); }
+    .values-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: white;
+      margin-bottom: 48px;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 20px;
+    }
+    .value-item {
+      padding: 28px 20px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .value-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.09); }
+    .value-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .value-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--primary-light);
+      margin-bottom: 8px;
+    }
+    .value-item p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+
+    .join-section { background: white; border-top: 1px solid var(--border); }
+    .join-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .join-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+    .join-inner p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 32px; }
+    .btn-group { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 4px 20px rgba(34,197,94,0.3); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(34,197,94,0.4); }
+    .btn-outline { background: transparent; color: var(--secondary); border: 1.5px solid rgba(20,83,45,0.3); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); background: rgba(34,197,94,0.05); transform: translateY(-3px); }
+
+
+    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
+    .footer-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.1; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.07);
+      border-radius: 50%; color: rgba(255,255,255,0.7); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); border-color: var(--primary); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.5); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between;
+      font-size: 13px; color: rgba(255,255,255,0.28);
+      flex-wrap: wrap; gap: 8px;
+    }
+
+
+    .side-nav {
+      height: 100%; width: 0;
+      position: fixed; z-index: 1000; top: 0; left: 0;
+      background: var(--dark);
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.2);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap;
+      border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.08); border-left-color: var(--primary); padding-left: 34px; }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+
+    @media (max-width: 920px) {
+      .founder-wrap { grid-template-columns: 1fr; }
+      .founder-img-side { min-height: 340px; }
+      .founder-content { padding: 40px 32px; }
+      .founder-wrap::before { left: 20px; top: 20px; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      header, .utility-bar, .breadcrumb-bar { padding-left: 20px; padding-right: 20px; }
+      .team-hero { padding: 70px 20px 90px; }
+      .section { padding: 64px 20px; }
+      .footer-container { grid-template-columns: 1fr; }
+      .founder-content { padding: 28px 24px; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .team-card { max-width: 100%; }
+    }
+    @media (max-width: 400px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="utility-bar">
+    <div class="utility-left">
+      <i class="fas fa-phone"></i> +27 82 813 4960
+    </div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+
+
+  <header id="mainHeader">
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" aria-label="Open menu" role="button" tabindex="0">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="team-hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><i class="fas fa-users"></i> The People Behind the Purpose</div>
+      <h2>Meet <em>Our Team</em></h2>
+      <p>Every kilometre walked, every story shared, every life touched — it starts with these people. Passionate, qualified, and deeply committed to mental health in South Africa.</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>Our Team</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+
+      <div class="section-title reveal">
+        <div class="section-label">The Visionary</div>
+        <h2>Our Founder</h2>
+        <p>The mind, the heart, and the feet behind Journey4Change.</p>
+      </div>
+
+      <div class="founder-wrap reveal reveal-delay-1">
+
+        <div class="founder-img-side">
+          <img
+            src="euclid.jpg"
+            alt="Euclid Tumelo Ramaila — Founder of Journey4Change"
+            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80&fit=crop&crop=face'"
+          >
+          <div class="founder-img-overlay"></div>
+        </div>
+
+        <div class="founder-content">
+          <div class="founder-role">Founder &amp; Director</div>
+          <h3>Euclid Tumelo<br>Ramaila</h3>
+          <p class="founder-sub">Limpopo, South Africa &nbsp;·&nbsp; Journey4Change, Est. 2025</p>
+
+          <p>Euclid Tumelo Ramaila is the founder and driving force of Journey4Change — a bold mental health awareness initiative that takes him across all 9 provinces of South Africa, covering over 3,000 km on foot. His mission is simple yet profound: to break the stigma surrounding mental health, one conversation and one kilometre at a time.</p>
+
+          <p>Born and raised in Limpopo, Euclid knows firsthand the silence that surrounds mental illness in many South African communities. This journey is his answer to that silence — a declaration that no one should suffer alone, and that healing is possible when people feel seen and heard.</p>
+
+          <p>Through his travels, Euclid plans to partner with schools, clinics, churches, and community organisations, creating safe spaces for open dialogue about depression, anxiety, trauma, and the everyday mental health challenges people face but rarely speak about.</p>
+
+          <div class="founder-tags">
+            <span class="tag"><i class="fas fa-road" style="font-size:10px;margin-right:4px;"></i> 3 000+ km Journey</span>
+            <span class="tag"><i class="fas fa-map-marker-alt" style="font-size:10px;margin-right:4px;"></i> All 9 Provinces</span>
+            <span class="tag"><i class="fas fa-heart" style="font-size:10px;margin-right:4px;"></i> Mental Health Advocate</span>
+            <span class="tag"><i class="fas fa-microphone" style="font-size:10px;margin-right:4px;"></i> Public Speaker</span>
+          </div>
+
+          <div class="founder-socials">
+            <a href="https://www.instagram.com/journey4change2026" target="_blank" class="social-pill"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://x.com/journey4change_" target="_blank" class="social-pill"><i class="fab fa-x-twitter"></i> X / Twitter</a>
+            <a href="mailto:journey4change.info@gmail.com" class="social-pill"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://tiktok.com/journey4change2026" terget="_blank" class="social-pill"><i class="feb fa-tiktok"></i> TikTok</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section" style="background: #f0f7f1; padding-top: 20px;">
+    <div class="section-inner">
+
+      <div class="section-title reveal">
+        <div class="section-label">The Core Team</div>
+        <h2>The People Walking With Us</h2>
+        <p>Qualified, compassionate professionals who bring clinical depth and community heart to the Journey4Change mission.</p>
+      </div>
+
+  
+      <div class="team-single">
+
+        <div class="team-card reveal reveal-delay-1">
+          <div class="card-img-wrap">
+
+            <img
+              src="girl.png"
+              alt="Organisation Psychologist — Journey4Change"
+              onerror="this.src='https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80&fit=crop&crop=face'"
+            >
+
+            <div class="coming-soon-overlay">
+              <div class="coming-soon-badge">
+                <i class="fas fa-clock"></i> Details Coming Soon
+              </div>
+            </div>
+
+            <div class="role-badge">Psychologist</div>
+          </div>
+
+          <div class="card-body">
+            <div class="role">Clinical Psychologist</div>
+            <h3>Mfanelo Moyane</h3>
+            <p class="qualif">MA Clinical Psychology · HPCSA Registered</p>
+            <p>Our qualified psychologist provides the clinical backbone of Journey4Change — offering on-route counselling, psychological first aid at community engagements, and helping develop the mental health education content shared across all 9 provinces.</p>
+            <p style="margin-top:10px;">Full details will be shared soon. Watch this space.</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="card-footer-tags">
+              <span class="mini-tag">Trauma Care</span>
+              <span class="mini-tag">HPCSA</span>
+              <span class="mini-tag">Community MH</span>
+            </div>
+            <div class="contact-icons-row">
+              <a href="https://wa.me/+27849910575" target="_blank" class="contact-icon contact-icon--wa" aria-label="WhatsApp" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="tel:+27849910575" class="contact-icon contact-icon--call" aria-label="Call" title="Call">
+                <i class="fas fa-phone"></i>
+              </a>
+              <a href="mailto:@journey4change.info@gail.com" class="contact-icon contact-icon--email" aria-label="Email" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="values-strip">
+    <div class="values-inner reveal">
+      <div class="section-label">What Unites Us</div>
+      <h2>Our Team Values</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="value-icon">🤝</span>
+          <h4>Compassion First</h4>
+          <p>Every interaction is guided by empathy and a deep respect for human dignity.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🌍</span>
+          <h4>Ubuntu</h4>
+          <p>We are because of others. Community is not the backdrop — it is the work itself.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🔬</span>
+          <h4>Clinical Integrity</h4>
+          <p>Evidence-based, HPCSA-aligned mental health information underpins everything we do.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🗣️</span>
+          <h4>Brave Conversations</h4>
+          <p>We go to the hard places — literally and figuratively — so no one suffers in silence.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">♻️</span>
+          <h4>Sustainability</h4>
+          <p>Our impact is built to last beyond the walk — through partnerships, education, and community roots.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section join-section">
+    <div class="section-inner">
+      <div class="join-inner reveal">
+        <div class="section-label" style="display:block;text-align:center;">Grow With Us</div>
+        <h2>Want to Walk With Us?</h2>
+        <p>Journey4Change is always looking for passionate volunteers, mental health professionals, storytellers, and sponsors who want to make a difference in South Africa's mental health landscape. If that sounds like you — let's talk.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-handshake"></i> Get Involved</a>
+          <a href="donations.html" class="btn btn-outline"><i class="fas fa-hand-holding-heart"></i> Support Our Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo" onerror="this.style.display='none'">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 3,000 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change2026" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change2026" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/j4j2026" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="global-mental-health-watch.html">Global MH Watch</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+          <li><a href="myteam.html">The Team</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Sticky header shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainHeader').style.boxShadow =
+        window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.25)' : 'none';
+    });
+
+    // Keyboard nav
+    document.querySelector('.hamburger').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') openNav();
+    });
+  </script>
+</body>
+</html>
