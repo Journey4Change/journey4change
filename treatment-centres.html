@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Journey4Change - Global Drug Addiction Treatment Centres and Resources">
+  <title>Journey4Change - Global Treatment Centres &amp; Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--primary:#22c55e;--primary-light:#4ade80;--primary-dark:#16a34a;--secondary:#14532d;--dark:#0f1f15;--light:#f8faf8;--text:#1c2b20;--text-muted:#4b6a53;--white:#ffffff;--shadow-sm:0 2px 8px rgba(0,0,0,0.08);--shadow-md:0 8px 24px rgba(0,0,0,0.12);--shadow-lg:0 20px 50px rgba(0,0,0,0.18);--radius:16px;--radius-sm:8px;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background-color:var(--light);color:var(--text);line-height:1.7;overflow-x:hidden;}
+    .utility-bar{background-color:var(--dark);color:rgba(255,255,255,0.75);padding:9px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+    .utility-left{display:flex;align-items:center;gap:8px;}
+    .utility-left i{color:var(--primary);font-size:12px;}
+    .utility-right a{color:rgba(255,255,255,0.7);margin-left:18px;font-size:16px;transition:color .25s,transform .25s;display:inline-block;}
+    .utility-right a:hover{color:var(--primary);transform:translateY(-2px);}
+    header{background:rgba(15,31,21,0.96);backdrop-filter:blur(12px);color:white;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:900;border-bottom:1px solid rgba(34,197,94,0.15);transition:box-shadow .3s;}
+    .header-left{display:flex;align-items:center;gap:22px;}
+    .logo-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;line-height:1.1;}
+    .logo-text span{font-size:11px;font-weight:500;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:2px;}
+    .hamburger{display:flex;flex-direction:column;justify-content:space-between;width:26px;height:20px;cursor:pointer;gap:5px;}
+    .hamburger div{height:2px;background:white;border-radius:2px;transition:all .3s;}
+    .hamburger:hover div:nth-child(2){width:70%;}
+    .login-btn{background:var(--primary);color:var(--dark);padding:9px 22px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:all .25s;display:flex;align-items:center;gap:7px;}
+    .login-btn:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.35);}
+
+    /* HERO */
+    .page-hero{background:linear-gradient(135deg,#0f1f15 0%,#1a3a22 60%,#0f1f15 100%);padding:80px 24px 70px;text-align:center;color:white;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+    .page-hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+    .page-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-light);border:1px solid rgba(74,222,128,.4);padding:6px 18px;border-radius:50px;margin-bottom:20px;}
+    .page-hero h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+    .page-hero p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto;}
+
+    /* CRISIS */
+    .crisis-banner{background:linear-gradient(90deg,var(--primary-dark),#166534);color:white;padding:13px 40px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;text-align:center;font-size:14px;font-weight:500;}
+    .crisis-banner i{font-size:17px;color:var(--primary-light);}
+    .crisis-number{background:white;color:var(--primary-dark);padding:6px 18px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .2s;}
+    .crisis-number:hover{transform:scale(1.05);}
+
+    /* CONTINENT TABS */
+    .continent-nav{background:white;border-bottom:1px solid rgba(34,197,94,.12);position:sticky;top:64px;z-index:800;box-shadow:var(--shadow-sm);}
+    .continent-nav-inner{max-width:1160px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .continent-nav-inner::-webkit-scrollbar{display:none;}
+    .continent-tab{flex-shrink:0;padding:16px 26px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--text-muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+    .continent-tab:hover{color:var(--primary-dark);}
+    .continent-tab.active{color:var(--primary-dark);border-bottom-color:var(--primary);}
+
+    /* SEARCH */
+    .search-bar{background:#f0f7f1;border-bottom:1px solid rgba(34,197,94,.1);padding:13px 24px;}
+    .search-inner{max-width:1160px;margin:0 auto;display:flex;gap:14px;align-items:center;}
+    .search-wrap{flex:1;position:relative;}
+    .search-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;}
+    .search-wrap input{width:100%;padding:10px 16px 10px 40px;border:1.5px solid rgba(34,197,94,.2);border-radius:50px;font-family:'DM Sans',sans-serif;font-size:14px;background:white;color:var(--text);outline:none;transition:border-color .25s;}
+    .search-wrap input:focus{border-color:var(--primary);}
+    .result-count{font-size:13px;color:var(--text-muted);white-space:nowrap;font-weight:600;}
+
+    /* LAYOUT */
+    .section{padding:70px 24px;}
+    .section-inner{max-width:1160px;margin:0 auto;}
+    .section-title{text-align:center;margin-bottom:50px;}
+    .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px;}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--secondary);font-weight:700;position:relative;display:inline-block;}
+    .section-title h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));border-radius:2px;}
+    .continent-panel{display:none;}
+    .continent-panel.active{display:block;}
+
+    /* LADGAC */
+    .ladgac-feature{background:linear-gradient(135deg,var(--secondary) 0%,#1d6b3c 100%);border-radius:var(--radius);padding:44px;color:white;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:60px;position:relative;overflow:hidden;}
+    .ladgac-feature::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
+    .ladgac-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+    .ladgac-feature h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:12px;line-height:1.15;}
+    .ldesc{color:rgba(255,255,255,.8);margin-bottom:10px;font-size:.95rem;}
+    .ladgac-details{display:flex;flex-direction:column;gap:9px;margin-top:20px;}
+    .lditem{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.85);}
+    .lditem i{color:var(--primary-light);width:16px;flex-shrink:0;}
+    .lditem a{color:var(--primary-light);text-decoration:none;}
+    .lditem a:hover{text-decoration:underline;}
+    .ladgac-cta{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:11px 26px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;margin-top:18px;}
+    .ladgac-cta:hover{background:var(--primary-light);transform:translateY(-2px);}
+    .lstat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+    .lstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:18px;text-align:center;}
+    .lstat-num{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--primary-light);font-weight:900;line-height:1;margin-bottom:5px;}
+    .lstat-label{font-size:11px;color:rgba(255,255,255,.6);}
+    .lquote{background:rgba(255,255,255,.06);border-radius:var(--radius-sm);padding:18px;border:1px solid rgba(255,255,255,.1);}
+    .lquote p{color:rgba(255,255,255,.75);font-size:13px;font-style:italic;line-height:1.7;}
+    .lquote cite{color:var(--primary-light);font-size:11px;font-weight:600;margin-top:6px;display:block;font-style:normal;}
+    .lservices{background:rgba(255,255,255,.06);border-radius:var(--radius-sm);padding:14px 18px;margin-top:10px;border:1px solid rgba(255,255,255,.1);}
+    .lservices-label{font-size:10px;font-weight:700;color:var(--primary-light);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+    .lservices p{color:rgba(255,255,255,.7);font-size:12px;}
+
+    /* PROVINCE */
+    .province-section{margin-bottom:48px;}
+    .province-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid rgba(34,197,94,.15);}
+    .province-icon{width:42px;height:42px;border-radius:12px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--primary-dark);flex-shrink:0;}
+    .province-header h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--secondary);font-weight:700;}
+    .province-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;}
+
+    /* CARDS */
+    .centre-card{background:white;border-radius:var(--radius);padding:22px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+    .centre-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+    .centre-card.government::before{background:linear-gradient(90deg,#3b82f6,#1d4ed8);}
+    .centre-card.ngo::before{background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .centre-card.private::before{background:linear-gradient(90deg,#a855f7,#7c3aed);}
+    .centre-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+    .centre-type{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:10px;}
+    .type-government{background:rgba(59,130,246,.1);color:#1d4ed8;}
+    .type-ngo{background:rgba(34,197,94,.1);color:var(--primary-dark);}
+    .type-private{background:rgba(168,85,247,.1);color:#7c3aed;}
+    .centre-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--secondary);margin-bottom:9px;font-weight:700;}
+    .centre-detail{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-muted);margin-bottom:5px;}
+    .centre-detail i{color:var(--primary);width:14px;flex-shrink:0;margin-top:3px;}
+    .centre-detail a{color:var(--primary-dark);text-decoration:none;}
+    .centre-detail a:hover{text-decoration:underline;}
+    .centre-footer{margin-top:12px;padding-top:10px;border-top:1px solid rgba(34,197,94,.08);display:flex;gap:5px;flex-wrap:wrap;}
+    .ctag{font-size:11px;background:var(--light);color:var(--text-muted);padding:2px 9px;border-radius:50px;border:1px solid rgba(0,0,0,.06);}
+
+    /* HELPLINES */
+    .helpline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+    .helpline-card{background:white;border-radius:var(--radius);padding:24px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;transition:transform .3s,box-shadow .3s;}
+    .helpline-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .helpline-icon{width:48px;height:48px;border-radius:14px;background:rgba(34,197,94,.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+    .helpline-body h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--secondary);margin-bottom:5px;}
+    .helpline-body p{font-size:12px;color:var(--text-muted);margin-bottom:9px;line-height:1.6;}
+    .helpline-number{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);padding:6px 16px;border-radius:50px;font-weight:700;font-size:12px;text-decoration:none;transition:all .25s;}
+    .helpline-number:hover{background:var(--primary-light);transform:translateY(-1px);}
+    .helpline-free{font-size:11px;color:var(--primary-dark);font-weight:600;margin-top:6px;}
+
+    /* STATS */
+    .stats{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);position:relative;overflow:hidden;}
+    .stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.6;}
+    .stats-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+    .stat-item{padding:32px 20px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-align:center;color:white;transition:transform .3s;backdrop-filter:blur(8px);}
+    .stat-item:hover{transform:translateY(-5px);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--primary-light);line-height:1;margin-bottom:8px;}
+    .stat-text{font-size:.85rem;color:rgba(255,255,255,.7);}
+
+    /* CTA */
+    .cta-section{background:var(--dark);color:white;text-align:center;}
+    .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:white;margin-bottom:16px;}
+    .cta-section p{max-width:680px;margin:0 auto 32px;color:rgba(255,255,255,.7);font-size:1rem;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 6px 24px rgba(34,197,94,.35);}
+    .btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.5);}
+    .btn-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#080f0a;color:white;padding:80px 24px 36px;}
+    .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .footer-logo-icon{width:44px;height:44px;border-radius:50%;background:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0;}
+    .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
+    .social-links{display:flex;gap:12px;}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:50%;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .25s;border:1px solid rgba(255,255,255,.08);}
+    .social-links a:hover{background:var(--primary);color:var(--dark);border-color:var(--primary);transform:translateY(-3px);}
+    .footer-links h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:20px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .25s,padding-left .25s;display:inline-block;}
+    .footer-links a:hover{color:var(--primary-light);padding-left:4px;}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;color:rgba(255,255,255,.55);font-size:14px;}
+    .footer-contact-item i{color:var(--primary);margin-top:3px;width:14px;flex-shrink:0;}
+    .copyright{max-width:1160px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:8px;}
+
+    /* SIDE NAV */
+    .side-nav{height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background:var(--dark);overflow-y:auto;overflow-x:hidden;transition:width .4s cubic-bezier(.25,.46,.45,.94);border-right:1px solid rgba(34,197,94,.2);}
+    .nav-header{padding:30px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+    .nav-header span{font-family:'Playfair Display',serif;font-size:16px;color:white;white-space:nowrap;}
+    .close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:white;transition:background .25s,transform .25s;flex-shrink:0;line-height:1;}
+    .close-btn:hover{background:rgba(34,197,94,.2);transform:rotate(90deg);}
+    .side-nav a{padding:14px 28px;text-decoration:none;font-size:15px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:14px;transition:all .25s;white-space:nowrap;border-left:3px solid transparent;}
+    .side-nav a i{width:18px;text-align:center;color:var(--primary);flex-shrink:0;}
+    .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
+    .nav-overlay.active{display:block;}
+    body.nonscroll{overflow:hidden;}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
+
+    @media(max-width:900px){.ladgac-feature{grid-template-columns:1fr;}.footer-container{grid-template-columns:1fr 1fr;gap:36px;}}
+    @media(max-width:600px){header{padding:14px 20px;}.utility-bar{padding:8px 20px;}.crisis-banner{padding:10px 16px;font-size:12px;}.section{padding:56px 20px;}.ladgac-feature{padding:28px 20px;}.continent-tab{padding:14px 16px;font-size:13px;}.footer-container{grid-template-columns:1fr;gap:28px;}.copyright{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+  <div class="utility-right">
+    <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</div>
+
+<header>
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu"><div></div><div></div><div></div></div>
+    <div class="logo-text"><h1>Journey4Change</h1><span>Healing Together</span></div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-eyebrow"><i class="fas fa-globe"></i> &nbsp; Global Recovery Resources</span>
+    <h2>Treatment Centres &amp;<br>Resources Worldwide</h2>
+    <p>Find addiction treatment centres, helplines, and recovery resources across Africa, Europe, the Americas, Asia, and beyond all in one place. Choose your continent below.</p>
+  </div>
+</div>
+
+<div class="crisis-banner">
+  <i class="fas fa-shield-heart"></i>
+  <span>South Africa 24/7 Free Helpline</span>
+  <a href="tel:0800121314" class="crisis-number">0800 12 13 14 — Free &amp; Confidential</a>
+</div>
+
+<!-- ─── CONTINENT TABS ─── -->
+<div class="continent-nav">
+  <div class="continent-nav-inner">
+    <button class="continent-tab active" onclick="switchContinent('africa',this)">🌍 Africa</button>
+    <button class="continent-tab" onclick="switchContinent('europe',this)">🌍 Europe</button>
+    <button class="continent-tab" onclick="switchContinent('americas',this)">🌎 Americas</button>
+    <button class="continent-tab" onclick="switchContinent('asia',this)">🌏 Asia &amp; Pacific</button>
+    <button class="continent-tab" onclick="switchContinent('global',this)">🌐 Global Orgs</button>
+  </div>
+</div>
+
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search centres, countries, helplines, services..." oninput="applySearch()">
+    </div>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+</div>
+
+<!-- ══════ AFRICA ══════ -->
+<div id="panel-africa" class="continent-panel active">
+<section class="section"><div class="section-inner">
+  <div class="section-title reveal"><div class="section-label">Featured Partner — Limpopo</div><h2>LADGAC</h2></div>
+
+  <div class="ladgac-feature reveal">
+    <div>
+      <span class="ladgac-badge"><i class="fas fa-star"></i> Featured Centre</span>
+      <h3>Limpopo Anti-Drugs, Gangsterism &amp; Crime</h3>
+      <p class="ldesc">LADGAC is a community-focused NGO in Polokwane, going directly into streets and homes to reach those most in need. Nationally known for the frontline work of Mr Moloto and Mr Makhura.</p>
+      <p class="ldesc">Holistic programmes provide structured care, life skills, family reintegration, and vocational development giving each person a real chance at a renewed life.</p>
+      <div class="ladgac-details">
+        <div class="lditem"><i class="fas fa-map-marker-alt"></i> Polokwane, Limpopo, South Africa</div>
+        <div class="lditem"><i class="fas fa-phone"></i> <a href="tel:0152230207">(015) 223 0207</a> &nbsp;/&nbsp; <a href="tel:0150011923">(015) 001 1923</a></div>
+        <div class="lditem"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27763768730" target="_blank" rel="noopener">076 376 8730</a> &nbsp;/&nbsp; <a href="https://wa.me/27761656164" target="_blank" rel="noopener">076 165 6164</a></div>
+        <div class="lditem"><i class="fas fa-mobile-alt"></i> Mr Moloto: <a href="tel:0791093891">079 109 3891</a></div>
+        <div class="lditem"><i class="fas fa-clock"></i> Open 24/7</div>
+        <div class="lditem"><i class="fas fa-globe"></i> <a href="https://ladgacrehab.org.za" target="_blank" rel="noopener">ladgacrehab.org.za</a></div>
+      </div>
+      <a href="https://ladgacrehab.org.za" target="_blank" rel="noopener" class="ladgac-cta"><i class="fas fa-external-link-alt"></i> Visit LADGAC Website</a>
+    </div>
+    <div>
+      <div class="lstat-grid">
+        <div class="lstat"><div class="lstat-num">24/7</div><div class="lstat-label">Always Open</div></div>
+        <div class="lstat"><div class="lstat-num">9</div><div class="lstat-label">Provinces Served</div></div>
+        <div class="lstat"><div class="lstat-num">Free</div><div class="lstat-label">Community Access</div></div>
+        <div class="lstat"><div class="lstat-num">NGO</div><div class="lstat-label">Non-Profit Org</div></div>
+      </div>
+      <div class="lquote"><p>"The holistic approach at LADGAC made all the difference. Every person is treated with dignity and care."</p><cite>— Family Member, Polokwane</cite></div>
+      <div class="lservices"><div class="lservices-label">Services</div><p>Detox supervision &middot; Life skills &middot; Family reintegration &middot; Vocational support &middot; Gang exit &middot; 12-step peer support</p></div>
+    </div>
+  </div>
+
+  <div class="section-title reveal" style="margin-bottom:40px"><div class="section-label">South Africa — All 9 Provinces</div><h2>Government Treatment Centres</h2></div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-tree"></i></div><h3>🇿🇦 Limpopo</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="seshego limpopo polokwane government state funded"><span class="centre-type type-government">Government</span><h4>Seshego Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Seshego, Polokwane</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0152337016">015 233 7016/7</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card ngo searchable" data-text="ladgac limpopo polokwane ngo free 24/7 gang exit community"><span class="centre-type type-ngo">NGO</span><h4>LADGAC Rehabilitation Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Polokwane, Limpopo</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0152230207">(015) 223 0207</a></div><div class="centre-detail"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27763768730" target="_blank" rel="noopener">076 376 8730</a></div><div class="centre-footer"><span class="ctag">Community</span><span class="ctag">24/7</span><span class="ctag">Gang Exit</span><span class="ctag">Free</span></div></div>
+      <div class="centre-card ngo searchable" data-text="lightden limpopo ngo holistic peer vocational"><span class="centre-type type-ngo">NGO</span><h4>LightDen Rehabilitation Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Limpopo</div><div class="centre-detail"><i class="fas fa-globe"></i> <a href="https://ladgacrehabilitation.co.za" target="_blank" rel="noopener">ladgacrehabilitation.co.za</a></div><div class="centre-footer"><span class="ctag">Holistic</span><span class="ctag">Peer Support</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-city"></i></div><h3>🇿🇦 Gauteng</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="rebeiro pretoria gauteng government state"><span class="centre-type type-government">Government</span><h4>Dr Fabian &amp; Florence Rebeiro Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Pretoria</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0127348300">012 734 8300</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card private searchable" data-text="houghton house johannesburg gauteng private medical aid psychiatric detox"><span class="centre-type type-private">Private</span><h4>Houghton House</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Johannesburg</div><div class="centre-detail"><i class="fas fa-globe"></i> <a href="https://www.houghtonhouse.co.za" target="_blank" rel="noopener">houghtonhouse.co.za</a></div><div class="centre-footer"><span class="ctag">Medical Aid</span><span class="ctag">Dual Diagnosis</span><span class="ctag">Detox</span></div></div>
+      <div class="centre-card ngo searchable" data-text="sanca gauteng johannesburg ngo counselling prevention aftercare"><span class="centre-type type-ngo">NGO</span><h4>SANCA Gauteng</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Johannesburg</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0118923829">011 892 3829</a></div><div class="centre-footer"><span class="ctag">Prevention</span><span class="ctag">Counselling</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-mountain"></i></div><h3>🇿🇦 Western Cape</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="kensington cape town western cape government state"><span class="centre-type type-government">Government</span><h4>Kensington Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Cape Town</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0215119169">021 511 9169</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card ngo searchable" data-text="sanca western cape cape town ngo counselling free"><span class="centre-type type-ngo">NGO</span><h4>SANCA Western Cape</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Cape Town</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0800220250">0800 220 250</a></div><div class="centre-footer"><span class="ctag">Counselling</span><span class="ctag">Free</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-water"></i></div><h3>🇿🇦 KwaZulu-Natal</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="madadeni kwazulu natal kzn government"><span class="centre-type type-government">Government</span><h4>Madadeni Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Madadeni</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0343292011">034 329 2011</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="newlands park durban kwazulu natal government"><span class="centre-type type-government">Government</span><h4>Newlands Park Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Durban</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0315783992">031 578 3992</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="khanyani kwazulu natal government"><span class="centre-type type-government">Government</span><h4>Khanyani Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0343173802">034 317 3802</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-sun"></i></div><h3>🇿🇦 Mpumalanga</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="swartfontein mpumalanga government"><span class="centre-type type-government">Government</span><h4>Swartfontein Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Mpumalanga</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0137509918">013 750 9918</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="nkangala mpumalanga government"><span class="centre-type type-government">Government</span><h4>Nkangala Rehabilitation Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Mpumalanga</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0136650620">013 665 0620</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-anchor"></i></div><h3>🇿🇦 Eastern Cape</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="ernest malgas eastern cape port elizabeth gqeberha government"><span class="centre-type type-government">Government</span><h4>Ernest Malgas Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Gqeberha (Port Elizabeth)</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0414540058">041 454 0058</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-seedling"></i></div><h3>🇿🇦 Free State</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="charlotte maxeke bloemfontein free state government"><span class="centre-type type-government">Government</span><h4>Charlotte Maxeke Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Bloemfontein</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0515330815">051 533 0815</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="beyers naude halfway house free state aftercare"><span class="centre-type type-government">Government</span><h4>Beyers Naude Public Halfway House</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Free State</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0664866906">066 486 6906</a></div><div class="centre-footer"><span class="ctag">Halfway House</span><span class="ctag">Aftercare</span></div></div>
+    </div>
+  </div>
+
+  <div class="province-section reveal">
+    <div class="province-header"><div class="province-icon"><i class="fas fa-compass"></i></div><h3>🇿🇦 North West &amp; Northern Cape</h3></div>
+    <div class="province-grid">
+      <div class="centre-card government searchable" data-text="jb marks north west government"><span class="centre-type type-government">Government</span><h4>JB Marks Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> North West</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0182945134">018 294 5134</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="taung north west government"><span class="centre-type type-government">Government</span><h4>Taung Treatment Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Taung</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0539941379">053 994 1379</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+      <div class="centre-card government searchable" data-text="northern cape substance dependency government"><span class="centre-type type-government">Government</span><h4>NC Substance Dependency Centre</h4><div class="centre-detail"><i class="fas fa-map-marker-alt"></i> Northern Cape</div><div class="centre-detail"><i class="fas fa-phone"></i> <a href="tel:0538023300">053 802 3300</a></div><div class="centre-footer"><span class="ctag">Inpatient</span><span class="ctag">State-funded</span></div></div>
+    </div>
+  </div>
+
+  <!-- SA Helplines -->
+  <div class="section-title reveal" style="margin-top:60px"><div class="section-label">South Africa</div><h2>National Helplines</h2></div>
+  <div class="helpline-grid">
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="national substance abuse helpline 0800 12 13 14 free 24/7 south africa"><div class="helpline-icon">📞</div><div class="helpline-body"><h4>National Substance Abuse Helpline</h4><p>Dept of Social Development — free 24/7 crisis referral, counselling and support for any substance.</p><a href="tel:0800121314" class="helpline-number"><i class="fas fa-phone"></i> 0800 12 13 14</a><div class="helpline-free">Free · 24 hours · Confidential</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="sadag south africa depression anxiety group helpline mental health substance"><div class="helpline-icon">🧠</div><div class="helpline-body"><h4>SADAG Helpline</h4><p>Mental health, substance abuse and crisis support nationwide.</p><a href="tel:0800121314" class="helpline-number"><i class="fas fa-phone"></i> 0800 12 13 14</a><div class="helpline-free">Free · sadag.org</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="ke moja whatsapp youth sadag substance abuse chat 13 35"><div class="helpline-icon">💬</div><div class="helpline-body"><h4>Ke Moja WhatsApp Line</h4><p>SADAG youth substance abuse WhatsApp chat. Live counsellors Mon–Sun 8am–5pm.</p><a href="https://wa.me/27871632025" target="_blank" rel="noopener" class="helpline-number"><i class="fab fa-whatsapp"></i> 087 163 2025</a><div class="helpline-free">Ages 13–35</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="sanca national council alcoholism drug dependence south africa 011 892 3829"><div class="helpline-icon">🤝</div><div class="helpline-body"><h4>SANCA National</h4><p>SA National Council on Alcoholism and Drug Dependence — prevention, treatment, recovery.</p><a href="tel:0118923829" class="helpline-number"><i class="fas fa-phone"></i> 011 892 3829</a><div class="helpline-free">sancanational.info</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="sadag sms 32312 south africa counsellor text"><div class="helpline-icon">📱</div><div class="helpline-body"><h4>SADAG SMS Line</h4><p>SMS a counsellor when a voice call isn't possible. Available on all networks.</p><a href="sms:32312" class="helpline-number"><i class="fas fa-comment-sms"></i> SMS 32312</a><div class="helpline-free">Standard SMS rates</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="department social development substance abuse province 0800 220 250"><div class="helpline-icon">🏛️</div><div class="helpline-body"><h4>Dept of Social Development</h4><p>For information on registered centres and provincial substance abuse programmes.</p><a href="tel:0800220250" class="helpline-number"><i class="fas fa-phone"></i> 0800 220 250</a><div class="helpline-free">Free call</div></div></div>
+  </div>
+</div></section>
+</div>
+
+<!-- ══════ EUROPE ══════ -->
+<div id="panel-europe" class="continent-panel">
+<section class="section"><div class="section-inner">
+  <div class="section-title reveal"><div class="section-label">Europe</div><h2>Treatment Centres &amp; Helplines</h2></div>
+  <div class="helpline-grid">
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="frank uk united kingdom drugs helpline 24/7 chat 0300 123 6600"><div class="helpline-icon">🇬🇧</div><div class="helpline-body"><h4>FRANK — United Kingdom</h4><p>National drug information and support service with 24/7 helpline, live chat, and a local service finder across the UK.</p><a href="https://www.talktofrank.com" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> talktofrank.com</a><div class="helpline-free">Helpline: 0300 123 6600 (Free)</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="emcdda european union europe monitoring centre drugs addiction"><div class="helpline-icon">🇪🇺</div><div class="helpline-body"><h4>EMCDDA — European Union</h4><p>European Monitoring Centre for Drugs and Drug Addiction — research, data, and treatment standards for all EU members.</p><a href="https://www.emcdda.europa.eu" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> emcdda.europa.eu</a><div class="helpline-free">EU-wide data &amp; resources</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="bzga germany drug alcohol addiction prevention counselling helpline"><div class="helpline-icon">🇩🇪</div><div class="helpline-body"><h4>BZgA — Germany</h4><p>Federal Centre for Health Education — drug prevention, addiction counselling referrals and national helpline.</p><a href="https://www.drugcom.de" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> drugcom.de</a><div class="helpline-free">Helpline: 01806 313031</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="sicad portugal drug decriminalisation addiction treatment lisbon"><div class="helpline-icon">🇵🇹</div><div class="helpline-body"><h4>SICAD — Portugal</h4><p>Portugal's General-Directorate of Intervention on Addictive Behaviours — pioneer of decriminalisation and treatment-led approach.</p><a href="https://www.sicad.pt" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> sicad.pt</a><div class="helpline-free">National treatment referrals</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="drogues info service france drug helpline free paris 0800 23 13 13"><div class="helpline-icon">🇫🇷</div><div class="helpline-body"><h4>Drogues Info Service — France</h4><p>Free national helpline for drug info, prevention, and treatment referrals across France. Anonymous and confidential.</p><a href="https://www.drogues-info-service.fr" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> drogues-info-service.fr</a><div class="helpline-free">Helpline: 0800 23 13 13 (Free)</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="trimbos netherlands mental health addiction institute helpline"><div class="helpline-icon">🇳🇱</div><div class="helpline-body"><h4>Trimbos Institute — Netherlands</h4><p>Netherlands Institute of Mental Health and Addiction — evidence-based research, guidelines, and support resources.</p><a href="https://www.trimbos.nl/en" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> trimbos.nl</a><div class="helpline-free">Helpline: 0900-1995</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="pnsd spain national drug plan addiction treatment counselling"><div class="helpline-icon">🇪🇸</div><div class="helpline-body"><h4>PNSD — Spain</h4><p>Plan Nacional sobre Drogas — Spain's national drug strategy body with treatment centre directory and prevention resources.</p><a href="https://pnsd.sanidad.gob.es" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> pnsd.sanidad.gob.es</a><div class="helpline-free">National treatment referrals</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="serd italy drug addiction treatment public centre italy free"><div class="helpline-icon">🇮🇹</div><div class="helpline-body"><h4>SerD Network — Italy</h4><p>Italy's national network of public drug addiction services (Servizi per le Dipendenze). Free, public outpatient centres nationwide.</p><a href="https://www.salute.gov.it" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> salute.gov.it</a><div class="helpline-free">Free public treatment network</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="russia national drug helpline 8-800-345-678 free russia addiction"><div class="helpline-icon">🇷🇺</div><div class="helpline-body"><h4>National Drug Helpline — Russia</h4><p>Russia's free national drug addiction and psychiatric helpline for individuals and families seeking referrals.</p><a href="tel:88003450678" class="helpline-number"><i class="fas fa-phone"></i> 8-800-345-678</a><div class="helpline-free">Free within Russia</div></div></div>
+  </div>
+</div></section>
+</div>
+
+<!-- ══════ AMERICAS ══════ -->
+<div id="panel-americas" class="continent-panel">
+<section class="section"><div class="section-inner">
+  <div class="section-title reveal"><div class="section-label">North, Central &amp; South America</div><h2>Treatment Centres &amp; Helplines</h2></div>
+  <div class="helpline-grid">
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="samhsa united states usa free helpline 1-800-662-4357 english spanish 24/7"><div class="helpline-icon">🇺🇸</div><div class="helpline-body"><h4>SAMHSA — United States</h4><p>Substance Abuse and Mental Health Services Administration. Free 24/7 national helpline in English and Spanish.</p><a href="tel:18006624357" class="helpline-number"><i class="fas fa-phone"></i> 1-800-662-4357</a><div class="helpline-free">Free · 24/7 · samhsa.gov</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="camh canada addiction mental health toronto helpline 1-800-463-6273"><div class="helpline-icon">🇨🇦</div><div class="helpline-body"><h4>CAMH — Canada</h4><p>Centre for Addiction and Mental Health — Canada's leading addiction authority. Treatment, research, and public resources.</p><a href="https://www.camh.ca" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> camh.ca</a><div class="helpline-free">Helpline: 1-800-463-6273</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="centros nueva vida mexico drug treatment free government ministry health"><div class="helpline-icon">🇲🇽</div><div class="helpline-body"><h4>Centros Nueva Vida — Mexico</h4><p>Mexico's national network of free government addiction treatment centres, operated by the Ministry of Health.</p><a href="https://www.gob.mx/salud" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> gob.mx/salud</a><div class="helpline-free">Free public treatment</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="caps ad brazil drug alcohol addiction free public centres states brazil"><div class="helpline-icon">🇧🇷</div><div class="helpline-body"><h4>CAPS-AD — Brazil</h4><p>Psychosocial Care Centres for Alcohol and Drugs — Brazil's free public community-based treatment network across all states.</p><a href="https://www.gov.br/saude" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> gov.br/saude</a><div class="helpline-free">Free public centres</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="sedronar argentina drug secretariat 141 helpline treatment prevention"><div class="helpline-icon">🇦🇷</div><div class="helpline-body"><h4>SEDRONAR — Argentina</h4><p>National drug secretariat. Free public treatment referrals, prevention programmes, and a 24/7 helpline.</p><a href="https://www.argentina.gob.ar/sedronar" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> argentina.gob.ar/sedronar</a><div class="helpline-free">Helpline: 141 (Free)</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="colombia ministry justice drug addiction treatment community centres"><div class="helpline-icon">🇨🇴</div><div class="helpline-body"><h4>Ministry of Justice — Colombia</h4><p>Colombia's drug policy and treatment referral portal. Access to community treatment centres and the national drug plan.</p><a href="https://www.minjusticia.gov.co" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> minjusticia.gov.co</a><div class="helpline-free">National referrals</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="senda chile national drug alcohol prevention rehabilitation free treatment 1412"><div class="helpline-icon">🇨🇱</div><div class="helpline-body"><h4>SENDA — Chile</h4><p>National Service for the Prevention and Rehabilitation of Drug and Alcohol Use. Free treatment across Chile.</p><a href="https://www.senda.gob.cl" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> senda.gob.cl</a><div class="helpline-free">Helpline: 1412 (Free)</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="canada drug alcohol helpline ontario 1-800-565-8603 addiction referral"><div class="helpline-icon">🇨🇦</div><div class="helpline-body"><h4>Drug &amp; Alcohol Helpline — Ontario</h4><p>Ontario-based 24/7 drug and alcohol addiction helpline. Free referrals, information and counselling across Canada.</p><a href="tel:18005658603" class="helpline-number"><i class="fas fa-phone"></i> 1-800-565-8603</a><div class="helpline-free">Free · 24/7 · Ontario</div></div></div>
+  </div>
+</div></section>
+</div>
+
+<!-- ══════ ASIA & PACIFIC ══════ -->
+<div id="panel-asia" class="continent-panel">
+<section class="section"><div class="section-inner">
+  <div class="section-title reveal"><div class="section-label">Asia &amp; Pacific</div><h2>Treatment Centres &amp; Helplines</h2></div>
+  <div class="helpline-grid">
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="health direct australia drug alcohol treatment 1800 022 222"><div class="helpline-icon">🇦🇺</div><div class="helpline-body"><h4>Health Direct — Australia</h4><p>Australian Government health and drug service. Find local treatment and counselling services nationwide.</p><a href="https://www.healthdirect.gov.au" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> healthdirect.gov.au</a><div class="helpline-free">Helpline: 1800 022 222</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="new zealand alcohol drug helpline 0800 787 797 free 24/7 nz"><div class="helpline-icon">🇳🇿</div><div class="helpline-body"><h4>Alcohol Drug Helpline — NZ</h4><p>New Zealand's free 24/7 helpline for alcohol and drug concerns. Talk to a counsellor or find local services.</p><a href="tel:0800787797" class="helpline-number"><i class="fas fa-phone"></i> 0800 787 797</a><div class="helpline-free">Free · 24/7</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="nddtc india narcotic drug treatment aiims new delhi helpline 1800-11-0031"><div class="helpline-icon">🇮🇳</div><div class="helpline-body"><h4>NDDTC — India</h4><p>National Drug Dependence Treatment Centre, AIIMS New Delhi — India's premier addiction treatment and research facility.</p><a href="https://www.nddtc.ernet.in" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> nddtc.ernet.in</a><div class="helpline-free">Helpline: 1800-11-0031 (Free)</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="thailand pmnidat chiang mai drug treatment asia government rehab"><div class="helpline-icon">🇹🇭</div><div class="helpline-body"><h4>PMNIDAT — Thailand</h4><p>Princess Mother National Institute on Drug Abuse Treatment — gateway to Thailand's public rehab network.</p><a href="https://www.pmnidat.go.th" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> pmnidat.go.th</a><div class="helpline-free">National treatment network</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="nams singapore national addictions management service outpatient inpatient helpline"><div class="helpline-icon">🇸🇬</div><div class="helpline-body"><h4>NAMS — Singapore</h4><p>National Addictions Management Service — Singapore's public specialist addiction care service.</p><a href="https://www.nams.sg" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> nams.sg</a><div class="helpline-free">Helpline: 6732 6837</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="darc japan drug addiction rehabilitation community peer support network"><div class="helpline-icon">🇯🇵</div><div class="helpline-body"><h4>DARC Network — Japan</h4><p>Drug Addiction Rehabilitation Centers — Japan's peer-led community network for drug recovery across the country.</p><a href="https://darc-ic.com" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> darc-ic.com</a><div class="helpline-free">Peer support network</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="kembali bali indonesia southeast asia addiction treatment luxury detox holistic"><div class="helpline-icon">🇮🇩</div><div class="helpline-body"><h4>Kembali Recovery — Indonesia</h4><p>Internationally recognised addiction treatment centre in Bali offering medically supervised detox and holistic therapy.</p><a href="https://kembalibali.com" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> kembalibali.com</a><div class="helpline-free">Private residential treatment</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="ddb philippines dangerous drugs board treatment centres rehabilitation government"><div class="helpline-icon">🇵🇭</div><div class="helpline-body"><h4>DDB — Philippines</h4><p>Dangerous Drugs Board — Philippines government body overseeing drug demand reduction and treatment centres.</p><a href="https://www.ddb.gov.ph" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> ddb.gov.ph</a><div class="helpline-free">Treatment centre locator</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="korea korea drug prevention rehabilitation helpline 1899-0785 drug addiction"><div class="helpline-icon">🇰🇷</div><div class="helpline-body"><h4>KANAD — South Korea</h4><p>Korea Association on Addiction. National network of addiction counselling, rehabilitation, and mental health support centres.</p><a href="tel:18990785" class="helpline-number"><i class="fas fa-phone"></i> 1899-0785</a><div class="helpline-free">National addiction helpline</div></div></div>
+  </div>
+</div></section>
+</div>
+
+<!-- ══════ GLOBAL ORGS ══════ -->
+<div id="panel-global" class="continent-panel">
+<section class="section"><div class="section-inner">
+  <div class="section-title reveal"><div class="section-label">Worldwide</div><h2>Global Organisations &amp; Directories</h2></div>
+  <div class="helpline-grid">
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="unodc united nations office drugs crime global treatment policy"><div class="helpline-icon">🌍</div><div class="helpline-body"><h4>UNODC — United Nations</h4><p>UN Office on Drugs and Crime — global drug policy, prevention, international treatment standards and country data.</p><a href="https://www.unodc.org" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> unodc.org</a><div class="helpline-free">Global drug crime authority</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="who world health organisation drug dependence treatment mental health programme"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>WHO — World Health Organization</h4><p>WHO/UNODC joint programme on drug dependence treatment — guidelines, evidence standards, and country resources.</p><a href="https://www.who.int" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> who.int</a><div class="helpline-free">International health authority</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="narcotics anonymous na global worldwide peer fellowship 140 countries meetings"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>Narcotics Anonymous — Global</h4><p>Worldwide peer fellowship for people recovering from drug addiction. Meetings in over 140 countries including South Africa.</p><a href="https://www.na.org" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> na.org</a><div class="helpline-free">Free · worldwide meetings</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="alcoholics anonymous aa global worldwide alcohol meetings fellowship"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>Alcoholics Anonymous — Global</h4><p>International fellowship for people recovering from alcohol addiction. Active in South Africa and 180+ countries worldwide.</p><a href="https://www.aa.org" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> aa.org</a><div class="helpline-free">Free · worldwide</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="smart recovery global science mutual aid online in-person meetings worldwide"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>SMART Recovery — Global</h4><p>Science-based mutual aid for addiction recovery. Online and in-person meetings in 30+ countries with evidence-based tools.</p><a href="https://www.smartrecovery.org" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> smartrecovery.org</a><div class="helpline-free">Free · online &amp; in-person</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="recovery.com global directory rehab centres worldwide treatment verified"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>Recovery.com</h4><p>Global directory of verified rehabilitation centres and addiction resources across all continents, including South Africa.</p><a href="https://recovery.com" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> recovery.com</a><div class="helpline-free">Global treatment directory</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-1" data-text="findahelpline global helplines directory search country topic contact"><div class="helpline-icon">🌐</div><div class="helpline-body"><h4>Find A Helpline — Global</h4><p>International directory of mental health and substance abuse helplines searchable by country, topic, and contact method.</p><a href="https://findahelpline.com" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> findahelpline.com</a><div class="helpline-free">Global helpline directory</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-2" data-text="sanca south africa national council alcoholism drug dependence sa"><div class="helpline-icon">🇿🇦</div><div class="helpline-body"><h4>SANCA — South Africa</h4><p>Leading SA national organisation for addiction prevention, treatment, and recovery across all 9 provinces.</p><a href="https://www.sancanational.info" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> sancanational.info</a><div class="helpline-free">011 892 3829</div></div></div>
+    <div class="helpline-card searchable reveal reveal-delay-3" data-text="rehab helper south africa directory private state centres provinces"><div class="helpline-icon">🇿🇦</div><div class="helpline-body"><h4>Rehab Helper — SA Directory</h4><p>South African rehabilitation centre directory covering private and state facilities, with info on treatment options and costs.</p><a href="https://rehabhelper.co.za" target="_blank" rel="noopener" class="helpline-number"><i class="fas fa-globe"></i> rehabhelper.co.za</a><div class="helpline-free">SA treatment locator</div></div></div>
+  </div>
+</div></section>
+</div>
+
+<!-- STATS -->
+<section class="section stats">
+  <div class="section-inner">
+    <div class="section-title reveal" style="margin-bottom:44px"><div class="section-label" style="color:rgba(255,255,255,.5)">The Global Scale</div><h2 style="color:white">By The Numbers</h2></div>
+    <div class="stats-container">
+      <div class="stat-item reveal reveal-delay-1"><div class="stat-number">35M</div><div class="stat-text">People worldwide living with drug use disorders</div></div>
+      <div class="stat-item reveal reveal-delay-2"><div class="stat-number">9</div><div class="stat-text">SA provinces with government treatment centres</div></div>
+      <div class="stat-item reveal reveal-delay-3"><div class="stat-number">140+</div><div class="stat-text">Countries with Narcotics Anonymous meetings</div></div>
+      <div class="stat-item reveal reveal-delay-4"><div class="stat-number">Free</div><div class="stat-text">0800 12 13 14 — SA 24/7 helpline</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="section-inner">
+    <div class="section-title reveal"><div class="section-label" style="color:rgba(255,255,255,.4)">Take the First Step</div><h2>Recovery Is Possible. Reach Out Today.</h2></div>
+    <p class="reveal reveal-delay-1">Help is real, it is free, and it is available right now wherever you are in the world. Call, click, or message, and someone will guide you to the right support.</p>
+    <div class="cta-btns reveal reveal-delay-2">
+      <a href="tel:0800121314" class="btn btn-primary"><i class="fas fa-phone"></i> SA: 0800 12 13 14 Free</a>
+      <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Journey4Change</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo"><div class="footer-logo-icon"><i class="fas fa-seedling"></i></div><div class="footer-logo-text"><h3>Journey4Change</h3><p>Healing Together</p></div></div>
+      <p>Walking alongside individuals and families affected by addiction and mental health — across South Africa and around the world. Free, confidential, and always here.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="my-story.html">My Story</a></li><li><a href="journey4change.html">Journey for Change</a></li><li><a href="mental-health-awareness.html">Mental Health</a></li><li><a href="their-story.html">Their Story</a></li></ul></div>
+    <div class="footer-links"><h4>Recovery</h4><ul><li><a href="recovery.html">Drug Recovery</a></li><li><a href="treatment-centres.html">Treatment Centres</a></li><li><a href="donations.html">Donate</a></li><li><a href="media.html">Media</a></li><li><a href="partnership.html">Our Partners</a></li><li><a href="myteam.html">The Team</a></li></ul></div>
+    <div class="footer-links"><h4>Contact</h4><div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div><div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div></div>
+  </div>
+  <div class="copyright"><span>&copy; 2026 Journey4Change. All rights reserved.</span><span>Powered by neurAila Intelligence Group</span></div>
+</footer>
+
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+    </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+  <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+
+<script>
+  function openNav(){document.getElementById('sideNav').style.width='280px';document.getElementById('navOverlay').classList.add('active');document.body.classList.add('nonscroll');}
+  function closeNav(){document.getElementById('sideNav').style.width='0';document.getElementById('navOverlay').classList.remove('active');document.body.classList.remove('nonscroll');}
+  document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
+  document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
+
+  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  const hdr=document.querySelector('header');
+  window.addEventListener('scroll',()=>{hdr.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,0.25)':'none';});
+
+  let currentContinent='africa';
+  function switchContinent(id,btn){
+    document.querySelectorAll('.continent-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.continent-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('panel-'+id).classList.add('active');
+    btn.classList.add('active');
+    currentContinent=id;
+    document.getElementById('searchInput').value='';
+    document.getElementById('resultCount').textContent='';
+    document.querySelectorAll('#panel-'+id+' .reveal:not(.visible)').forEach(el=>ro.observe(el));
+    window.scrollTo({top:document.querySelector('.continent-nav').offsetTop-70,behavior:'smooth'});
+  }
+
+  function applySearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const panel=document.getElementById('panel-'+currentContinent);
+    const items=panel.querySelectorAll('.searchable');
+    let visible=0;
+    items.forEach(item=>{
+      const text=(item.dataset.text||'')+' '+item.innerText.toLowerCase();
+      const show=!q||text.includes(q);
+      item.style.display=show?'':'none';
+      if(show)visible++;
+    });
+    panel.querySelectorAll('.province-section').forEach(ps=>{
+      const hasVisible=[...ps.querySelectorAll('.searchable')].some(c=>c.style.display!=='none');
+      ps.style.display=hasVisible?'':'none';
+    });
+    document.getElementById('resultCount').textContent=q?visible+' result'+(visible!==1?'s':'')+' found':'';
+  }
+</script>
+</body>
+</html>
