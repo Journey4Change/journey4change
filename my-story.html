@@ -966,7 +966,7 @@
           <li><a href="journey4change.html">Journey for Change</a></li>
           <li><a href="mental-health-awareness.html">Mental Health</a></li>
           <li><a href="their-story.html">Their Story</a></li>
-          <li><a href=""myteam.html">The Team</a></li>
+          <li><a href="myteam.html">The Team</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -1006,7 +1006,7 @@
   <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
   <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
   <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
-  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-disorders.html"><i class="fas fa-list"></i> Mental Disorders</a>
   <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
   <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
   <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
@@ -1054,6 +1054,19 @@
         ? '0 4px 24px rgba(0,0,0,0.3)'
         : 'none';
     });
+
+    // ── Auto-highlight current page in side nav (works no matter which page this file is copied to) ──
+    (function setActiveNavLink() {
+      const currentPage = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.side-nav a').forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
