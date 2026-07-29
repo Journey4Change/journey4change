@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Healing Journey — Share your story of surviving depression or anxiety. Journey4Change creates a safe space for South Africans to speak, heal, and inspire.">
-  <title>Healing Journey - Journey4Change</title>
+  <meta name="description" content="Journey4Change - The 3,500 km route across all 9 provinces of South Africa for mental health awareness.">
+  <title>Journey for Change - Journey4Change</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     :root {
       --primary: #22c55e;
@@ -18,11 +18,11 @@
       --text: #1c2b20;
       --text-muted: #4b6a53;
       --white: #ffffff;
-      --crisis: #dc2626;
+      --accent: #f97316;
       --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
       --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
       --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
-      --radius: 18px;
+      --radius: 20px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,31 +32,42 @@
       font-family: 'DM Sans', sans-serif;
       background: var(--light);
       color: var(--text);
-      line-height: 1.75;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
     /* ── UTILITY BAR ── */
     .utility-bar {
-      background: var(--dark); color: rgba(255,255,255,0.65);
+      background: var(--dark);
+      color: rgba(255,255,255,0.65);
       padding: 9px 40px;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 13px;
     }
     .utility-left { display: flex; align-items: center; gap: 8px; }
     .utility-left i { color: var(--primary); font-size: 12px; }
     .utility-right a {
-      color: rgba(255,255,255,0.65); margin-left: 18px; font-size: 16px;
-      transition: color 0.25s, transform 0.25s; display: inline-block;
+      color: rgba(255,255,255,0.65);
+      margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
     }
     .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
 
     /* ── HEADER ── */
     header {
-      background: rgba(15,31,21,0.96); backdrop-filter: blur(12px);
-      color: white; padding: 14px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      position: sticky; top: 0; z-index: 900;
+      background: rgba(15,31,21,0.96);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
       border-bottom: 1px solid rgba(34,197,94,0.15);
       transition: box-shadow 0.3s;
     }
@@ -78,398 +89,457 @@
       background: var(--primary); color: var(--dark);
       padding: 9px 22px; border-radius: 50px;
       font-weight: 600; font-size: 14px;
-      text-decoration: none; display: flex; align-items: center; gap: 7px;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 7px;
       transition: all 0.25s;
     }
-    .login-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.35); }
-
-    /* ── CRISIS BAND ── */
-    .crisis-band {
-      background: #7f1d1d; color: white;
-      padding: 12px 40px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 14px; font-size: 13px; font-weight: 600;
-      text-align: center; flex-wrap: wrap;
+    .login-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
     }
-    .crisis-band i { animation: alertPulse 2s ease-in-out infinite; }
-    .crisis-band a { color: white; text-decoration: underline; text-underline-offset: 3px; }
 
     /* ── HERO ── */
     .hero {
-      background: var(--dark); position: relative; overflow: hidden;
-      padding: 110px 60px 100px; text-align: center;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      padding: 110px 60px 90px;
     }
     .hero::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(ellipse 60% 70% at 50% 40%, rgba(34,197,94,0.09) 0%, transparent 70%),
-        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(34,197,94,0.12) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
-    .hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--primary-light);
       border: 1px solid rgba(74,222,128,0.35);
-      padding: 7px 18px; border-radius: 50px; margin-bottom: 28px;
+      padding: 7px 18px; border-radius: 50px;
+      margin-bottom: 28px;
       animation: fadeInUp 0.7s ease-out both;
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 6vw, 4.8rem);
-      font-weight: 900; color: white; line-height: 1.05; margin-bottom: 22px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900; color: white;
+      line-height: 1.05; margin-bottom: 24px;
       animation: fadeInUp 0.7s 0.15s ease-out both;
     }
     .hero h1 em { font-style: italic; color: var(--primary-light); }
     .hero p {
-      color: rgba(255,255,255,0.65); font-size: 1.1rem;
-      max-width: 580px; margin: 0 auto 40px; line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem; max-width: 620px;
+      line-height: 1.8; margin-bottom: 40px;
       animation: fadeInUp 0.7s 0.3s ease-out both;
     }
-    .hero-btns {
-      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+
+    /* Stats bar inside hero */
+    .hero-stats {
+      display: flex; gap: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 600px;
       animation: fadeInUp 0.7s 0.45s ease-out both;
     }
+    .hero-stat {
+      flex: 1;
+      padding: 22px 24px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      text-align: center;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--primary-light);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 11px; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em; margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    /* Route BG text */
+    .hero-bg-text {
+      position: absolute;
+      right: -20px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(120px, 20vw, 260px);
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* ── PROGRESS RIBBON ── */
+    .progress-ribbon {
+      background: white;
+      border-bottom: 1px solid #e8f0e8;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .progress-ribbon::-webkit-scrollbar { display: none; }
+    .ribbon-stop {
+      display: flex; align-items: center; gap: 0;
+      flex-shrink: 0;
+    }
+    .ribbon-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #d1e7d1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700;
+      color: var(--text-muted);
+      transition: all 0.3s;
+      cursor: pointer;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .ribbon-dot:hover, .ribbon-dot.done {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--dark);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+    }
+    .ribbon-dot.maybe {
+      border-style: dashed;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .ribbon-dot.maybe:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 0 0 4px rgba(249,115,22,0.2);
+    }
+    .ribbon-dot .ribbon-label {
+      position: absolute;
+      top: 38px;
+      left: 50%; transform: translateX(-50%);
+      font-size: 10px; font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .ribbon-line {
+      height: 2px; width: 48px;
+      background: linear-gradient(90deg, #d1e7d1, #d1e7d1);
+      flex-shrink: 0;
+    }
+    .ribbon-line.dashed {
+      background: none;
+      border-top: 2px dashed #e5c9a8;
+    }
+
+    /* ── PROVINCES ── */
+    .provinces-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--secondary); font-weight: 900;
+    }
+
+    /* Divider between confirmed provinces and possible route */
+    .route-divider {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 56px 0 32px;
+    }
+    .route-divider::before,
+    .route-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(90deg, #d8b48a 0, #d8b48a 6px, transparent 6px, transparent 12px);
+    }
+    .route-divider span {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Province card */
+    .province-card {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 0;
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+      border: 1px solid rgba(34,197,94,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .province-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease;
+    }
+    .province-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Alternate image side */
+    .province-card:nth-child(even) {
+      grid-template-columns: 1fr 320px;
+    }
+    .province-card:nth-child(even) .province-img { order: 2; }
+    .province-card:nth-child(even) .province-body { order: 1; }
+
+    .province-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .province-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .province-card:hover .province-img img { transform: scale(1.06); }
+
+    .province-num {
+      position: absolute;
+      top: 20px; left: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(255,255,255,0.25);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .province-status {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: rgba(15,31,21,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--primary-light);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .province-body {
+      padding: 40px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .province-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .province-tag i { font-size: 10px; }
+
+    .province-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--secondary);
+      margin-bottom: 6px; line-height: 1.1;
+    }
+
+    .province-divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin: 16px 0;
+    }
+
+    .stops-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 14px;
+    }
+
+    .stops-grid {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .stop-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 14px;
+      background: #f4f9f4;
+      border-radius: 10px;
+      font-size: 14px; color: var(--text);
+      transition: background 0.25s, transform 0.25s;
+    }
+    .stop-item:hover {
+      background: rgba(34,197,94,0.1);
+      transform: translateX(4px);
+    }
+    .stop-icon {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      background: rgba(34,197,94,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--primary-dark);
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* route tag */
+    .route-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,0.08);
+      color: var(--primary-dark);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 12px; font-weight: 600;
+    }
+
+    /* ── POSSIBLE ROUTE (Lesotho) card variant ── */
+    .province-card.possible {
+      border: 2px dashed rgba(249,115,22,0.35);
+      background: #fffaf5;
+    }
+    .province-card.possible .province-status {
+      background: rgba(249,115,22,0.85);
+      border-color: rgba(249,115,22,0.5);
+      color: white;
+    }
+    .province-card.possible .province-tag {
+      color: var(--accent);
+    }
+    .province-card.possible .province-divider {
+      background: linear-gradient(90deg, var(--accent), #fb923c);
+    }
+    .province-card.possible .stop-item {
+      background: rgba(249,115,22,0.06);
+    }
+    .province-card.possible .stop-item:hover {
+      background: rgba(249,115,22,0.14);
+    }
+    .province-card.possible .stop-icon {
+      background: rgba(249,115,22,0.15);
+      color: var(--accent);
+    }
+    .province-card.possible .route-tag {
+      background: rgba(249,115,22,0.1);
+      color: var(--accent);
+    }
+    .possible-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: rgba(249,115,22,0.07);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .possible-note i { color: var(--accent); margin-top: 2px; flex-shrink: 0; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--secondary);
+      position: relative; overflow: hidden;
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(34,197,94,0.15) 0%, transparent 70%);
+    }
+    .cta-banner-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white; font-weight: 900; margin-bottom: 18px;
+    }
+    .cta-banner p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem; margin-bottom: 36px;
+    }
+    .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 32px; font-family: 'DM Sans', sans-serif;
       font-size: 15px; font-weight: 600;
-      border-radius: 50px; text-decoration: none; transition: all 0.3s;
-      cursor: pointer; border: none;
+      border-radius: 50px; text-decoration: none;
+      transition: all 0.3s;
     }
-    .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 6px 24px rgba(34,197,94,0.3); }
-    .btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(34,197,94,0.4); }
-    .btn-ghost { background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(255,255,255,0.25); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
-
-    /* ── PAGE NAV ── */
-    .page-nav {
-      background: white; border-bottom: 1px solid #e8f0e8;
-      padding: 0 40px; display: flex; gap: 0;
-      overflow-x: auto; scrollbar-width: none;
-    }
-    .page-nav::-webkit-scrollbar { display: none; }
-    .page-nav a {
-      display: flex; align-items: center; gap: 8px;
-      padding: 17px 22px; font-size: 13px; font-weight: 600;
-      color: var(--text-muted); text-decoration: none;
-      border-bottom: 2px solid transparent; white-space: nowrap;
-      transition: all 0.25s;
-    }
-    .page-nav a:hover { color: var(--primary-dark); border-bottom-color: var(--primary); }
-
-    /* ── MAIN ── */
-    main { max-width: 1160px; margin: 0 auto; padding: 80px 40px 100px; }
-
-    .section-head { margin-bottom: 48px; }
-    .section-label {
-      display: inline-block; font-size: 11px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--primary-dark); margin-bottom: 10px;
-    }
-    .section-head h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      color: var(--secondary); font-weight: 900;
-    }
-    .section-head p { color: var(--text-muted); font-size: 1rem; margin-top: 12px; max-width: 600px; }
-    .section-divider {
-      width: 48px; height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      border-radius: 2px; margin-top: 14px;
-    }
-
-    /* ── STORY CARDS ── */
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 60px;
-    }
-    .story-card {
-      background: white; border-radius: var(--radius);
-      border: 1px solid rgba(34,197,94,0.08);
-      box-shadow: var(--shadow-sm);
-      padding: 32px 28px;
-      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
-      position: relative; overflow: hidden;
-      opacity: 0; transform: translateY(18px);
-    }
-    .story-card.visible {
-      opacity: 1; transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s, border-color 0.35s;
-    }
-    .story-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(34,197,94,0.2); }
-    .story-card::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 100%; height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-    }
-    .story-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-    .story-avatar {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(34,197,94,0.1); border: 2px solid rgba(34,197,94,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 900; color: var(--primary-dark);
-      flex-shrink: 0;
-    }
-    .story-quote-icon { font-size: 2rem; color: rgba(34,197,94,0.15); line-height: 1; }
-    .story-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--secondary); font-weight: 700; margin-bottom: 2px; }
-    .story-meta { font-size: 12px; color: var(--text-muted); }
-    .story-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: rgba(34,197,94,0.08); color: var(--primary-dark);
-      border: 1px solid rgba(34,197,94,0.2);
-      padding: 4px 12px; border-radius: 50px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
-      margin-bottom: 14px;
-    }
-    .story-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
-    .story-pullquote {
-      border-left: 3px solid var(--primary);
-      padding: 12px 16px;
-      background: rgba(34,197,94,0.05);
-      border-radius: 0 10px 10px 0;
-      font-style: italic; font-size: 13px; font-weight: 600;
-      color: var(--secondary);
-    }
-
-    /* ── SHARE FORM ── */
-    .share-section {
-      background: var(--secondary);
-      border-radius: var(--radius);
-      padding: 56px 52px;
-      margin-bottom: 60px;
-      position: relative; overflow: hidden;
-    }
-    .share-section::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 70% at 90% 50%, rgba(34,197,94,0.12) 0%, transparent 70%);
-    }
-    .share-inner {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
-    }
-    .share-text .section-label { color: rgba(255,255,255,0.45); }
-    .share-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem); color: white; font-weight: 900; margin-bottom: 16px;
-    }
-    .share-text p { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; margin-bottom: 14px; }
-    .share-promise {
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; padding: 18px 20px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .promise-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.7); }
-    .promise-item i { color: var(--primary-light); font-size: 12px; flex-shrink: 0; }
-
-    .story-form { }
-    .form-group { margin-bottom: 16px; }
-    .form-group label {
-      display: block; font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.7); margin-bottom: 7px;
-    }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 13px 16px;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      font-family: 'DM Sans', sans-serif; font-size: 15px;
-      color: white; background: rgba(255,255,255,0.08);
-      transition: all 0.25s;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      outline: none; border-color: var(--primary);
-      background: rgba(255,255,255,0.12); box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .form-group select { color: rgba(255,255,255,0.7); }
-    .form-group select option { background: var(--secondary); color: white; }
-    .form-group textarea { resize: vertical; min-height: 130px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .submit-btn {
-      width: 100%; padding: 14px; border: none; border-radius: 50px;
+    .btn-primary {
       background: var(--primary); color: var(--dark);
-      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: all 0.25s;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 4px;
+      box-shadow: 0 6px 24px rgba(34,197,94,0.3);
     }
-    .submit-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.35); }
-    .form-success {
-      display: none; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
-      border-radius: 10px; padding: 16px 20px; color: var(--primary-light);
-      font-weight: 600; margin-top: 14px; text-align: center;
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
     }
-
-    /* Share method selector */
-    .share-method-group {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.4);
     }
-    .share-method-option {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      padding: 16px 10px; border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 12px; cursor: pointer; transition: all 0.22s;
-      background: rgba(255,255,255,0.06); position: relative;
-      text-align: center;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-3px);
     }
-    .share-method-option input {
-      position: absolute; opacity: 0; width: 0; height: 0;
-    }
-    .share-method-option i { font-size: 1.3rem; color: rgba(255,255,255,0.55); transition: color 0.22s; }
-    .share-method-option span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); }
-    .share-method-option:hover { border-color: rgba(34,197,94,0.4); background: rgba(255,255,255,0.09); }
-    .share-method-option.selected {
-      border-color: var(--primary); background: rgba(34,197,94,0.14);
-      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
-    }
-    .share-method-option.selected i,
-    .share-method-option.selected span { color: var(--primary-light); }
-
-    /* Share result panel */
-    .share-result {
-      display: none; margin-top: 16px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(34,197,94,0.3);
-      border-radius: 14px; padding: 20px 22px;
-    }
-    .share-result h4 {
-      font-family: 'Playfair Display', serif; font-size: 1rem; color: white;
-      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
-    }
-    .share-result h4 i { color: var(--primary-light); }
-    .share-result-preview {
-      background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px 16px;
-      font-size: 12.5px; color: rgba(255,255,255,0.75);
-      white-space: pre-wrap; max-height: 180px; overflow-y: auto;
-      line-height: 1.6; font-family: 'DM Sans', sans-serif;
-    }
-    .share-result .btn { margin-top: 14px; width: 100%; justify-content: center; }
-    .share-result-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 10px; line-height: 1.6; }
-
-    /* ── COPING TOOLS ── */
-    .coping-section {
-      background: white; border-radius: var(--radius);
-      padding: 52px; box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(34,197,94,0.08);
-      margin-bottom: 60px;
-    }
-    .coping-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px; margin-top: 32px;
-    }
-    .coping-card {
-      background: var(--light); border-radius: 14px;
-      padding: 24px 22px; border: 1px solid rgba(34,197,94,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .coping-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .coping-icon {
-      width: 48px; height: 48px; border-radius: 13px;
-      background: rgba(34,197,94,0.1);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary-dark); font-size: 1.2rem;
-      margin-bottom: 14px;
-    }
-    .coping-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--secondary); margin-bottom: 8px; }
-    .coping-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-
-    /* ── RESOURCES SECTION ── */
-    .resources-section { margin-bottom: 60px; }
-    .resources-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
-    }
-    .resource-card {
-      background: white; border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--shadow-sm); border: 1px solid rgba(34,197,94,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .resource-card-top { padding: 22px 22px 16px; border-bottom: 1px solid #f0f4f0; }
-    .resource-card-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; margin-bottom: 12px;
-    }
-    .resource-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--secondary); margin-bottom: 6px; }
-    .resource-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-    .resource-card-footer {
-      padding: 14px 22px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .resource-link {
-      font-size: 13px; font-weight: 700; text-decoration: none;
-      color: var(--primary-dark); display: flex; align-items: center; gap: 5px;
-      transition: gap 0.2s;
-    }
-    .resource-link:hover { gap: 10px; }
-    .resource-contact { font-size: 12px; color: var(--text-muted); }
-
-    /* ── EMERGENCY BLOCK ── */
-    .emergency-block {
-      background: linear-gradient(135deg, #7f1d1d, #991b1b);
-      border-radius: var(--radius);
-      padding: 50px 52px;
-      margin-bottom: 60px;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .emergency-block::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(255,100,100,0.1) 0%, transparent 70%);
-    }
-    .emergency-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
-    .emergency-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      color: #fca5a5; padding: 6px 16px; border-radius: 50px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .emergency-block h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.4rem); color: white; font-weight: 900; margin-bottom: 14px;
-    }
-    .emergency-block p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 28px; line-height: 1.7; }
-    .emergency-numbers {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px;
-    }
-    .emergency-num {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px; padding: 16px;
-      text-align: center; transition: background 0.25s;
-    }
-    .emergency-num:hover { background: rgba(255,255,255,0.13); }
-    .emergency-num-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
-    .emergency-num-value { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 2px; }
-    .emergency-num-desc { font-size: 11px; color: rgba(255,255,255,0.45); }
-    .emergency-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-crisis {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; border-radius: 50px; font-size: 14px; font-weight: 700;
-      text-decoration: none; transition: all 0.25s;
-    }
-    .btn-crisis-white { background: white; color: var(--crisis); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-    .btn-crisis-white:hover { background: #fef2f2; transform: translateY(-2px); }
-    .btn-crisis-outline { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
-    .btn-crisis-outline:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
-
-    /* ── HOPE CLOSE ── */
-    .hope-close {
-      background: var(--light); border-radius: var(--radius);
-      padding: 56px; text-align: center;
-      border: 1px solid rgba(34,197,94,0.1);
-    }
-    .hope-close-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
-    .hope-close h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--secondary); margin-bottom: 16px; }
-    .hope-close p { color: var(--text-muted); font-size: 1.05rem; max-width: 540px; margin: 0 auto 10px; line-height: 1.8; }
 
     /* ── FOOTER ── */
-    footer { background: #080f0a; color: white; padding: 80px 24px 36px; }
+    footer {
+      background: #080f0a;
+      color: white;
+      padding: 80px 24px 36px;
+    }
     .footer-container {
       max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 50px;
-      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
     .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
@@ -537,33 +607,32 @@
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @keyframes alertPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .share-inner { grid-template-columns: 1fr; gap: 40px; }
+      .province-card,
+      .province-card:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+      .province-card:nth-child(even) .province-img { order: 0; }
+      .province-card:nth-child(even) .province-body { order: 0; }
+      .province-img { height: 240px; }
       .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .hero { padding: 80px 30px 70px; }
+      .progress-ribbon { padding: 20px 30px; }
     }
     @media (max-width: 600px) {
       header { padding: 14px 20px; }
       .utility-bar { padding: 8px 20px; }
-      .hero { padding: 80px 24px 70px; }
-      main { padding: 60px 20px 80px; }
-      .share-section { padding: 36px 24px; }
-      .coping-section { padding: 36px 24px; }
-      .emergency-block { padding: 36px 24px; }
-      .hope-close { padding: 40px 24px; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .hero-stat:last-child { border-bottom: none; }
+      .province-body { padding: 28px 24px; }
+      .footer-container { grid-template-columns: 1fr; }
       .copyright { flex-direction: column; text-align: center; }
-      .share-method-group { grid-template-columns: 1fr; }
+      .provinces-section { padding: 60px 20px 80px; }
+      .cta-banner { padding: 60px 24px; }
     }
   </style>
 </head>
@@ -578,7 +647,7 @@
       <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
       <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
 
@@ -595,400 +664,341 @@
     </div>
   </header>
 
-  <!-- Crisis Band -->
-  <div class="crisis-band" role="alert">
-    <i class="fas fa-phone-alt"></i>
-    <span>If you are in crisis right now, call SADAG:</span>
-    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
-    <span>· Available 24/7 · Free · You are not alone</span>
-  </div>
-
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-bg-text">ROUTE</div>
     <div class="hero-content">
-      <span class="hero-eyebrow"><i class="fas fa-heart"></i> Healing Journey</span>
-      <h1>Your Story Can <em>Save</em> a Life</h1>
-      <p>This is a safe space for South Africans to share their journeys through depression, anxiety, and survival. Every story matters. Every voice matters. <em>You</em> matter.</p>
-      <div class="hero-btns">
-        <a href="#share" class="btn btn-primary"><i class="fas fa-pen"></i> Share Your Story</a>
-        <a href="#stories" class="btn btn-ghost"><i class="fas fa-book-open"></i> Read Stories</a>
+      <span class="hero-eyebrow"><i class="fas fa-route"></i> The Route</span>
+      <h1>+4 500 km Across<br><em>9 Provinces</em></h1>
+      <p>One step at a time, I will travel across every corner of South Africa stopping in towns, cities, schools, and churches to break the silence around depression and suicide, and remind every South African that healing is possible.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">+4 500</div>
+          <div class="hero-stat-label">Kilometres</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">9</div>
+          <div class="hero-stat-label">Provinces</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">∞</div>
+          <div class="hero-stat-label">Lives to Touch</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Page Nav -->
-  <nav class="page-nav" aria-label="Page sections">
-    <a href="#stories"><i class="fas fa-book-open"></i> Stories</a>
-    <a href="#share"><i class="fas fa-pen"></i> Share Yours</a>
-    <a href="#coping"><i class="fas fa-seedling"></i> Coping Tools</a>
-    <a href="#resources"><i class="fas fa-hands-helping"></i> Resources</a>
-    <a href="#emergency"><i class="fas fa-phone-alt"></i> Emergency</a>
-  </nav>
+  <!-- Province Ribbon -->
+  <div class="progress-ribbon" aria-label="Province stops">
+    <div class="ribbon-stop">
+      <div class="ribbon-dot done" title="Limpopo">1<span class="ribbon-label">Limpopo</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Mpumalanga">2<span class="ribbon-label">Mpumalanga</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Gauteng">3<span class="ribbon-label">Gauteng</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="North West">4<span class="ribbon-label">North West</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Northern Cape">5<span class="ribbon-label">N. Cape</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Free State">6<span class="ribbon-label">Free State</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="KwaZulu-Natal">7<span class="ribbon-label">KZN</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Eastern Cape">8<span class="ribbon-label">E. Cape</span></div>
+      <div class="ribbon-line"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot" title="Western Cape">9<span class="ribbon-label">W. Cape</span></div>
+      <div class="ribbon-line dashed"></div>
+    </div>
+    <div class="ribbon-stop">
+      <div class="ribbon-dot maybe" title="Lesotho — Possible Route">?<span class="ribbon-label">Lesotho</span></div>
+    </div>
+  </div>
 
-  <main>
-
-    <!-- Stories -->
-    <div id="stories">
-      <div class="section-head reveal">
-        <span class="section-label">Survivor Stories</span>
-        <h2>Stories of Hope & Healing</h2>
-        <p>Real journeys from darkness to light. These voices belong to people who kept going and want you to know that you can too.</p>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="story-grid">
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">Lerato M.</div>
-              <div class="story-meta">Limpopo · 2024</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-brain"></i> Depression</div>
-          <p class="story-text">After losing my grandmother I couldn't get out of bed. Three years of silence and shame. I found Journey4Change and realised there was a name for what I was feeling and that I wasn't weak. Through therapy and community, I found my way back to myself.</p>
-          <div class="story-pullquote">Small moments of joy became my foundation.</div>
-        </div>
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">Sipho K.</div>
-              <div class="story-meta">Gauteng · 2024</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-shield-alt"></i> Suicidal Ideation</div>
-          <p class="story-text">I got to the edge in 2023. I didn't tell anyone for months. One night I called SADAG and a stranger talked me through it. That call changed everything. I'm still here. I'm in therapy now. I jog every morning. Life is hard but I choose it every day.</p>
-          <div class="story-pullquote">Asking for help was the bravest thing I ever did.</div>
-        </div>
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">Elena R.</div>
-              <div class="story-meta">Western Cape · 2023</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-cloud-rain"></i> Major Depression</div>
-          <p class="story-text">After losing my job and going through a divorce, depression hit like a tsunami. I felt worthless. Support groups and volunteering slowly brought light back. Recovery taught me resilience I never knew I had. Today I help facilitate a community healing circle every month.</p>
-          <div class="story-pullquote">Finding purpose in helping others healed me.</div>
-        </div>
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">David K.</div>
-              <div class="story-meta">KwaZulu-Natal · 2024</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-users"></i> Social Anxiety</div>
-          <p class="story-text">I avoided people, classes, everything. Through group therapy and mindfulness I learned self-compassion. Now I'm studying and have real friendships. The anxious version of me is still there sometimes but he's brave now too. One small step at a time.</p>
-          <div class="story-pullquote">Self-compassion was the key to my healing.</div>
-        </div>
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">Nomsa T.</div>
-              <div class="story-meta">Free State · 2025</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-bolt"></i> Anxiety & PTSD</div>
-          <p class="story-text">Domestic violence left me scared of everything. I didn't think healing was possible for me. A social worker referred me to SADAG. Two years later I have my own apartment, I'm finishing my diploma, and I speak at awareness events. My pain became my purpose.</p>
-          <div class="story-pullquote">Healing is not linear, but it is real.</div>
-        </div>
-
-        <div class="story-card">
-          <div class="story-card-header">
-            <div>
-              <div class="story-name">James O.</div>
-              <div class="story-meta">Eastern Cape · 2024</div>
-            </div>
-            <div class="story-quote-icon">"</div>
-          </div>
-          <div class="story-badge"><i class="fas fa-running"></i> Recovery Journey</div>
-          <p class="story-text">Unemployment after matric broke me. I spent 18 months barely leaving the house. My mother noticed and took me to a clinic. The counsellor said something that stayed with me: "Your future self is depending on the choices you make today." I'm still choosing to stay.</p>
-          <div class="story-pullquote">My future self was worth fighting for.</div>
-        </div>
-
-      </div>
+  <!-- Provinces -->
+  <section class="provinces-section">
+    <div class="section-header">
+      <span class="section-label">The Full Route</span>
+      <h2>Province by Province</h2>
     </div>
 
-    <!-- Share Form -->
-    <div id="share">
-      <div class="share-section reveal">
-        <div class="share-inner">
-          <div class="share-text">
-            <span class="section-label">Add Your Voice</span>
-            <h2>Share Your Story</h2>
-            <p>Your experience, whatever it is, that can be the reason someone else chooses to seek help. You don't need to have everything figured out. You just need to be willing to speak.</p>
-            <p>All stories are reviewed before publishing and you choose your own level of anonymity.</p>
-            <div class="share-promise">
-              <div class="promise-item"><i class="fas fa-lock"></i> Your information is kept private</div>
-              <div class="promise-item"><i class="fas fa-eye"></i> You choose how much to share</div>
-              <div class="promise-item"><i class="fas fa-check-circle"></i> Stories are reviewed with care</div>
-              <div class="promise-item"><i class="fas fa-heart"></i> Every story is valued and respected</div>
-            </div>
-          </div>
-          <div class="story-form">
-            <form id="storyForm" onsubmit="submitStory(event)" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="sname">Display Name</label>
-                  <input type="text" id="sname" placeholder="e.g. Lerato M. or Anonymous" required>
-                </div>
-                <div class="form-group">
-                  <label for="slocation">Province</label>
-                  <select id="slocation">
-                    <option value="">Select province…</option>
-                    <option>Limpopo</option>
-                    <option>Gauteng</option>
-                    <option>Western Cape</option>
-                    <option>KwaZulu-Natal</option>
-                    <option>Eastern Cape</option>
-                    <option>Free State</option>
-                    <option>North West</option>
-                    <option>Mpumalanga</option>
-                    <option>Northern Cape</option>
-                    <option>Outside South Africa</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="scondition">What did you face?</label>
-                <select id="scondition">
-                  <option value="">Select…</option>
-                  <option>Depression</option>
-                  <option>Anxiety</option>
-                  <option>Suicidal Ideation / Attempt</option>
-                  <option>PTSD</option>
-                  <option>Social Anxiety</option>
-                  <option>Bipolar Disorder</option>
-                  <option>Substance Abuse</option>
-                  <option>Grief & Loss</option>
-                  <option>Prefer not to say</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sstory">Your Story</label>
-                <textarea id="sstory" rows="6" placeholder="Share your journey in your own words. There is no wrong way to tell it…" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="squote">A sentence that helped you (optional)</label>
-                <input type="text" id="squote" placeholder="e.g. 'Small steps still count as movement'">
-              </div>
-              <div class="form-group">
-                <label for="semail">Email (optional — only for follow-up)</label>
-                <input type="email" id="semail" placeholder="your@email.com">
-              </div>
-
-              <div class="form-group">
-                <label>How would you like to send your story?</label>
-                <div class="share-method-group" id="shareMethodGroup">
-                  <label class="share-method-option selected" data-method="email">
-                    <input type="radio" name="smethod" value="email" checked>
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                  </label>
-                  <label class="share-method-option" data-method="whatsapp">
-                    <input type="radio" name="smethod" value="whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                  </label>
-                  <label class="share-method-option" data-method="instagram">
-                    <input type="radio" name="smethod" value="instagram">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                  </label>
-                </div>
-              </div>
-
-              <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i> Submit My Story
-              </button>
-              <div class="form-success" id="storySuccess">
-                <i class="fas fa-check-circle"></i> Thank you for your courage. Here's your story, ready to send.
-              </div>
-
-              <div class="share-result" id="shareResult">
-                <h4><i class="fas fa-paper-plane"></i> Sending via <span id="resultMethodName"></span></h4>
-                <div class="share-result-preview" id="resultPreview"></div>
-                <a id="resultActionBtn" class="btn btn-primary" target="_blank" rel="noopener" href="#">
-                  <i class="fas fa-external-link-alt"></i> Open
-                </a>
-                <p class="share-result-note" id="resultNote"></p>
-              </div>
-            </form>
-          </div>
+    <!-- 1. Limpopo -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="limpopo.png" alt="Limpopo province landscape">
+        <div class="province-num">01</div>
+        <div class="province-status">Starting Point</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-flag"></i> Province 1 of 9</span>
+        <h2 class="province-name">Limpopo</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Polokwane — Capital City</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Standplaas</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Tsibeng</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Ga-Selala</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Burgersfort</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Ohrigstad</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> Via R37 → R555 → R36 → R533</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Coping Tools -->
-    <div id="coping">
-      <div class="section-head reveal">
-        <span class="section-label">Right Now</span>
-        <h2>Quick Coping Tools</h2>
-        <p>Simple, proven techniques you can use anywhere, anytime when feeling overwhelmed.</p>
-        <div class="section-divider"></div>
+    <!-- 2. Mpumalanga -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="mpumalanga.png" alt="Mpumalanga province landscape">
+        <div class="province-num">02</div>
+        <div class="province-status">Upcoming</div>
       </div>
-      <div class="coping-section reveal reveal-delay-1">
-        <div class="coping-grid">
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-eye"></i></div>
-            <h4>5-4-3-2-1 Grounding</h4>
-            <p>Name 5 things you see, 4 you hear, 3 you can touch, 2 you smell, 1 you taste. Anchors you in the present moment.</p>
-          </div>
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-wind"></i></div>
-            <h4>Box Breathing</h4>
-            <p>Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. Repeat 4 times. Calms the nervous system immediately.</p>
-          </div>
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-running"></i></div>
-            <h4>Move Your Body</h4>
-            <p>Even a 10-minute walk releases mood-lifting endorphins. Movement is one of the most effective natural antidepressants.</p>
-          </div>
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-pen"></i></div>
-            <h4>Write It Down</h4>
-            <p>Write exactly how you feel without editing. Getting thoughts out of your head and onto paper creates distance and clarity.</p>
-          </div>
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-phone"></i></div>
-            <h4>Call Someone</h4>
-            <p>A friend, family member, or crisis line. Human connection is the most powerful tool available and it is always free.</p>
-          </div>
-          <div class="coping-card">
-            <div class="coping-icon"><i class="fas fa-moon"></i></div>
-            <h4>Progressive Relaxation</h4>
-            <p>Tense each muscle group for 5 seconds, then release. Work from your toes to your shoulders. Releases physical tension.</p>
-          </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 2 of 9</span>
+        <h2 class="province-name">Mpumalanga</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Graskop</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Bushbuckridge</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Hazyview</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> White River</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Mbombela / Nelspruit</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> eMalahleni</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Bronkhorstspruit</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> R533 → R40 → R104 → R25</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Resources -->
-    <div id="resources">
-      <div class="section-head reveal">
-        <span class="section-label">Professional Help</span>
-        <h2>Find Support</h2>
-        <p>Professional resources, online therapy, and SA-based organisations ready to help.</p>
-        <div class="section-divider"></div>
+    <!-- 3. Gauteng -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="gauteng.png" alt="Gauteng province landscape">
+        <div class="province-num">03</div>
+        <div class="province-status">Upcoming</div>
       </div>
-      <div class="resources-grid resources-section">
-        <div class="resource-card reveal reveal-delay-1">
-          <div class="resource-card-top">
-            <div class="resource-card-icon" style="background:rgba(34,197,94,0.1);color:var(--primary-dark)"><i class="fas fa-brain"></i></div>
-            <h3>SADAG</h3>
-            <p>Africa's largest mental health support network counselling, helplines, and resources across all 9 provinces.</p>
-          </div>
-          <div class="resource-card-footer">
-            <a href="https://www.sadag.org" target="_blank" rel="noopener" class="resource-link">Visit SADAG <i class="fas fa-arrow-right"></i></a>
-            <span class="resource-contact">0800 567 567</span>
-          </div>
-        </div>
-        <div class="resource-card reveal reveal-delay-2">
-          <div class="resource-card-top">
-            <div class="resource-card-icon" style="background:rgba(139,92,246,0.1);color:#7c3aed"><i class="fas fa-comments"></i></div>
-            <h3>7 Cups</h3>
-            <p>Free, anonymous online emotional support trained listeners available around the clock for any kind of crisis or worry.</p>
-          </div>
-          <div class="resource-card-footer">
-            <a href="https://www.7cups.com" target="_blank" rel="noopener" class="resource-link" style="color:#7c3aed">Visit 7 Cups <i class="fas fa-arrow-right"></i></a>
-            <span class="resource-contact">Free & online</span>
-          </div>
-        </div>
-        <div class="resource-card reveal reveal-delay-1">
-          <div class="resource-card-top">
-            <div class="resource-card-icon" style="background:rgba(14,165,233,0.1);color:#0369a1"><i class="fas fa-laptop"></i></div>
-            <h3>BetterHelp</h3>
-            <p>Affordable online therapy with licensed professionals. Message, phone, or video sessions whenever suits you.</p>
-          </div>
-          <div class="resource-card-footer">
-            <a href="https://www.betterhelp.com" target="_blank" rel="noopener" class="resource-link" style="color:#0369a1">Visit BetterHelp <i class="fas fa-arrow-right"></i></a>
-            <span class="resource-contact">Online therapy</span>
-          </div>
-        </div>
-        <div class="resource-card reveal reveal-delay-2">
-          <div class="resource-card-top">
-            <div class="resource-card-icon" style="background:rgba(249,115,22,0.1);color:#c2410c"><i class="fas fa-users"></i></div>
-            <h3>DBSA</h3>
-            <p>The Depression and Bipolar Support Alliance peer-led support groups, wellness tools, and online communities.</p>
-          </div>
-          <div class="resource-card-footer">
-            <a href="https://www.dbsalliance.org" target="_blank" rel="noopener" class="resource-link" style="color:#c2410c">Visit DBSA <i class="fas fa-arrow-right"></i></a>
-            <span class="resource-contact">Support groups</span>
-          </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-city"></i> Province 3 of 9</span>
+        <h2 class="province-name">Gauteng</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Johannesburg — Braamfontein</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Sandton</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Mall of Africa, Midrand</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Centurion</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Pretoria Central</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> M9 → M74 → M19 → M18 → R514</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Emergency -->
-    <div id="emergency">
-      <div class="emergency-block reveal">
-        <div class="emergency-inner">
-          <div class="emergency-badge"><i class="fas fa-exclamation-triangle"></i> If You Need Help Now</div>
-          <h2>You Are Not Alone — Help Is Here</h2>
-          <p>If you are in crisis or having thoughts of suicide or self-harm, please reach out immediately. These services are free, confidential, and available 24 hours a day.</p>
-          <div class="emergency-numbers">
-            <div class="emergency-num">
-              <div class="emergency-num-label">South Africa · SADAG</div>
-              <div class="emergency-num-value">0800 567 567</div>
-              <div class="emergency-num-desc">Free · 24/7</div>
-            </div>
-            <div class="emergency-num">
-              <div class="emergency-num-label">South Africa · Lifeline</div>
-              <div class="emergency-num-value">0861 322 322</div>
-              <div class="emergency-num-desc">Free · 24/7</div>
-            </div>
-            <div class="emergency-num">
-              <div class="emergency-num-label">Global · Crisis Text</div>
-              <div class="emergency-num-value">Text HOME to 741741</div>
-              <div class="emergency-num-desc">Free · Anonymous</div>
-            </div>
-          </div>
-          <div class="emergency-btns">
-            <a href="https://www.sadag.org" target="_blank" rel="noopener" class="btn-crisis btn-crisis-white">
-              <i class="fas fa-external-link-alt"></i> Visit SADAG
-            </a>
-            <a href="https://findahelpline.com" target="_blank" rel="noopener" class="btn-crisis btn-crisis-outline">
-              <i class="fas fa-globe"></i> Find a Helpline
-            </a>
-          </div>
+    <!-- 4. North West -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="north-west.png" alt="North West province landscape">
+        <div class="province-num">04</div>
+        <div class="province-status">Upcoming</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 4 of 9</span>
+        <h2 class="province-name">North West</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Brits</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Rustenburg</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Mahikeng — Capital City</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> R104 → N4 → N18</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Hope Close -->
-    <div class="hope-close reveal">
-      <span class="hope-close-icon"><i class="fas fa-seedling"></i></span>
-      <h2>Your Story Is Not Over Yet</h2>
-      <p>Thousands of South Africans have walked through darkness and found their way to light. Healing is not linear but it is real, and it is possible.</p>
-      <p>You deserve support every step of the way. Journey4Change walks with you.</p>
+    <!-- 5. Northern Cape -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="northern-cape.webp" alt="Northern Cape province landscape">
+        <div class="province-num">05</div>
+        <div class="province-status">Upcoming</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 5 of 9</span>
+        <h2 class="province-name">Northern Cape</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Vryburg</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Kuruman</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Kimberley</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> N18 → N14 → R372 → R371</span></div>
+        </div>
+      </div>
     </div>
 
-  </main>
+    <!-- 6. Free State -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="free-state.webp" alt="Free State province landscape">
+        <div class="province-num">06</div>
+        <div class="province-status">Upcoming</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 6 of 9</span>
+        <h2 class="province-name">Free State</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Welkom</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Bloemfontein</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> R64 → R710 → R30 → N1 → N5 → R34 → R618</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. KZN -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="Kwa-ZuluNatal.png" alt="KwaZulu-Natal province landscape">
+        <div class="province-num">07</div>
+        <div class="province-status">Upcoming</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 7 of 9</span>
+        <h2 class="province-name">KwaZulu-Natal</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Newcastle</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Nongoma</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Richards Bay</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Nkandla</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Pietermaritzburg</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Durban</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> R66 → R103 → R56 → N2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Eastern Cape -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="eastern-cape.jpg" alt="Eastern Cape province landscape">
+        <div class="province-num">08</div>
+        <div class="province-status">Upcoming</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-map-marked-alt"></i> Province 8 of 9</span>
+        <h2 class="province-name">Eastern Cape</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Mthatha</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> East London</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Gqeberha (Port Elizabeth)</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> N2 → R72 → R102</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Western Cape -->
+    <div class="province-card">
+      <div class="province-img">
+        <img src="western-cape.webp" alt="Western Cape province landscape">
+        <div class="province-num">09</div>
+        <div class="province-status">Final Stop 🏁</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-flag-checkered"></i> Province 9 of 9 — Final Destination</span>
+        <h2 class="province-name">Western Cape</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Key Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Plettenberg Bay</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> George</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Bredasdorp</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-flag-checkered"></i></div> Cape Town — Final Stop</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> N2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider between confirmed provinces and possible extension -->
+    <div class="route-divider">
+      <span><i class="fas fa-question-circle"></i> Beyond the 9 Provinces</span>
+    </div>
+
+    <!-- 10. Possible Route — Lesotho -->
+    <div class="province-card possible">
+      <div class="province-img">
+        <img src="lesotho.png" alt="Lesotho mountain landscape" onerror="this.style.display='none'">
+        <div class="province-num">?</div>
+        <div class="province-status">Possible Route</div>
+      </div>
+      <div class="province-body">
+        <span class="province-tag"><i class="fas fa-question-circle"></i> Possible Extension</span>
+        <h2 class="province-name">Lesotho</h2>
+        <div class="province-divider"></div>
+        <div class="stops-label">Potential Stops</div>
+        <div class="stops-grid">
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-star"></i></div> Maseru</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Mafeteng</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-map-pin"></i></div> Teyateyaneng</div>
+          <div class="stop-item"><div class="stop-icon"><i class="fas fa-road"></i></div><span class="route-tag"><i class="fas fa-route"></i> Via N8 → Maseru Border Bridge</span></div>
+        </div>
+        <div class="possible-note">
+          <i class="fas fa-info-circle"></i>
+          <span>Lesotho is not one of South Africa's 9 provinces, so it isn't part of the confirmed 4 500 km route. It's being considered as a possible cross-border extension of the journey — plans will be confirmed closer to the time.</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-content">
+      <h2>Walk With Me</h2>
+      <p>This journey is for every South African who has ever felt alone in their pain. Follow the route, share the mission, and help us break the stigma, one step at a time.</p>
+      <div class="btn-group">
+        <a href="donations.html" class="btn btn-primary"><i class="fas fa-hand-holding-heart"></i> Support the Journey</a>
+        <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get in Touch</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
- <footer>
+    <footer>
     <div class="footer-container">
       <div class="footer-about">
         <div class="footer-logo">
-          <div class="footer-logo-icon"><i class="fas fa-seedling"></i></div>
-          <div class="footer-logo-text"><h3>Journey4Change</h3><p>Healing Together</p></div>
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
         </div>
-        <p>Walking alongside individuals and families affected by addiction across all 9 provinces of South Africa. Free, confidential, and always here.</p>
+        <p>Raising awareness for mental health across South Africa through a 4 500 km journey of hope and healing.</p>
         <div class="social-links">
-          <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           <a href="https://x.com/journey4change_" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
         </div>
       </div>
@@ -997,19 +1007,18 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="my-story.html">My Story</a></li>
-          <li><a href="journey4change.html">Journey for Change</a></li>
+          <li><a href="journey4change.html">Journey4Change</a></li>
           <li><a href="mental-health-awareness.html">Mental Health</a></li>
           <li><a href="their-story.html">Their Story</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h4>Recovery</h4>
+        <h4>Resources</h4>
         <ul>
-          <li><a href="get-help.html">Get Help</a></li>
-          <li><a href="recovery-stories.html">Recovery Stories</a></li>
-          <li><a href="family-support.html">Family Support</a></li>
           <li><a href="treatment-centres.html">Treatment Centres</a></li>
-          <li><a href="donations.html">Donate</a></li>
+          <li><a href="recovery-support.html">Recovery Support</a></li>
+          <li><a href="gbv-support.html">GBV Support</a></li>
+          <li><a href="donations.html">Donations</a></li>
           <li><a href="partnership.html">Our Partners</a></li>
         </ul>
       </div>
@@ -1039,7 +1048,7 @@
   <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
   <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
   <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
-  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-disorders.html"><i class="fas fa-list"></i> Mental Disorders</a>
   <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
   <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
   <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
@@ -1068,98 +1077,36 @@
       document.body.classList.remove('nonscroll');
     }
 
-    // Share method selector (visually highlight the chosen card)
-    document.querySelectorAll('.share-method-option').forEach(option => {
-      option.addEventListener('click', () => {
-        document.querySelectorAll('.share-method-option').forEach(o => o.classList.remove('selected'));
-        option.classList.add('selected');
-        option.querySelector('input').checked = true;
-      });
-    });
-
-    const WHATSAPP_NUMBER = '27849910575'; // +27 84 991 0575, no spaces/plus for wa.me
-    const EMAIL_ADDRESS = 'journey4change.story@gmail.com';
-    const INSTAGRAM_URL = 'https://instagram.com/journey4change2026';
-
-    function submitStory(e) {
-      e.preventDefault();
-      const name = document.getElementById('sname').value.trim();
-      const province = document.getElementById('slocation').value;
-      const condition = document.getElementById('scondition').value;
-      const story = document.getElementById('sstory').value.trim();
-      const quote = document.getElementById('squote').value.trim();
-      const email = document.getElementById('semail').value.trim();
-      const methodInput = document.querySelector('input[name="smethod"]:checked');
-      const method = methodInput ? methodInput.value : 'email';
-
-      if (!name || !story) return;
-
-      let messageText = `New Story Submission — Journey4Change\n\nName: ${name}`;
-      if (province) messageText += `\nProvince: ${province}`;
-      if (condition) messageText += `\nTopic: ${condition}`;
-      messageText += `\n\nStory:\n${story}`;
-      if (quote) messageText += `\n\nA sentence that helped: "${quote}"`;
-      if (email) messageText += `\n\nReply email: ${email}`;
-
-      const resultBox = document.getElementById('shareResult');
-      const resultPreview = document.getElementById('resultPreview');
-      const resultBtn = document.getElementById('resultActionBtn');
-      const resultNote = document.getElementById('resultNote');
-      const resultMethodName = document.getElementById('resultMethodName');
-
-      resultPreview.textContent = messageText;
-
-      if (method === 'email') {
-        resultMethodName.textContent = 'Email';
-        const subject = encodeURIComponent('My Story — Journey4Change');
-        const body = encodeURIComponent(messageText);
-        resultBtn.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
-        resultBtn.innerHTML = '<i class="fas fa-envelope"></i> Open Email App';
-        resultNote.innerHTML = `This opens your email app with the message pre-filled to <strong>${EMAIL_ADDRESS}</strong>. Just hit send.`;
-      } else if (method === 'whatsapp') {
-        resultMethodName.textContent = 'WhatsApp';
-        const text = encodeURIComponent(messageText);
-        resultBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-        resultBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Open WhatsApp';
-        resultNote.innerHTML = `This opens WhatsApp with the message pre-filled to send to <strong>+27 84 991 0575</strong>. Just hit send.`;
-      } else if (method === 'instagram') {
-        resultMethodName.textContent = 'Instagram';
-        resultBtn.href = INSTAGRAM_URL;
-        resultBtn.innerHTML = '<i class="fab fa-instagram"></i> Open Instagram';
-        resultNote.innerHTML = `Instagram doesn't support pre-filled DMs. Your story has been copied to your clipboard — just open a DM to <strong>@journey4change2026</strong> and paste it in.`;
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(messageText).catch(() => {});
-        }
-      }
-
-      resultBox.style.display = 'block';
-      document.getElementById('storySuccess').style.display = 'block';
-      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-      setTimeout(() => { document.getElementById('storySuccess').style.display = 'none'; }, 8000);
-    }
-
-    // Scroll reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    // Scroll reveal for province cards
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          cardObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal, .story-card, .resource-card').forEach((el, i) => {
-      if (el.classList.contains('story-card') || el.classList.contains('resource-card')) {
-        el.style.transitionDelay = `${i * 60}ms`;
-      }
-      obs.observe(el);
-    });
+    document.querySelectorAll('.province-card').forEach(card => cardObserver.observe(card));
 
+    // Header shadow
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
       header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
     });
+
+    // ── Auto-highlight current page in side nav (works no matter which page this file is copied to) ──
+    (function setActiveNavLink() {
+      const currentPage = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.side-nav a').forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
