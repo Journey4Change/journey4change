@@ -236,6 +236,7 @@
     .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
     .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
     .footer-logo-icon{width:44px;height:44px;border-radius:50%;background:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0;}
+    .footer-logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);flex-shrink:0;background:var(--dark);}
     .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
     .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
     .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
@@ -262,7 +263,7 @@
     .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
     .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
     .nav-overlay.active{display:block;}
-    body.nonscroll{overflow:hidden;}
+    body.nonscroll{overflow:hidden;position:fixed;width:100%;}
 
     /* REVEAL */
     @keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
@@ -285,10 +286,10 @@
 <div class="utility-bar">
   <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
   <div class="utility-right">
-    <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/journey4change_" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
   </div>
 </div>
 
@@ -785,6 +786,7 @@
   <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
   <a href="recovery-support.html"class="active"><i class="fas fa-seedling"></i> Recovery Support</a>
   <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+  <a href="organisations-we-support.html"><i class="fas fa-hand-holding-heart"></i> Organisations We Support</a>
   <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
   <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
   <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
@@ -800,8 +802,21 @@
 
 <script>
   // ── Nav ──
-  function openNav(){document.getElementById('sideNav').style.width='280px';document.getElementById('navOverlay').classList.add('active');document.body.classList.add('nonscroll');}
-  function closeNav(){document.getElementById('sideNav').style.width='0';document.getElementById('navOverlay').classList.remove('active');document.body.classList.remove('nonscroll');}
+  let scrollPosY=0;
+  function openNav(){
+    scrollPosY=window.scrollY;
+    document.getElementById('sideNav').style.width='280px';
+    document.getElementById('navOverlay').classList.add('active');
+    document.body.style.top=(-scrollPosY)+'px';
+    document.body.classList.add('nonscroll');
+  }
+  function closeNav(){
+    document.getElementById('sideNav').style.width='0';
+    document.getElementById('navOverlay').classList.remove('active');
+    document.body.classList.remove('nonscroll');
+    document.body.style.top='';
+    window.scrollTo(0,scrollPosY);
+  }
   document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
   document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
 
