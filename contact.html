@@ -70,8 +70,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 900;
       border-bottom: 1px solid rgba(34,197,94,0.15);
       transition: background 0.3s;
@@ -507,6 +506,12 @@
       .footer-container { grid-template-columns: 1fr 1fr; gap: 36px; }
       .copyright { flex-direction: column; text-align: center; }
       .toast { bottom: 1rem; max-width: calc(100vw - 2rem); }
+      .info-text a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.82rem;
+      }
     }
     @media (max-width: 480px) {
       .footer-container { grid-template-columns: 1fr; gap: 28px; }
@@ -625,8 +630,8 @@
               <div class="info-icon"><i class="fas fa-envelope"></i></div>
               <div class="info-text">
                 <h4>Email</h4>
-                <a href="mailto:journey4change.info@gmail.com">journey4change.info@gmail.com</a>
-                <a href="mailto:journey4change.support@gmail.com">journey4change.support@gmail.com</a>
+                <a href="mailto:journey4change.info@gmail.com" title="journey4change.info@gmail.com">journey4change.info@gmail.com</a>
+                <a href="mailto:journey4change.support@gmail.com" title="journey4change.support@gmail.com">journey4change.support@gmail.com</a>
               </div>
             </div>
 
@@ -636,6 +641,15 @@
                 <h4>Phone</h4>
                 <a href="tel:+27828134960">+27 82 813 4960</a>
                 <a href="tel:+27737480514">+27 73 748 0514</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-user-md"></i></div>
+              <div class="info-text">
+                <h4>Organisation Psychologist</h4>
+                <p style="margin-bottom:2px;">Mfanelo Moyane</p>
+                <a href="tel:+27849910575">+27 84 991 0575</a>
               </div>
             </div>
 
@@ -787,13 +801,6 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ── Sticky header shadow ──
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-      header.style.boxShadow = window.scrollY > 10
-        ? '0 4px 24px rgba(0,0,0,0.25)' : 'none';
-    });
 
     // ── Toast ──
     function showToast(title, desc, isError = false) {
