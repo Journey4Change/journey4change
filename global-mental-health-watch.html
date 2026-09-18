@@ -305,6 +305,7 @@
       font-size: 11px; font-weight: 700;
     }
     .region-rate.high { background: rgba(220,38,38,0.07); color: #b91c1c; border-color: rgba(220,38,38,0.2); }
+    .region-rate.top3 { background: #7f1d1d; color: white; border-color: #7f1d1d; }
 
     .region-factors { padding: 18px 26px 22px; list-style: none; }
     .region-factors li {
@@ -315,6 +316,13 @@
     .region-factors li:last-child { border-bottom: none; }
     .region-factors li i { color: var(--crisis); font-size: 11px; margin-top: 4px; flex-shrink: 0; }
     .region-factors strong { color: var(--text); font-weight: 600; }
+
+    .rank-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--secondary); color: white;
+      font-size: 11px; font-weight: 700; flex-shrink: 0; margin-right: 4px;
+    }
 
     /* ── COMMON THEMES ── */
     .themes-section {
@@ -622,18 +630,18 @@
     <div class="hero-content">
       <span class="hero-eyebrow"><i class="fas fa-globe-africa"></i> Global Report</span>
       <h1>The <em>World</em> Is in Crisis</h1>
-      <p>Depression and anxiety are claiming lives every 40 seconds. Journey4Change, under the leadership of Euclid Tumelo Ramaila, issues this urgent call to examine the global mental health pandemic — and demand action.</p>
+      <p>Depression and anxiety are claiming lives every 43 seconds. Journey4Change, under the leadership of Euclid Tumelo Ramaila, issues this urgent call to examine the global mental health pandemic — starting at home in South Africa — and demand action.</p>
       <div class="hero-stats">
         <div class="hero-stat-pill">
-          <div class="hero-stat-pill-num">40s</div>
-          <div class="hero-stat-pill-label">One death by suicide every 40 seconds</div>
+          <div class="hero-stat-pill-num">43s</div>
+          <div class="hero-stat-pill-label">One death by suicide every 43 seconds</div>
         </div>
         <div class="hero-stat-pill">
-          <div class="hero-stat-pill-num">700K+</div>
-          <div class="hero-stat-pill-label">Suicide deaths globally per year</div>
+          <div class="hero-stat-pill-num">727K</div>
+          <div class="hero-stat-pill-label">Suicide deaths globally per year (WHO, latest data)</div>
         </div>
         <div class="hero-stat-pill">
-          <div class="hero-stat-pill-num">4th</div>
+          <div class="hero-stat-pill-num">2nd–3rd</div>
           <div class="hero-stat-pill-label">Leading cause of death for ages 15–29</div>
         </div>
       </div>
@@ -655,9 +663,9 @@
     <div id="overview" style="padding-top: 20px;">
       <div class="who-alert reveal">
         <div class="who-alert-text">
-          <span class="section-label">WHO 2024 Data</span>
+          <span class="section-label">WHO Data · 2025 Report</span>
           <h2>The Alarming Reality of Mental Health Today</h2>
-          <p>Suicide is a global public health emergency. The data from the World Health Organisation reveals the staggering scale of a crisis that touches every continent, every culture, and every income level.</p>
+          <p>Suicide is a global public health emergency. The World Health Organisation's latest <em>World Mental Health Today</em> report (2025) reveals the staggering scale of a crisis that touches every continent, every culture, and every income level — with an estimated 727,000 people dying by suicide worldwide in 2021, the most recent year for which global data is available.</p>
           <p>South Africa alone records approximately 23 suicide deaths per day — yet the country allocates less than 5% of its health budget to mental health services.</p>
           <a href="https://www.who.int/news-room/fact-sheets/detail/suicide/" target="_blank" rel="noopener" class="who-link">
             <i class="fas fa-external-link-alt"></i> WHO Suicide Fact Sheet
@@ -665,20 +673,20 @@
         </div>
         <div class="who-stat-grid">
           <div class="who-stat">
-            <div class="who-stat-num">13.8</div>
+            <div class="who-stat-num">22.3</div>
             <div class="who-stat-label">South Africa per 100,000</div>
           </div>
           <div class="who-stat">
-            <div class="who-stat-num">14.5</div>
+            <div class="who-stat-num">15.6</div>
             <div class="who-stat-label">USA per 100,000</div>
           </div>
           <div class="who-stat">
-            <div class="who-stat-num">60%</div>
-            <div class="who-stat-label">Of global suicides occur in Asia</div>
+            <div class="who-stat-num">~39%</div>
+            <div class="who-stat-label">Of global suicides occur in South-East Asia alone</div>
           </div>
           <div class="who-stat">
-            <div class="who-stat-num">87.5</div>
-            <div class="who-stat-label">Lesotho per 100,000 (highest)</div>
+            <div class="who-stat-num">28.7</div>
+            <div class="who-stat-label">Lesotho per 100,000 (highest in the world)</div>
           </div>
         </div>
       </div>
@@ -691,6 +699,7 @@
         <h2>Breakdown by Region</h2>
         <div class="section-divider"></div>
       </div>
+      <p class="reveal" style="color: var(--text-muted); font-size: 13px; margin-top: -32px; margin-bottom: 28px; max-width: 640px;">Rates below use the WHO Global Health Observatory / World Bank crude suicide mortality series (latest comparable data, 2021) so every country is measured on the same basis. South Africa leads the list, followed by the three highest-rate countries in the world.</p>
       <div class="region-grid">
 
         <div class="region-card">
@@ -698,7 +707,7 @@
             <div class="region-flag">🇿🇦</div>
             <div class="region-title">
               <div class="region-name">South Africa</div>
-              <div class="region-rate high">23.5 per 100,000</div>
+              <div class="region-rate high">22.3 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
@@ -711,63 +720,31 @@
 
         <div class="region-card">
           <div class="region-card-top">
-            <div class="region-flag">🇺🇸</div>
-            <div class="region-title">
-              <div class="region-name">United States</div>
-              <div class="region-rate">14.5 per 100,000</div>
-            </div>
-          </div>
-          <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Gun Accessibility:</strong> 55% of suicides involve firearms.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Opioid Crisis:</strong> "Deaths of despair" in rural, economically depressed areas.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> 60% with depression receive no treatment due to cost or stigma.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Veteran Suicide:</strong> Veterans die by suicide 1.5× more than civilians.</div></li>
-          </ul>
-        </div>
-
-        <div class="region-card">
-          <div class="region-card-top">
-            <div class="region-flag">🇱🇹</div>
-            <div class="region-title">
-              <div class="region-name">Europe (varies)</div>
-              <div class="region-rate high">Lithuania: 26.1 per 100,000</div>
-            </div>
-          </div>
-          <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Lithuania (26.1):</strong> Post-Soviet trauma, alcoholism, and seasonal depression.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Belgium (20.5):</strong> High euthanasia rates including for mental illness.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>UK (10.1):</strong> Austerity cuts to mental health services since 2010.</div></li>
-          </ul>
-        </div>
-
-        <div class="region-card">
-          <div class="region-card-top">
-            <div class="region-flag">🌏</div>
-            <div class="region-title">
-              <div class="region-name">Asia</div>
-              <div class="region-rate high">South Korea: 28.6 per 100,000</div>
-            </div>
-          </div>
-          <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>South Korea — Academic Pressure:</strong> Suicide is the #1 cause of death for ages 15–24.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>South Korea — Elderly Poverty:</strong> 40% of seniors live in poverty (highest OECD rate).</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>India (12.7) — Farmer Suicides:</strong> Debt from crop failures (30,000+ since 2018).</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>India — Dowry Pressures:</strong> 20 women die by suicide daily due to harassment.</div></li>
-          </ul>
-        </div>
-
-        <div class="region-card">
-          <div class="region-card-top">
             <div class="region-flag">🇱🇸</div>
             <div class="region-title">
-              <div class="region-name">Lesotho</div>
-              <div class="region-rate high">87.5 per 100,000</div>
+              <div class="region-name"><span class="rank-badge">1</span>Lesotho</div>
+              <div class="region-rate top3">28.7 per 100,000 — #1 worldwide</div>
             </div>
           </div>
           <ul class="region-factors">
             <li><i class="fas fa-circle"></i><div><strong>Extreme Poverty:</strong> 49% live below the poverty line.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> 25% prevalence — highest globally — causing caregiver burnout.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Male Crisis:</strong> Men die 4× more, driven by cultural expectations as breadwinners.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> 25% prevalence — among the highest globally — causing caregiver burnout.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Male Crisis:</strong> Men die by suicide far more often, driven by cultural expectations as breadwinners.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇰🇷</div>
+            <div class="region-title">
+              <div class="region-name"><span class="rank-badge">2</span>South Korea</div>
+              <div class="region-rate top3">27.5 per 100,000 — #2 worldwide</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Academic Pressure:</strong> Suicide is a leading cause of death for ages 15–24.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Elderly Poverty:</strong> Around 40% of seniors live in poverty — the highest rate in the OECD.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Work Culture:</strong> Long hours and intense workplace competition add chronic stress.</div></li>
           </ul>
         </div>
 
@@ -775,14 +752,14 @@
           <div class="region-card-top">
             <div class="region-flag">🇸🇿</div>
             <div class="region-title">
-              <div class="region-name">Eswatini</div>
-              <div class="region-rate high">40.5 per 100,000</div>
+              <div class="region-name"><span class="rank-badge">3</span>Eswatini</div>
+              <div class="region-rate top3">27.2 per 100,000 — #3 worldwide</div>
             </div>
           </div>
           <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Economic Collapse:</strong> 40% unemployment; 60% among youth.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> 27% adult prevalence — second highest globally.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Alcohol:</strong> Heavy drinking linked to 1 in 3 suicides among men.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Economic Collapse:</strong> High unemployment overall, worse among youth.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>HIV/AIDS:</strong> One of the highest adult prevalence rates in the world.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Alcohol:</strong> Heavy drinking is linked to a large share of suicides among men.</div></li>
           </ul>
         </div>
 
@@ -791,43 +768,13 @@
             <div class="region-flag">🇬🇾</div>
             <div class="region-title">
               <div class="region-name">Guyana</div>
-              <div class="region-rate high">40.9 per 100,000</div>
+              <div class="region-rate high">24.8 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Pesticide Poisoning:</strong> 60% of suicides use agrochemicals — easy rural access.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Pesticide Poisoning:</strong> A majority of suicides use agrochemicals — easy rural access.</div></li>
             <li><i class="fas fa-circle"></i><div><strong>Rural Poverty:</strong> Rice farmers face debt cycles from flooding and crop failure.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Domestic Violence:</strong> 1 in 2 women experience abuse, leading to suicidal ideation.</div></li>
-          </ul>
-        </div>
-
-        <div class="region-card">
-          <div class="region-card-top">
-            <div class="region-flag">🌊</div>
-            <div class="region-title">
-              <div class="region-name">Kiribati</div>
-              <div class="region-rate high">30.6 per 100,000</div>
-            </div>
-          </div>
-          <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Climate Despair:</strong> Rising sea levels displace communities — existential hopelessness.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Youth Unemployment:</strong> 50% of under-25s are jobless.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Cultural Stigma:</strong> Mental health seen as weakness — fewer than 5% seek help.</div></li>
-          </ul>
-        </div>
-
-        <div class="region-card">
-          <div class="region-card-top">
-            <div class="region-flag">🏝️</div>
-            <div class="region-title">
-              <div class="region-name">Micronesia</div>
-              <div class="region-rate high">29.0 per 100,000</div>
-            </div>
-          </div>
-          <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Cultural Erosion:</strong> Globalisation undermines traditional support systems.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Alcohol Abuse:</strong> 70% of suicides involve heavy drinking.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Isolation:</strong> Remote islands lack any mental health services.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Domestic Violence:</strong> Roughly 1 in 2 women experience abuse, leading to suicidal ideation.</div></li>
           </ul>
         </div>
 
@@ -836,13 +783,58 @@
             <div class="region-flag">🇸🇷</div>
             <div class="region-title">
               <div class="region-name">Suriname</div>
-              <div class="region-rate high">25.9 per 100,000</div>
+              <div class="region-rate high">22.3 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
-            <li><i class="fas fa-circle"></i><div><strong>Economic Crisis:</strong> Hyperinflation reached 54% in 2023.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>LGBTQ+ Stigma:</strong> High suicide risk among queer youth.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> Only 1 psychiatrist per 100,000 people.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Economic Crisis:</strong> High inflation has driven sustained economic hardship.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>LGBTQ+ Stigma:</strong> Elevated suicide risk among queer youth.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> Very few psychiatrists relative to the population.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇱🇹</div>
+            <div class="region-title">
+              <div class="region-name">Europe (varies)</div>
+              <div class="region-rate high">Lithuania: 22.1 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Lithuania (22.1):</strong> Post-Soviet trauma, alcoholism, and seasonal depression.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Belgium (18.4):</strong> High euthanasia rates including for mental illness.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>UK (9.6):</strong> Ongoing strain on public mental health services.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🏝️</div>
+            <div class="region-title">
+              <div class="region-name">Micronesia</div>
+              <div class="region-rate high">19.8 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Cultural Erosion:</strong> Globalisation undermines traditional support systems.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Alcohol Abuse:</strong> Strongly linked to a majority of recorded suicides.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Isolation:</strong> Remote islands lack any mental health services.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🌊</div>
+            <div class="region-title">
+              <div class="region-name">Kiribati</div>
+              <div class="region-rate high">17.5 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Climate Despair:</strong> Rising sea levels displace communities — existential hopelessness.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Youth Unemployment:</strong> A large share of under-25s are jobless.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Cultural Stigma:</strong> Mental health seen as weakness — few seek help.</div></li>
           </ul>
         </div>
 
@@ -851,7 +843,7 @@
             <div class="region-flag">🇿🇼</div>
             <div class="region-title">
               <div class="region-name">Zimbabwe</div>
-              <div class="region-rate high">23.6 per 100,000</div>
+              <div class="region-rate high">17.3 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
@@ -863,16 +855,47 @@
 
         <div class="region-card">
           <div class="region-card-top">
+            <div class="region-flag">🇺🇸</div>
+            <div class="region-title">
+              <div class="region-name">United States</div>
+              <div class="region-rate">15.6 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Gun Accessibility:</strong> Around half of suicides involve firearms.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Opioid Crisis:</strong> "Deaths of despair" in rural, economically depressed areas.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Gaps:</strong> Most people with depression receive no treatment, due to cost or stigma.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Veteran Suicide:</strong> Veterans die by suicide at notably higher rates than civilians.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
+            <div class="region-flag">🇮🇳</div>
+            <div class="region-title">
+              <div class="region-name">India (South Asia)</div>
+              <div class="region-rate">12.6 per 100,000</div>
+            </div>
+          </div>
+          <ul class="region-factors">
+            <li><i class="fas fa-circle"></i><div><strong>Farmer Suicides:</strong> Debt from crop failures has driven tens of thousands of deaths since 2018.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Dowry Pressures:</strong> Women die by suicide daily due to harassment linked to dowry demands.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Scale:</strong> India accounts for one of the highest absolute numbers of suicides of any country.</div></li>
+          </ul>
+        </div>
+
+        <div class="region-card">
+          <div class="region-card-top">
             <div class="region-flag">🇲🇿</div>
             <div class="region-title">
               <div class="region-name">Mozambique</div>
-              <div class="region-rate high">23.2 per 100,000</div>
+              <div class="region-rate">10.6 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
             <li><i class="fas fa-circle"></i><div><strong>Post-War PTSD:</strong> Civil war (1977–1992) left generational trauma.</div></li>
             <li><i class="fas fa-circle"></i><div><strong>Climate Disasters:</strong> Repeated cyclones like Cyclone Idai (2019).</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Extreme Poverty:</strong> 60% live on less than $1.90 per day.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Extreme Poverty:</strong> A majority of the population lives in extreme poverty.</div></li>
           </ul>
         </div>
 
@@ -881,12 +904,12 @@
             <div class="region-flag">🇨🇫</div>
             <div class="region-title">
               <div class="region-name">Central African Republic</div>
-              <div class="region-rate high">23.0 per 100,000</div>
+              <div class="region-rate">9.2 per 100,000</div>
             </div>
           </div>
           <ul class="region-factors">
             <li><i class="fas fa-circle"></i><div><strong>Ongoing Conflict:</strong> Rebel violence has caused mass displacement.</div></li>
-            <li><i class="fas fa-circle"></i><div><strong>Healthcare Collapse:</strong> 70% of health facilities damaged or destroyed by war.</div></li>
+            <li><i class="fas fa-circle"></i><div><strong>Healthcare Collapse:</strong> Most health facilities are damaged, destroyed, or absent.</div></li>
             <li><i class="fas fa-circle"></i><div><strong>Child Soldiers:</strong> Former combatants face extreme psychological trauma.</div></li>
           </ul>
         </div>
