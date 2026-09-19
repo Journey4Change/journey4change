@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Survivor Stories - Public figures who attempted suicide and survived, and chose to speak about it. Journey4Change shares their stories to give others a reason to hang on.">
+  <title>Survivor Stories - Journey4Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --dark-card: #111a13;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.11);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,0.16);
+      --radius: 20px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a120b;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: rgba(0,0,0,0.5);
+      color: rgba(255,255,255,0.55);
+      padding: 9px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .utility-left { display: flex; align-items: center; gap: 8px; }
+    .utility-left i { color: var(--primary); font-size: 12px; }
+    .utility-right a {
+      color: rgba(255,255,255,0.55);
+      margin-left: 18px; font-size: 16px;
+      transition: color 0.25s, transform 0.25s;
+      display: inline-block;
+    }
+    .utility-right a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* ── HEADER ── */
+    header {
+      background: rgba(10,18,11,0.95);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid rgba(34,197,94,0.15);
+      transition: box-shadow 0.3s;
+    }
+    .header-left { display: flex; align-items: center; gap: 22px; }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: white; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 11px; font-weight: 500; color: var(--primary);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      display: block; margin-top: 2px;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; }
+    .hamburger div { height: 2px; background: white; border-radius: 2px; transition: width 0.3s; }
+    .hamburger:hover div:nth-child(2) { width: 70%; }
+
+    /* ── CRISIS BAND ── */
+    .crisis-band {
+      background: #7f1d1d;
+      color: white;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,100,100,0.2);
+    }
+    .crisis-band i { animation: alertPulse 2s ease-in-out infinite; }
+    .crisis-band a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 120px 60px 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(34,197,94,0.09) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary-light);
+      border: 1px solid rgba(74,222,128,0.3);
+      padding: 7px 18px; border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900; color: white;
+      line-height: 1.05; margin-bottom: 22px;
+      animation: fadeInUp 0.7s 0.15s ease-out both;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary-light); }
+    .hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem; max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      animation: fadeInUp 0.7s 0.3s ease-out both;
+    }
+    .hero-count {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 28px; border-radius: 50px;
+      color: rgba(255,255,255,0.6); font-size: 13px;
+      animation: fadeInUp 0.7s 0.45s ease-out both;
+    }
+    .hero-count strong { color: var(--primary-light); font-size: 1.1rem; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 60px 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-right: 6px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.6);
+      border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: var(--dark);
+      border-color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── SURVIVOR GRID ── */
+    .survivor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    .survivor-card {
+      background: #111a13;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .survivor-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease;
+    }
+    .survivor-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      border-color: rgba(34,197,94,0.25);
+    }
+
+    /* Photo */
+    .card-photo { position: relative; height: 240px; overflow: hidden; }
+    .card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .survivor-card:hover .card-photo img { transform: scale(1.06); }
+    .card-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(17,26,19,0.95) 0%, rgba(17,26,19,0.3) 55%, transparent 100%);
+    }
+    .card-region {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(17,26,19,0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: var(--primary-light);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .card-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--primary);
+      color: var(--dark);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .card-role {
+      position: absolute;
+      bottom: 16px; left: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+
+    /* Body */
+    .card-body { padding: 24px 24px 28px; flex: 1; display: flex; flex-direction: column; }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: white; margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .card-dates {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em; margin-bottom: 16px;
+    }
+    .card-divider {
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 2px; margin-bottom: 16px;
+    }
+    .card-text {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      line-height: 1.75; flex: 1;
+    }
+    .card-text.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-footer i { color: var(--primary); font-size: 13px; }
+    .card-footer span {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      font-style: italic;
+    }
+
+    /* ── CONTEXT SECTION ── */
+    .context-section {
+      background: #111a13;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 80px 60px;
+    }
+    .context-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: start;
+    }
+    .context-text .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary); display: block; margin-bottom: 12px;
+    }
+    .context-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: white; font-weight: 900; margin-bottom: 20px;
+    }
+    .context-text p { color: rgba(255,255,255,0.55); font-size: 0.97rem; margin-bottom: 16px; line-height: 1.8; }
+    .factor-list { display: flex; flex-direction: column; gap: 14px; }
+    .factor-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: background 0.25s;
+    }
+    .factor-item:hover { background: rgba(34,197,94,0.06); border-color: rgba(34,197,94,0.15); }
+    .factor-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(34,197,94,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 14px; flex-shrink: 0;
+    }
+    .factor-title { font-weight: 600; color: white; font-size: 14px; margin-bottom: 4px; }
+    .factor-desc { color: rgba(255,255,255,0.45); font-size: 13px; line-height: 1.6; }
+
+    /* ── SHARE STORY CTA ── */
+    .share-cta { padding: 100px 60px; text-align: center; position: relative; overflow: hidden; }
+    .share-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(34,197,94,0.07) 0%, transparent 70%);
+    }
+    .share-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .share-cta .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--primary); display: block; margin-bottom: 14px;
+    }
+    .share-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white; font-weight: 900; margin-bottom: 18px;
+    }
+    .share-cta p { color: rgba(255,255,255,0.55); font-size: 1rem; margin-bottom: 36px; line-height: 1.8; }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      border-radius: 50px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary { background: var(--primary); color: var(--dark); box-shadow: 0 6px 24px rgba(34,197,94,0.25); }
+    .btn-primary:hover {
+      background: var(--primary-light); transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(34,197,94,0.35);
+    }
+    .btn-ghost { background: rgba(255,255,255,0.06); color: white; border: 1.5px solid rgba(255,255,255,0.15); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050d07;
+      color: white;
+      padding: 70px 24px 36px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-container {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .footer-logo-text h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .footer-logo-text p { font-size: 11px; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .footer-about p { font-size: 0.9rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; background: rgba(255,255,255,0.06);
+      border-radius: 50%; color: rgba(255,255,255,0.55); font-size: 15px;
+      text-decoration: none; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.07);
+    }
+    .social-links a:hover { background: var(--primary); color: var(--dark); transform: translateY(-3px); }
+    .footer-links h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px; transition: color 0.25s, padding-left 0.25s; display: inline-block; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 4px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.4); font-size: 14px; }
+    .footer-contact-item i { color: var(--primary); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .copyright {
+      max-width: 1160px; margin: 30px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.22); flex-wrap: wrap; gap: 8px;
+    }
+
+    /* ── SIDE NAV ── */
+    .side-nav {
+      height: 100%; width: 0; position: fixed;
+      z-index: 1000; top: 0; left: 0;
+      background: #080f0a;
+      overflow-y: auto; overflow-x: hidden;
+      transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      border-right: 1px solid rgba(34,197,94,0.15);
+    }
+    .nav-header {
+      padding: 30px 28px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-header span { font-family: 'Playfair Display', serif; font-size: 16px; color: white; white-space: nowrap; }
+    .close-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; color: white;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .close-btn:hover { background: rgba(34,197,94,0.2); transform: rotate(90deg); }
+    .side-nav a {
+      padding: 14px 28px; text-decoration: none; font-size: 15px;
+      color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 14px;
+      transition: all 0.25s; white-space: nowrap; border-left: 3px solid transparent;
+    }
+    .side-nav a i { width: 18px; text-align: center; color: var(--primary); flex-shrink: 0; }
+    .side-nav a:hover { color: white; background: rgba(34,197,94,0.07); border-left-color: var(--primary); padding-left: 34px; }
+    .side-nav a.active { color: white; border-left-color: var(--primary); background: rgba(34,197,94,0.09); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 999; backdrop-filter: blur(4px); }
+    .nav-overlay.active { display: block; }
+    body.nonscroll { overflow: hidden; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .context-inner { grid-template-columns: 1fr; gap: 50px; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 700px) {
+      .survivor-grid { grid-template-columns: 1fr; padding: 0 20px 80px; }
+      .hero { padding: 80px 24px 60px; }
+      .filter-bar { padding: 0 24px 40px; }
+      .context-section { padding: 60px 24px; }
+      .share-cta { padding: 70px 24px; }
+      header { padding: 14px 20px; }
+      .utility-bar { padding: 8px 20px; }
+      .crisis-band { padding: 10px 16px; font-size: 12px; }
+      .footer-container { grid-template-columns: 1fr; gap: 28px; }
+      .copyright { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+    <div class="utility-right">
+      <a href="https://www.youtube.com/@journey4change2026" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/journey4change2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@journey4change2026" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/j4j2026" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="logo-text">
+        <h1>Journey4Change</h1>
+        <span>Healing Together</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Crisis Band -->
+  <div class="crisis-band" role="alert">
+    <i class="fas fa-phone-alt"></i>
+    <span>If you are struggling right now, call SADAG:</span>
+    <a href="tel:0800567567"><strong>0800 567 567</strong></a>
+    <span>· Available 24/7 · You are not alone</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-sun"></i> They're Still Here</span>
+      <h1>They Survived. They're <em>Still Here.</em></h1>
+      <p>Every person on this page once believed there was no way through. They were wrong — and they chose to say so publicly, so that someone else struggling today might believe it too.</p>
+      <div class="hero-count">
+        <i class="fas fa-hand-holding-heart" style="color:var(--primary)"></i>
+        <span>Honouring <strong>12 survivors</strong> — and everyone still fighting, unseen, today.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" role="group" aria-label="Filter survivor stories">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCards('sa', this)">South African</button>
+    <button class="filter-btn" onclick="filterCards('international', this)">International</button>
+    <button class="filter-btn" onclick="filterCards('music', this)">Music</button>
+    <button class="filter-btn" onclick="filterCards('film', this)">Film & TV</button>
+  </div>
+
+  <!-- Survivor Grid -->
+  <div class="survivor-grid" id="survivorGrid">
+
+    <article class="survivor-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="sbahle-name">
+      <div class="card-photo">
+        <img src="sbahle.jpg" alt="Portrait of Sbahle Mpisane">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">South Africa</span>
+        <span class="card-role">Fitness Entrepreneur · TV Personality</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="sbahle-name">Sbahle Mpisane</h2>
+        <div class="card-dates">Survived multiple suicide attempts, 2019–2021</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">After a near-fatal car accident in 2018 left her with life-changing injuries, Sbahle survived several suicide attempts during her recovery. She has since spoken openly on Instagram about therapy, medication, and faith: "I still don't understand my survival, but maybe there's a purpose for it all."</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Still training, still healing, still here.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="sa" data-category="film" tabindex="0" aria-labelledby="mimi-name">
+      <div class="card-photo">
+        <img src="mimi-mahlasela.jpg" alt="Portrait of Nobuhle Mimi Mahlasela">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">South Africa</span>
+        <span class="card-role">Actress · 7de Laan</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="mimi-name">Nobuhle "Mimi" Mahlasela</h2>
+        <div class="card-dates">Spoke publicly in 2021</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">The actress revealed she had survived two suicide attempts while privately battling depression. She now credits reaching out — instead of staying silent — with turning things around: "That simple act of calling someone was me fighting!"</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Chose to keep fighting, one day at a time.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="sa" data-category="music" tabindex="0" aria-labelledby="hlengiwe-name">
+      <div class="card-photo">
+        <img src="hlengiwe-mhlaba.jpg" alt="Portrait of Hlengiwe Mhlaba">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">South Africa</span>
+        <span class="card-role">Gospel Singer · Campaigner</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="hlengiwe-name">Hlengiwe Mhlaba</h2>
+        <div class="card-dates">Survived an attempt before fame</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Long before she found success, Hlengiwe survived a suicide attempt during a period of family conflict and financial desperation: "Luckily, I was saved in the nick of time." She now campaigns with Ungazibulali, using music to reach others in crisis.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Turned her survival into a mission for others.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="jameela-name">
+      <div class="card-photo">
+        <img src="jameela-jamil.jpg" alt="Portrait of Jameela Jamil">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Actress · The Good Place</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="jameela-name">Jameela Jamil</h2>
+        <div class="card-dates">Spoke publicly in 2019</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Jamil has spoken openly about surviving a suicide attempt years earlier and treating the PTSD that followed with EMDR therapy. On World Suicide Prevention Day she wrote: "Surviving suicide has been the most extraordinary gift... please hang on."</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Uses her platform to tell others to hang on.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="wentworth-name">
+      <div class="card-photo">
+        <img src="wentworth-miller.jpg" alt="Portrait of Wentworth Miller">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Actor · Prison Break</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="wentworth-name">Wentworth Miller</h2>
+        <div class="card-dates">Spoke publicly in 2013</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Miller survived a suicide attempt at 15 while struggling in silence to accept his sexuality. Years later, after coming out publicly, he shared his story to a room full of strangers: "You only cry for help if you believe there's help to cry for."</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Broke his silence to help someone else break theirs.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="drew-name">
+      <div class="card-photo">
+        <img src="drew-barrymore.jpg" alt="Portrait of Drew Barrymore">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Actress · TV Host</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="drew-name">Drew Barrymore</h2>
+        <div class="card-dates">Survived an attempt at 14</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">As a teenage former child star struggling with addiction, Barrymore survived a suicide attempt at 14. She wrote about that period in her bestselling memoir, "Little Girl Lost," and has spent decades since building the career — and life — she once nearly lost.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Went on to build a life she's proud of.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="sharon-name">
+      <div class="card-photo">
+        <img src="sharon-osbourne.jpg" alt="Portrait of Sharon Osbourne">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">TV Personality</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="sharon-name">Sharon Osbourne</h2>
+        <div class="card-dates">Spoke publicly in 2019</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Osbourne revealed on a morning show that she had survived three suicide attempts earlier in her life, describing one moment that shocked her into choosing to keep going: "I just couldn't bear it." She has managed her mental health with ongoing treatment ever since.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Chose her family, again and again.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="tamar-name">
+      <div class="card-photo">
+        <img src="tamar-braxton.jpg" alt="Portrait of Tamar Braxton">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Singer · TV Personality</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="tamar-name">Tamar Braxton</h2>
+        <div class="card-dates">Spoke publicly in 2020</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">After surviving a suicide attempt in the middle of a depressive episode, Braxton gave her first interview describing it as "my lowest point of life." She later posted that it was only by grace that she was still here to use her voice.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Found her voice again after her lowest point.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="film" tabindex="0" aria-labelledby="constance-name">
+      <div class="card-photo">
+        <img src="constance-wu.jpg" alt="Portrait of Constance Wu">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Actress · Crazy Rich Asians</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="constance-name">Constance Wu</h2>
+        <div class="card-dates">Spoke publicly in 2022</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Following intense online backlash in 2019, Wu survived a suicide attempt and was found in time by a friend who rushed her to hospital. Looking back, she said: "It was a scary moment that made me reassess a lot in my life."</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>A friend's quick action gave her a second chance.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="madison-name">
+      <div class="card-photo">
+        <img src="madison-beer.jpg" alt="Portrait of Madison Beer">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Singer</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="madison-name">Madison Beer</h2>
+        <div class="card-dates">Spoke publicly in 2021</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">After a long period of suicidal ideation as a teenager, Madison survived an attempt to take her own life. She has since said the experience clarified something important: "I made the choice to live." She now speaks openly to young fans about mental health.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Chose to live — and says so, out loud.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="fedez-name">
+      <div class="card-photo">
+        <img src="fedez.jpg" alt="Portrait of Fedez">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Rapper · Italy</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="fedez-name">Fedez</h2>
+        <div class="card-dates">Spoke publicly in 2024</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Decades after surviving a suicide attempt at 18 during a troubled, drug-affected period of his life, the Italian rapper and cancer survivor spoke about it on national television: "I attempted suicide when I was 18." His openness sparked a national conversation on men's mental health.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Broke a two-decade silence to help other young men.</span></div>
+      </div>
+    </article>
+
+    <article class="survivor-card" data-region="international" data-category="music" tabindex="0" aria-labelledby="wayne-name">
+      <div class="card-photo">
+        <img src="lil-wayne.jpg" alt="Portrait of Lil Wayne">
+        <div class="card-photo-overlay"></div>
+        <span class="card-badge"><i class="fas fa-seedling"></i> Survivor</span>
+        <span class="card-region">International</span>
+        <span class="card-role">Rapper</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name" id="wayne-name">Lil Wayne</h2>
+        <div class="card-dates">Spoke publicly in 2018</div>
+        <div class="card-divider"></div>
+        <p class="card-text clamped">Lil Wayne survived a suicide attempt as a preteen, a period of his life he later wrote a song about. When asked about going public with it, following the deaths of Anthony Bourdain and Kate Spade, he said the track had been finished for years — he simply hadn't been ready to share it.</p>
+        <div class="card-footer"><i class="fas fa-seedling"></i><span>Took years to speak, and it still mattered.</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Context Section -->
+  <section class="context-section">
+    <div class="context-inner">
+      <div class="context-text">
+        <span class="section-label">What Their Stories Teach Us</span>
+        <h2>Survival Is Possible — and It Rarely Happens Alone</h2>
+        <p>None of the people above got through their darkest moment by themselves. A friend called an ambulance. A sister answered the phone. A doctor stayed five extra minutes. A stranger at a support group said the right thing at the right time. Every one of these stories has someone else in it.</p>
+        <p>That is the pattern worth noticing: reaching out — or being reached — is what turns an attempt into a survival story instead of an ending. In South Africa, where stigma keeps so many suffering in silence, hearing public figures say "I nearly didn't make it, and I'm glad I did" can be the thing that gives someone else permission to ask for help.</p>
+      </div>
+      <div class="factor-list">
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-phone-volume"></i></div>
+          <div>
+            <div class="factor-title">Someone Noticed</div>
+            <div class="factor-desc">In nearly every story here, another person — a friend, family member, or stranger — recognised the danger and acted, often just in time.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-comments"></i></div>
+          <div>
+            <div class="factor-title">They Eventually Spoke</div>
+            <div class="factor-desc">Whether it took days or decades, every survivor here reached a point where they chose to talk about it — to a friend, a therapist, or the world.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-hands-holding-child"></i></div>
+          <div>
+            <div class="factor-title">Ongoing Support Helped</div>
+            <div class="factor-desc">Therapy, medication, rehab, and community all appear repeatedly in these stories — survival is rarely a single moment, but a continued process.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon"><i class="fas fa-seedling"></i></div>
+          <div>
+            <div class="factor-title">A Reason Emerged</div>
+            <div class="factor-desc">Many describe finding a reason to keep going only after surviving — a child, a craft, a cause — that they could not have seen from inside the crisis.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Story CTA -->
+  <section class="share-cta">
+    <div class="share-cta-inner">
+      <span class="section-label">Your Voice Matters</span>
+      <h2>Share Your Story</h2>
+      <p>If you have survived a suicide attempt, depression, or suicidal thoughts — your story, however small it feels, can be the reason someone else decides to hang on. Journey4Change is a safe space to speak.</p>
+      <div class="btn-group">
+        <a href="healing-journey.html" class="btn btn-primary"><i class="fas fa-pen"></i> Share Your Story</a>
+        <a href="mental-health-awareness.html" class="btn btn-ghost"><i class="fas fa-brain"></i> Get Help & Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="Journey4Change.png" alt="Journey4Change Logo">
+          <div class="footer-logo-text">
+            <h3>Journey4Change</h3>
+            <p>Healing Together</p>
+          </div>
+        </div>
+        <p>Raising awareness for mental health across South Africa through a 4 500 km journey of hope and healing.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://x.com/journey4change_" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey4Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+          <li><a href="survivor-stories.html">Survivor Stories</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="treatment-centres.html">Treatment Centres</a></li>
+          <li><a href="recovery-support.html">Recovery Support</a></li>
+          <li><a href="gbv-support.html">GBV Support</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="partnership.html">Our Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+      <span>Powered by neurAila Intelligence Group</span>
+    </div>
+  </footer>
+
+  <!-- Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+  <!-- Side Nav -->
+  <nav id="sideNav" class="side-nav" aria-label="Main navigation">
+    <div class="nav-header">
+      <span>Navigation</span>
+      <div class="close-btn" onclick="closeNav()" role="button" tabindex="0" aria-label="Close menu">×</div>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+    <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+    <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+    <a href="mental-health-disorders.html"><i class="fas fa-list"></i> Mental Disorders</a>
+    <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
+    <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+    <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+    <a href="survivor-stories.html" class="active"><i class="fas fa-seedling"></i> Survivor Stories</a>
+    <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
+    <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
+    <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
+    <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
+    <a href="gbv-support.html"><i class="fas fa-hand-fist"></i> GBV Support</a>
+    <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+    <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+    <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+    <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+    <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById('sideNav').style.width = '280px';
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('nonscroll');
+    }
+    function closeNav() {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('nonscroll');
+    }
+
+    // Scroll reveal
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.survivor-card').forEach(c => cardObserver.observe(c));
+
+    // Filter
+    function filterCards(filter, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.survivor-card').forEach(card => {
+        const region = card.dataset.region;
+        const category = card.dataset.category;
+        const show = filter === 'all' || filter === region || filter === category;
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    // Header shadow
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.5)' : 'none';
+    });
+  </script>
+</body>
+</html>
