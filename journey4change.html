@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Journey4Change - The 3,500 km route across all 9 provinces of South Africa for mental health awareness.">
+  <meta name="description" content="Journey4Change - The 4,500+ km route across all 9 provinces of South Africa for mental health awareness.">
   <title>Journey for Change - Journey4Change</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -257,6 +257,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 80px 40px 100px;
+      position: relative;
     }
 
     .section-header {
@@ -311,6 +312,7 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease;
       opacity: 0;
       transform: translateY(24px);
+      position: relative;
     }
     .province-card.visible {
       opacity: 1;
@@ -320,6 +322,9 @@
     .province-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-lg);
+    }
+    .province-card.hiker-here {
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.35), var(--shadow-lg);
     }
 
     /* Alternate image side */
@@ -608,6 +613,121 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ══════════════════════════════════════
+       HIKER — the walking companion
+       ══════════════════════════════════════ */
+    .hiker-path {
+      position: fixed;
+      left: 26px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: repeating-linear-gradient(180deg, rgba(34,197,94,0.3) 0, rgba(34,197,94,0.3) 8px, transparent 8px, transparent 18px);
+      z-index: 480;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .hiker-path.active { opacity: 1; }
+
+    .hiker-wrap {
+      position: fixed;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 500;
+      opacity: 0;
+      transition: top 0.5s cubic-bezier(0.4,0.0,0.2,1), opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .hiker-wrap.active { opacity: 1; }
+
+    .hiker-bubble {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      margin-bottom: 12px;
+      background: white;
+      color: var(--secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .hiker-bubble::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: white;
+    }
+    .hiker-bubble.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .hiker-figure {
+      width: 56px; height: 82px;
+      position: relative;
+    }
+    .hiker-wrap:not(.walking) .hiker-figure { animation: idleBob 2.2s ease-in-out infinite; }
+    .hiker-wrap.walking .hiker-figure { animation: hikerBob 0.4s ease-in-out infinite; }
+
+    .hiker-svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.28)); overflow: visible; }
+
+    .hiker-wrap.walking .leg-l { animation: legSwingL 0.4s ease-in-out infinite; transform-origin: 24px 58px; }
+    .hiker-wrap.walking .leg-r { animation: legSwingR 0.4s ease-in-out infinite; transform-origin: 34px 58px; }
+    .hiker-wrap.walking .arm-l { animation: armSwingR 0.4s ease-in-out infinite; transform-origin: 20px 34px; }
+    .hiker-wrap.walking .arm-r { animation: armSwingL 0.4s ease-in-out infinite; transform-origin: 38px 34px; }
+
+    @keyframes idleBob { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-3px);} }
+    @keyframes hikerBob { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-5px);} }
+    @keyframes legSwingL { 0%,100%{ transform: rotate(26deg);} 50%{ transform: rotate(-26deg);} }
+    @keyframes legSwingR { 0%,100%{ transform: rotate(-26deg);} 50%{ transform: rotate(26deg);} }
+    @keyframes armSwingL { 0%,100%{ transform: rotate(-20deg);} 50%{ transform: rotate(20deg);} }
+    @keyframes armSwingR { 0%,100%{ transform: rotate(20deg);} 50%{ transform: rotate(-20deg);} }
+
+    @media (max-width: 900px) {
+      .hiker-path { display: none; }
+      .footprint { display: none; }
+      .hiker-wrap {
+        left: auto;
+        right: 14px;
+        bottom: 18px;
+        top: auto !important;
+        transform: none;
+      }
+      .hiker-figure { width: 40px; height: 58px; }
+      .hiker-bubble { font-size: 10.5px; padding: 5px 12px; margin-bottom: 8px; }
+    }
+    @media (max-width: 480px) {
+      .hiker-wrap { right: 10px; bottom: 14px; }
+      .hiker-figure { width: 34px; height: 50px; }
+    }
+
+    /* Footprint particles left behind as the hiker walks */
+    .footprint {
+      position: fixed;
+      width: 7px; height: 11px;
+      background: rgba(34,197,94,0.55);
+      border-radius: 50% 50% 42% 42%;
+      z-index: 470;
+      pointer-events: none;
+      transform: translate(-50%,-50%) rotate(var(--fp-rot, 0deg)) scale(1);
+      opacity: 0.6;
+      animation: footprintFade 1.5s ease-out forwards;
+    }
+    @keyframes footprintFade {
+      0%   { opacity: 0.6; transform: translate(-50%,-50%) rotate(var(--fp-rot, 0deg)) scale(1); }
+      100% { opacity: 0;   transform: translate(-50%,-50%) rotate(var(--fp-rot, 0deg)) scale(0.55) translateY(4px); }
+    }
+    @media (max-width: 900px) {
+      .footprint { display: none; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .province-card,
@@ -728,6 +848,48 @@
     </div>
     <div class="ribbon-stop">
       <div class="ribbon-dot maybe" title="Lesotho — Possible Route">?<span class="ribbon-label">Lesotho</span></div>
+    </div>
+  </div>
+
+  <!-- Hiker companion -->
+  <div class="hiker-path" id="hikerPath"></div>
+  <div class="hiker-wrap" id="hikerWrap">
+    <div class="hiker-bubble" id="hikerBubble">Limpopo</div>
+    <div class="hiker-figure">
+      <svg class="hiker-svg" viewBox="0 0 60 90" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="29" cy="86" rx="15" ry="3.2" fill="rgba(0,0,0,0.18)"></ellipse>
+        <rect class="backpack" x="12" y="30" width="15" height="26" rx="7" fill="var(--accent)"></rect>
+        <rect x="14" y="33" width="4" height="10" rx="2" fill="#c2410c"></rect>
+        <!-- South African flag patch -->
+        <defs>
+          <clipPath id="flagPatchClip">
+            <rect x="14.5" y="38" width="8" height="6" rx="1"></rect>
+          </clipPath>
+        </defs>
+        <rect x="14.3" y="37.8" width="8.4" height="6.4" rx="1.3" fill="#fff" opacity="0.9"></rect>
+        <g clip-path="url(#flagPatchClip)">
+          <polygon points="14.5,38 22.5,38 22.5,39.6 17.3,41 22.5,42.4 22.5,44 14.5,44" fill="#007A4D"></polygon>
+          <polygon points="14.5,38 22.5,38 22.5,39.6 18,41" fill="#DE3831"></polygon>
+          <polygon points="14.5,44 22.5,44 22.5,42.4 18,41" fill="#002395"></polygon>
+          <polygon points="14.5,39.5 14.5,42.5 17.3,41" fill="#FFB612"></polygon>
+          <polygon points="14.5,38 14.5,44 16.7,41" fill="#000"></polygon>
+        </g>
+        <line class="leg-l" x1="24" y1="58" x2="19" y2="80" stroke="#2d3748" stroke-width="7" stroke-linecap="round"></line>
+        <line class="leg-r" x1="34" y1="58" x2="39" y2="80" stroke="#2d3748" stroke-width="7" stroke-linecap="round"></line>
+        <circle cx="19" cy="81" r="3.4" fill="var(--accent)"></circle>
+        <circle cx="39" cy="81" r="3.4" fill="var(--accent)"></circle>
+        <line class="arm-l" x1="21" y1="34" x2="13" y2="52" stroke="#f2c19a" stroke-width="6" stroke-linecap="round"></line>
+        <line class="arm-r" x1="37" y1="34" x2="45" y2="52" stroke="#f2c19a" stroke-width="6" stroke-linecap="round"></line>
+        <rect x="17" y="28" width="24" height="28" rx="11" fill="var(--primary)"></rect>
+        <path d="M20 30 L13 40" stroke="#16a34a" stroke-width="3" stroke-linecap="round" opacity="0.6"></path>
+        <path d="M38 30 L45 40" stroke="#16a34a" stroke-width="3" stroke-linecap="round" opacity="0.6"></path>
+        <circle cx="29" cy="18" r="12" fill="#f2c19a"></circle>
+        <path d="M17 16 a12 12 0 0 1 24 0 c0 -2 -3 -3 -12 -3 s-12 1 -12 3z" fill="var(--secondary)"></path>
+        <circle cx="29" cy="7" r="3" fill="var(--primary-light)"></circle>
+        <circle cx="24" cy="19" r="1.4" fill="#2d3748"></circle>
+        <circle cx="34" cy="19" r="1.4" fill="#2d3748"></circle>
+        <path d="M25 24 q4 3 8 0" stroke="#a0522d" stroke-width="1.4" fill="none" stroke-linecap="round"></path>
+      </svg>
     </div>
   </div>
 
@@ -1108,6 +1270,105 @@
           link.classList.remove('active');
         }
       });
+    })();
+
+    // ══════════════════════════════════════
+    // HIKER — walks to whichever province card is centered in view
+    // ══════════════════════════════════════
+    (function hikerCompanion() {
+      const hikerWrap = document.getElementById('hikerWrap');
+      const hikerPath = document.getElementById('hikerPath');
+      const hikerBubble = document.getElementById('hikerBubble');
+      const provinceSection = document.querySelector('.provinces-section');
+      const cards = Array.from(document.querySelectorAll('.province-card'));
+
+      let currentName = '';
+      let walkTimer = null;
+      let ticking = false;
+      let lastFootTime = 0;
+      let footSide = 1;
+
+      function spawnFootprint(centerTop) {
+        const wrapRect = hikerWrap.getBoundingClientRect();
+        const centerX = wrapRect.left + wrapRect.width / 2;
+        const footTop = centerTop + 28; // roughly where the feet land
+        const fp = document.createElement('div');
+        fp.className = 'footprint';
+        fp.style.setProperty('--fp-rot', (footSide * 18) + 'deg');
+        fp.style.left = (centerX + footSide * 6) + 'px';
+        fp.style.top = footTop + 'px';
+        document.body.appendChild(fp);
+        footSide *= -1;
+        setTimeout(() => fp.remove(), 1600);
+      }
+
+      function isMobileView() {
+        return window.matchMedia('(max-width: 900px)').matches;
+      }
+
+      function updateHiker() {
+        ticking = false;
+        const secRect = provinceSection.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const active = secRect.top < vh && secRect.bottom > 0;
+
+        hikerWrap.classList.toggle('active', active);
+        hikerPath.classList.toggle('active', active);
+        if (!active) return;
+
+        // Find the card whose center is closest to the viewport center
+        let closest = null, closestDist = Infinity;
+        cards.forEach(card => {
+          const r = card.getBoundingClientRect();
+          const center = r.top + r.height / 2;
+          const dist = Math.abs(center - vh / 2);
+          if (dist < closestDist) { closestDist = dist; closest = card; }
+        });
+
+        cards.forEach(c => c.classList.remove('hiker-here'));
+
+        if (closest) {
+          closest.classList.add('hiker-here');
+          const r = closest.getBoundingClientRect();
+          if (!isMobileView()) {
+            const targetTop = Math.min(Math.max(r.top + r.height / 2, 70), vh - 70);
+            hikerWrap.style.top = targetTop + 'px';
+          }
+
+          const nameEl = closest.querySelector('.province-name');
+          const name = nameEl ? nameEl.textContent.trim() : '';
+          if (name !== currentName) {
+            currentName = name;
+            hikerBubble.textContent = name;
+            hikerBubble.classList.remove('show');
+            requestAnimationFrame(() => hikerBubble.classList.add('show'));
+          }
+        }
+
+        hikerWrap.classList.add('walking');
+        clearTimeout(walkTimer);
+        walkTimer = setTimeout(() => hikerWrap.classList.remove('walking'), 350);
+
+        const now = Date.now();
+        if (!isMobileView() && now - lastFootTime > 170) {
+          lastFootTime = now;
+          if (closest) {
+            const r2 = closest.getBoundingClientRect();
+            const t = Math.min(Math.max(r2.top + r2.height / 2, 70), vh - 70);
+            spawnFootprint(t);
+          }
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateHiker);
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateHiker);
+      updateHiker();
     })();
   </script>
 </body>
