@@ -993,7 +993,7 @@
     <a href="login.html" class="login-btn" id="loginBtn"><i class="fas fa-user"></i> Login</a>
 
     <div class="account-menu" id="accountMenu">
-      <button class="account-trigger" id="accountTrigger" onclick="toggleAccountDropdown()">
+      <button class="account-trigger" id="accountTrigger" onclick="toggleAccountDropdown()" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-user-circle"></i> <span id="accountName">Account</span>
       </button>
       <div class="account-dropdown" id="accountDropdown">
@@ -1305,23 +1305,32 @@
         : 'none';
     });
 
-    // ── Auth state (reads the session saved by login.html) ──
-    function applyAuthState() {
-      let session = null;
+    // ── Auth state ──
+    // Reads the session created by login.html/signup and keeps the homepage in sync.
+    function getCurrentUser() {
       try {
-        session = JSON.parse(localStorage.getItem('j4c_user') || 'null');
+        return JSON.parse(localStorage.getItem('j4c_user') || 'null');
       } catch (err) {
-        session = null;
+        return null;
       }
+    }
 
+    function applyAuthState() {
+      const session = getCurrentUser();
       const loginBtn = document.getElementById('loginBtn');
       const accountMenu = document.getElementById('accountMenu');
       const accountName = document.getElementById('accountName');
 
-      if (session) {
+      if (!loginBtn || !accountMenu || !accountName) return;
+
+      if (session && session.email) {
         loginBtn.style.display = 'none';
         accountMenu.classList.add('active');
-        accountName.textContent = session.username || session.firstName || session.email || 'Account';
+        accountName.textContent =
+          session.firstName ||
+          session.username ||
+          session.email.split('@')[0] ||
+          'Account';
       } else {
         loginBtn.style.display = 'flex';
         accountMenu.classList.remove('active');
@@ -1329,14 +1338,24 @@
     }
 
     function toggleAccountDropdown() {
-      document.getElementById('accountDropdown').classList.toggle('open');
+      const dropdown = document.getElementById('accountDropdown');
+      const trigger = document.getElementById('accountTrigger');
+      if (!dropdown) return;
+      const isOpen = dropdown.classList.toggle('open');
+      if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
     }
 
     function handleLogout() {
       localStorage.removeItem('j4c_user');
-      document.getElementById('accountDropdown').classList.remove('open');
+      const dropdown = document.getElementById('accountDropdown');
+      if (dropdown) dropdown.classList.remove('open');
       applyAuthState();
     }
+
+    // Refresh immediately and whenever the page becomes visible again.
+    applyAuthState();
+    window.addEventListener('storage', applyAuthState);
+    window.addEventListener('pageshow', applyAuthState);
 
     // Close the dropdown if you click elsewhere on the page
     document.addEventListener('click', (e) => {
