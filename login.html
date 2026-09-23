@@ -708,52 +708,164 @@
       el.className = 'form-msg';
     }
 
+    // ── JOURNEY4CHANGE LOCAL AUTH ──
+    // This is a front-end prototype. Accounts are stored in this browser only.
+    const AUTH_KEYS = {
+      accounts: 'j4c_accounts',
+      session: 'j4c_user'
+    };
+
+    function getAccounts() {
+      try {
+        return JSON.parse(localStorage.getItem(AUTH_KEYS.accounts) || '[]');
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveAccounts(accounts) {
+      localStorage.setItem(AUTH_KEYS.accounts, JSON.stringify(accounts));
+    }
+
+    function normaliseEmail(email) {
+      return email.trim().toLowerCase();
+    }
+
+    async function hashPassword(password) {
+      if (!window.crypto || !window.crypto.subtle) {
+        throw new Error('Secure password hashing is not available in this browser.');
+      }
+      const data = new TextEncoder().encode(password);
+      const buffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(buffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    function saveSession(account) {
+      const session = {
+        id: account.id,
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        province: account.province || '',
+        loggedInAt: new Date().toISOString()
+      };
+      localStorage.setItem(AUTH_KEYS.session, JSON.stringify(session));
+      return session;
+    }
+
+    function redirectHome() {
+      window.location.href = 'index.html';
+    }
+
     // ── LOGIN ──
-    function handleLogin(e) {
+    async function handleLogin(e) {
       e.preventDefault();
       hideMsg('login-msg');
-      const email = document.getElementById('l-email').value.trim();
-      const pass  = document.getElementById('l-password').value;
+
+      const email = normaliseEmail(document.getElementById('l-email').value);
+      const pass = document.getElementById('l-password').value;
+
       if (!email || !pass) {
         showMsg('login-msg', 'error', 'Please fill in both your email and password.');
         return;
       }
-      // Demo: simulate success (connect to your backend)
-      showMsg('login-msg', 'success', 'Login successful — welcome back to Journey4Change!');
+
+      const accounts = getAccounts();
+      const account = accounts.find(a => a.email === email);
+
+      if (!account) {
+        showMsg('login-msg', 'error', 'No account was found with that email. Please sign up first.');
+        return;
+      }
+
+      try {
+        const passwordHash = await hashPassword(pass);
+
+        if (passwordHash !== account.passwordHash) {
+          showMsg('login-msg', 'error', 'Incorrect password. Please try again.');
+          return;
+        }
+
+        saveSession(account);
+        showMsg('login-msg', 'success', `Welcome back, ${account.firstName}! Redirecting...`);
+
+        setTimeout(redirectHome, 500);
+      } catch (err) {
+        console.error(err);
+        showMsg('login-msg', 'error', 'Login could not be completed in this browser. Please try again.');
+      }
     }
 
     // ── SIGN UP ──
-    function handleSignup(e) {
+    async function handleSignup(e) {
       e.preventDefault();
       hideMsg('signup-msg');
-      const fname  = document.getElementById('s-fname').value.trim();
-      const lname  = document.getElementById('s-lname').value.trim();
-      const email  = document.getElementById('s-email').value.trim();
-      const pass   = document.getElementById('s-password').value;
-      const conf   = document.getElementById('s-confirm').value;
-      const terms  = document.getElementById('s-terms').checked;
+
+      const fname = document.getElementById('s-fname').value.trim();
+      const lname = document.getElementById('s-lname').value.trim();
+      const email = normaliseEmail(document.getElementById('s-email').value);
+      const province = document.getElementById('s-province').value;
+      const pass = document.getElementById('s-password').value;
+      const conf = document.getElementById('s-confirm').value;
+      const terms = document.getElementById('s-terms').checked;
 
       if (!fname || !lname || !email || !pass || !conf) {
         showMsg('signup-msg', 'error', 'Please complete all required fields.');
         return;
       }
+
       if (pass !== conf) {
         showMsg('signup-msg', 'error', 'Passwords do not match. Please try again.');
         return;
       }
+
       if (pass.length < 8) {
         showMsg('signup-msg', 'error', 'Password must be at least 8 characters long.');
         return;
       }
+
       if (!terms) {
         showMsg('signup-msg', 'error', 'Please accept the Terms of Service to continue.');
         return;
       }
-      // Demo: simulate success (connect to your backend)
-      showMsg('signup-msg', 'success', `Welcome, ${fname}! Your account has been created. You are now part of the Journey4Change community.`);
+
+      const accounts = getAccounts();
+
+      if (accounts.some(a => a.email === email)) {
+        showMsg('signup-msg', 'error', 'An account with this email already exists. Please log in instead.');
+        return;
+      }
+
+      try {
+        const passwordHash = await hashPassword(pass);
+
+        const account = {
+          id: 'j4c_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+          firstName: fname,
+          lastName: lname,
+          email,
+          province,
+          passwordHash,
+          createdAt: new Date().toISOString()
+        };
+
+        accounts.push(account);
+        saveAccounts(accounts);
+        saveSession(account);
+
+        showMsg('signup-msg', 'success', `Welcome, ${fname}! Your account has been created. Redirecting...`);
+
+        setTimeout(redirectHome, 600);
+      } catch (err) {
+        console.error(err);
+        showMsg('signup-msg', 'error', 'Your account could not be created in this browser. Please try again.');
+      }
     }
 
     // ── FORGOT PASSWORD MODAL ──
+
     function openForgot(e) {
       if (e) e.preventDefault();
       document.getElementById('forgotModal').classList.add('open');
