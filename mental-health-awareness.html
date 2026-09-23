@@ -573,6 +573,54 @@
       box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
     }
     textarea { resize: vertical; min-height: 120px; }
+
+    /* Send-method chooser */
+    .send-method-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .send-method-option {
+      position: relative;
+      cursor: pointer;
+    }
+    .send-method-option input {
+      position: absolute;
+      opacity: 0;
+      width: 1px; height: 1px;
+    }
+    .send-method-option span {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px;
+      border-radius: 50px;
+      border: 1.5px solid #d1e7d1;
+      background: var(--light);
+      font-size: 13px; font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s;
+    }
+    .send-method-option span i { font-size: 15px; }
+    .send-method-option:hover span { border-color: var(--primary); color: var(--primary-dark); }
+    .send-method-option input:checked + span {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--dark);
+      box-shadow: 0 4px 14px rgba(34,197,94,0.3);
+    }
+    .send-method-option input:focus-visible + span {
+      outline: 2px solid var(--primary-dark);
+      outline-offset: 2px;
+    }
+    .send-method-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .send-method-hint i { color: var(--primary-dark); margin-top: 2px; flex-shrink: 0; }
+
     .submit-btn {
       display: inline-flex; align-items: center; gap: 8px;
       width: 100%;
@@ -759,7 +807,7 @@
     <span>If you or someone you know is in crisis, call SADAG now:</span>
     <a href="tel:0800567567"><strong>0800 567 567</strong></a>
     <span>·</span>
-    <span>Available 24/7 — You are not alone</span>
+    <span>Available 24/7 - You are not alone</span>
   </div>
 
   <!-- Hero -->
@@ -841,20 +889,20 @@
           <span class="section-label">Breaking the Silence</span>
           <h2>The Importance of Open Conversations</h2>
           <p>Stigma often prevents individuals from seeking help for mental health issues. Initiatives like "No Shame Day" encourage people to share their mental health experiences openly, aiming to reduce stigma and promote healing.</p>
-          <p>Public figures and ordinary people alike are stepping forward to share their stories — reminding us all that mental health struggles do not discriminate, and that asking for help is an act of strength, not weakness.</p>
+          <p>Public figures and ordinary people alike are stepping forward to share their stories reminding us all that mental health struggles do not discriminate, and that asking for help is an act of strength, not weakness.</p>
           <div class="stigma-links">
             <a class="stigma-btn" href="https://www.breakthestigma.org/clarity" target="_blank" rel="noopener">
               <i class="fas fa-comments"></i> BreakTheStigma
             </a>
-            <a class="stigma-btn" href="their-story.html">
+            <a class="stigma-btn" href="healing-journey.html">
               <i class="fas fa-pen"></i> Share Your Story
             </a>
           </div>
         </div>
-        <div class="stigma-quote">
+         <div class="stigma-quote">
           <div class="quote-icon">"</div>
-          <p>Asking for help is not a sign of weakness — it is the bravest thing you will ever do.</p>
-          <div class="quote-source">— Journey4Change</div>
+          <p>Asking for help is not a sign of weakness, it is the bravest thing you will ever do.</p>
+          <div class="quote-source">- Journey4Change</div>
         </div>
       </div>
     </div>
@@ -920,7 +968,7 @@
         <div class="emergency-inner">
           <div class="emergency-header">
             <div class="emergency-badge"><i class="fas fa-exclamation-triangle"></i> If You Need Help Now</div>
-            <h2>You Are Not Alone — Emergency Support</h2>
+            <h2>You Are Not Alone, Emergency Support</h2>
             <p>If you are struggling, know that help is available immediately. Reaching out is the bravest step you can take. These services are free, confidential, and available around the clock.</p>
             <a href="https://www.sadag.org/" target="_blank" rel="noopener" class="sadag-btn">
               <i class="fas fa-external-link-alt"></i> Visit SADAG Website
@@ -930,7 +978,7 @@
             <div class="crisis-card">
               <div class="crisis-card-icon"><i class="fas fa-phone"></i></div>
               <div>
-                <div class="crisis-card-label">SADAG — South Africa</div>
+                <div class="crisis-card-label">SADAG - South Africa</div>
                 <div class="crisis-card-value"><a href="tel:0800567567">0800 567 567</a></div>
               </div>
             </div>
@@ -974,7 +1022,7 @@
         <div class="contact-grid">
           <div class="contact-info">
             <h3>We're Here to Listen</h3>
-            <p>Whether you have a question, want to share your story, or are looking for resources — reach out. Every message is read and responded to with care.</p>
+            <p>Whether you have a question, want to share your story, or are looking for resources reach out. Every message is read and responded to with care.</p>
             <div class="contact-detail">
               <i class="fas fa-phone"></i>
               <span>+27 82 813 4960</span>
@@ -1001,8 +1049,31 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">
-              <i class="fas fa-paper-plane"></i> Send Message
+
+            <div class="form-group">
+              <label>Send your message via</label>
+              <div class="send-method-group" role="radiogroup" aria-label="Choose where to send your message">
+                <label class="send-method-option">
+                  <input type="radio" name="sendMethod" value="whatsapp" checked>
+                  <span><i class="fab fa-whatsapp"></i> WhatsApp</span>
+                </label>
+                <label class="send-method-option">
+                  <input type="radio" name="sendMethod" value="instagram">
+                  <span><i class="fab fa-instagram"></i> Instagram</span>
+                </label>
+                <label class="send-method-option">
+                  <input type="radio" name="sendMethod" value="email">
+                  <span><i class="fas fa-envelope"></i> Email</span>
+                </label>
+              </div>
+              <div class="send-method-hint" id="sendMethodHint">
+                <i class="fas fa-circle-info"></i>
+                <span>We'll open WhatsApp with your message pre-filled, ready to send.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <i class="fab fa-whatsapp" id="submitIcon"></i> <span id="submitLabel">Send via WhatsApp</span>
             </button>
             <div class="form-success" id="formSuccess">
               <i class="fas fa-check-circle"></i> Thank you! We'll get back to you soon.
@@ -1024,7 +1095,7 @@
             <p>Healing Together</p>
           </div>
         </div>
-        <p>Raising awareness for mental health across South Africa through a 4 500 km journey of hope and healing.</p>
+        <p>Raising awareness for mental health across South Africa through a 4 500+ km journey of hope and healing.</p>
         <div class="social-links">
           <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1107,17 +1178,70 @@
       document.body.classList.remove('nonscroll');
     }
 
+    // ── Send-method destinations ──
+    const SEND_TARGETS = {
+      whatsapp: { number: '27828134960' },
+      instagram: { profile: 'https://www.instagram.com/journey4change_npo' },
+      email: { address: 'journey4change.support@gmail.com' }
+    };
+    const METHOD_META = {
+      whatsapp:  { icon: 'fab fa-whatsapp',  label: 'Send via WhatsApp',  hint: "We'll open WhatsApp with your message pre-filled, ready to send." },
+      instagram: { icon: 'fab fa-instagram', label: 'Send via Instagram', hint: "Instagram doesn't allow pre-filled DMs, so we'll copy your message and open our profile — just paste it into the chat." },
+      email:     { icon: 'fas fa-envelope',  label: 'Send via Email',    hint: "We'll open your email app with the message and subject pre-filled." }
+    };
+
+    // Update button label/hint whenever the chosen destination changes
+    document.querySelectorAll('input[name="sendMethod"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const meta = METHOD_META[radio.value];
+        document.getElementById('submitIcon').className = meta.icon;
+        document.getElementById('submitLabel').textContent = meta.label;
+        document.querySelector('#sendMethodHint span').textContent = meta.hint;
+      });
+    });
+
+    function showFormMessage(text) {
+      const el = document.getElementById('formSuccess');
+      el.innerHTML = `<i class="fas fa-check-circle"></i> ${text}`;
+      el.style.display = 'block';
+      setTimeout(() => { el.style.display = 'none'; }, 7000);
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
       if (!name || !email || !message) return;
-      document.getElementById('formSuccess').style.display = 'block';
+
+      const method = document.querySelector('input[name="sendMethod"]:checked').value;
+      const fullText = `Hi Journey4Change, my name is ${name} (${email}).\n\n${message}`;
+
+      if (method === 'whatsapp') {
+        const url = `https://wa.me/${SEND_TARGETS.whatsapp.number}?text=${encodeURIComponent(fullText)}`;
+        window.open(url, '_blank', 'noopener');
+        showFormMessage('Opening WhatsApp with your message ready to send…');
+
+      } else if (method === 'instagram') {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(fullText).catch(() => {});
+        }
+        window.open(SEND_TARGETS.instagram.profile, '_blank', 'noopener');
+        showFormMessage('Message copied to your clipboard — paste it into the DM on Instagram.');
+
+      } else if (method === 'email') {
+        const subject = encodeURIComponent(`Message from ${name} via Journey4Change website`);
+        const body = encodeURIComponent(fullText);
+        window.location.href = `mailto:${SEND_TARGETS.email.address}?subject=${subject}&body=${body}`;
+        showFormMessage('Opening your email app with the message ready to send…');
+      }
+
       e.target.reset();
-      setTimeout(() => {
-        document.getElementById('formSuccess').style.display = 'none';
-      }, 5000);
+      // reset method chooser + button back to default (WhatsApp) after reset() clears the radios
+      document.querySelector('input[name="sendMethod"][value="whatsapp"]').checked = true;
+      document.getElementById('submitIcon').className = METHOD_META.whatsapp.icon;
+      document.getElementById('submitLabel').textContent = METHOD_META.whatsapp.label;
+      document.querySelector('#sendMethodHint span').textContent = METHOD_META.whatsapp.hint;
     }
 
     // Scroll reveal
