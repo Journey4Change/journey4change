@@ -105,6 +105,61 @@
     .mbadge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:5px 14px;font-size:11px;color:rgba(255,255,255,.65);}
     .mbadge.earned{background:rgba(34,197,94,.15);border-color:var(--primary);color:var(--primary-light);}
 
+
+    /* ─── LIVE RECOVERY TRACKER ENHANCEMENTS ─── */
+    .streak-display{transition:box-shadow .35s,border-color .35s,background .35s;}
+    .streak-fire{position:relative;width:82px;height:100px;margin:0 auto 8px;transform-origin:50% 90%;animation:flameFloat 1.15s ease-in-out infinite alternate;filter:drop-shadow(0 8px 16px rgba(255,120,0,.28));}
+    .flame{position:absolute;display:block;left:50%;bottom:4px;transform-origin:50% 100%;border-radius:65% 35% 60% 40% / 70% 70% 30% 30%;transform:translateX(-50%) rotate(45deg);}
+    .flame-outer{width:62px;height:78px;background:#ff8a00;animation:flamePulse .8s ease-in-out infinite alternate;}
+    .flame-middle{width:45px;height:59px;background:#ff3b18;bottom:7px;}
+    .flame-inner{width:27px;height:40px;background:#ffe066;bottom:10px;}
+    .streak-tier-0 .streak-fire{filter:grayscale(1);opacity:.38;}
+    .streak-tier-1 .streak-fire{filter:drop-shadow(0 7px 18px rgba(255,140,0,.55));}
+    .streak-tier-2 .streak-fire{filter:drop-shadow(0 8px 20px rgba(239,68,68,.72));}
+    .streak-tier-3 .streak-fire{filter:drop-shadow(0 9px 23px rgba(168,85,247,.78));}
+    .streak-tier-4 .streak-fire{filter:drop-shadow(0 9px 23px rgba(59,130,246,.78));}
+    .streak-tier-5 .streak-fire{filter:drop-shadow(0 9px 25px rgba(236,72,153,.82));}
+    .streak-tier-6 .streak-fire{filter:drop-shadow(0 10px 28px rgba(250,204,21,.9));}
+    .streak-tier-1 .flame-outer{background:#ff8a00;}
+    .streak-tier-1 .flame-middle{background:#ff3b18;}
+    .streak-tier-1 .flame-inner{background:#ffe066;}
+    .streak-tier-2 .flame-outer{background:#ef4444;}
+    .streak-tier-2 .flame-middle{background:#dc2626;}
+    .streak-tier-2 .flame-inner{background:#ffb4a8;}
+    .streak-tier-3 .flame-outer{background:#a855f7;}
+    .streak-tier-3 .flame-middle{background:#7e22ce;}
+    .streak-tier-3 .flame-inner{background:#e9d5ff;}
+    .streak-tier-4 .flame-outer{background:#3b82f6;}
+    .streak-tier-4 .flame-middle{background:#1d4ed8;}
+    .streak-tier-4 .flame-inner{background:#bfdbfe;}
+    .streak-tier-5 .flame-outer{background:#ec4899;}
+    .streak-tier-5 .flame-middle{background:#be185d;}
+    .streak-tier-5 .flame-inner{background:#fbcfe8;}
+    .streak-tier-6 .flame-outer{background:#facc15;}
+    .streak-tier-6 .flame-middle{background:#f59e0b;}
+    .streak-tier-6 .flame-inner{background:#fff7ad;}
+    .streak-tier-1 .streak-number{color:#fb923c;}
+    .streak-tier-2 .streak-number{color:#f87171;}
+    .streak-tier-3 .streak-number{color:#c084fc;}
+    .streak-tier-4 .streak-number{color:#60a5fa;}
+    .streak-tier-5 .streak-number{color:#f472b6;}
+    .streak-tier-6 .streak-number{color:#facc15;}
+    @keyframes flameFloat{from{transform:scale(.96) rotate(-2deg)}to{transform:scale(1.04) rotate(2deg)}}
+    @keyframes flamePulse{from{transform:translateX(-50%) rotate(45deg) scale(.94)}to{transform:translateX(-50%) rotate(45deg) scale(1.04)}}
+    .history-box{margin-top:14px;background:rgba(34,197,94,.055);border:1px solid rgba(34,197,94,.12);border-radius:12px;padding:12px;max-height:150px;overflow:auto;}
+    .history-title{font-size:11px;font-weight:700;color:var(--primary-dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+    .history-item{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(34,197,94,.08);font-size:12px;color:var(--text-muted);}
+    .history-item:last-child{border-bottom:0;}
+    .history-empty{font-size:12px;color:var(--text-muted);font-style:italic;}
+    .live-status{font-size:11px;font-weight:700;color:var(--primary-dark);text-align:center;min-height:18px;margin-bottom:8px;}
+    .breathing-ring.active{box-shadow:0 0 0 8px rgba(34,197,94,.07),0 0 28px rgba(34,197,94,.18);}
+    .mood-score{font-size:12px;color:var(--text-muted);text-align:center;min-height:18px;margin-top:4px;}
+    .urge-live{font-size:12px;font-weight:700;text-align:center;color:var(--primary-dark);min-height:18px;margin:4px 0 8px;}
+    .journey-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+    .journey-stat{background:rgba(34,197,94,.07);border-radius:10px;padding:9px;text-align:center;}
+    .journey-stat strong{display:block;color:var(--secondary);font-size:16px;}
+    .journey-stat span{font-size:9px;color:var(--text-muted);text-transform:uppercase;}
+
     /* ─── SUPPORT PILLARS CARDS ─── */
     .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
     .pillar-card{background:white;border-radius:var(--radius);padding:32px 28px;border:1px solid rgba(34,197,94,.08);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
@@ -344,16 +399,24 @@
           </button>
         </div>
         <div>
-          <div class="streak-display">
+          <div class="streak-display streak-tier-0" id="streakDisplay">
+            <div class="streak-fire" id="streakFire" aria-label="Recovery streak fire" role="img">
+              <span class="flame flame-outer"></span>
+              <span class="flame flame-middle"></span>
+              <span class="flame flame-inner"></span>
+            </div>
             <div class="streak-number" id="streakCount">0</div>
             <div class="streak-label">Day Streak</div>
-            <div class="streak-sub">Keep going — one day at a time</div>
+            <div class="streak-sub" id="streakSub">Keep going — one day at a time</div>
+            <div class="streak-milestone" id="streakMilestone">Start your streak today</div>
             <div class="milestone-badges" id="milestoneBadges">
-              <span class="mbadge">🎯 1 Day</span>
-              <span class="mbadge">🌱 7 Days</span>
-              <span class="mbadge">💪 30 Days</span>
-              <span class="mbadge">🏆 90 Days</span>
-              <span class="mbadge">⭐ 1 Year</span>
+              <span class="mbadge">1 Day</span>
+              <span class="mbadge">7 Days</span>
+              <span class="mbadge">30 Days</span>
+              <span class="mbadge">50 Days</span>
+              <span class="mbadge">90 Days</span>
+              <span class="mbadge">100 Days</span>
+              <span class="mbadge">1 Year</span>
             </div>
           </div>
         </div>
@@ -393,7 +456,7 @@
         <div class="pillar-icon"><i class="fas fa-compass"></i></div>
         <h3>Purpose &amp; Direction</h3>
         <p>Recovery opens the door to a new life. Explore vocational training, life skills, and how to rebuild relationships and meaning.</p>
-        <a href="recovery.html" class="pillar-link"><i class="fas fa-arrow-right"></i> Recovery Journey</a>
+        <a href="recovery-support.html" class="pillar-link"><i class="fas fa-arrow-right"></i> Recovery Journey</a>
       </div>
     </div>
   </div>
@@ -417,6 +480,7 @@
         </div>
         <div class="tool-body">
           <p>Calm cravings and anxiety in minutes with this proven breathing technique.</p>
+          <div class="live-status" id="breathLiveStatus">Ready when you are</div>
           <div class="breathing-ring" id="breathRing">
             <div class="breathing-ring-inner" id="breathText">Tap to<br>Start</div>
           </div>
@@ -434,6 +498,7 @@
         <div class="tool-body">
           <p>Check in with how you are feeling. Tracking your mood helps you spot patterns before they become problems.</p>
           <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">How are you feeling right now?</p>
+          <div class="mood-score" id="moodScore">Select a mood to record how you feel right now.</div>
           <div class="mood-options" id="moodOptions">
             <div class="mood-opt" onclick="selectMood(this,'😔','Low')"><span class="mood-emoji">😔</span><span class="mood-label">Low</span></div>
             <div class="mood-opt" onclick="selectMood(this,'😐','Okay')"><span class="mood-emoji">😐</span><span class="mood-label">Okay</span></div>
@@ -454,6 +519,7 @@
         <div class="tool-body">
           <p>When a craving hits, log it. Urges peak and pass — riding them out is a skill that gets stronger every time.</p>
           <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">How strong is the urge? (1 = mild, 10 = intense)</p>
+          <div class="urge-live" id="urgeLive">Select the current urge level.</div>
           <div class="urge-meter" id="urgeMeter">
             <div class="urge-bar" onclick="setUrge(this,1)">1</div>
             <div class="urge-bar" onclick="setUrge(this,2)">2</div>
@@ -482,6 +548,15 @@
           <p class="journal-prompt" id="journalPrompt">Loading today's prompt...</p>
           <textarea class="journal-textarea" id="journalText" placeholder="Write your thoughts here..."></textarea>
           <button class="journal-save-btn" onclick="saveJournal()"><i class="fas fa-save"></i> Save Entry</button>
+          <div class="journey-summary">
+            <div class="journey-stat"><strong id="journalCount">0</strong><span>Entries</span></div>
+            <div class="journey-stat"><strong id="moodCount">0</strong><span>Mood logs</span></div>
+            <div class="journey-stat"><strong id="urgeCount">0</strong><span>Urges logged</span></div>
+          </div>
+          <div class="history-box" id="journeyHistory">
+            <div class="history-title">Your journey</div>
+            <div class="history-empty">Your saved entries will appear here.</div>
+          </div>
         </div>
       </div>
 
@@ -591,7 +666,7 @@
     <div class="section-title reveal">
       <div class="section-label">Together We Are Stronger</div>
       <h2>Support Groups</h2>
-      <p>You do not have to share everything — just being in a room with people who understand is powerful. Find your group.</p>
+      <p>You do not have to share everything just being in a room with people who understand is powerful. Find your group.</p>
     </div>
     <div class="groups-grid">
       <div class="group-card reveal reveal-delay-1">
@@ -599,7 +674,7 @@
           <div class="group-icon"><i class="fas fa-users"></i></div>
           <div><h4>Journey4Change Open Group</h4><span class="group-meta">Open to everyone · All substances</span></div>
         </div>
-        <p>Our flagship weekly group. Share your story, hear others, and find encouragement for the week ahead. No judgement, no pressure — just people showing up for each other.</p>
+        <p>Our flagship weekly group. Share your story, hear others, and find encouragement for the week ahead. No judgement, no pressure just people showing up for each other.</p>
         <div class="group-footer">
           <div><div class="group-schedule"><i class="fas fa-calendar"></i> Wednesdays 6:00 PM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-map-marker-alt"></i> Polokwane + Online</div></div>
           <button class="join-btn" onclick="showToast('You\'re registered for the Wednesday group!')"><i class="fas fa-plus"></i> Join Group</button>
@@ -632,7 +707,7 @@
           <div class="group-icon"><i class="fas fa-venus"></i></div>
           <div><h4>Women in Recovery</h4><span class="group-meta">Women only · Safe space</span></div>
         </div>
-        <p>A women-only space where members can speak openly about experiences unique to women in recovery — including trauma, motherhood, and rebuilding confidence.</p>
+        <p>A women-only space where members can speak openly about experiences unique to women in recovery including trauma, motherhood, and rebuilding confidence.</p>
         <div class="group-footer">
           <div><div class="group-schedule"><i class="fas fa-calendar"></i> Tuesdays 7:00 PM</div><div class="group-count" style="margin-top:4px"><i class="fas fa-video"></i> Online · Private</div></div>
           <button class="join-btn" onclick="showToast('You\'re registered for Women in Recovery!')"><i class="fas fa-plus"></i> Join Group</button>
@@ -654,7 +729,7 @@
           <div class="group-icon"><i class="fas fa-mobile-screen"></i></div>
           <div><h4>WhatsApp Support Community</h4><span class="group-meta">24/7 · Text-based · National</span></div>
         </div>
-        <p>A moderated WhatsApp community for daily encouragement, check-ins, and peer support — active 24/7 for those moments between formal meetings.</p>
+        <p>A moderated WhatsApp community for daily encouragement, check-ins, and peer support active 24/7 for those moments between formal meetings.</p>
         <div class="group-footer">
           <div><div class="group-schedule"><i class="fas fa-clock"></i> Active 24 hours a day</div><div class="group-count" style="margin-top:4px"><i class="fab fa-whatsapp"></i> WhatsApp Group</div></div>
           <a href="https://wa.me/27828134960?text=I'd+like+to+join+the+Journey4Change+support+community" target="_blank" rel="noopener" class="join-btn"><i class="fab fa-whatsapp"></i> Join Community</a>
@@ -706,7 +781,7 @@
       <div class="section-label" style="color:rgba(255,255,255,.4)">Start Right Now</div>
       <h2>Your Support Is Here. Always.</h2>
     </div>
-    <p class="reveal reveal-delay-1">Whether you are on day one or year five, you deserve support today. Check in, join a group, or reach out to a mentor — and remember that the free helpline is always available.</p>
+    <p class="reveal reveal-delay-1">Whether you are on day one or year five, you deserve support today. Check in, join a group, or reach out to a mentor and remember that the free helpline is always available.</p>
     <div class="cta-btns reveal reveal-delay-2">
       <a href="tel:0800121314" class="btn btn-primary"><i class="fas fa-phone"></i> Call 0800 12 13 14 — Free</a>
       <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Journey4Change</a>
@@ -725,7 +800,7 @@
             <p>Healing Together</p>
           </div>
         </div>
-        <p>Raising awareness for mental health across South Africa through a 4 500 km journey of hope and healing.</p>
+        <p>Raising awareness for mental health across South Africa through a 4 500+ km journey of hope and healing.</p>
         <div class="social-links">
           <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -843,86 +918,273 @@
     canvas.appendChild(p);
   });
 
-  // ── Streak / Check-in ──
-  let streak=parseInt(localStorage.getItem('j4c_streak')||'0');
-  let lastCheck=localStorage.getItem('j4c_lastcheck')||'';
-  const today=new Date().toDateString();
+  // ── Persistent Recovery Data ──
+  const STORAGE = {
+    checkins:'j4c_checkins',
+    streak:'j4c_streak',
+    lastcheck:'j4c_lastcheck',
+    moods:'j4c_moods',
+    urges:'j4c_urges',
+    journal:'j4c_journal',
+    breathing:'j4c_breathing'
+  };
+  const readJSON=(key,fallback=[])=>{try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(fallback));}catch(e){return fallback;}};
+  const writeJSON=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+  const dateKey=(d=new Date())=>{
+    const x=new Date(d);
+    return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;
+  };
+  const prettyDate=(d)=>{
+    return new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(d));
+  };
 
+  // ── Streak / Check-in ──
+  let checkins=readJSON(STORAGE.checkins,[]);
+  // Migrate the old single-value streak into today's history when necessary.
+  if(!checkins.length){
+    const oldLast=localStorage.getItem(STORAGE.lastcheck);
+    const oldStreak=parseInt(localStorage.getItem(STORAGE.streak)||'0',10);
+    if(oldLast) { checkins=[{date:dateKey(new Date(oldLast)),recordedAt:new Date().toISOString(),legacyStreak:oldStreak}]; writeJSON(STORAGE.checkins,checkins); }
+  }
+  const uniqueCheckins=()=>[...new Set(checkins.map(x=>x.date))].sort();
+  function calculateStreak(){
+    const dates=uniqueCheckins();
+    if(!dates.length)return 0;
+    const todayKey=dateKey();
+    const last=dates[dates.length-1];
+    const lastDate=new Date(last+'T00:00:00');
+    const todayDate=new Date(todayKey+'T00:00:00');
+    const gap=Math.round((todayDate-lastDate)/86400000);
+    if(gap>1)return 0;
+    let streak=1;
+    for(let i=dates.length-1;i>0;i--){
+      const a=new Date(dates[i]+'T00:00:00');
+      const b=new Date(dates[i-1]+'T00:00:00');
+      if(Math.round((a-b)/86400000)===1)streak++;
+      else break;
+    }
+    return streak;
+  }
+  let streak=calculateStreak();
+
+  function getStreakTier(n){
+    if(n<1)return 0;
+    if(n<50)return 1;
+    if(n<100)return 2;
+    if(n<150)return 3;
+    if(n<200)return 4;
+    if(n<300)return 5;
+    return 6;
+  }
+  function streakTierText(n){
+    if(n>=300)return '🔥 300+ days · Gold fire';
+    if(n>=200)return '🔥 200 days · Pink fire';
+    if(n>=150)return '🔥 150 days · Blue fire';
+    if(n>=100)return '🔥 100 days · Purple fire';
+    if(n>=50)return '🔥 50 days · Red fire';
+    if(n>=1)return '🔥 Building your fire';
+    return 'Start your streak today';
+  }
   function renderDays(){
     const wd=document.getElementById('weekDays');
-    const days=['S','M','T','W','T','F','S'];
+    const done=new Set(uniqueCheckins());
     const now=new Date();
     wd.innerHTML='';
+    const days=['S','M','T','W','T','F','S'];
     for(let i=6;i>=0;i--){
-      const d=new Date(now);d.setDate(now.getDate()-i);
+      const d=new Date(now);
+      d.setHours(0,0,0,0);
+      d.setDate(now.getDate()-i);
       const dc=document.createElement('div');
       dc.className='day-circle';
-      const isToday=d.toDateString()===today;
-      const isDone=d.toDateString()===lastCheck||(streak>0&&i<streak&&i<=6);
-      if(isDone)dc.classList.add('done');
+      const key=dateKey(d);
+      if(done.has(key))dc.classList.add('done');
       dc.innerHTML=`<span class="day-num">${d.getDate()}</span><span class="day-label">${days[d.getDay()]}</span>`;
-      if(isToday)dc.style.borderColor='rgba(74,222,128,.8)';
+      if(i===0)dc.style.borderColor='rgba(74,222,128,.8)';
+      dc.title=done.has(key)?`Checked in ${key}`:`No check-in recorded for ${key}`;
       wd.appendChild(dc);
     }
   }
-
   function updateStreak(){
+    streak=calculateStreak();
+    const display=document.getElementById('streakDisplay');
+    const tier=getStreakTier(streak);
+    display.className=`streak-display streak-tier-${tier}`;
     document.getElementById('streakCount').textContent=streak;
+    const milestoneEl=document.getElementById('streakMilestone');
+    if(milestoneEl) milestoneEl.textContent=streakTierText(streak);
+    const sub=document.getElementById('streakSub');
+    if(sub) sub.textContent=streak===0?'Start today. Your first check-in begins the fire.':streak===1?'Day 1 is on the board. Keep building.':`You have checked in for ${streak} consecutive day${streak===1?'':'s'}.`;
     const badges=document.querySelectorAll('#milestoneBadges .mbadge');
-    const thresholds=[1,7,30,90,365];
+    const thresholds=[1,7,30,50,90,100,365];
     badges.forEach((b,i)=>{if(streak>=thresholds[i])b.classList.add('earned');else b.classList.remove('earned');});
+    localStorage.setItem(STORAGE.streak,String(streak));
+    localStorage.setItem(STORAGE.lastcheck,checkins.length?checkins[checkins.length-1].date:'');
   }
-
   function markToday(){
-    if(lastCheck===today){showToast('Already checked in today! See you tomorrow 💚');return;}
-    const prev=new Date(lastCheck);
-    const diff=Math.floor((new Date(today)-prev)/(1000*60*60*24));
-    streak=diff===1?streak+1:1;
-    lastCheck=today;
-    localStorage.setItem('j4c_streak',streak);
-    localStorage.setItem('j4c_lastcheck',lastCheck);
-    updateStreak();renderDays();
-    showToast(`Day ${streak} marked! ${streak===1?'First step taken!':streak===7?'🌱 One week!':streak===30?'💪 One month!':streak===90?'🏆 Three months!':'Keep going 💚'}`);
+    const today=dateKey();
+    if(uniqueCheckins().includes(today)){
+      showToast('Already checked in today. Your streak is safe 💚');
+      return;
+    }
+    const yesterday=new Date();
+    yesterday.setDate(yesterday.getDate()-1);
+    checkins.push({date:today,recordedAt:new Date().toISOString()});
+    writeJSON(STORAGE.checkins,checkins);
+    const before=streak;
+    updateStreak();
+    renderDays();
+    const milestone=streak===50||streak===100||streak===150||streak===200||streak===300;
+    showToast(milestone?`🔥 Day ${streak}! Your streak fire changed!`:
+      before===0&&streak===1?'Day 1 recorded. Your journey starts today 💚':
+      `Day ${streak} recorded for ${today} 💚`);
   }
-
   renderDays();updateStreak();
 
-  // ── Breathing Exercise ──
-  let breathActive=false,breathInterval=null,breathPhase=0;
+  // ── Breathing Exercise: real-time 4-7-8 ──
+  let breathActive=false,breathTimer=null,breathPhase=0,breathRemaining=0,breathStartedAt=null;
   const phases=[
-    {name:'Breathe In',duration:4000,class:'inhale'},
-    {name:'Hold',duration:7000,class:''},
-    {name:'Breathe Out',duration:8000,class:'exhale'},
-    {name:'Rest',duration:2000,class:''}
+    {name:'Breathe In',seconds:4,class:'inhale'},
+    {name:'Hold',seconds:7,class:''},
+    {name:'Breathe Out',seconds:8,class:'exhale'}
   ];
   function startBreathing(){
-    if(breathActive){clearTimeout(breathInterval);breathActive=false;const r=document.getElementById('breathRing'),t=document.getElementById('breathText');r.className='breathing-ring';t.textContent='Tap to\nStart';document.getElementById('breathPhase').textContent='Breathe in for 4 · Hold for 7 · Out for 8';document.querySelector('.start-breath-btn').textContent='Start Breathing Exercise';return;}
-    breathActive=true;breathPhase=0;document.querySelector('.start-breath-btn').textContent='Stop Exercise';runPhase();
+    if(breathActive){stopBreathing();return;}
+    breathActive=true;breathPhase=0;breathRemaining=phases[0].seconds;breathStartedAt=Date.now();
+    document.querySelector('.start-breath-btn').textContent='Stop Exercise';
+    document.getElementById('breathLiveStatus').textContent='4-7-8 breathing is active in real time';
+    runBreathPhase();
   }
-  function runPhase(){
+  function runBreathPhase(){
     if(!breathActive)return;
-    const p=phases[breathPhase%phases.length];
-    const r=document.getElementById('breathRing'),t=document.getElementById('breathText');
-    r.className='breathing-ring '+(p.class||'');
-    t.innerHTML=p.name+(p.name==='Breathe In'?'<br>4s':p.name==='Hold'?'<br>7s':p.name==='Breathe Out'?'<br>8s':'');
-    document.getElementById('breathPhase').textContent=p.name;
-    breathInterval=setTimeout(()=>{breathPhase++;runPhase();},p.duration);
+    clearInterval(breathTimer);
+    const p=phases[breathPhase];
+    breathRemaining=p.seconds;
+    const ring=document.getElementById('breathRing');
+    const t=document.getElementById('breathText');
+    ring.className='breathing-ring active '+(p.class||'');
+    const tick=()=>{
+      if(!breathActive)return;
+      t.innerHTML=`${p.name}<br>${breathRemaining}s`;
+      document.getElementById('breathPhase').textContent=`${p.name} · ${breathRemaining}s`;
+      if(breathRemaining<=0){
+        clearInterval(breathTimer);
+        breathPhase=(breathPhase+1)%phases.length;
+        runBreathPhase();
+        return;
+      }
+      breathRemaining--;
+    };
+    tick();
+    breathTimer=setInterval(tick,1000);
+  }
+  function stopBreathing(){
+    clearInterval(breathTimer);
+    if(breathActive){
+      const seconds=Math.max(0,Math.round((Date.now()-breathStartedAt)/1000));
+      if(seconds>0){
+        const logs=readJSON(STORAGE.breathing,[]);
+        logs.push({recordedAt:new Date().toISOString(),date:dateKey(),seconds});
+        writeJSON(STORAGE.breathing,logs);
+      }
+    }
+    breathActive=false;breathStartedAt=null;
+    const r=document.getElementById('breathRing');
+    r.className='breathing-ring';
+    document.getElementById('breathText').innerHTML='Tap to<br>Start';
+    document.getElementById('breathPhase').textContent='Breathe in for 4 · Hold for 7 · Out for 8';
+    document.getElementById('breathLiveStatus').textContent='Session saved with today’s date';
+    document.querySelector('.start-breath-btn').textContent='Start Breathing Exercise';
+    updateJourneyStats();
   }
 
   // ── Mood Tracker ──
   let selectedMood=null;
-  function selectMood(el,emoji,label){document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');selectedMood={emoji,label};}
-  function saveMood(){if(!selectedMood){showToast('Please select a mood first.');return;}showToast(`Mood saved: ${selectedMood.emoji} ${selectedMood.label}. Thank you for checking in!`);document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));selectedMood=null;}
+  const moodValues={Low:1,Okay:2,Good:3,Great:4,Amazing:5};
+  function selectMood(el,emoji,label){
+    document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedMood={emoji,label,value:moodValues[label]||0};
+    document.getElementById('moodScore').textContent=`Live selection: ${emoji} ${label} · ${selectedMood.value}/5`;
+  }
+  function saveMood(){
+    if(!selectedMood){showToast('Select a mood first.');return;}
+    const moods=readJSON(STORAGE.moods,[]);
+    moods.push({...selectedMood,date:dateKey(),recordedAt:new Date().toISOString()});
+    writeJSON(STORAGE.moods,moods);
+    const saved=selectedMood;
+    selectedMood=null;
+    document.querySelectorAll('.mood-opt').forEach(o=>o.classList.remove('selected'));
+    document.getElementById('moodScore').textContent=`Saved ${saved.emoji} ${saved.label} · ${dateKey()}`;
+    updateJourneyStats();renderJourneyHistory();
+    showToast(`Mood saved for ${dateKey()} 💚`);
+  }
 
-  // ── Urge Meter ──
+  // ── Urge Surfer ──
   let selectedUrge=null;
-  function setUrge(el,val){document.querySelectorAll('.urge-bar').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedUrge=val;const tips=['Urges this mild usually pass in minutes. Try a short walk.','A manageable urge. Use the breathing tool now.','This is real — call someone you trust right now.','Strong urge. Leave where you are immediately and call 0800 12 13 14.','CRISIS LEVEL — Call 0800 12 13 14 right now. You can do this.'];document.getElementById('urgeTip').textContent=val<=2?tips[0]:val<=4?tips[1]:val<=6?tips[2]:val<=8?tips[3]:tips[4];}
-  function saveUrge(){if(!selectedUrge){showToast('Please rate the urge level first.');return;}showToast(`Urge logged at level ${selectedUrge}. You noticed it — that is strength. It will pass.`);document.querySelectorAll('.urge-bar').forEach(b=>b.classList.remove('active'));selectedUrge=null;}
+  function setUrge(el,val){
+    document.querySelectorAll('.urge-bar').forEach(b=>b.classList.toggle('active',Number(b.textContent)<=val));
+    selectedUrge=val;
+    const tips=['Very mild. Notice it, breathe, and let it move on.','Mild urge. Try a short grounding activity.','Manageable urge. Slow your breathing and change your environment.','Moderate urge. Consider contacting someone you trust.','Strong urge. Step away from triggers and use your support plan.'];
+    document.getElementById('urgeTip').textContent=tips[Math.min(4,Math.floor((val-1)/2))];
+    document.getElementById('urgeLive').textContent=`Live urge level: ${val}/10`;
+  }
+  function saveUrge(){
+    if(!selectedUrge){showToast('Select an urge level first.');return;}
+    const urges=readJSON(STORAGE.urges,[]);
+    urges.push({level:selectedUrge,date:dateKey(),recordedAt:new Date().toISOString()});
+    writeJSON(STORAGE.urges,urges);
+    const level=selectedUrge;
+    selectedUrge=null;
+    document.querySelectorAll('.urge-bar').forEach(b=>b.classList.remove('active'));
+    document.getElementById('urgeLive').textContent=`Saved urge ${level}/10 · ${dateKey()}`;
+    updateJourneyStats();renderJourneyHistory();
+    showToast(`Urge ${level}/10 saved for ${dateKey()}.`);
+  }
 
-  // ── Journal ──
+  // ── Recovery Journal / Journey ──
   const prompts=['What is one thing I am grateful for today?','What challenged me today, and how did I handle it?','What does my recovery mean to the people I love?','Name three things that went right today, however small.','What would I tell my past self about where I am now?','What is one healthy thing I can do for myself today?','Who supported me recently, and how can I thank them?'];
   document.getElementById('journalPrompt').textContent='Today\'s prompt: '+prompts[new Date().getDay()%prompts.length];
-  function saveJournal(){const txt=document.getElementById('journalText').value.trim();if(!txt){showToast('Write something before saving.');return;}const entries=JSON.parse(localStorage.getItem('j4c_journal')||'[]');entries.push({date:new Date().toLocaleDateString(),text:txt});localStorage.setItem('j4c_journal',JSON.stringify(entries));document.getElementById('journalText').value='';showToast('Journal entry saved! Keep writing — you are doing great. 💚');}
+  function saveJournal(){
+    const txt=document.getElementById('journalText').value.trim();
+    if(!txt){showToast('Write something before saving.');return;}
+    const entries=readJSON(STORAGE.journal,[]);
+    entries.push({date:dateKey(),recordedAt:new Date().toISOString(),text:txt});
+    writeJSON(STORAGE.journal,entries);
+    document.getElementById('journalText').value='';
+    renderJourneyHistory();updateJourneyStats();
+    showToast(`Journey entry saved for ${dateKey()} 💚`);
+  }
+  function updateJourneyStats(){
+    document.getElementById('journalCount').textContent=readJSON(STORAGE.journal,[]).length;
+    document.getElementById('moodCount').textContent=readJSON(STORAGE.moods,[]).length;
+    document.getElementById('urgeCount').textContent=readJSON(STORAGE.urges,[]).length;
+  }
+  function renderJourneyHistory(){
+    const box=document.getElementById('journeyHistory');
+    if(!box)return;
+    const journal=readJSON(STORAGE.journal,[]).slice(-5).reverse();
+    const moods=readJSON(STORAGE.moods,[]).slice(-5).reverse();
+    const urges=readJSON(STORAGE.urges,[]).slice(-5).reverse();
+    const items=[
+      ...journal.map(x=>({time:x.recordedAt,html:`📖 <strong>Journal</strong> · ${escapeHtml(x.text.slice(0,90))}${x.text.length>90?'…':''}`})),
+      ...moods.map(x=>({time:x.recordedAt,html:`${escapeHtml(x.emoji)} <strong>Mood</strong> · ${escapeHtml(x.label)}`})),
+      ...urges.map(x=>({time:x.recordedAt,html:`🌊 <strong>Urge</strong> · ${x.level}/10`}))
+    ].sort((a,b)=>new Date(b.time)-new Date(a.time)).slice(0,8);
+    box.innerHTML='<div class="history-title">Your journey</div>'+
+      (items.length?items.map(x=>`<div class="history-item"><span>${x.html}</span><time>${prettyDate(x.time)}</time></div>`).join(''):
+      '<div class="history-empty">Your saved entries will appear here.</div>');
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  }
+  updateJourneyStats();renderJourneyHistory();
+
+  // Keep the interface synchronized if another tab/window changes saved recovery data.
+  window.addEventListener('storage',()=>{
+    checkins=readJSON(STORAGE.checkins,checkins);
+    renderDays();updateStreak();updateJourneyStats();renderJourneyHistory();
+  });
 
   // ── Quotes ──
   const quotes=[
