@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Journey4Change - Organisations We Support: GBVF support, recovery resources and food security support.">
+  <title>Journey4Change - Support Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-light: #4ade80;
+      --primary-dark: #16a34a;
+      --secondary: #14532d;
+      --dark: #0f1f15;
+      --light: #f8faf8;
+      --text: #1c2b20;
+      --text-muted: #4b6a53;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background-color:var(--light);color:var(--text);line-height:1.7;overflow-x:hidden;}
+
+    /* UTILITY BAR */
+    .utility-bar{background:var(--dark);color:rgba(255,255,255,.75);padding:9px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+    .utility-left{display:flex;align-items:center;gap:8px;}
+    .utility-left i{color:var(--primary);font-size:12px;}
+    .utility-right a{color:rgba(255,255,255,.7);margin-left:18px;font-size:16px;transition:color .25s,transform .25s;display:inline-block;}
+    .utility-right a:hover{color:var(--primary);transform:translateY(-2px);}
+
+    /* HEADER */
+    header{background:rgba(15,31,21,.96);backdrop-filter:blur(12px);color:white;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:900;border-bottom:1px solid rgba(34,197,94,.15);transition:box-shadow .3s;}
+    .header-left{display:flex;align-items:center;gap:22px;}
+    .logo-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;line-height:1.1;}
+    .logo-text span{font-size:11px;font-weight:500;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:2px;}
+    .hamburger{display:flex;flex-direction:column;justify-content:space-between;width:26px;height:20px;cursor:pointer;gap:5px;}
+    .hamburger div{height:2px;background:white;border-radius:2px;transition:all .3s;}
+    .hamburger:hover div:nth-child(2){width:70%;}
+
+    /* HERO */
+    .hero{position:relative;width:100%;min-height:78vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f1f15 0%,#1a3a22 55%,#0f1f15 100%);}
+    .hero-bg-canvas{position:absolute;inset:0;z-index:1;overflow:hidden;}
+    .particle{position:absolute;border-radius:50%;background:rgba(34,197,94,.09);animation:floatParticle linear infinite;}
+    @keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20vh) scale(1.2);opacity:0;}}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,13,.35) 0%,rgba(10,20,13,.65) 100%);z-index:2;}
+    .hero-content{position:relative;z-index:3;text-align:center;color:white;padding:0 24px;max-width:820px;}
+    .hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-light);border:1px solid rgba(74,222,128,.4);padding:6px 18px;border-radius:50px;margin-bottom:24px;animation:fadeInUp .8s ease-out both;}
+    .hero h2{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,.4);animation:fadeInUp .8s .15s ease-out both;}
+    .hero h2 em{font-style:normal;color:var(--primary-light);}
+    .hero p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:36px;opacity:.9;max-width:600px;margin-left:auto;margin-right:auto;animation:fadeInUp .8s .3s ease-out both;}
+    .btn-group{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;animation:fadeInUp .8s .45s ease-out both;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 6px 24px rgba(34,197,94,.35);}
+    .btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,197,94,.45);}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px);}
+    .btn-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);border-color:white;}
+
+    /* CRISIS */
+    .crisis-banner{background:linear-gradient(90deg,var(--primary-dark),#166534);color:white;padding:14px 40px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;text-align:center;font-size:14px;font-weight:500;}
+    .crisis-banner i{font-size:18px;color:var(--primary-light);}
+    .crisis-number{background:white;color:var(--primary-dark);padding:6px 18px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .2s;}
+    .crisis-number:hover{transform:scale(1.05);}
+
+    /* SECTIONS */
+    .section{padding:90px 24px;}
+    .section.alt{background:#f0f7f1;}
+    .section-inner{max-width:1160px;margin:0 auto;}
+    .section-title{text-align:center;margin-bottom:58px;}
+    .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px;}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);color:var(--secondary);font-weight:700;position:relative;display:inline-block;}
+    .section-title h2::after{content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));border-radius:2px;}
+    .section-title p{color:var(--text-muted);font-size:1.02rem;max-width:680px;margin:26px auto 0;}
+
+    /* ─── SUPPORT ORG CARDS ─── */
+    .org-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+    .org-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid rgba(34,197,94,.08);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
+    .org-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+    .org-top-bar{height:5px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));}
+    .org-body{padding:32px 30px;display:flex;flex-direction:column;flex:1;}
+    .org-icon{width:58px;height:58px;border-radius:16px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary-dark);margin-bottom:20px;transition:background .3s;}
+    .org-card:hover .org-icon{background:rgba(34,197,94,.2);}
+    .org-card h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--secondary);margin-bottom:10px;}
+    .org-card > .org-body > p{color:var(--text-muted);font-size:.94rem;margin-bottom:18px;}
+    .org-list{list-style:none;margin-bottom:24px;}
+    .org-list li{display:flex;align-items:flex-start;gap:9px;margin:9px 0;font-size:13px;color:#35513c;}
+    .org-list i{color:var(--primary-dark);margin-top:4px;font-size:11px;flex-shrink:0;}
+    .org-footer{margin-top:auto;}
+    .external-link{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);padding:11px 22px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;transition:all .25s;}
+    .external-link:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,197,94,.3);}
+    .external-note{display:flex;align-items:center;gap:6px;margin-top:10px;color:var(--text-muted);font-size:11px;}
+    .external-note i{font-size:10px;}
+    .org-link-row{display:flex;flex-wrap:wrap;gap:10px;}
+    .internal-link{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--secondary);padding:10px 20px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;border:1.5px solid var(--primary-dark);transition:all .25s;}
+    .internal-link:hover{background:var(--secondary);color:white;border-color:var(--secondary);transform:translateY(-2px);}
+
+    /* ─── PATHWAY ─── */
+    .pathway{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .path-card{background:white;padding:28px 22px;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow-sm);border:1px solid rgba(34,197,94,.08);transition:transform .3s,box-shadow .3s;}
+    .path-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+    .path-number{width:42px;height:42px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--secondary);color:var(--primary-light);font-weight:900;font-family:'Playfair Display',serif;font-size:1.1rem;}
+    .path-card h4{font-family:'Playfair Display',serif;color:var(--secondary);margin-bottom:8px;font-size:1.05rem;}
+    .path-card p{font-size:13px;color:var(--text-muted);}
+
+    .notice{margin-top:32px;display:flex;align-items:flex-start;gap:10px;background:rgba(34,197,94,.07);border-left:4px solid var(--primary);padding:18px 22px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:#31533a;font-size:13px;line-height:1.7;}
+    .notice i{color:var(--primary-dark);margin-top:2px;flex-shrink:0;}
+
+    /* ─── CTA ─── */
+    .cta-section{background:linear-gradient(135deg,var(--secondary) 0%,var(--dark) 100%);color:white;text-align:center;}
+    .cta-section .section-label{color:rgba(255,255,255,.5);}
+    .cta-section h2{color:white;}
+    .cta-section h2::after{background:linear-gradient(90deg,var(--primary),var(--primary-light));}
+    .cta-section .section-title p{color:rgba(255,255,255,.7);}
+
+    /* FOOTER */
+    footer{background:#080f0a;color:white;padding:80px 24px 36px;}
+    .footer-container{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .footer-logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);flex-shrink:0;background:var(--dark);}
+    .footer-logo-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .footer-logo-text p{font-size:11px;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .footer-about p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px;}
+    .social-links{display:flex;gap:12px;}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:50%;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .25s;border:1px solid rgba(255,255,255,.08);}
+    .social-links a:hover{background:var(--primary);color:var(--dark);border-color:var(--primary);transform:translateY(-3px);}
+    .footer-links h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:20px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;transition:color .25s,padding-left .25s;display:inline-block;}
+    .footer-links a:hover{color:var(--primary-light);padding-left:4px;}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;color:rgba(255,255,255,.55);font-size:14px;}
+    .footer-contact-item i{color:var(--primary);margin-top:3px;width:14px;flex-shrink:0;}
+    .copyright{max-width:1160px;margin:30px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:8px;}
+
+    /* SIDE NAV */
+    .side-nav{height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background:var(--dark);overflow-y:auto;overflow-x:hidden;transition:width .4s cubic-bezier(.25,.46,.45,.94);border-right:1px solid rgba(34,197,94,.2);}
+    .nav-header{padding:30px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+    .nav-header span{font-family:'Playfair Display',serif;font-size:16px;color:white;white-space:nowrap;}
+    .close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:white;transition:background .25s,transform .25s;flex-shrink:0;line-height:1;}
+    .close-btn:hover{background:rgba(34,197,94,.2);transform:rotate(90deg);}
+    .side-nav a{padding:14px 28px;text-decoration:none;font-size:15px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:14px;transition:all .25s;white-space:nowrap;border-left:3px solid transparent;}
+    .side-nav a i{width:18px;text-align:center;color:var(--primary);flex-shrink:0;}
+    .side-nav a:hover,.side-nav a.active{color:white;background:rgba(34,197,94,.08);border-left-color:var(--primary);padding-left:34px;}
+    .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;backdrop-filter:blur(4px);}
+    .nav-overlay.active{display:block;}
+    body.nonscroll{overflow:hidden;position:fixed;width:100%;}
+
+    /* REVEAL */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
+
+    @media(max-width:900px){.org-grid{grid-template-columns:1fr;}.pathway{grid-template-columns:repeat(2,1fr);}.footer-container{grid-template-columns:1fr 1fr;gap:36px;}}
+    @media(max-width:600px){header{padding:14px 20px;}.utility-bar{padding:8px 20px;}.section{padding:64px 20px;}.pathway{grid-template-columns:1fr;}.footer-container{grid-template-columns:1fr;gap:28px;}.copyright{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="utility-left"><i class="fas fa-phone"></i> +27 82 813 4960</div>
+  <div class="utility-right">
+    <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/journey4change_" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="hamburger" onclick="openNav()" role="button" tabindex="0" aria-label="Open menu"><div></div><div></div><div></div></div>
+    <div class="logo-text"><h1>Journey4Change</h1><span>Healing Together</span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-canvas" id="particleCanvas"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow"><i class="fas fa-hands-holding-circle"></i> &nbsp; Community Support</span>
+    <h2>Support Beyond <em>the Journey</em></h2>
+    <p>Journey4Change connects people with organisations and services working in areas that affect mental wellbeing, safety, recovery and community wellbeing.</p>
+    <div class="btn-group">
+      <a href="#support" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Support</a>
+      <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Journey4Change</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS BANNER -->
+<div class="crisis-banner">
+  <i class="fas fa-shield-heart"></i>
+  <span>Need immediate GBVF support?</span>
+  <a href="tel:0800428428" class="crisis-number">GBV Command Centre · 0800 428 428</a>
+  <span>24 hours a day</span>
+</div>
+
+<!-- ─── SUPPORT ORGANISATIONS ─── -->
+<section class="section" id="support">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Connected Communities</div>
+      <h2>Find the Support You Need</h2>
+      <p>These resources are separate organisations and government services. Journey4Change provides the information here so visitors can move from awareness to appropriate support.</p>
+    </div>
+
+    <div class="org-grid">
+
+      <!-- GBVF -->
+      <article class="org-card reveal reveal-delay-1">
+        <div class="org-top-bar"></div>
+        <div class="org-body">
+          <div class="org-icon"><i class="fas fa-shield-heart"></i></div>
+          <h3>GBVF Support</h3>
+          <p>Access South African government information and the Gender-Based Violence Command Centre for support, counselling and referral services.</p>
+          <ul class="org-list">
+            <li><i class="fas fa-check"></i><span>24-hour GBV Command Centre</span></li>
+            <li><i class="fas fa-check"></i><span>Support and counselling</span></li>
+            <li><i class="fas fa-check"></i><span>Referral to relevant services</span></li>
+          </ul>
+          <div class="org-footer">
+            <div class="org-link-row">
+              <a class="external-link" href="https://www.gov.za/about-government/government-call-centres-and-help-lines" target="_blank" rel="noopener">
+                Visit Government Support <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="internal-link" href="gbv.html">
+                Journey4Change GBV Support <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="external-note"><i class="fas fa-circle-info"></i> Opens the official South African Government website.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Recovery -->
+      <article class="org-card reveal reveal-delay-2">
+        <div class="org-top-bar"></div>
+        <div class="org-body">
+          <div class="org-icon"><i class="fas fa-seedling"></i></div>
+          <h3>Recovery Support</h3>
+          <p>Find information about professional treatment, rehabilitation, aftercare and referral services through South Africa's Department of Social Development.</p>
+          <ul class="org-list">
+            <li><i class="fas fa-check"></i><span>Treatment and rehabilitation information</span></li>
+            <li><i class="fas fa-check"></i><span>Registered service information</span></li>
+            <li><i class="fas fa-check"></i><span>Family and community support</span></li>
+          </ul>
+          <div class="org-footer">
+            <div class="org-link-row">
+              <a class="external-link" href="https://www.dsd.gov.za/" target="_blank" rel="noopener">
+                Visit Social Development <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="internal-link" href="drug-addiction.html">
+                Drug Addiction Info <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="internal-link" href="recovery.html">
+                Recovery Support <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="external-note"><i class="fas fa-circle-info"></i> For serious substance-use concerns, seek professional help.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Feeding -->
+      <article class="org-card reveal reveal-delay-3">
+        <div class="org-top-bar"></div>
+        <div class="org-body">
+          <div class="org-icon"><i class="fas fa-bowl-food"></i></div>
+          <h3>Feeding &amp; Food Security</h3>
+          <p>Connect with FoodForward SA, which works to recover and redistribute quality surplus food through a network of vetted beneficiary organisations.</p>
+          <ul class="org-list">
+            <li><i class="fas fa-check"></i><span>Food security programmes</span></li>
+            <li><i class="fas fa-check"></i><span>Community food support</span></li>
+            <li><i class="fas fa-check"></i><span>Ways to get involved</span></li>
+          </ul>
+          <div class="org-footer">
+            <div class="org-link-row">
+              <a class="external-link" href="https://www.foodforwardsa.org/" target="_blank" rel="noopener">
+                Visit FoodForward SA <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="internal-link" href="https://hlekani-hope-of-hand.vercel.app" target="_blank" rel="noopener">
+                Hlekani Hope of Hand <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <div class="external-note"><i class="fas fa-circle-info"></i> Opens the official FoodForward SA website.</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PATHWAY ─── -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">The Journey Continues</div>
+      <h2>From Awareness to Action</h2>
+      <p>Journey4Change is designed to be a bridge. When someone needs support beyond what this website provides, they can follow an external link to an appropriate service.</p>
+    </div>
+    <div class="pathway">
+      <div class="path-card reveal reveal-delay-1">
+        <div class="path-number">1</div>
+        <h4>Learn</h4>
+        <p>Understand the issue and recognise when support may be needed.</p>
+      </div>
+      <div class="path-card reveal reveal-delay-2">
+        <div class="path-number">2</div>
+        <h4>Reach Out</h4>
+        <p>Use a trusted support organisation or professional service.</p>
+      </div>
+      <div class="path-card reveal reveal-delay-3">
+        <div class="path-number">3</div>
+        <h4>Connect</h4>
+        <p>Find community, family and practical support around the person.</p>
+      </div>
+      <div class="path-card reveal reveal-delay-4">
+        <div class="path-number">4</div>
+        <h4>Keep Walking</h4>
+        <p>Continue building healthier, safer and more supported communities.</p>
+      </div>
+    </div>
+    <div class="notice reveal">
+      <i class="fas fa-circle-info"></i>
+      <span><strong>Important:</strong> Journey4Change is not a replacement for emergency services, medical care, counselling, legal services or professional treatment. External links take you to the relevant organisation's own website.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section cta-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <div class="section-label">Healing Together</div>
+      <h2>There Is More Than One Path to Support</h2>
+      <p>Whether someone needs safety support, recovery resources or help with food insecurity, the first step can simply be knowing where to look.</p>
+    </div>
+    <div class="btn-group reveal">
+      <a href="#support" class="btn btn-primary"><i class="fas fa-link"></i> View Support Links</a>
+      <a href="journey4change.html" class="btn btn-secondary"><i class="fas fa-road"></i> Our Journey</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <img src="Journey4Change.png" alt="Journey4Change Logo">
+        <div class="footer-logo-text">
+          <h3>Journey4Change</h3>
+          <p>Healing Together</p>
+        </div>
+      </div>
+      <p>Raising awareness for mental health across South Africa through a 4 500+ km journey of hope and healing.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/journey4change_npo" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@journey4change_npo" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/journey4change_" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="journey4change.html">Journey4Change</a></li>
+          <li><a href="mental-health-awareness.html">Mental Health</a></li>
+          <li><a href="their-story.html">Their Story</a></li>
+          <li><a href="survivors.html">Survivor Stories</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="organisations-we-support.html">Organisations Support</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="donations.html">Donations</a></li>
+          <li><a href="social-media.html">Social Media</a></li>
+          <li><a href="support-page.html">Support Page</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>&copy; 2026 Journey4Change. All rights reserved.</span>
+    <span>Powered by neurAila Intelligence Group</span>
+  </div>
+</footer>
+
+<!-- Nav Overlay -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+<!-- Side Nav -->
+<nav id="sideNav" class="side-nav" aria-label="Main navigation">
+  <div class="nav-header">
+    <span>Navigation</span>
+    <div class="close-btn" onclick="closeNav()" aria-label="Close menu" role="button" tabindex="0">×</div>
+  </div>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
+  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
+  <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
+  <a href="mental-health-disorders.html"><i class="fas fa-list"></i> Mental Disorders</a>
+  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health Awareness</a>
+  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
+  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
+  <a href="survivor.html"><i class="fas fa-seedling"></i> Survivor Stories</a>
+  <a href="organisations-we-support.html"><i class="fas fa-people-group"></i> Organisations We Support</a>
+  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
+  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
+  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="support-page.html"><i class="fas fa-hands-holding-circle"></i> Support Page</a>
+  <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+
+<script>
+  // ── Nav (scroll-lock pattern matching the rest of the site) ──
+  let scrollPosY=0;
+  function openNav(){
+    scrollPosY=window.scrollY;
+    document.getElementById('sideNav').style.width='280px';
+    document.getElementById('navOverlay').classList.add('active');
+    document.body.style.top=(-scrollPosY)+'px';
+    document.body.classList.add('nonscroll');
+  }
+  function closeNav(){
+    document.getElementById('sideNav').style.width='0';
+    document.getElementById('navOverlay').classList.remove('active');
+    document.body.classList.remove('nonscroll');
+    document.body.style.top='';
+    window.scrollTo(0,scrollPosY);
+  }
+  document.querySelector('.hamburger').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openNav();});
+  document.querySelector('.close-btn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')closeNav();});
+
+  // ── Header shadow on scroll ──
+  const hdr=document.querySelector('header');
+  window.addEventListener('scroll',()=>{hdr.style.boxShadow=window.scrollY>10?'0 4px 24px rgba(0,0,0,.25)':'none';});
+
+  // ── Scroll reveal ──
+  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // ── Hero particles ──
+  const canvas=document.getElementById('particleCanvas');
+  [60,90,120,50,80,100,70,40].forEach((size,i)=>{
+    const durations=[12,18,14,20,16,22,10,24];
+    const delays=[0,3,6,1,9,4,7,2];
+    const lefts=[5,15,30,45,60,72,85,95];
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText=`width:${size}px;height:${size}px;left:${lefts[i]}%;animation-duration:${durations[i]}s;animation-delay:${delays[i]}s;`;
+    canvas.appendChild(p);
+  });
+
+  // ── Auto-highlight current page in side nav ──
+  (function setActiveNavLink(){
+    const currentPage=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.side-nav a').forEach(link=>{
+      const linkPage=link.getAttribute('href').split('/').pop();
+      link.classList.toggle('active', linkPage===currentPage);
+    });
+  })();
+</script>
+</body>
+</html>
