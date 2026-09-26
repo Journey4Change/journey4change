@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     :root {
-      --primary: #22c55e;
-      --primary-light: #4ade80;
-      --primary-dark: #16a34a;
-      --secondary: #14532d;
+      --primary: #7c3aed;
+      --primary-light: #7c3aed;
+      --primary-dark: #7c3aed;
+      --secondary: #7c3aed;
       --dark: #0f1f15;
       --dark-mid: #1a2f1f;
       --light: #f8faf8;
@@ -551,6 +551,18 @@
     .nav-overlay.active { display: block; }
     body.nonscroll { overflow: hidden; }
 
+        .side-nav a.active {
+    color: white;
+    background: rgba(34, 197, 94, 0.14);
+    border-left-color: var(--primary);
+    padding-left: 34px;
+    box-shadow: inset 4px 0 12px rgba(34, 197, 94, 0.08);
+}
+
+.side-nav a.active i {
+    color: var(--primary-light);
+}
+
     /* ─── ANIMATIONS ─── */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -621,7 +633,7 @@
     <div class="page-hero-content">
       <span class="hero-eyebrow"><i class="fas fa-shield-alt"></i> &nbsp; Worldwide Resources</span>
       <h2>Gender-Based Violence<br>Support Directory</h2>
-      <p>Verified GBV support resources for South Africa and around the world — because every survivor deserves to be heard and helped.</p>
+      <p>Verified GBV support resources for South Africa and around the world because every survivor deserves to be heard and helped.</p>
     </div>
   </section>
 
@@ -653,7 +665,7 @@
           <div class="card-content">
             <div class="card-icon"><i class="fas fa-fist-raised"></i></div>
             <h3>POWA</h3>
-            <p>People Opposing Women Abuse — provides shelter, counselling and legal aid to survivors of gender-based violence.</p>
+            <p>People Opposing Women Abuse provides shelter, counselling and legal aid to survivors of gender-based violence.</p>
             <div class="contact-badges">
               <a href="https://www.powa.co.za" target="_blank" rel="noopener" class="badge badge-link"><i class="fas fa-external-link-alt"></i> powa.co.za</a>
               <span class="badge badge-dark"><i class="fas fa-phone"></i> 011 642 4345</span>
@@ -826,16 +838,16 @@
         <div class="self-help-card reveal reveal-delay-1">
           <h3><i class="fas fa-mobile-alt"></i> Digital Tools</h3>
           <ul>
-            <li><a href="https://www.headspace.com" target="_blank" rel="noopener">Headspace — Guided meditation app</a></li>
-            <li><a href="https://www.sanvello.com" target="_blank" rel="noopener">Sanvello — CBT-based therapy</a></li>
-            <li><a href="https://moodgym.com.au" target="_blank" rel="noopener">MoodGYM — Online therapy program</a></li>
+            <li><a href="https://www.headspace.com" target="_blank" rel="noopener">Headspace - Guided meditation app</a></li>
+            <li><a href="https://www.sanvello.com" target="_blank" rel="noopener">Sanvello - CBT-based therapy</a></li>
+            <li><a href="https://moodgym.com.au" target="_blank" rel="noopener">MoodGYM - Online therapy program</a></li>
           </ul>
         </div>
 
         <div class="self-help-card reveal reveal-delay-2">
           <h3><i class="fas fa-users"></i> Online Communities</h3>
           <ul>
-            <li><a href="https://www.7cups.com" target="_blank" rel="noopener">7 Cups — Anonymous peer support</a></li>
+            <li><a href="https://www.7cups.com" target="_blank" rel="noopener">7 Cups - Anonymous peer support</a></li>
             <li><a href="https://www.supportgroupscentral.com" target="_blank" rel="noopener">SupportGroups Central</a></li>
             <li><a href="https://www.reddit.com/r/survivorsofabuse" target="_blank" rel="noopener">Reddit Survivors of Abuse</a></li>
           </ul>
@@ -844,9 +856,9 @@
         <div class="self-help-card reveal reveal-delay-3">
           <h3><i class="fas fa-book-open"></i> Educational Resources</h3>
           <ul>
-            <li><a href="https://www.un.org/en/women" target="_blank" rel="noopener">UN Women — Global GBV resource</a></li>
-            <li><a href="https://www.who.int/news-room/fact-sheets/detail/violence-against-women" target="_blank" rel="noopener">WHO — Violence Against Women</a></li>
-            <li><a href="https://www.saferspaces.org.za" target="_blank" rel="noopener">Safer Spaces — South Africa</a></li>
+            <li><a href="https://www.un.org/en/women" target="_blank" rel="noopener">UN Women - Global GBV resource</a></li>
+            <li><a href="https://www.who.int/news-room/fact-sheets/detail/violence-against-women" target="_blank" rel="noopener">WHO - Violence Against Women</a></li>
+            <li><a href="https://www.saferspaces.org.za" target="_blank" rel="noopener">Safer Spaces - South Africa</a></li>
           </ul>
         </div>
 
@@ -861,7 +873,7 @@
         <div class="section-label" style="color: rgba(255,255,255,0.4);">Stand Together</div>
         <h2>Be Part of the Change</h2>
       </div>
-      <p class="reveal reveal-delay-1">Together, we can create a South Africa where every person feels safe, supported, and empowered to speak out — without fear or shame.</p>
+      <p class="reveal reveal-delay-1">Together, we can create a South Africa where every person feels safe, supported, and empowered to speak out without fear or shame.</p>
       <div class="cta-btns reveal reveal-delay-2">
         <a href="journey4change.html" class="btn btn-primary">
           <i class="fas fa-road"></i> Follow Our Journey
@@ -896,26 +908,25 @@
         <h4>Pages</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="my-story.html">My Story</a></li>
+          <li><a href="the-team.html">The Team</a></li>
           <li><a href="journey4change.html">Journey4Change</a></li>
-          <li><a href="mental-health-awareness.html">Mental Health</a></li>
-          <li><a href="their-story.html">Their Story</a></li>
+          <li><a href="gbv.html">GBV Awareness</a></li>
+          <li><a href="saytheirnames.html">Say Their Names</a></li>
+          <li><a href="gbvsurvivors.html">Survivors</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Resources</h4>
         <ul>
-          <li><a href="treatment-centres.html">Treatment Centres</a></li>
-          <li><a href="recovery-support.html">Recovery Support</a></li>
           <li><a href="gbv-support.html">GBV Support</a></li>
-          <li><a href="donations.html">Donations</a></li>
-          <li><a href="partnership.html">Our Partners</a></li>
+          <li><a href="partnership.html">Partnership</a></li>
+          <li><a href="support-page.html">Support Page</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Contact</h4>
         <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+27 82 813 4960</span></div>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.info@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>journey4change.gbv@gmail.com</span></div>
         <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>PO Box 177, Letaba, 0870</span></div>
       </div>
     </div>
@@ -937,22 +948,11 @@
     </div>
   <a href="index.html"><i class="fas fa-home"></i> Home</a>
   <a href="the-team.html"><i class="fas fa-users"></i> The Team</a>
-  <a href="my-story.html"><i class="fas fa-user"></i> My Story</a>
   <a href="journey4change.html"><i class="fas fa-road"></i> Journey4Change</a>
-  <a href="mental-health-disorders.html" class="active"><i class="fas fa-list"></i> Mental Disorders</a>
-  <a href="mental-health-awareness.html"><i class="fas fa-brain"></i> Mental Health</a>
-  <a href="global-mental-health-watch.html"><i class="fas fa-newspaper"></i> Global MH Watch</a>
-  <a href="their-story.html"><i class="fas fa-users"></i> Their Story</a>
-  <a href="drug-addiction.html"><i class="fas fa-prescription-bottle-alt"></i> Drug Addiction</a>
-  <a href="recovery-support.html"><i class="fas fa-seedling"></i> Recovery Support</a>
-  <a href="treatment-centres.html"><i class="fas fa-hospital"></i> Treatment Centres</a>
   <a href="gbv.html"><i class="fas fa-hand-fist"></i> GBV Awareness</a>
-  <a href="gbv-support.html"><i class="fas fa-hand-holding-hand"></i> GBV Support</a>
-  <a href="donations.html"><i class="fas fa-hand-holding-heart"></i> Donations</a>
-  <a href="media.html"><i class="fas fa-photo-video"></i> Media</a>
-  <a href="social-media.html"><i class="fas fa-hashtag"></i> Social Media</a>
-  <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+  <a href="gbv-support.html" class="active"><i class="fas fa-children"></i> GBV Support</a>
   <a href="partnership.html"><i class="fas fa-handshake"></i> Our Partners</a>
+  <a href="support-page.html"><i class="fas fa-hands-holding-circle"></i> Support Page</a>
   <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
   </nav>
 
